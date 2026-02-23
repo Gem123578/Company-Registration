@@ -1,0 +1,4 @@
+[Stakeholder Portal] ---> Register/Login ---> Submit Company ---> Stored in DB
+                                                     |
+                                                     v
+[Backend Portal] ---> Admin/Officer reviews ---> Updates Status ---> Notification to Stakeholder
