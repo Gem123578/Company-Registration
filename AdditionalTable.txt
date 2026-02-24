@@ -1,0 +1,46 @@
+CREATE TABLE company_share_capital (
+    share_capital_id BIGINT IDENTITY PRIMARY KEY,
+    company_id BIGINT NOT NULL FOREIGN KEY REFERENCES registered_companies(company_id),
+
+    authorized_share_capital DECIMAL(18,2) NOT NULL,
+    issued_share_capital DECIMAL(18,2) NOT NULL,
+    paid_up_share_capital DECIMAL(18,2) NOT NULL,
+
+    share_currency NVARCHAR(10) DEFAULT 'USD',
+    created_at DATETIME DEFAULT GETDATE()
+);
+
+
+CREATE TABLE company_shareholders (
+    shareholder_id BIGINT IDENTITY PRIMARY KEY,
+    company_id BIGINT NOT NULL FOREIGN KEY REFERENCES registered_companies(company_id),
+
+    shareholder_name NVARCHAR(255) NOT NULL,
+    shareholder_type NVARCHAR(50), -- INDIVIDUAL / CORPORATE
+    nationality NVARCHAR(100),
+    identity_number NVARCHAR(100),
+    number_of_shares INT NOT NULL,
+    share_percentage DECIMAL(5,2),
+    email_address NVARCHAR(255),
+    created_at DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE ultimate_holding_companies (
+    uhc_id BIGINT IDENTITY PRIMARY KEY,
+    company_id BIGINT NOT NULL FOREIGN KEY REFERENCES registered_companies(company_id),
+
+    uhc_name NVARCHAR(255) NOT NULL,
+    registration_number NVARCHAR(100),
+    country_of_incorporation NVARCHAR(100),
+    ownership_percentage DECIMAL(5,2),
+    created_at DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE company_constitutions (
+    constitution_id BIGINT IDENTITY PRIMARY KEY,
+    company_id BIGINT NOT NULL FOREIGN KEY REFERENCES registered_companies(company_id),
+
+    constitution_type NVARCHAR(50), -- MODEL / CUSTOM
+    constitution_file_path NVARCHAR(500), -- Uploaded document path
+    uploaded_at DATETIME DEFAULT GETDATE()
+);
