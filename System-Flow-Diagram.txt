@@ -2,3 +2,14 @@
                                                      |
                                                      v
 [Backend Portal] ---> Admin/Officer reviews ---> Updates Status ---> Notification to Stakeholder
+
+
+CompanyApplicants 1 --- * RegisteredCompanies
+RegisteredCompanies 1 --- * CompanyStakeholders
+RegisteredCompanies 1 --- 1 CompanyShareCapital
+RegisteredCompanies 1 --- * CompanyShareholders
+RegisteredCompanies 1 --- 1 UltimateHoldingCompanies
+RegisteredCompanies 1 --- 1 CompanyConstitutions
+RegisteredCompanies 1 --- * RegistrationPayments
+SystemUsers 1 --- * CompanyApprovalLogs
+
