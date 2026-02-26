@@ -1,5 +1,5 @@
 body {
-    background: #BBE0EF;
+    background: #F7F8F0;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -7,7 +7,7 @@ body {
 }
 
 .main-box {
-    background: white;
+    background: #8A7650;
     border-radius: 20px;
     width: 700px;
     height: 350px;
