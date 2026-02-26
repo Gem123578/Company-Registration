@@ -1,0 +1,32 @@
+body {
+    background: #BBE0EF;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-box {
+    background: white;
+    border-radius: 20px;
+    width: 700px;
+    height: 350px;
+    padding: 20px;
+}
+
+.menu-btn {
+    background: #57595B;
+    color: white;
+    border-radius: 25px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+    .menu-btn:hover {
+        background: #00897b;
+        color: white;
+    }
+
+.content {
+    display: none;
+}

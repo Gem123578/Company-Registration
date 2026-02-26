@@ -1,19 +1,187 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<main aria-labelledby="title">
-    <h2 id="title">@ViewBag.Title.</h2>
-    <h3>@ViewBag.Message</h3>
 
-    <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
-    </address>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Company Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
 
-    <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-    </address>
-</main>
+    <div class="container mt-4 mb-5">
+        <h2 class="text-center mb-4">Company Registration Form</h2>
+
+        <!-- ================= Company Information ================= -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">Company Information</div>
+            <div class="card-body row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">Company Name</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Company Type</label>
+                    <select class="form-select">
+                        <option>LLC</option>
+                        <option>PLC</option>
+                        <option>Partnership</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Business Activity</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Registered Address</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Incorporation Date</label>
+                    <input type="date" class="form-control">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= Share Capital ================= -->
+        <div class="card mb-4">
+            <div class="card-header bg-secondary text-white">Share Capital Structure</div>
+            <div class="card-body row g-3">
+
+                <div class="col-md-4">
+                    <label class="form-label">Authorized Capital</label>
+                    <input type="number" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Issued Capital</label>
+                    <input type="number" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Paid-Up Capital</label>
+                    <input type="number" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Currency</label>
+                    <select class="form-select">
+                        <option>MMK</option>
+                        <option>USD</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= Shareholders ================= -->
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">Shareholders Information</div>
+            <div class="card-body row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">Shareholder Name</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Shareholder Type</label>
+                    <select class="form-select">
+                        <option>INDIVIDUAL</option>
+                        <option>CORPORATE</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Nationality</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Identity Number</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Number of Shares</label>
+                    <input type="number" class="form-control">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label">Share Percentage</label>
+                    <input type="number" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= Ultimate Holding Company ================= -->
+        <div class="card mb-4">
+            <div class="card-header bg-warning">Ultimate Holding Company (If Any)</div>
+            <div class="card-body row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">UHC Name</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Registration Number</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Country of Incorporation</label>
+                    <input type="text" class="form-control">
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Ownership Percentage</label>
+                    <input type="number" class="form-control">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= Company Constitution ================= -->
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">Company Constitution</div>
+            <div class="card-body row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">Constitution Type</label>
+                    <select class="form-select">
+                        <option>MODEL</option>
+                        <option>CUSTOM</option>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Upload Constitution</label>
+                    <input type="file" class="form-control">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= Submit ================= -->
+        <div class="text-center">
+            <button class="btn btn-lg btn-primary">Submit Registration</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
