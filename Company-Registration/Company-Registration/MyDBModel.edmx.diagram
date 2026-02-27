@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e4be5c642f23434399c6216ae9b1d6b2" Name="Diagram1">
+        <EntityTypeShape EntityType="CompanyRegistrationDBModel.CompanyApplicant" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyRegistrationDBModel.CompanyApprovalLog" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyRegistrationDBModel.CompanyConstitution" Width="1.5" PointX="5.25" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyRegistrationDBModel.CompanyShareCapital" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyRegistrationDBModel.CompanyShareholder" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyRegistrationDBModel.CompanyStakeholder" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyRegistrationDBModel.RegisteredCompany" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyRegistrationDBModel.RegistrationPayment" Width="1.5" PointX="5.25" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyRegistrationDBModel.SystemUser" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CompanyRegistrationDBModel.UltimateHoldingCompany" Width="1.5" PointX="5.25" PointY="24" IsExpanded="true" />
+        <AssociationConnector Association="CompanyRegistrationDBModel.FK_RegisteredCompanies_Applicant" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyRegistrationDBModel.FK_ApprovalLogs_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyRegistrationDBModel.FK_ApprovalLogs_User" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyRegistrationDBModel.FK_Constitution_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyRegistrationDBModel.FK_ShareCapital_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyRegistrationDBModel.FK_Shareholders_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyRegistrationDBModel.FK_Stakeholders_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyRegistrationDBModel.FK_Payments_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="CompanyRegistrationDBModel.FK_UHC_Company" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

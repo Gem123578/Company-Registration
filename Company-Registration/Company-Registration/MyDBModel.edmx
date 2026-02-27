@@ -1,0 +1,763 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CompanyRegistrationDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CompanyApplicants">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdentityNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyApprovalLogs">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="ApprovedBy" Type="bigint" Nullable="false" />
+          <Property Name="Action" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ActionDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyConstitutions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="ConstitutionType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ConstitutionFilePath" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="UploadedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyShareCapital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="AuthorizedShareCapital" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IssuedShareCapital" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PaidUpShareCapital" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ShareCurrency" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyShareholders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="ShareholderName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ShareholderType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdentityNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NumberOfShares" Type="int" Nullable="false" />
+          <Property Name="SharePercentage" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CompanyStakeholders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="StakeholderRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SharePercentage" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdentityNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegisteredCompanies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RegistrationNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BusinessActivity" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RegisteredAddress" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="RegistrationStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApplicantId" Type="bigint" Nullable="false" />
+          <Property Name="IncorporationDate" Type="date" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistrationPayments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="TransactionId" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PaymentMethod" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="CurrencyCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="PaymentStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PaidAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SystemUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountStatus" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginAt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UltimateHoldingCompanies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyId" Type="bigint" Nullable="false" />
+          <Property Name="UHCName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RegistrationNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryOfIncorporation" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="OwnershipPercentage" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ApprovalLogs_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompanies" Multiplicity="1" />
+          <End Role="CompanyApprovalLogs" Type="Self.CompanyApprovalLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyApprovalLogs">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApprovalLogs_User">
+          <End Role="SystemUsers" Type="Self.SystemUsers" Multiplicity="1" />
+          <End Role="CompanyApprovalLogs" Type="Self.CompanyApprovalLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyApprovalLogs">
+              <PropertyRef Name="ApprovedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Constitution_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompanies" Multiplicity="1" />
+          <End Role="CompanyConstitutions" Type="Self.CompanyConstitutions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyConstitutions">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompanies" Multiplicity="1" />
+          <End Role="RegistrationPayments" Type="Self.RegistrationPayments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistrationPayments">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegisteredCompanies_Applicant">
+          <End Role="CompanyApplicants" Type="Self.CompanyApplicants" Multiplicity="1" />
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompanies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyApplicants">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegisteredCompanies">
+              <PropertyRef Name="ApplicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShareCapital_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompanies" Multiplicity="1" />
+          <End Role="CompanyShareCapital" Type="Self.CompanyShareCapital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyShareCapital">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shareholders_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompanies" Multiplicity="1" />
+          <End Role="CompanyShareholders" Type="Self.CompanyShareholders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyShareholders">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stakeholders_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompanies" Multiplicity="1" />
+          <End Role="CompanyStakeholders" Type="Self.CompanyStakeholders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyStakeholders">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UHC_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompanies" Multiplicity="1" />
+          <End Role="UltimateHoldingCompanies" Type="Self.UltimateHoldingCompanies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UltimateHoldingCompanies">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CompanyRegistrationDBModelStoreContainer">
+          <EntitySet Name="CompanyApplicants" EntityType="Self.CompanyApplicants" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyApprovalLogs" EntityType="Self.CompanyApprovalLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyConstitutions" EntityType="Self.CompanyConstitutions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyShareCapital" EntityType="Self.CompanyShareCapital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyShareholders" EntityType="Self.CompanyShareholders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyStakeholders" EntityType="Self.CompanyStakeholders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegisteredCompanies" EntityType="Self.RegisteredCompanies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistrationPayments" EntityType="Self.RegistrationPayments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemUsers" EntityType="Self.SystemUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UltimateHoldingCompanies" EntityType="Self.UltimateHoldingCompanies" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ApprovalLogs_Company" Association="Self.FK_ApprovalLogs_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="CompanyApprovalLogs" EntitySet="CompanyApprovalLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApprovalLogs_User" Association="Self.FK_ApprovalLogs_User">
+            <End Role="SystemUsers" EntitySet="SystemUsers" />
+            <End Role="CompanyApprovalLogs" EntitySet="CompanyApprovalLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Constitution_Company" Association="Self.FK_Constitution_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="CompanyConstitutions" EntitySet="CompanyConstitutions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Company" Association="Self.FK_Payments_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="RegistrationPayments" EntitySet="RegistrationPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegisteredCompanies_Applicant" Association="Self.FK_RegisteredCompanies_Applicant">
+            <End Role="CompanyApplicants" EntitySet="CompanyApplicants" />
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShareCapital_Company" Association="Self.FK_ShareCapital_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="CompanyShareCapital" EntitySet="CompanyShareCapital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shareholders_Company" Association="Self.FK_Shareholders_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="CompanyShareholders" EntitySet="CompanyShareholders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stakeholders_Company" Association="Self.FK_Stakeholders_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="CompanyStakeholders" EntitySet="CompanyStakeholders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UHC_Company" Association="Self.FK_UHC_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="UltimateHoldingCompanies" EntitySet="UltimateHoldingCompanies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CompanyRegistrationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CompanyApplicant">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nationality" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdentityNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegisteredCompanies" Relationship="Self.FK_RegisteredCompanies_Applicant" FromRole="CompanyApplicants" ToRole="RegisteredCompanies" />
+        </EntityType>
+        <EntityType Name="CompanyApprovalLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="ApprovedBy" Type="Int64" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActionDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegisteredCompany" Relationship="Self.FK_ApprovalLogs_Company" FromRole="CompanyApprovalLogs" ToRole="RegisteredCompanies" />
+          <NavigationProperty Name="SystemUser" Relationship="Self.FK_ApprovalLogs_User" FromRole="CompanyApprovalLogs" ToRole="SystemUsers" />
+        </EntityType>
+        <EntityType Name="CompanyConstitution">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="ConstitutionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ConstitutionFilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UploadedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegisteredCompany" Relationship="Self.FK_Constitution_Company" FromRole="CompanyConstitutions" ToRole="RegisteredCompanies" />
+        </EntityType>
+        <EntityType Name="CompanyShareCapital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="AuthorizedShareCapital" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IssuedShareCapital" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PaidUpShareCapital" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ShareCurrency" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegisteredCompany" Relationship="Self.FK_ShareCapital_Company" FromRole="CompanyShareCapital" ToRole="RegisteredCompanies" />
+        </EntityType>
+        <EntityType Name="CompanyShareholder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="ShareholderName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShareholderType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nationality" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdentityNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumberOfShares" Type="Int32" Nullable="false" />
+          <Property Name="SharePercentage" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegisteredCompany" Relationship="Self.FK_Shareholders_Company" FromRole="CompanyShareholders" ToRole="RegisteredCompanies" />
+        </EntityType>
+        <EntityType Name="CompanyStakeholder">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StakeholderRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SharePercentage" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="Nationality" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdentityNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RegisteredCompany" Relationship="Self.FK_Stakeholders_Company" FromRole="CompanyStakeholders" ToRole="RegisteredCompanies" />
+        </EntityType>
+        <EntityType Name="RegisteredCompany">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BusinessActivity" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegisteredAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegistrationStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ApplicantId" Type="Int64" Nullable="false" />
+          <Property Name="IncorporationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CompanyApplicant" Relationship="Self.FK_RegisteredCompanies_Applicant" FromRole="RegisteredCompanies" ToRole="CompanyApplicants" />
+          <NavigationProperty Name="CompanyApprovalLogs" Relationship="Self.FK_ApprovalLogs_Company" FromRole="RegisteredCompanies" ToRole="CompanyApprovalLogs" />
+          <NavigationProperty Name="CompanyConstitutions" Relationship="Self.FK_Constitution_Company" FromRole="RegisteredCompanies" ToRole="CompanyConstitutions" />
+          <NavigationProperty Name="CompanyShareCapitals" Relationship="Self.FK_ShareCapital_Company" FromRole="RegisteredCompanies" ToRole="CompanyShareCapital" />
+          <NavigationProperty Name="CompanyShareholders" Relationship="Self.FK_Shareholders_Company" FromRole="RegisteredCompanies" ToRole="CompanyShareholders" />
+          <NavigationProperty Name="CompanyStakeholders" Relationship="Self.FK_Stakeholders_Company" FromRole="RegisteredCompanies" ToRole="CompanyStakeholders" />
+          <NavigationProperty Name="RegistrationPayments" Relationship="Self.FK_Payments_Company" FromRole="RegisteredCompanies" ToRole="RegistrationPayments" />
+          <NavigationProperty Name="UltimateHoldingCompanies" Relationship="Self.FK_UHC_Company" FromRole="RegisteredCompanies" ToRole="UltimateHoldingCompanies" />
+        </EntityType>
+        <EntityType Name="RegistrationPayment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="TransactionId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="12" Scale="2" Nullable="false" />
+          <Property Name="CurrencyCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaidAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="RegisteredCompany" Relationship="Self.FK_Payments_Company" FromRole="RegistrationPayments" ToRole="RegisteredCompanies" />
+        </EntityType>
+        <EntityType Name="SystemUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginAt" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CompanyApprovalLogs" Relationship="Self.FK_ApprovalLogs_User" FromRole="SystemUsers" ToRole="CompanyApprovalLogs" />
+        </EntityType>
+        <EntityType Name="UltimateHoldingCompany">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int64" Nullable="false" />
+          <Property Name="UHCName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegistrationNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryOfIncorporation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OwnershipPercentage" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RegisteredCompany" Relationship="Self.FK_UHC_Company" FromRole="UltimateHoldingCompanies" ToRole="RegisteredCompanies" />
+        </EntityType>
+        <Association Name="FK_RegisteredCompanies_Applicant">
+          <End Role="CompanyApplicants" Type="Self.CompanyApplicant" Multiplicity="1" />
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompanyApplicants">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegisteredCompanies">
+              <PropertyRef Name="ApplicantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApprovalLogs_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompany" Multiplicity="1" />
+          <End Role="CompanyApprovalLogs" Type="Self.CompanyApprovalLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyApprovalLogs">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ApprovalLogs_User">
+          <End Role="SystemUsers" Type="Self.SystemUser" Multiplicity="1" />
+          <End Role="CompanyApprovalLogs" Type="Self.CompanyApprovalLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SystemUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyApprovalLogs">
+              <PropertyRef Name="ApprovedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Constitution_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompany" Multiplicity="1" />
+          <End Role="CompanyConstitutions" Type="Self.CompanyConstitution" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyConstitutions">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShareCapital_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompany" Multiplicity="1" />
+          <End Role="CompanyShareCapital" Type="Self.CompanyShareCapital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyShareCapital">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Shareholders_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompany" Multiplicity="1" />
+          <End Role="CompanyShareholders" Type="Self.CompanyShareholder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyShareholders">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stakeholders_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompany" Multiplicity="1" />
+          <End Role="CompanyStakeholders" Type="Self.CompanyStakeholder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CompanyStakeholders">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payments_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompany" Multiplicity="1" />
+          <End Role="RegistrationPayments" Type="Self.RegistrationPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistrationPayments">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UHC_Company">
+          <End Role="RegisteredCompanies" Type="Self.RegisteredCompany" Multiplicity="1" />
+          <End Role="UltimateHoldingCompanies" Type="Self.UltimateHoldingCompany" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegisteredCompanies">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UltimateHoldingCompanies">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CompanyRegistrationDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CompanyApplicants" EntityType="Self.CompanyApplicant" />
+          <EntitySet Name="CompanyApprovalLogs" EntityType="Self.CompanyApprovalLog" />
+          <EntitySet Name="CompanyConstitutions" EntityType="Self.CompanyConstitution" />
+          <EntitySet Name="CompanyShareCapitals" EntityType="Self.CompanyShareCapital" />
+          <EntitySet Name="CompanyShareholders" EntityType="Self.CompanyShareholder" />
+          <EntitySet Name="CompanyStakeholders" EntityType="Self.CompanyStakeholder" />
+          <EntitySet Name="RegisteredCompanies" EntityType="Self.RegisteredCompany" />
+          <EntitySet Name="RegistrationPayments" EntityType="Self.RegistrationPayment" />
+          <EntitySet Name="SystemUsers" EntityType="Self.SystemUser" />
+          <EntitySet Name="UltimateHoldingCompanies" EntityType="Self.UltimateHoldingCompany" />
+          <AssociationSet Name="FK_RegisteredCompanies_Applicant" Association="Self.FK_RegisteredCompanies_Applicant">
+            <End Role="CompanyApplicants" EntitySet="CompanyApplicants" />
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApprovalLogs_Company" Association="Self.FK_ApprovalLogs_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="CompanyApprovalLogs" EntitySet="CompanyApprovalLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ApprovalLogs_User" Association="Self.FK_ApprovalLogs_User">
+            <End Role="SystemUsers" EntitySet="SystemUsers" />
+            <End Role="CompanyApprovalLogs" EntitySet="CompanyApprovalLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Constitution_Company" Association="Self.FK_Constitution_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="CompanyConstitutions" EntitySet="CompanyConstitutions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShareCapital_Company" Association="Self.FK_ShareCapital_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="CompanyShareCapital" EntitySet="CompanyShareCapitals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Shareholders_Company" Association="Self.FK_Shareholders_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="CompanyShareholders" EntitySet="CompanyShareholders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stakeholders_Company" Association="Self.FK_Stakeholders_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="CompanyStakeholders" EntitySet="CompanyStakeholders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payments_Company" Association="Self.FK_Payments_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="RegistrationPayments" EntitySet="RegistrationPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UHC_Company" Association="Self.FK_UHC_Company">
+            <End Role="RegisteredCompanies" EntitySet="RegisteredCompanies" />
+            <End Role="UltimateHoldingCompanies" EntitySet="UltimateHoldingCompanies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CompanyRegistrationDBModelStoreContainer" CdmEntityContainer="CompanyRegistrationDBEntities">
+          <EntitySetMapping Name="CompanyApplicants">
+            <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyApplicant">
+              <MappingFragment StoreEntitySet="CompanyApplicants">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyApprovalLogs">
+            <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyApprovalLog">
+              <MappingFragment StoreEntitySet="CompanyApprovalLogs">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyConstitutions">
+            <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyConstitution">
+              <MappingFragment StoreEntitySet="CompanyConstitutions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ConstitutionType" ColumnName="ConstitutionType" />
+                <ScalarProperty Name="ConstitutionFilePath" ColumnName="ConstitutionFilePath" />
+                <ScalarProperty Name="UploadedAt" ColumnName="UploadedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyShareCapitals">
+            <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyShareCapital">
+              <MappingFragment StoreEntitySet="CompanyShareCapital">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="AuthorizedShareCapital" ColumnName="AuthorizedShareCapital" />
+                <ScalarProperty Name="IssuedShareCapital" ColumnName="IssuedShareCapital" />
+                <ScalarProperty Name="PaidUpShareCapital" ColumnName="PaidUpShareCapital" />
+                <ScalarProperty Name="ShareCurrency" ColumnName="ShareCurrency" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyShareholders">
+            <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyShareholder">
+              <MappingFragment StoreEntitySet="CompanyShareholders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="ShareholderName" ColumnName="ShareholderName" />
+                <ScalarProperty Name="ShareholderType" ColumnName="ShareholderType" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+                <ScalarProperty Name="NumberOfShares" ColumnName="NumberOfShares" />
+                <ScalarProperty Name="SharePercentage" ColumnName="SharePercentage" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyStakeholders">
+            <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyStakeholder">
+              <MappingFragment StoreEntitySet="CompanyStakeholders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="StakeholderRole" ColumnName="StakeholderRole" />
+                <ScalarProperty Name="SharePercentage" ColumnName="SharePercentage" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegisteredCompanies">
+            <EntityTypeMapping TypeName="CompanyRegistrationDBModel.RegisteredCompany">
+              <MappingFragment StoreEntitySet="RegisteredCompanies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="BusinessActivity" ColumnName="BusinessActivity" />
+                <ScalarProperty Name="RegisteredAddress" ColumnName="RegisteredAddress" />
+                <ScalarProperty Name="RegistrationStatus" ColumnName="RegistrationStatus" />
+                <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+                <ScalarProperty Name="IncorporationDate" ColumnName="IncorporationDate" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistrationPayments">
+            <EntityTypeMapping TypeName="CompanyRegistrationDBModel.RegistrationPayment">
+              <MappingFragment StoreEntitySet="RegistrationPayments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="PaidAt" ColumnName="PaidAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemUsers">
+            <EntityTypeMapping TypeName="CompanyRegistrationDBModel.SystemUser">
+              <MappingFragment StoreEntitySet="SystemUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="LastLoginAt" ColumnName="LastLoginAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UltimateHoldingCompanies">
+            <EntityTypeMapping TypeName="CompanyRegistrationDBModel.UltimateHoldingCompany">
+              <MappingFragment StoreEntitySet="UltimateHoldingCompanies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="UHCName" ColumnName="UHCName" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="CountryOfIncorporation" ColumnName="CountryOfIncorporation" />
+                <ScalarProperty Name="OwnershipPercentage" ColumnName="OwnershipPercentage" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
