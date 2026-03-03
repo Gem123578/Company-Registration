@@ -1,0 +1,86 @@
+POST   https://localhost:44378/api/CompanyApplicants/Register
+POST   /api/CompanyApplicants/Login
+GET    https://localhost:44378/api/CompanyApplicants/GetAllApplicants
+
+POST https://localhost:44378/api/CompanyRegistration/Submit
+
+
+
+Json format
+-----------
+User Registration
+
+
+--------------------
+for registration Form
+{
+  "CompanyName": "MyTech Solutions Ltd",
+  "RegistrationNumber": "REG-2026-001",
+  "CompanyType": "LLC",
+  "BusinessActivity": "Software Development",
+  "RegisteredAddress": "123 Yangon Street, Yangon, Myanmar",
+  "RegistrationStatus": "PENDING",
+  "ApplicantId": 1,
+  "IncorporationDate": "2026-03-03T00:00:00",
+  "CreatedAt": "2026-03-03T10:00:00",
+
+  "CompanyStakeholders": [
+    {
+      "FullName": "Alice Smith",
+      "StakeholderRole": "DIRECTOR",
+      "SharePercentage": 60.0,
+      "Nationality": "Myanmar",
+      "IdentityNumber": "123456789",
+      "EmailAddress": "alice@example.com"
+    },
+    {
+      "FullName": "Bob Johnson",
+      "StakeholderRole": "SHAREHOLDER",
+      "SharePercentage": 40.0,
+      "Nationality": "Myanmar",
+      "IdentityNumber": "987654321",
+      "EmailAddress": "bob@example.com"
+    }
+  ],
+
+  "ShareCapital": {
+    "AuthorizedShareCapital": 100000.00,
+    "IssuedShareCapital": 100000.00,
+    "PaidUpShareCapital": 80000.00,
+    "ShareCurrency": "MMK"
+  },
+
+  "Shareholders": [
+    {
+      "ShareholderName": "Alice Smith",
+      "ShareholderType": "INDIVIDUAL",
+      "Nationality": "Myanmar",
+      "IdentityNumber": "123456789",
+      "NumberOfShares": 600,
+      "SharePercentage": 60.0,
+      "EmailAddress": "alice@example.com"
+    }
+  ],
+  {
+  "TransactionId": "TXN-2026-0001",
+  "PaymentMethod": "CARD",
+  "Amount": 100000.00,
+  "CurrencyCode": "MMK",
+  "PaymentStatus": "PAID",
+  "PaidAt": "2026-03-03T10:00:00"
+},
+
+
+  "UHC": {
+    "UHCName": "Myanmar Holdings Group",
+    "RegistrationNumber": "UHC-2026-01",
+    "CountryOfIncorporation": "Myanmar",
+    "OwnershipPercentage": 100.0
+  },
+
+  "Constitution": {
+    "ConstitutionType": "MODEL",
+    "ConstitutionFilePath": "C:\\Documents\\Constitution.pdf"
+  }
+}
+

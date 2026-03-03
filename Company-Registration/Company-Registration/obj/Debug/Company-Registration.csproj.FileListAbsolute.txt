@@ -156,3 +156,28 @@ C:\gitrepo\Company-Registration\Company-Registration\Company-Registration\obj\De
 C:\gitrepo\Company-Registration\Company-Registration\Company-Registration\obj\Debug\Company-.31064190.Up2Date
 C:\gitrepo\Company-Registration\Company-Registration\Company-Registration\obj\Debug\Company-Registration.dll
 C:\gitrepo\Company-Registration\Company-Registration\Company-Registration\obj\Debug\Company-Registration.pdb
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\AutoMapper.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\EntityFramework.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\EntityFramework.SqlServer.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\Newtonsoft.Json.Bson.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Buffers.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Memory.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Net.Http.Formatting.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Numerics.Vectors.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Threading.Tasks.Extensions.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Web.Http.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Web.Http.WebHost.dll
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\AutoMapper.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\EntityFramework.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\EntityFramework.SqlServer.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\Newtonsoft.Json.Bson.pdb
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\Newtonsoft.Json.Bson.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Buffers.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Memory.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Net.Http.Formatting.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Numerics.Vectors.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Threading.Tasks.Extensions.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Web.Http.xml
+D:\Git Repo\Company-Registration\Company-Registration\Company-Registration\bin\System.Web.Http.WebHost.xml

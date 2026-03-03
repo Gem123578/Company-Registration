@@ -1,0 +1,44 @@
+﻿@model Company_Registration.Models.CompanyApplicantViewModel
+
+@{
+    ViewBag.Title = "Company Applicant Register";
+}
+
+<h2>Company Applicant Register</h2>
+
+@using (Html.BeginForm("Register", "CompanyApplicant", FormMethod.Post))
+{
+    <div>
+        <label>Full Name</label>
+        @Html.TextBoxFor(m => m.FullName)
+    </div>
+
+    <div>
+        <label>NRC / Identity Number</label>
+        @Html.TextBoxFor(m => m.IdentityNumber)
+    </div>
+
+    <div>
+        <label>Email</label>
+        @Html.TextBoxFor(m => m.EmailAddress)
+    </div>
+
+    <div>
+        <label>Password</label>
+        @Html.PasswordFor(m => m.PasswordHash)
+    </div>
+
+    <div>
+        <label>Phone Number</label>
+        @Html.TextBoxFor(m => m.PhoneNumber)
+    </div>
+
+    <div>
+        <label>Nationality</label>
+        @Html.TextBoxFor(m => m.Nationality)
+    </div>
+
+    <br />
+
+    <button type="submit">Register</button>
+}

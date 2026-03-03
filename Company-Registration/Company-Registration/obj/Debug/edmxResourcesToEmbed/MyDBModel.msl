@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CompanyRegistrationDBModelStoreContainer" CdmEntityContainer="CompanyRegistrationDBEntities">
+    <EntitySetMapping Name="CompanyApplicants">
+      <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyApplicant">
+        <MappingFragment StoreEntitySet="CompanyApplicants">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyApprovalLogs">
+      <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyApprovalLog">
+        <MappingFragment StoreEntitySet="CompanyApprovalLogs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="Action" ColumnName="Action" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyConstitutions">
+      <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyConstitution">
+        <MappingFragment StoreEntitySet="CompanyConstitutions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="ConstitutionType" ColumnName="ConstitutionType" />
+          <ScalarProperty Name="ConstitutionFilePath" ColumnName="ConstitutionFilePath" />
+          <ScalarProperty Name="UploadedAt" ColumnName="UploadedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyShareCapitals">
+      <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyShareCapital">
+        <MappingFragment StoreEntitySet="CompanyShareCapital">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="AuthorizedShareCapital" ColumnName="AuthorizedShareCapital" />
+          <ScalarProperty Name="IssuedShareCapital" ColumnName="IssuedShareCapital" />
+          <ScalarProperty Name="PaidUpShareCapital" ColumnName="PaidUpShareCapital" />
+          <ScalarProperty Name="ShareCurrency" ColumnName="ShareCurrency" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyShareholders">
+      <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyShareholder">
+        <MappingFragment StoreEntitySet="CompanyShareholders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="ShareholderName" ColumnName="ShareholderName" />
+          <ScalarProperty Name="ShareholderType" ColumnName="ShareholderType" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+          <ScalarProperty Name="NumberOfShares" ColumnName="NumberOfShares" />
+          <ScalarProperty Name="SharePercentage" ColumnName="SharePercentage" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompanyStakeholders">
+      <EntityTypeMapping TypeName="CompanyRegistrationDBModel.CompanyStakeholder">
+        <MappingFragment StoreEntitySet="CompanyStakeholders">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="StakeholderRole" ColumnName="StakeholderRole" />
+          <ScalarProperty Name="SharePercentage" ColumnName="SharePercentage" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="IdentityNumber" ColumnName="IdentityNumber" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegisteredCompanies">
+      <EntityTypeMapping TypeName="CompanyRegistrationDBModel.RegisteredCompany">
+        <MappingFragment StoreEntitySet="RegisteredCompanies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+          <ScalarProperty Name="BusinessActivity" ColumnName="BusinessActivity" />
+          <ScalarProperty Name="RegisteredAddress" ColumnName="RegisteredAddress" />
+          <ScalarProperty Name="RegistrationStatus" ColumnName="RegistrationStatus" />
+          <ScalarProperty Name="ApplicantId" ColumnName="ApplicantId" />
+          <ScalarProperty Name="IncorporationDate" ColumnName="IncorporationDate" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistrationPayments">
+      <EntityTypeMapping TypeName="CompanyRegistrationDBModel.RegistrationPayment">
+        <MappingFragment StoreEntitySet="RegistrationPayments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaidAt" ColumnName="PaidAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemUsers">
+      <EntityTypeMapping TypeName="CompanyRegistrationDBModel.SystemUser">
+        <MappingFragment StoreEntitySet="SystemUsers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="AccountStatus" ColumnName="AccountStatus" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="LastLoginAt" ColumnName="LastLoginAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UltimateHoldingCompanies">
+      <EntityTypeMapping TypeName="CompanyRegistrationDBModel.UltimateHoldingCompany">
+        <MappingFragment StoreEntitySet="UltimateHoldingCompanies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="UHCName" ColumnName="UHCName" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="CountryOfIncorporation" ColumnName="CountryOfIncorporation" />
+          <ScalarProperty Name="OwnershipPercentage" ColumnName="OwnershipPercentage" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
