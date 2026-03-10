@@ -2,7 +2,9 @@
 using Company_Registration_API.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Http;
 
@@ -20,6 +22,8 @@ namespace Company_Registration_API.Controllers
         {
             if (dto == null)
                 return BadRequest("Registration data is null.");
+            if (dto.ApplicantId == 0)
+                return BadRequest("ApplicantId missing.");
 
             // ========== 1. Registered Company ==========
             var company = new RegisteredCompany
@@ -36,7 +40,7 @@ namespace Company_Registration_API.Controllers
             };
 
             db.RegisteredCompanies.Add(company);
-            db.SaveChanges(); // 🔥 Save first to generate company.Id
+            db.SaveChanges();
 
             // ========== 2. Share Capital ==========
             if (dto.ShareCapital != null)
@@ -111,9 +115,11 @@ namespace Company_Registration_API.Controllers
 
                 db.UltimateHoldingCompanies.Add(uhc);
             }
+                if (dto.Constitution != null &&
+                !string.IsNullOrEmpty(dto.Constitution.ConstitutionFilePath))
 
-            // ========== 6. Company Constitution ==========
-            if (dto.Constitution != null)
+                // ========== 6. Company Constitution ==========
+                if (dto.Constitution != null)
             {
                 var cons = new CompanyConstitution
                 {
@@ -126,27 +132,53 @@ namespace Company_Registration_API.Controllers
                 db.CompanyConstitutions.Add(cons);
             }
 
-            // ========== 7. Registration Payment ==========
-            if (dto.Payment != null)
-            {
-                var payment = new RegistrationPayment
-                {
-                    CompanyId = company.Id,  // ✅ FIXED
-                    TransactionId = dto.Payment.TransactionId,
-                    PaymentMethod = dto.Payment.PaymentMethod,
-                    Amount = dto.Payment.Amount,
-                    CurrencyCode = dto.Payment.CurrencyCode,
-                    PaymentStatus = dto.Payment.PaymentStatus,
-                    PaidAt = dto.Payment.PaidAt
-                };
-
-                db.RegistrationPayments.Add(payment);
-            }
+           
 
             db.SaveChanges(); // Final Save
 
             return Ok("Company registration submitted successfully.");
         }
 
+        [HttpPost]
+        [Route("upload")]
+        public IHttpActionResult UploadConstitution()
+        {
+            try
+            {
+                var request = HttpContext.Current.Request;
+
+                // Check file exists
+                if (request.Files.Count == 0)
+                    return BadRequest("No file uploaded");
+
+                var file = request.Files[0];
+
+                // Upload folder path
+                string folder = HttpContext.Current.Server.MapPath("~/Uploads/");
+
+                // Create folder if not exist
+                if (!Directory.Exists(folder))
+                    Directory.CreateDirectory(folder);
+
+                // Generate unique filename
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+                // Full server path
+                string fullPath = Path.Combine(folder, fileName);
+
+                // Save file
+                file.SaveAs(fullPath);
+
+                // Path to store in database
+                string dbPath = "/Uploads/" + fileName;
+
+                // Return path
+                return Ok(new { path = dbPath });
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
     }
 }

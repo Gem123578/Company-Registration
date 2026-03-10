@@ -1,0 +1,43 @@
+﻿@model Company_Registration.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Company Applicant Login";
+}
+
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+@Styles.Render("~/Content/Register.css")
+
+<div class="page-center">
+    <div class="wrapper">
+        <h1>Login</h1>
+
+        @using (Html.BeginForm("Login", "CompanyApplicant", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+
+            <div class="input-box">
+                @Html.TextBoxFor(m => m.EmailAddress, new { placeholder = "Email" })
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="remember-forgot">
+                <label>
+                    @Html.CheckBoxFor(m => m.RememberMe) Remember me
+                </label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+            <div class="register-link">
+                Don't have an account?
+                @Html.ActionLink("Register", "Register", "CompanyApplicant")
+            </div>
+        }
+    </div>
+</div>

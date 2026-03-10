@@ -1,0 +1,100 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #c3dafe, #e0e7ff);
+    color: #333;
+}
+
+.page-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.wrapper {
+    width: 90%;
+    max-width: 1200px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+h1, h5, h6 {
+    text-align: center;
+    color: #333;
+}
+
+.btn-primary-custom {
+    background: #667eea;
+    border: none;
+    border-radius: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    padding: 10px 25px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+    .btn-primary-custom:hover {
+        background: #5a67d8;
+    }
+
+.step-card {
+    border-radius: 12px;
+    background: #f8fafc;
+    border-left: 5px solid #667eea;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+}
+
+    .step-card h6 {
+        margin-bottom: 10px;
+        color: #667eea;
+    }
+
+.menu-btn {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 40px;
+    background: #667eea;
+    color: #fff;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+    .menu-btn:hover {
+        background: #5a67d8;
+    }
+
+    .menu-btn.active {
+        background: #5a67d8;
+    }
+
+.info-text {
+    font-size: 15px;
+    color: #495057;
+}
+
+.navbar-dark .navbar-brand {
+    color: #fff;
+    font-weight: bold;
+}
+
+.navbar-dark .btn-outline-light {
+    color: #fff;
+    border-color: #fff;
+}
+
+/* hide all content by default */
+.content {
+    display: none;
+}
+
+#home {
+    display: block;
+}

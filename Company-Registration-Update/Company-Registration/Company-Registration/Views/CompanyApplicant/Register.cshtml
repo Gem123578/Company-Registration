@@ -4,41 +4,51 @@
     ViewBag.Title = "Company Applicant Register";
 }
 
-<h2>Company Applicant Register</h2>
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+@Styles.Render("~/Content/Register.css")
 
-@using (Html.BeginForm("Register", "CompanyApplicant", FormMethod.Post))
-{
-    <div>
-        <label>Full Name</label>
-        @Html.TextBoxFor(m => m.FullName)
+<div class="page-center">
+    <div class="wrapper">
+        <h1>Company Applicant Register</h1>
+
+        @using (Html.BeginForm("Register", "CompanyApplicant", FormMethod.Post))
+        {
+            <div class="input-box">
+                @Html.TextBoxFor(m => m.FullName, new { placeholder = "Full Name" })
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                @Html.TextBoxFor(m => m.IdentityNumber, new { placeholder = "NRC / Identity Number" })
+                <i class='bx bxs-id-card'></i>
+            </div>
+
+            <div class="input-box">
+                @Html.TextBoxFor(m => m.EmailAddress, new { placeholder = "Email", type = "email", autocomplete = "email" })
+                <i class='bx bxs-envelope'></i>
+            </div>
+
+            <div class="input-box">
+                @Html.PasswordFor(m => m.PasswordHash, new { placeholder = "Password", autocomplete = "new-password" })
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="input-box">
+                @Html.TextBoxFor(m => m.PhoneNumber, new { placeholder = "Phone Number" })
+                <i class='bx bxs-phone'></i>
+            </div>
+
+            <div class="input-box">
+                @Html.TextBoxFor(m => m.Nationality, new { placeholder = "Nationality" })
+                <i class='bx bxs-flag'></i>
+            </div>
+
+            <button type="submit" class="btn">Register</button>
+
+            <div class="login-link">
+                Already have an account?
+                @Html.ActionLink("Login Here", "Login", "CompanyApplicant")
+            </div>
+        }
     </div>
-
-    <div>
-        <label>NRC / Identity Number</label>
-        @Html.TextBoxFor(m => m.IdentityNumber)
-    </div>
-
-    <div>
-        <label>Email</label>
-        @Html.TextBoxFor(m => m.EmailAddress)
-    </div>
-
-    <div>
-        <label>Password</label>
-        @Html.PasswordFor(m => m.PasswordHash)
-    </div>
-
-    <div>
-        <label>Phone Number</label>
-        @Html.TextBoxFor(m => m.PhoneNumber)
-    </div>
-
-    <div>
-        <label>Nationality</label>
-        @Html.TextBoxFor(m => m.Nationality)
-    </div>
-
-    <br />
-
-    <button type="submit">Register</button>
-}
+</div>

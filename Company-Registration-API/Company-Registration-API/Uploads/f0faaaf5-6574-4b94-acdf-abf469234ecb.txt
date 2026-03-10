@@ -1,0 +1,30 @@
+Admin:
+-Category
+-Product
+-Invoice
+-Invoice details
+-Coupon
+-Banners
+-Setting
+-Menus top
+-Dashboard
+-Users
+
+User panel:
+-Order list
+-Order details
+-Edit profile
+
+Pages:
+-Home
+-Product detail
+-Search
+-Cart
+-Checkout
+-Online Payment (PayPal)
+
+Account:
+-Login
+-Register
+-Recovery password
+-Logout

@@ -9,7 +9,7 @@ namespace Company_Registration_API.Models
     {
         public string FullName { get; set; }
         public string EmailAddress { get; set; }
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
         public string PhoneNumber { get; set; }
         public string Nationality { get; set; }
         public string IdentityNumber { get; set; }

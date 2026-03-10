@@ -2,32 +2,119 @@
     ViewBag.Title = "Home Page";
 }
 
-<main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
 
-    <div class="row">
-        <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-            <h2 id="gettingStartedTitle">Getting started</h2>
-            <p>
-                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-                enables a clean separation of concerns and gives you full control over markup
-                for enjoyable, agile development.
-            </p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="librariesTitle">
-            <h2 id="librariesTitle">Get more libraries</h2>
-            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-        </section>
-        <section class="col-md-4" aria-labelledby="hostingTitle">
-            <h2 id="hostingTitle">Web Hosting</h2>
-            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-            <p><a class="btn btn-outline-dark" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-        </section>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    @Styles.Render("~/Content/Index.css")
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background: #c3dafe">
+        <div class="container">
+            <a class="navbar-brand" href="@Url.Action("Index","Home")">Company Portal</a>
+            <div class="ms-auto">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle me-1"></i> @User.Identity.Name
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="@Url.Action("Profile","Applicant")">Profile</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("MyCompany","CompanyRegistration")">My Company</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="@Url.Action("Logout","CompanyApplicant")">Logout</a></li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <a href="@Url.Action("Login","CompanyApplicant")" class="btn btn-outline-light me-2">Login</a>
+                    <a href="@Url.Action("Register","CompanyApplicant")" class="btn btn-light">Sign Up</a>
+                }
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-center">
+        <div class="wrapper">
+            <h1>Company Registration Portal</h1>
+            <h6 class="mb-4">Manage Your Company Registration Online</h6>
+
+            <div class="row">
+                <!-- LEFT MENU -->
+                <div class="col-md-4 mb-3">
+                    <button class="menu-btn active" onclick="showContent('home', this)">Home Info</button>
+                    <button class="menu-btn" onclick="showContent('register', this)">How to Register</button>
+                    <button class="menu-btn" onclick="showContent('reregister', this)">How to Re-register</button>
+                </div>
+
+                <!-- RIGHT CONTENT -->
+                <div class="col-md-8">
+                    <!-- Home -->
+                    <div id="home" class="content">
+                        <h5>Welcome!</h5>
+                        <p class="info-text">This portal allows applicants to register new companies and manage registration online.</p>
+                        <p class="info-text">You need an applicant account to register a company.</p>
+                        <p class="info-text">Once logged in, fill in company details, shareholder info, and upload required documents.</p>
+                        <p class="info-text">Please ensure all information is accurate before submission.</p>
+                    </div>
+
+                    <!-- Register -->
+                    <div id="register" class="content">
+                        <h5>Registration Steps</h5>
+                        <div class="step-card"><h6>Step 1: Create Applicant Account</h6><p class="info-text">Sign up to become an official applicant.</p></div>
+                        <div class="step-card"><h6>Step 2: Login</h6><p class="info-text">Access the portal using your account credentials.</p></div>
+                        <div class="step-card"><h6>Step 3: Fill Company Details</h6><p class="info-text">Provide company name, type, address, business activity, and incorporation date.</p></div>
+                        <div class="step-card"><h6>Step 4: Add Shareholders & Directors</h6><p class="info-text">Provide shareholder names, identity info, and share percentage.</p></div>
+                        <div class="step-card"><h6>Step 5: Upload Documents</h6><p class="info-text">Upload identification, constitution, and other required files.</p></div>
+                        <div class="step-card"><h6>Step 6: Submit for Review</h6><p class="info-text">Verify your data carefully before submission.</p></div>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a href="@Url.Action("Register", "CompanyRegistration")" class="btn btn-primary-custom mt-3">Start Registration</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Register", "CompanyApplicant")" class="btn btn-primary-custom mt-3">Sign Up to Register</a>
+                        }
+                    </div>
+
+                    <!-- Re-register -->
+                    <div id="reregister" class="content">
+                        <h5>Re-Registration Steps</h5>
+                        <p class="info-text">Existing companies can update their registration by following these steps:</p>
+                        <ol class="info-text">
+                            <li>Login to your account</li>
+                            <li>Update company details</li>
+                            <li>Upload updated documents</li>
+                            <li>Submit the re-registration request</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function showContent(id, btn) {
+            ["home", "register", "reregister"].forEach(function (sec) {
+                document.getElementById(sec).style.display = "none";
+            });
+            document.getElementById(id).style.display = "block";
+
+            // Highlight active menu button
+            document.querySelectorAll(".menu-btn").forEach(function (b) { b.classList.remove("active"); });
+            btn.classList.add("active");
+        }
+    </script>
+</body>
+</html>

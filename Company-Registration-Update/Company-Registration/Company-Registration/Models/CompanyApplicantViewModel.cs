@@ -21,6 +21,11 @@ namespace Company_Registration.Models
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
 
+        //[Required]
+        //[StringLength(255)]
+        //[DataType(DataType.Password)]
+        //public string Password { get; set; }
+
         [Required]
         [StringLength(255)]
         [DataType(DataType.Password)]

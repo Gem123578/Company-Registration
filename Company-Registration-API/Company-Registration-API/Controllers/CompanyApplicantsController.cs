@@ -30,7 +30,7 @@ namespace Company_Registration_API.Controllers
             {
                 FullName = dto.FullName,
                 EmailAddress = dto.EmailAddress,
-                PasswordHash = PasswordHashing(dto.Password),
+                PasswordHash = Hash(dto.PasswordHash),
                 PhoneNumber = dto.PhoneNumber,
                 Nationality = dto.Nationality,
                 IdentityNumber = dto.IdentityNumber,
@@ -44,39 +44,44 @@ namespace Company_Registration_API.Controllers
             return Ok("Registration Successful");
         }
 
-        private string PasswordHashing(string password)
+        public static string Hash(string password)
         {
-            using (SHA256 sha256 = SHA256.Create())
+            if (string.IsNullOrWhiteSpace(password))
+                return password;
+
+            using (var sha256 = SHA256.Create())
             {
-                using (var sha256 = SHA256.Create())
-                {
-                    var bytes = Encoding.UTF8.GetBytes(password);
-                    var hash = sha256.ComputeHash(bytes);
-                    return Convert.ToBase64String(hash);
-                }
+                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(hashBytes);
             }
         }
 
-        // ==========================
-        // POST: api/CompanyApplicants/Login
         [HttpPost]
         [Route("Login")]
         public IHttpActionResult Login(ApplicantLoginDTO dto)
         {
-            var applicant = db.CompanyApplicants
-                .FirstOrDefault(x => x.EmailAddress == dto.EmailAddress
-                                  && x.PasswordHash == dto.Password);
+            if (dto == null || string.IsNullOrEmpty(dto.EmailAddress) || string.IsNullOrEmpty(dto.Password))
+                return BadRequest("Email and password are required.");
+
+            var applicant = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == dto.EmailAddress);
 
             if (applicant == null)
+                return Unauthorized();
+
+            string hashedPassword = Hash(dto.Password);
+
+            if (applicant.PasswordHash != hashedPassword)
                 return Unauthorized();
 
             return Ok(new
             {
                 applicant.Id,
                 applicant.FullName,
-                applicant.EmailAddress
+                applicant.EmailAddress,
             });
         }
+
+
         // ==========================
         // GET: api/CompanyApplicants
         // ==========================
