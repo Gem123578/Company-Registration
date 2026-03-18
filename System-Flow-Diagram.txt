@@ -13,3 +13,33 @@ RegisteredCompanies 1 --- 1 CompanyConstitutions
 RegisteredCompanies 1 --- * RegistrationPayments
 SystemUsers 1 --- * CompanyApprovalLogs
 
+
+
+Frontend
+   ↓ (JSON)
+Request Model
+   ↓
+Controller
+   ↓
+DTO (optional)
+   ↓
+Service
+   ↓
+Entity (Database)
+   ↓
+DAO / EF
+   ↓
+Database Table
+   ↑
+Back to Service (DTO)
+   ↑
+Controller
+   ↑
+Response Model
+   ↑
+Frontend
+
+Frontend JSON → ApplicantLoginDTO → Controller → Service → DAO → DB Entity → DTO → Service → Response → Controller → Frontend JSON
+
+
+

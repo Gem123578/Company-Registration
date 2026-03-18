@@ -1,0 +1,6 @@
+First title field with menu list and "Quantumm POS System" Label with hover animation and background blue color.
+"Organization Management " label will be shown at the left under first title field.
+Grid form with with color border and include grid title  with search bar.
+Organization Management Label and Grid View with data will be shown
+Organization form contain search bar with search label.
+Organization form with showing entries and Previous ,next button that button contain page no.

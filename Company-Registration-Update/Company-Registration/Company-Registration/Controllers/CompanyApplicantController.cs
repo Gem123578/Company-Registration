@@ -1,4 +1,6 @@
-﻿using Company_Registration.Models;
+﻿using Company_Registration.APIServices;
+using Company_Registration.Models;
+using Company_Registration.Models.DTO;
 using Company_Registration.Utils;
 using Newtonsoft.Json;
 using System;
@@ -16,130 +18,126 @@ namespace Company_Registration.Controllers
 {
     public class CompanyApplicantController : Controller
     {
-        // GET: Show Registeration Form
+        private readonly ICompanyApplicantService _service;
+
+        public CompanyApplicantController(ICompanyApplicantService service)
+        {
+            _service = service;
+        }
+
+        // GET: Register
+        [HttpGet]
         public ActionResult Register()
         {
-            return View();
+            return View(new CompanyApplicantViewModel());
         }
 
-        //Post:Submit Registeration Form
+        // POST: Register
         [HttpPost]
-        public async Task<ActionResult> Register(CompanyApplicantViewModel applicant)
+        public async Task<ActionResult> Register(CompanyApplicantViewModel model)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid) return View(model);
+
+            var request = new ApplicantRegisterDTO
             {
-                return View(applicant);
-            }
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = ApiHelpers.BaseUri;
+                FullName = model.FullName,
+                EmailAddress = model.EmailAddress,
+                Password = model.PasswordHash,
+                PhoneNumber = model.PhoneNumber,
+                Nationality = model.Nationality,
+                IdentityNumber = model.IdentityNumber
+            };
 
-                var json = JsonConvert.SerializeObject(applicant);
+            var response = await _service.RegisterUser(request);
 
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+            if (response.IsSuccess)
+                return RedirectToAction("Login");
 
-                HttpResponseMessage response = await client.PostAsync("api/CompanyApplicants/Register", content);
-                if (response.IsSuccessStatusCode)
-                {
-                    // Redirect to Login page after successful registration
-                    return RedirectToAction("Login", "CompanyApplicant");
-                }
-            }
-
-            ModelState.AddModelError("", "An error occurred while processing your registration. Please try again.");
-            return View(applicant);
+            ModelState.AddModelError("", string.IsNullOrEmpty(response.Message) ? "Registration Fail!" : response.Message);
+            return View(model);
         }
 
-        public ActionResult Success()
-        {
-            return View();
-        }
-        // GET: Show Login Form
+        // GET: Login
         [HttpGet]
         public ActionResult Login()
         {
             if (Session["ApplicantId"] != null || User.Identity.IsAuthenticated)
-            {
                 return RedirectToAction("Index", "Home");
-            }
-            return View();
+
+            return View(new LoginViewModel());
         }
-        // GET: Show Login Form
+
+        // POST: Login
         [HttpPost]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
-            if (!ModelState.IsValid)
-                return View(model);
+            if (!ModelState.IsValid) return View(model);
 
-            using (HttpClient client = new HttpClient())
+            var request = new ApplicantLoginDTO
             {
-                client.BaseAddress = ApiHelpers.BaseUri;
+                EmailAddress = model.EmailAddress,
+                Password = model.Password
+            };
 
-                var loginData = new
-                {
-                    EmailAddress = model.EmailAddress,
-                    Password = model.Password
-                };
+            var response = await _service.LoginUser(request);
 
-                var content = new StringContent(
-                    JsonConvert.SerializeObject(loginData),
-                    Encoding.UTF8,
-                    "application/json"
-                );
-
-                HttpResponseMessage response = await client.PostAsync("api/CompanyApplicants/Login", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var json = await response.Content.ReadAsStringAsync();
-                    dynamic data = JsonConvert.DeserializeObject(json);
-
-                    // Session ထဲသိမ်း
-                    Session["ApplicantId"] = data.Id;
-                    Session["UserName"] = data.FullName;
-
-                    // ✅ Full Name ဖြင့် authentication ticket ပြုလုပ်
-                    var authTicket = new FormsAuthenticationTicket(
-                        1,
-                        data.FullName.ToString(),      // Razor page မှာ @User.Identity.Name အတွက်
-                        DateTime.Now,
-                        DateTime.Now.AddMinutes(30),
-                        true,                           // Remember Me
-                        data.EmailAddress.ToString()    // optional UserData
-                    );
-
-                    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
-                    {
-                        HttpOnly = true,
-                        Expires = DateTime.Now.AddMinutes(30)
-                    };
-
-                    Response.Cookies.Add(authCookie);
-
-                    return RedirectToAction("Index", "Home");
-                }
-
-
-                else
-                {
-                    ModelState.AddModelError("", "Invalid email or password");
-                    return View(model);
-                }
+            if (!response.IsSuccess || response.Data == null)
+            {
+                ModelState.AddModelError("", string.IsNullOrEmpty(response.Message) ? "Invalid email or password" : response.Message);
+                return View(model);
             }
+
+            var user = JsonConvert.DeserializeObject<CompanyApplicantDTO>(response.Data.ToString());
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Invalid data returned from server.");
+                return View(model);
+            }
+
+            // Save Session
+            Session["ApplicantId"] = user.Id;
+            Session["UserName"] = user.FullName;
+            bool isPersistent = model.RememberMe;
+
+            // FormsAuthentication
+            var authTicket = new FormsAuthenticationTicket(
+                                1,
+                                user.FullName,
+                                DateTime.Now,
+                                model.RememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddMinutes(30),
+                                model.RememberMe,
+                                user.Id.ToString() // ✅ numeric UserData
+                                );
+
+
+            var encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+            Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket));
+
+            return RedirectToAction("Index", "Home");
         }
-        //logout 
+
+        // Logout
         public ActionResult Logout()
         {
-            // Clear session
             Session.Clear();
-            Session.Abandon();
-
-            // Remove authentication cookie
             FormsAuthentication.SignOut();
-
             return RedirectToAction("Login");
         }
+        [HttpGet]
+        public async Task<ActionResult> ConfirmEmail(string token, string email)
+        {
+            if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(email))
+            {
+                ViewBag.Message = "Invalid confirmation link";
+                return View();
+            }
 
+            var response = await _service.ConfirmEmail(token, email);
+
+            ViewBag.Message = response.IsSuccess? "Email confirmed successfully. You can login now."
+                : response.Message;
+
+            return View();
+        }
     }
 }

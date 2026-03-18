@@ -164,6 +164,15 @@
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.1\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.11.1\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.WebApi, Version=5.4.0.0, Culture=neutral, PublicKeyToken=43da31bc42a85347, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.WebAPI.5.4.0\lib\net45\Unity.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -182,6 +191,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
@@ -211,21 +221,37 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="CommonMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonMessages.resx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\CompanyApplicantsController.cs" />
     <Compile Include="Controllers\CompanyRegistrationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataAccess\ApplicantDbContext.cs" />
+    <Compile Include="DataAccess\ApplicantRegistrationDao.cs" />
+    <Compile Include="DataAccess\CompanyRegistrationDao.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CompanyApplicant\Request\ApplicantLoginReq.cs" />
+    <Compile Include="Common\ResultBase.cs" />
+    <Compile Include="Models\CompanyApplicant\Request\ApplicantRegisterReq.cs" />
+    <Compile Include="Models\CompanyApplicant\Response\LoginResponse.cs" />
+    <Compile Include="Models\CompanyApplicant\Response\RegisterResponse.cs" />
     <Compile Include="Models\CompanyConstitution.cs" />
+    <Compile Include="Models\CompanyRegistration\Request\ReqCompanyRegistration.cs" />
+    <Compile Include="Models\CompanyRegistration\Response\ResCompanyRegistration.cs" />
+    <Compile Include="Models\CompanyRegistration\Response\UploadResponse.cs" />
     <Compile Include="Models\CompanyShareCapital.cs" />
     <Compile Include="Models\CompanyShareholder.cs" />
     <Compile Include="Models\CompanyStakeholder.cs" />
     <Compile Include="Models\DTO\ApplicantLoginDTO.cs" />
     <Compile Include="Models\DTO\ApplicantRegisterDTO.cs" />
-    <Compile Include="Models\CompanyApplicant.cs" />
+    <Compile Include="Models\CompanyApplicants.cs" />
+    <Compile Include="Models\DTO\CompanyAplicantDto.cs" />
     <Compile Include="Models\DTO\CompanyConstitutionDTO.cs" />
     <Compile Include="Models\DTO\CompanyRegistrationDTO.cs" />
     <Compile Include="Models\DTO\CompanyShareCapitalDTO.cs" />
@@ -237,6 +263,14 @@
     <Compile Include="Models\RegistrationPayment.cs" />
     <Compile Include="Models\UltimateHoldingCompany.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BaseResponse.cs" />
+    <Compile Include="Services\CompanyApplicantService.cs" />
+    <Compile Include="Services\CompanyRegistrationService.cs" />
+    <Compile Include="Services\ICompanyApplicantService.cs" />
+    <Compile Include="Services\ICompanyRegistrationService.cs" />
+    <Compile Include="UnityResolver .cs" />
+    <Compile Include="Utils\ApiException.cs" />
+    <Compile Include="Utils\EmailHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -380,6 +414,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CommonMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

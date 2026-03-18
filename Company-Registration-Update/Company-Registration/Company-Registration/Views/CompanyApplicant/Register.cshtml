@@ -13,34 +13,36 @@
 
         @using (Html.BeginForm("Register", "CompanyApplicant", FormMethod.Post))
         {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger small", style = "display:block;" })
+
             <div class="input-box">
                 @Html.TextBoxFor(m => m.FullName, new { placeholder = "Full Name" })
-                <i class='bx bxs-user'></i>
+                @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger small", style = "display:block;" })
             </div>
 
             <div class="input-box">
                 @Html.TextBoxFor(m => m.IdentityNumber, new { placeholder = "NRC / Identity Number" })
-                <i class='bx bxs-id-card'></i>
+                @Html.ValidationMessageFor(m => m.IdentityNumber, "", new { @class = "text-danger small", style = "display:block;" })
             </div>
 
             <div class="input-box">
-                @Html.TextBoxFor(m => m.EmailAddress, new { placeholder = "Email", type = "email", autocomplete = "email" })
-                <i class='bx bxs-envelope'></i>
+                @Html.TextBoxFor(m => m.EmailAddress, new { placeholder = "Email", type = "email" })
+                @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger small", style = "display:block;" })
             </div>
 
             <div class="input-box">
-                @Html.PasswordFor(m => m.PasswordHash, new { placeholder = "Password", autocomplete = "new-password" })
-                <i class='bx bxs-lock-alt'></i>
+                @Html.PasswordFor(m => m.PasswordHash, new { placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.PasswordHash, "", new { @class = "text-danger small" ,style = "display:block;" })
             </div>
 
             <div class="input-box">
                 @Html.TextBoxFor(m => m.PhoneNumber, new { placeholder = "Phone Number" })
-                <i class='bx bxs-phone'></i>
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger small", style = "display:block;" })
             </div>
 
             <div class="input-box">
                 @Html.TextBoxFor(m => m.Nationality, new { placeholder = "Nationality" })
-                <i class='bx bxs-flag'></i>
+                @Html.ValidationMessageFor(m => m.Nationality, "", new { @class = "text-danger small", style = "display:block;" })
             </div>
 
             <button type="submit" class="btn">Register</button>
@@ -52,3 +54,7 @@
         }
     </div>
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

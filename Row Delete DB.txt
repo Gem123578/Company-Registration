@@ -1,0 +1,50 @@
+-- 1 Delete shareholders
+DELETE FROM CompanyShareholders
+WHERE CompanyId IN (
+    SELECT Id FROM RegisteredCompanies
+    WHERE ApplicantId IN (
+        SELECT Id FROM CompanyApplicants
+        WHERE PhoneNumber = '09445293952'
+    )
+);
+
+-- 2 Delete share capital
+DELETE FROM CompanyShareCapital
+WHERE CompanyId IN (
+    SELECT Id FROM RegisteredCompanies
+    WHERE ApplicantId IN (
+        SELECT Id FROM CompanyApplicants
+        WHERE PhoneNumber = '09445293952'
+    )
+);
+
+-- 3 Delete ultimate holding companies
+DELETE FROM UltimateHoldingCompanies
+WHERE CompanyId IN (
+    SELECT Id FROM RegisteredCompanies
+    WHERE ApplicantId IN (
+        SELECT Id FROM CompanyApplicants
+        WHERE PhoneNumber = '09445293952'
+    )
+);
+
+-- 4 Delete constitutions
+DELETE FROM CompanyConstitutions
+WHERE CompanyId IN (
+    SELECT Id FROM RegisteredCompanies
+    WHERE ApplicantId IN (
+        SELECT Id FROM CompanyApplicants
+        WHERE PhoneNumber = '09445293952'
+    )
+);
+
+-- 5 Delete companies
+DELETE FROM RegisteredCompanies
+WHERE ApplicantId IN (
+    SELECT Id FROM CompanyApplicants
+    WHERE PhoneNumber = '09445293952'
+);
+
+-- 6 Delete applicant
+DELETE FROM CompanyApplicants
+WHERE PhoneNumber = '09445293952';

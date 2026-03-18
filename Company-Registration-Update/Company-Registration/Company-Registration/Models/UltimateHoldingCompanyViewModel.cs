@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Company_Registration.Common;
+using System.ComponentModel.DataAnnotations;
 
 namespace Company_Registration.Models
 {
@@ -11,7 +12,7 @@ namespace Company_Registration.Models
         public string RegistrationNumber { get; set; }
 
         [Display(Name = "Country of Incorporation")]
-        public string CountryOfIncorporation { get; set; }
+        public Country CountryOfIncorporation { get; set; }
 
         [Display(Name = "Ownership Percentage")]
         public decimal OwnershipPercentage { get; set; }

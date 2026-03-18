@@ -124,3 +124,10 @@ D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-A
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Text.Encodings.Web.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Text.Json.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.ValueTuple.xml
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Unity.Abstractions.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Unity.Container.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Unity.WebApi.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Unity.Abstractions.pdb
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Unity.Container.pdb
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\obj\Debug\Company_Registration_API.CommonMessages.resources
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\obj\Debug\Company-Registration-API.csproj.GenerateResource.cache

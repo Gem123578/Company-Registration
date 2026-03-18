@@ -1,43 +1,48 @@
-﻿@model Company_Registration.Models.LoginViewModel
+﻿    @model Company_Registration.Models.LoginViewModel
 
-@{
-    ViewBag.Title = "Company Applicant Login";
-}
+    @{
+        ViewBag.Title = "Company Applicant Login";
+    }
 
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-@Styles.Render("~/Content/Register.css")
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    @*@Styles.Render("~/Content/Register.css")*@
+    @Styles.Render("~/Content/Register.css")
 
-<div class="page-center">
-    <div class="wrapper">
-        <h1>Login</h1>
+    <div class="page-center">
+        <div class="wrapper">
+            <h1>Login</h1>
 
-        @using (Html.BeginForm("Login", "CompanyApplicant", FormMethod.Post))
-        {
-            @Html.ValidationSummary(true)
+            @using (Html.BeginForm("Login", "CompanyApplicant", FormMethod.Post))
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger small", style = "display:block;" })
 
-            <div class="input-box">
-                @Html.TextBoxFor(m => m.EmailAddress, new { placeholder = "Email" })
-                <i class='bx bxs-user'></i>
-            </div>
+                <div class="input-box">
+                    @Html.TextBoxFor(m => m.EmailAddress, new { placeholder = "Email" })
+                    @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger small" , style = "display:block" })
+                </div>
 
-            <div class="input-box">
-                @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
-                <i class='bx bxs-lock-alt'></i>
-            </div>
+                <div class="input-box">
+                    @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger small", style = "display:block" })
+                </div>
 
-            <div class="remember-forgot">
-                <label>
-                    @Html.CheckBoxFor(m => m.RememberMe) Remember me
-                </label>
-                <a href="#">Forgot password?</a>
-            </div>
+                <div class="remember-forgot">
+                    <label>
+                        @Html.CheckBoxFor(m => m.RememberMe) Remember me
+                    </label>
+                    <a href="#">Forgot password?</a>
+                </div>
 
-            <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn">Login</button>
 
-            <div class="register-link">
-                Don't have an account?
-                @Html.ActionLink("Register", "Register", "CompanyApplicant")
-            </div>
-        }
+                <div class="register-link">
+                    Don't have an account?
+                    @Html.ActionLink("Register", "Register", "CompanyApplicant")
+                </div>
+            }
+        </div>
     </div>
-</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+

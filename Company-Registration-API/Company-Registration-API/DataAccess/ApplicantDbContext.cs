@@ -14,7 +14,7 @@ namespace Company_Registration_API.DataAccess
         {
         }
 
-        public DbSet<CompanyApplicant> CompanyApplicants { get; set; }
+        public DbSet<CompanyApplicants> CompanyApplicants { get; set; }
         public DbSet<RegisteredCompany> RegisteredCompanies { get; set; }
         public DbSet<CompanyShareCapital> CompanyShareCapital { get; set; }
         public DbSet<CompanyShareholder> CompanyShareholders { get; set; }

@@ -1,4 +1,5 @@
 ﻿@model Company_Registration.Models.CompanyRegistrationViewModel
+@using Company_Registration.Common
 
 @{
     ViewBag.Title = "Company Registration";
@@ -10,7 +11,25 @@
     <title>Company Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    @Styles.Render("~/Content/CompanyRegister");
+    @Styles.Render("~/Content/CompanyRegister.css");
+    <style>
+        .text-danger {
+            display: block;
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        .section-label {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .input-group-vertical {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5 mb-5">
@@ -24,34 +43,35 @@
             <div class="card mb-4">
                 <div class="card-header bg-primary text-white"><i class="bi bi-building"></i> Company Information</div>
                 <div class="card-body row g-3">
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label"><i class="bi bi-file-text"></i> Company Name</div>
                         @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.CompanyName, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
-                        <div class="section-label">
-                            <i class="bi bi-hash"></i> Registration Number
-                        </div>
-
-                        @Html.TextBoxFor(m => m.RegistrationNumber,
-                            new { @class = "form-control" })
+                    <div class="col-md-6 input-group-vertical">
+                        <div class="section-label"><i class="bi bi-hash"></i> Registration Number</div>
+                        @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.RegistrationNumber, "", new { @class = "text-danger" })
                     </div>
-
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label"><i class="bi bi-briefcase"></i> Company Type</div>
                         @Html.DropDownListFor(m => m.CompanyType, new SelectList(new[] { "LLC", "PLC", "Partnership" }), "--Select Type--", new { @class = "form-select" })
+                        @Html.ValidationMessageFor(m => m.CompanyType, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label"><i class="bi bi-activity"></i> Business Activity</div>
-                        @Html.TextBoxFor(m => m.BusinessActivity, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.BusinessActivity, new { @class = "form-control", maxlength = "255" })
+                        @Html.ValidationMessageFor(m => m.BusinessActivity, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label"><i class="bi bi-geo-alt"></i> Registered Address</div>
                         @Html.TextBoxFor(m => m.RegisteredAddress, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.RegisteredAddress, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label"><i class="bi bi-calendar-event"></i> Incorporation Date</div>
                         @Html.TextBoxFor(m => m.IncorporationDate, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(m => m.IncorporationDate, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -60,21 +80,25 @@
             <div class="card mb-4">
                 <div class="card-header bg-secondary text-white"><i class="bi bi-cash-stack"></i> Share Capital Structure</div>
                 <div class="card-body row g-3">
-                    <div class="col-md-4">
+                    <div class="col-md-4 input-group-vertical">
                         <div class="section-label">Authorized Share Capital</div>
                         @Html.TextBoxFor(m => m.ShareCapital.AuthorizedShareCapital, new { @class = "form-control", type = "number" })
+                        @Html.ValidationMessageFor(m => m.ShareCapital.AuthorizedShareCapital, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 input-group-vertical">
                         <div class="section-label">Issued Share Capital</div>
                         @Html.TextBoxFor(m => m.ShareCapital.IssuedShareCapital, new { @class = "form-control", type = "number" })
+                        @Html.ValidationMessageFor(m => m.ShareCapital.IssuedShareCapital, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 input-group-vertical">
                         <div class="section-label">Paid-Up Share Capital</div>
                         @Html.TextBoxFor(m => m.ShareCapital.PaidUpShareCapital, new { @class = "form-control", type = "number" })
+                        @Html.ValidationMessageFor(m => m.ShareCapital.PaidUpShareCapital, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 input-group-vertical">
                         <div class="section-label">Share Currency</div>
                         @Html.DropDownListFor(m => m.ShareCapital.ShareCurrency, new SelectList(new[] { "MMK", "USD" }), "--Select--", new { @class = "form-select" })
+                        @Html.ValidationMessageFor(m => m.ShareCapital.ShareCurrency, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -87,25 +111,44 @@
                         @for (int i = 0; i < Model.Shareholders.Count; i++)
                         {
                             <div class="row g-3 mb-3 shareholder-row">
-                                <div class="col-md-3">
+                                <div class="col-md-3 input-group-vertical">
                                     <div class="section-label">Name</div>
                                     @Html.TextBoxFor(m => m.Shareholders[i].ShareholderName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Shareholders[i].ShareholderName, "", new { @class = "text-danger" })
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-3 input-group-vertical">
                                     <div class="section-label">Type</div>
                                     @Html.DropDownListFor(m => m.Shareholders[i].ShareholderType, new SelectList(new[] { "INDIVIDUAL", "CORPORATE" }), "--Select--", new { @class = "form-select" })
+                                    @Html.ValidationMessageFor(m => m.Shareholders[i].ShareholderType, "", new { @class = "text-danger" })
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 input-group-vertical">
                                     <div class="section-label">Nationality</div>
-                                    @Html.TextBoxFor(m => m.Shareholders[i].Nationality, new { @class = "form-control" })
+                                    @Html.DropDownListFor(
+                                        m => m.Shareholders[i].Nationality,
+                                        new SelectList(Enum.GetValues(typeof(Country))
+                                            .Cast<Country>()
+                                            .Select(c => new { Value = c.ToString(), Text = c.ToString() }),
+                                            "Value", "Text"),
+                                        "--Select--",
+                                        new { @class = "form-select" }
+                                    )
+                                    @Html.ValidationMessageFor(m => m.Shareholders[i].Nationality, "", new { @class = "text-danger" })
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 input-group-vertical">
                                     <div class="section-label">Identity Number</div>
                                     @Html.TextBoxFor(m => m.Shareholders[i].IdentityNumber, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.Shareholders[i].IdentityNumber, "", new { @class = "text-danger" })
                                 </div>
-                                <div class="col-md-1">
+                                <div class="col-md-2 input-group-vertical">
+                                    <div class="section-label">Number of Shares</div>
+                                    @Html.TextBoxFor(m => m.Shareholders[i].NumberOfShares, new { @class = "form-control", type = "number" })
+                                    @Html.ValidationMessageFor(m => m.Shareholders[i].NumberOfShares, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="col-md-1 input-group-vertical">
                                     <div class="section-label">Shares %</div>
                                     @Html.TextBoxFor(m => m.Shareholders[i].SharePercentage, new { @class = "form-control", type = "number" })
+                                    @Html.ValidationMessageFor(m => m.Shareholders[i].SharePercentage, "", new { @class = "text-danger" })
                                 </div>
                                 <div class="col-md-1 d-flex align-items-end">
                                     <span class="remove-btn" onclick="removeShareholder(this)"><i class="bi bi-x-circle"></i></span>
@@ -121,21 +164,33 @@
             <div class="card mb-4">
                 <div class="card-header bg-warning"><i class="bi bi-building-check"></i> Ultimate Holding Company</div>
                 <div class="card-body row g-3">
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label">UHC Name</div>
                         @Html.TextBoxFor(m => m.UHC.UHCName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UHC.UHCName, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label">Registration Number</div>
                         @Html.TextBoxFor(m => m.UHC.RegistrationNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.UHC.RegistrationNumber, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label">Country of Incorporation</div>
-                        @Html.TextBoxFor(m => m.UHC.CountryOfIncorporation, new { @class = "form-control" })
+                        @Html.DropDownListFor(
+                            m => m.UHC.CountryOfIncorporation,
+                            new SelectList(Enum.GetValues(typeof(Country))
+                                .Cast<Country>()
+                                .Select(c => new { Value = c.ToString(), Text = c.ToString() }),
+                                "Value", "Text"),
+                            "--Select--",
+                            new { @class = "form-select" }
+                        )
+                        @Html.ValidationMessageFor(m => m.UHC.CountryOfIncorporation, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label">Ownership Percentage</div>
                         @Html.TextBoxFor(m => m.UHC.OwnershipPercentage, new { @class = "form-control", type = "number" })
+                        @Html.ValidationMessageFor(m => m.UHC.OwnershipPercentage, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -144,11 +199,12 @@
             <div class="card mb-4">
                 <div class="card-header bg-dark text-white"><i class="bi bi-file-earmark-text"></i> Company Constitution</div>
                 <div class="card-body row g-3">
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label">Constitution Type</div>
                         @Html.DropDownListFor(m => m.Constitution.ConstitutionType, new SelectList(new[] { "MODEL", "CUSTOM" }), "--Select--", new { @class = "form-select" })
+                        @Html.ValidationMessageFor(m => m.Constitution.ConstitutionType, "", new { @class = "text-danger" })
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 input-group-vertical">
                         <div class="section-label">Upload Constitution</div>
                         <input type="file" name="ConstitutionFilePath" class="form-control" />
                     </div>
@@ -164,44 +220,52 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-    function addShareholder() {
-        var container = document.getElementById("shareholders-container");
-        var index = container.children.length;
-        var html = `
-        <div class="row g-3 mb-3 shareholder-row">
-            <div class="col-md-3">
-                <div class="section-label">Name</div>
-                <input type="text" name="Shareholders[${index}].ShareholderName" class="form-control" />
-            </div>
-            <div class="col-md-3">
-                <div class="section-label">Type</div>
-                <select name="Shareholders[${index}].ShareholderType" class="form-select">
-                    <option>INDIVIDUAL</option>
-                    <option>CORPORATE</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <div class="section-label">Nationality</div>
-                <input type="text" name="Shareholders[${index}].Nationality" class="form-control" />
-            </div>
-            <div class="col-md-2">
-                <div class="section-label">Identity Number</div>
-                <input type="text" name="Shareholders[${index}].IdentityNumber" class="form-control" />
-            </div>
-            <div class="col-md-1">
-                <div class="section-label">Shares %</div>
-                <input type="number" name="Shareholders[${index}].SharePercentage" class="form-control" />
-            </div>
-            <div class="col-md-1 d-flex align-items-end">
-                <span class="remove-btn" onclick="removeShareholder(this)"><i class="bi bi-x-circle"></i></span>
-            </div>
-        </div>`;
-        container.insertAdjacentHTML('beforeend', html);
-    }
+        var countryOptions = `@string.Join("", Enum.GetValues(typeof(Country))
+            .Cast<Country>()
+            .Select(c => $"<option value='{c}'>{c}</option>"))`;
 
-    function removeShareholder(el) {
-        el.closest(".shareholder-row").remove();
-    }
+        function addShareholder() {
+            var container = document.getElementById("shareholders-container");
+            var index = container.children.length;
+
+            var html = `
+            <div class="row g-3 mb-3 shareholder-row">
+                <div class="col-md-3 input-group-vertical">
+                    <div class="section-label">Name</div>
+                    <input type="text" name="Shareholders[${index}].ShareholderName" class="form-control" />
+                </div>
+                <div class="col-md-3 input-group-vertical">
+                    <div class="section-label">Type</div>
+                    <select name="Shareholders[${index}].ShareholderType" class="form-select">
+                        <option>INDIVIDUAL</option>
+                        <option>CORPORATE</option>
+                    </select>
+                </div>
+                <div class="col-md-2 input-group-vertical">
+                    <div class="section-label">Nationality</div>
+                    <select name="Shareholders[${index}].Nationality" class="form-select">
+                        ${countryOptions}
+                    </select>
+                </div>
+                <div class="col-md-2 input-group-vertical">
+                    <div class="section-label">Identity Number</div>
+                    <input type="text" name="Shareholders[${index}].IdentityNumber" class="form-control" />
+                </div>
+                <div class="col-md-1 input-group-vertical">
+                    <div class="section-label">Shares %</div>
+                    <input type="number" name="Shareholders[${index}].SharePercentage" class="form-control" />
+                </div>
+                <div class="col-md-1 d-flex align-items-end">
+                    <span class="remove-btn" onclick="removeShareholder(this)"><i class="bi bi-x-circle"></i></span>
+                </div>
+            </div>`;
+
+            container.insertAdjacentHTML('beforeend', html);
+        }
+
+        function removeShareholder(el) {
+            el.closest(".shareholder-row").remove();
+        }
     </script>
 </body>
 </html>
