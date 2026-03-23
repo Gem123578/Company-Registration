@@ -1,6 +1,7 @@
 ﻿using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyApplicant;
 using Company_Registration_API.Models.DTO;
+using Company_Registration_API.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,11 +27,12 @@ namespace Company_Registration_API.DataAccess
 
         public CompanyAplicantDto CreateApplicant(ApplicantRegisterDTO dto , string token)
         {
+            PasswordHasher hasher = new PasswordHasher();
             var applicant = new CompanyApplicants
             {
                 FullName = dto.FullName,
                 EmailAddress = dto.EmailAddress,
-                PasswordHash = Hash(dto.Password),
+                PasswordHash = hasher.Hash(dto.Password),
                 PhoneNumber = dto.PhoneNumber,
                 Nationality = dto.Nationality,
                 IdentityNumber = dto.IdentityNumber,
@@ -52,8 +54,9 @@ namespace Company_Registration_API.DataAccess
                 CreatedAt = applicant.CreatedAt
             };
         }
-        public CompanyAplicantDto Login(ApplicantLoginDTO dto)
+        public CompanyAplicantDto Login(LoginDTO dto)
         {
+            PasswordHasher hasher = new PasswordHasher();
             // 1. Find user by email
             var applicant = db.CompanyApplicants
                 .FirstOrDefault(x => x.EmailAddress == dto.EmailAddress);
@@ -62,7 +65,7 @@ namespace Company_Registration_API.DataAccess
                 return null; // email not found
 
             // 2. Verify password
-            string hashedPassword = Hash(dto.Password); // Hash method you already have
+            string hashedPassword = hasher.Hash(dto.Password); // Hash method you already have
             if (applicant.PasswordHash != hashedPassword)
                 return null; // wrong password
 
@@ -94,17 +97,6 @@ namespace Company_Registration_API.DataAccess
         //    }).ToList();
         //}
 
-        private string Hash(string password)
-        {
-            if (string.IsNullOrWhiteSpace(password))
-                return password;
-
-            using (var sha256 = SHA256.Create())
-            {
-                byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return Convert.ToBase64String(hashBytes);
-            }
-        }
 
         internal bool ConfirmEmail(string token, string email)
         {

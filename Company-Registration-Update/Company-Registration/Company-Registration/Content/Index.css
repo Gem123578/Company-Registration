@@ -1,15 +1,18 @@
+/* ===== Body & Page Styles ===== */
 body, html {
     height: 100%;
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #c3dafe, #e0e7ff);
     color: #333;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
+/* ===== Page Center & Wrapper ===== */
 .page-center {
     display: flex;
     justify-content: center;
-    align-items: center;
     min-height: 100vh;
     padding: 20px;
 }
@@ -23,11 +26,13 @@ body, html {
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
 }
 
+/* ===== Typography ===== */
 h1, h5, h6 {
     text-align: center;
     color: #333;
 }
 
+/* ===== Buttons ===== */
 .btn-primary-custom {
     background: #667eea;
     border: none;
@@ -43,6 +48,7 @@ h1, h5, h6 {
     .btn-primary-custom:hover {
         background: #5a67d8;
     }
+    /*step-card*/
 
 .step-card {
     border-radius: 12px;
@@ -57,6 +63,7 @@ h1, h5, h6 {
         color: #667eea;
     }
 
+/* ===== Menu Buttons ===== */
 .menu-btn {
     width: 100%;
     margin-bottom: 10px;
@@ -67,19 +74,18 @@ h1, h5, h6 {
     transition: 0.3s;
 }
 
-    .menu-btn:hover {
-        background: #5a67d8;
-    }
-
+    .menu-btn:hover,
     .menu-btn.active {
         background: #5a67d8;
     }
 
+/* ===== Info Text ===== */
 .info-text {
     font-size: 15px;
     color: #495057;
 }
 
+/* ===== Navbar ===== */
 .navbar-dark .navbar-brand {
     color: #fff;
     font-weight: bold;
@@ -90,11 +96,34 @@ h1, h5, h6 {
     border-color: #fff;
 }
 
-/* hide all content by default */
+/* ===== Content Sections ===== */
 .content {
-    display: none;
+    display: none; /* hide all by default */
 }
 
-#home {
-    display: block;
+    .content.active {
+        display: block; /* show active section */
+    }
+
+/* ===== Bootstrap Dropdown Fix ===== */
+/* Navbar dropdown positioning fix */
+.navbar .dropdown {
+    position: relative; /* ensure dropdown is positioned relative to navbar */
+}
+
+.navbar .dropdown-menu {
+    position: absolute; /* appear under button */
+    top: 100%;
+    right: 0;
+    z-index: 9999 !important;
+    display: none; /* hidden initially */
+}
+
+    .navbar .dropdown-menu.show {
+        display: block !important; /* show when toggled */
+    }
+
+/* Optional: arrow spacing for dropdown-toggle */
+.dropdown-toggle::after {
+    margin-left: 0.5em;
 }

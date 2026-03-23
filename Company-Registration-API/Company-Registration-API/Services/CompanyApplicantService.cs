@@ -1,7 +1,6 @@
 ﻿using Company_Registration_API.DataAccess;
 using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyApplicant;
-using Company_Registration_API.Models.CompanyApplicant.Request;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
 using System;
@@ -50,7 +49,7 @@ namespace Company_Registration_API.Services
             return response;
         }
 
-        public LoginResponse Login(ApplicantLoginDTO dto)
+        public LoginResponse Login(LoginDTO dto)
         {
             var response = new LoginResponse();
             var applicantDto = _dao.Login(dto);

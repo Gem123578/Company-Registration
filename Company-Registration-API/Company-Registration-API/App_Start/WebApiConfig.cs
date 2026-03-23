@@ -25,8 +25,10 @@ namespace Company_Registration_API
             container.RegisterType<ApplicantDbContext>(new HierarchicalLifetimeManager());
             container.RegisterType<ApplicantRegistrationDao>(new HierarchicalLifetimeManager());
             container.RegisterType<CompanyRegistrationDao>(new HierarchicalLifetimeManager());
+            container.RegisterType<SystemUsersDao>(new HierarchicalLifetimeManager());
             container.RegisterType<ICompanyApplicantService, CompanyApplicantService>(new HierarchicalLifetimeManager());
             container.RegisterType<ICompanyRegistrationService, CompanyRegistrationService>(new HierarchicalLifetimeManager());
+            container.RegisterType<ISystemUserService, SystemUserService>(new HierarchicalLifetimeManager());
 
             config.DependencyResolver = new UnityResolver(container);
 

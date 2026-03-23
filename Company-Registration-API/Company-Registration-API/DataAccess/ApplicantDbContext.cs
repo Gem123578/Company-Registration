@@ -13,7 +13,7 @@ namespace Company_Registration_API.DataAccess
         public ApplicantDbContext() : base("DbConnection")
         {
         }
-
+        public DbSet<SystemUsers> SystemUsers { get; set; }
         public DbSet<CompanyApplicants> CompanyApplicants { get; set; }
         public DbSet<RegisteredCompany> RegisteredCompanies { get; set; }
         public DbSet<CompanyShareCapital> CompanyShareCapital { get; set; }

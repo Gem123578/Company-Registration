@@ -50,9 +50,7 @@ namespace Company_Registration.Controllers
                 return View(model);
             }
 
-            string applicantIdString = User.Identity.IsAuthenticated
-    ? ((FormsIdentity)User.Identity).Ticket.UserData
-    : null;
+            string applicantIdString = User.Identity.IsAuthenticated? ((FormsIdentity)User.Identity).Ticket.UserData: null;
 
             if (string.IsNullOrEmpty(applicantIdString) || !int.TryParse(applicantIdString, out int applicantId))
             {

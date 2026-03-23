@@ -1,7 +1,6 @@
 ﻿using Company_Registration_API.DataAccess;
 using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyApplicant;
-using Company_Registration_API.Models.CompanyApplicant.Request;
 using Company_Registration_API.Services;
 using System;
 using System.Linq;
@@ -40,7 +39,7 @@ namespace Company_Registration_API.Controllers
         // ==========================
         [HttpPost]
         [Route("Login")]
-        public IHttpActionResult Login([FromBody] ApplicantLoginDTO dto)
+        public IHttpActionResult Login([FromBody] LoginDTO dto)
         {
             if (dto == null) return BadRequest("Email and password are required");
 

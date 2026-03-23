@@ -43,3 +43,45 @@ Frontend JSON → ApplicantLoginDTO → Controller → Service → DAO → DB En
 
 
 
+Frontend JSON
+      ↓
+ApplicantLoginDTO (JSON → Object)
+      ↓
+Controller (DTO လက်ခံ)
+      ↓
+Service (Business Logic)
+      ↓
+DAO (DB မှ Entity ရယူ)
+      ↓
+DB Entity (Applicant)
+      ↓
+Service (Entity → Response DTO)
+      ↓
+Controller (DTO → JSON)
+      ↓
+Frontend JSON Response
+
+
+Request (JSON)
+     ↓
+Controller
+     ↓
+DTO
+     ↓
+Service (Logic)
+     ↓
+DAO (DB Access)
+     ↓
+Entity (DB Data)
+     ↓
+Service (Process + Convert)
+     ↓
+Response DTO
+     ↓
+Controller
+     ↓
+Response (JSON)
+
+
+
+

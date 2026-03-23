@@ -120,4 +120,22 @@
   <data name="MSG_APPLICANT_EXIST" xml:space="preserve">
     <value>This applicant already has a registered account</value>
   </data>
+  <data name="MSG_Delete_FAIL" xml:space="preserve">
+    <value>Delete action fail for</value>
+  </data>
+  <data name="MSG_DISABLE_ACC" xml:space="preserve">
+    <value>Account is disabled</value>
+  </data>
+  <data name="MSG_INVALID_PASS" xml:space="preserve">
+    <value>Invalid Password</value>
+  </data>
+  <data name="MSG_Login_FAIL" xml:space="preserve">
+    <value>Login Fail</value>
+  </data>
+  <data name="MSG_WRITE_FAIL" xml:space="preserve">
+    <value>Adding fail.</value>
+  </data>
+  <data name="User_NOT_FOUND" xml:space="preserve">
+    <value>User doesn't exist</value>
+  </data>
 </root>

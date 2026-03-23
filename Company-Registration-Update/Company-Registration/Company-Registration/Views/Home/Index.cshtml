@@ -1,4 +1,5 @@
 ﻿@{
+    Layout = null;
     ViewBag.Title = "Home Page";
 }
 
@@ -11,7 +12,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    @Styles.Render("~/Content/Index.css")
+    <link href="~/Content/Index.css" rel="stylesheet" />
 </head>
 <body>
     <!-- NAVBAR -->
@@ -51,14 +52,14 @@
                 <!-- LEFT MENU -->
                 <div class="col-md-4 mb-3">
                     <button class="menu-btn active" onclick="showContent('home', this)">Home Info</button>
-                    <button class="menu-btn" onclick="showContent('register', this)">How to Register</button>
-                    <button class="menu-btn" onclick="showContent('reregister', this)">How to Re-register</button>
+                    <button class="menu-btn active" onclick="showContent('register', this)">How to Register</button>
+                    <button class="menu-btn active" onclick="showContent('reregister', this)">How to Re-register</button>
                 </div>
 
                 <!-- RIGHT CONTENT -->
                 <div class="col-md-8">
                     <!-- Home -->
-                    <div id="home" class="content">
+                    <div id="home" class="content active">
                         <h5>Welcome!</h5>
                         <p class="info-text">This portal allows applicants to register new companies and manage registration online.</p>
                         <p class="info-text">You need an applicant account to register a company.</p>
@@ -107,14 +108,21 @@
     <script>
         function showContent(id, btn) {
             ["home", "register", "reregister"].forEach(function (sec) {
-                document.getElementById(sec).style.display = "none";
+                document.getElementById(sec).classList.remove("active");
             });
-            document.getElementById(id).style.display = "block";
+            document.getElementById(id).classList.add("active");
 
-            // Highlight active menu button
-            document.querySelectorAll(".menu-btn").forEach(function (b) { b.classList.remove("active"); });
+            document.querySelectorAll(".menu-btn").forEach(function (b) {
+                b.classList.remove("active");
+            });
             btn.classList.add("active");
         }
+
+
+        //document.addEventListener('DOMContentLoaded', function () {
+        //    var dropdownEl = document.getElementById('userDropdown');
+        //    var dropdown = new bootstrap.Dropdown(dropdownEl);
+        //});
     </script>
 </body>
 </html>

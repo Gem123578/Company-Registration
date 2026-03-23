@@ -1,0 +1,79 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+using System.Web;
+using Company_Registration_API.Services;
+using Company_Registration_API.Models.DTO;
+using Company_Registration_API.Models.SystemUser;
+using Company_Registration_API.Models;
+
+namespace Company_Registration_API.Controllers
+{
+    [RoutePrefix("api/SystemUser")]
+    public class SystemUserController : ApiController
+    {
+        private readonly ISystemUserService _systemUserService;
+
+        public SystemUserController(ISystemUserService systemUserService)
+        {
+            _systemUserService = systemUserService;
+        }
+
+        //Create/Update System User
+        [HttpPost]
+        [HttpPut]
+        [Route("CreateUser")]
+        public IHttpActionResult CreateUser([FromBody] CreateUserDto dto)
+        {
+            long loginUserId = dto.Id;
+
+            // call service
+            ResSystemUser user = _systemUserService.CreateUpdateSystemUser(loginUserId, dto);
+            return Ok(user);
+
+        }
+
+        [HttpPost]
+        [Route("Login")]
+        public IHttpActionResult Login([FromBody] LoginDTO dto)
+        {
+            var response = _systemUserService.ValidateUser(dto);
+            return Ok(response);
+
+        }
+
+            [HttpDelete]
+        [Route("DeleteUser/{id}")]
+        public IHttpActionResult DeleteUser(long id)
+        {
+            int loginUserId = 0;
+            //get from session
+            if (HttpContext.Current.Session != null && HttpContext.Current.Session["UserId"] != null)
+            {
+                int.TryParse(HttpContext.Current.Session["UserId"].ToString(), out loginUserId);
+            }
+
+            //get from cookie
+            if(loginUserId == 0 && HttpContext.Current.Request.Cookies["UserId"] != null)
+            {
+                int.TryParse(HttpContext.Current.Request.Cookies["UserId"].Value, out loginUserId);
+            }
+
+            //login user?
+            if(loginUserId == 0)
+            {
+                return Content(System.Net.HttpStatusCode.Unauthorized, new BaseResponse
+                {
+                    IsSuccess = false,
+                    Message = "User not authenticated."
+                });
+            }
+
+            BaseResponse response = _systemUserService.DeleteUser(loginUserId, id);
+
+            return Ok(response);
+        }
+    }
+}

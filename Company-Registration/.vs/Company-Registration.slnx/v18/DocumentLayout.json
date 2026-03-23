@@ -7,7 +7,7 @@
       "RelativeMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration\\company-registration\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration\\company-registration\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\content\\index.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration\\company-registration\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration\\company-registration\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -27,7 +27,7 @@
       "RelativeMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration\\company-registration\\models\\companyapplicant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration\\company-registration\\models\\companyapplicant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1AE674E3-5A84-4E87-B9FD-DB55DF142555}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\models\\companyapplicant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -87,8 +87,7 @@
               "RelativeToolTip": "Company-Registration\\Content\\Site.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-03-04T00:24:29.231Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T00:24:29.231Z"
             },
             {
               "$type": "Document",
@@ -100,8 +99,7 @@
               "RelativeToolTip": "Company-Registration\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-04T00:23:55.348Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-04T00:23:55.348Z"
             },
             {
               "$type": "Document",
@@ -125,8 +123,7 @@
               "RelativeToolTip": "Company-Registration\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAEQAAAAAAAAAAAAgwFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-24T17:20:48.887Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-24T17:20:48.887Z"
             },
             {
               "$type": "Document",
@@ -138,8 +135,7 @@
               "RelativeToolTip": "Company-Registration\\Views\\Home\\Contact.cshtml",
               "ViewState": "AgIAAKQAAAAAAAAAAAAgwLoAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-26T02:16:00.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-26T02:16:00.577Z"
             },
             {
               "$type": "Document",
@@ -163,8 +159,7 @@
               "RelativeToolTip": "Company-Registration\\Content\\Index.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-02-26T03:10:17.845Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-26T03:10:17.845Z"
             },
             {
               "$type": "Document",
@@ -176,8 +171,7 @@
               "RelativeToolTip": "Company-Registration\\Models\\CompanyApplicant.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAAAAsAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-27T00:37:29.633Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-27T00:37:29.633Z"
             },
             {
               "$type": "Document",
