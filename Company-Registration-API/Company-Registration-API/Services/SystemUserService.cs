@@ -13,14 +13,37 @@ namespace Company_Registration_API.Services
     public class SystemUserService : ISystemUserService
     {
         private readonly SystemUsersDao _dao;
-        public SystemUserService(SystemUsersDao dao)
+        public SystemUserService()
         {
-            _dao = dao;
+            _dao = new SystemUsersDao();
+        }
+        public ResGetAllSystemUsers GetAllSystemUsers()
+        {
+            var response = new ResGetAllSystemUsers();
+
+            try
+            {
+                var users = _dao.GetAllSystemUsers();
+
+                response.IsSuccess = true;
+                response.Message = "Users retrieved successfully.";
+                response.Data = users;
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message;
+                return response;
+            }
         }
 
-        public ResSystemUser CreateUpdateSystemUser(long id, CreateUserDto dto)
+
+
+        public ResRegSystemUser CreateUpdateSystemUser(long id, CreateUserDto dto)
         {
-            var response = new ResSystemUser();
+            var response = new ResRegSystemUser();
             try
             {
                 // Validate input
@@ -122,7 +145,19 @@ namespace Company_Registration_API.Services
                     response.Message = "Password is required.";
                     return response;
                 }
-                 var user = _dao.ValidateUser(dto);
+
+                // Validate user via DAO
+                var user = _dao.ValidateUser(dto);
+
+                // Check email confirmation only if the user is an applicant
+                if (user.UserRole == "APPLICANT" && !user.EmailConfirmed)
+                {
+                    response.Success = false;
+                    response.Message = "Please confirm your email before login.";
+                    return response;
+                }
+
+                // Login successful
                 response.Success = true;
                 response.Message = "Login successful.";
                 response.Data = user;

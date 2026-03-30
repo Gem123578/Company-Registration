@@ -17,9 +17,9 @@ namespace Company_Registration_API.Controllers
     public class CompanyRegistrationController : ApiController
     {
         private readonly ICompanyRegistrationService _service;
-        public CompanyRegistrationController(ICompanyRegistrationService service)
+        public CompanyRegistrationController()
         {
-            _service = service;
+            _service = new CompanyRegistrationService();
         }
 
 

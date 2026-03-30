@@ -1,0 +1,84 @@
+﻿@model List<Company_Registration.Models.DTO.CreateUpdateUserDto>
+
+@{
+    ViewBag.Title = "System Users";
+}
+
+<h2 class="mb-4">@ViewBag.Title</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<div class="mb-3 text-end">
+    <a href="@Url.Action("Profile", "SystemUser")" class="btn btn-success btn-lg">
+        <i class="bi bi-plus-circle me-2"></i> Create New User
+    </a>
+</div>
+
+<table class="table table-hover table-bordered align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Account Status</th>
+            <th scope="col" class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            int index = 1;
+            foreach (var user in Model)
+            {
+                <tr>
+                    <td>@index</td>
+                    <td>@user.UserName</td>
+                    <td>@user.EmailAddress</td>
+                    <td>@user.UserRole</td>
+                    <td>
+                        @if (user.AccountStatus.ToUpper() == "ACTIVE")
+                        {
+                            <span class="badge bg-success">@user.AccountStatus</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">@user.AccountStatus</span>
+                        }
+                    </td>
+                    <td class="text-center">
+                        <a href="@Url.Action("Profile", "SystemUser", new { id = user.Id })" class="btn btn-sm btn-primary me-1">
+                            <i class="bi bi-pencil-square"></i> Edit
+                        </a>
+                        <a href="@Url.Action("Delete", "SystemUser", new { id = user.Id })"
+                           class="btn btn-sm btn-danger"
+                           onclick="return confirm('Are you sure you want to delete this user?');">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+                index++;
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center text-muted">No users found.</td>
+            </tr>
+        }
+    </tbody>
+</table>

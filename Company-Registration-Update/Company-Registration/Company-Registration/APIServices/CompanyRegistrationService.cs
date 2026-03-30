@@ -14,9 +14,9 @@ namespace Company_Registration.APIServices
     public class CompanyRegistrationService : ICompanyRegistrationService
     {
         private readonly ApiHelpers _apiHelper;
-        public CompanyRegistrationService(ApiHelpers apiHelper)
+        public CompanyRegistrationService()
         {
-            _apiHelper = apiHelper;
+            _apiHelper = new ApiHelpers();
         }
 
         // -----------------------------

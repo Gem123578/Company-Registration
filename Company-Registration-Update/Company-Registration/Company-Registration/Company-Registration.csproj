@@ -120,15 +120,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.Abstractions.5.11.1\lib\net47\Unity.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.Container.5.11.1\lib\net47\Unity.Container.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mvc, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.Mvc.5.11.1\lib\net47\Unity.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
@@ -151,11 +142,11 @@
     <Compile Include="APIServices\CompanyRegistrationService.cs" />
     <Compile Include="APIServices\ICompanyApplicantService.cs" />
     <Compile Include="APIServices\ICompanyRegistrationService.cs" />
+    <Compile Include="APIServices\ISystemUserService.cs" />
+    <Compile Include="APIServices\SystemUserService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="App_Start\UnityConfig.cs" />
-    <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Common\ApiResult.cs" />
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\Country.cs" />
@@ -165,6 +156,7 @@
     <Compile Include="Controllers\CompanyApplicantController.cs" />
     <Compile Include="Controllers\CompanyRegistrationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SystemUserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -174,7 +166,8 @@
     <Compile Include="Models\CompanyRegistrationViewModel.cs" />
     <Compile Include="Models\CompanyShareCapitalViewModel.cs" />
     <Compile Include="Models\CompanyShareholderViewModel.cs" />
-    <Compile Include="Models\DTO\ApplicantLoginDTO.cs" />
+    <Compile Include="Models\DTO\CreateUpdateUserDto.cs" />
+    <Compile Include="Models\DTO\LoginDTO.cs" />
     <Compile Include="Models\DTO\ApplicantRegisterDTO.cs" />
     <Compile Include="Models\DTO\CompanyApplicantDTO.cs" />
     <Compile Include="Models\DTO\CompanyConstitutionDTO.cs" />
@@ -182,6 +175,7 @@
     <Compile Include="Models\DTO\CompanyShareCapitalDTO.cs" />
     <Compile Include="Models\DTO\CompanyShareholderDTO.cs" />
     <Compile Include="Models\DTO\CompanyStakeholderDTO.cs" />
+    <Compile Include="Models\DTO\LoginUserDTO.cs" />
     <Compile Include="Models\DTO\UltimateHoldingCompanyDTO.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\RegistrationPaymentViewModel.cs" />
@@ -251,6 +245,7 @@
     <Content Include="Views\CompanyApplicant\Login.cshtml" />
     <Content Include="Views\CompanyRegistration\Success.cshtml" />
     <Content Include="Views\CompanyApplicant\ConfirmEmail.cshtml" />
+    <Content Include="Views\SystemUser\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -11,9 +11,9 @@ namespace Company_Registration_API.DataAccess
     {
         private ApplicantDbContext db;
 
-        public CompanyRegistrationDao(ApplicantDbContext context)
+        public CompanyRegistrationDao()
         {
-            db = context;
+            db = new ApplicantDbContext();
         }
         public long CreateCompanyRegistration(CompanyRegistrationDTO dto)
         {

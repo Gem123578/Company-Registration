@@ -5,6 +5,7 @@ using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 
@@ -13,10 +14,12 @@ namespace Company_Registration_API.Services
     public class CompanyApplicantService : ICompanyApplicantService
     {
         private readonly ApplicantRegistrationDao _dao;
+        private readonly string baseUrl; 
 
-        public CompanyApplicantService(ApplicantRegistrationDao dao)
+        public CompanyApplicantService()
         {
-            _dao = dao;
+            _dao = new ApplicantRegistrationDao();
+            baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
         }
 
         public RegisterResponse Register(ApplicantRegisterDTO dto)
@@ -36,7 +39,7 @@ namespace Company_Registration_API.Services
 
             var applicantDto = _dao.CreateApplicant(dto, token);
             // confirmation link
-            string confirmLink = $"https://localhost:44378/api/companyapplicants/confirm-email?token={token}&email={dto.EmailAddress}";
+            string confirmLink = $"{baseUrl}/api/companyapplicants/confirm-email?token={token}&email={dto.EmailAddress}";
 
             // send email
             EmailHelper.SendConfirmationEmail(dto.EmailAddress, confirmLink);
@@ -49,31 +52,31 @@ namespace Company_Registration_API.Services
             return response;
         }
 
-        public LoginResponse Login(LoginDTO dto)
-        {
-            var response = new LoginResponse();
-            var applicantDto = _dao.Login(dto);
+        //public LoginResponse Login(LoginDTO dto)
+        //{
+        //    var response = new LoginResponse();
+        //    var applicantDto = _dao.Login(dto);
 
-            if (applicantDto == null)
-            {
-                response.Success = false;
-                response.Message = "Invalid email or password";
-                return response;
-            }
-            if (!applicantDto.EmailConfirmed)
-            {
-                response.Success = false;
-                response.Message = "Please confirm your email before login";
-                return response;
-            }
+        //    if (applicantDto == null)
+        //    {
+        //        response.Success = false;
+        //        response.Message = "Invalid email or password";
+        //        return response;
+        //    }
+        //    if (!applicantDto.EmailConfirmed)
+        //    {
+        //        response.Success = false;
+        //        response.Message = "Please confirm your email before login";
+        //        return response;
+        //    }
 
 
-            response.Success = true;
-            response.Message = "Login successful";
-            response.Data = applicantDto;
+        //    response.Success = true;
+        //    response.Message = "Login successful";
+        //    response.Data = applicantDto;
 
-            return response;
-        }
+        //    return response;
+        //}
         public BaseResponse ConfirmEmail(string token, string email)
         {
             var response = new BaseResponse();

@@ -1,5 +1,5 @@
-﻿using Company_Registration_API.Models.CompanyApplicant;
-using Company_Registration_API.Models.DTO;
+﻿using Company_Registration_API.Models.DTO;
+using Company_Registration_API.Services;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,9 +8,9 @@ using System.Web;
 
 namespace Company_Registration_API.Models.SystemUser
 {
-    public class ResLoginSystemUser : ResultBase
+    public class ResGetAllSystemUsers : BaseResponse
     {
         [JsonProperty("data")]
-        public LoginUserDto Data { get; set; }
+        public List<CreateUserDto> Data { get; set; }
     }
 }

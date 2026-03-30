@@ -13,9 +13,9 @@ namespace Company_Registration.APIServices
     {
         private readonly ApiHelpers _apiHelper;
 
-        public CompanyApplicantService(ApiHelpers apiHelper)
+        public CompanyApplicantService()
         {
-            _apiHelper = apiHelper;
+            _apiHelper = new ApiHelpers();
         }
 
         public async Task<ResponseDto> RegisterUser(ApplicantRegisterDTO request)
@@ -24,9 +24,9 @@ namespace Company_Registration.APIServices
             return await _apiHelper.SendRequestAsync(reqDto);
         }
 
-        public async Task<ResponseDto> LoginUser(ApplicantLoginDTO request)
+        public async Task<ResponseDto> LoginUser(LoginDTO request)
         {
-            var reqDto = ModelConverter.CreateRequestDto(request, ApiHelpers.BaseUrl, "api/CompanyApplicants/Login", eHTTPRequestType.POST);
+            var reqDto = ModelConverter.CreateRequestDto(request, ApiHelpers.BaseUrl, "api/SystemUser/Login", eHTTPRequestType.POST);
             return await _apiHelper.SendRequestAsync(reqDto);
         }
         public async Task<ResponseDto> ConfirmEmail(string token, string email)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using System.Web;
 using Company_Registration_API.Services;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Models.SystemUser;
@@ -16,10 +15,20 @@ namespace Company_Registration_API.Controllers
     {
         private readonly ISystemUserService _systemUserService;
 
-        public SystemUserController(ISystemUserService systemUserService)
+        public SystemUserController()
         {
-            _systemUserService = systemUserService;
+            _systemUserService = new SystemUserService();
         }
+
+        // Get All System Users
+        [HttpGet]
+        [Route("GetAllUsers")]
+        public IHttpActionResult GetAllUsers()
+        {
+            var users = _systemUserService.GetAllSystemUsers();
+            return Ok(users);
+        }
+
 
         //Create/Update System User
         [HttpPost]
@@ -30,7 +39,7 @@ namespace Company_Registration_API.Controllers
             long loginUserId = dto.Id;
 
             // call service
-            ResSystemUser user = _systemUserService.CreateUpdateSystemUser(loginUserId, dto);
+            ResRegSystemUser user = _systemUserService.CreateUpdateSystemUser(loginUserId, dto);
             return Ok(user);
 
         }
@@ -39,12 +48,14 @@ namespace Company_Registration_API.Controllers
         [Route("Login")]
         public IHttpActionResult Login([FromBody] LoginDTO dto)
         {
+            if (dto == null) return BadRequest("Email and password are required");
+
             var response = _systemUserService.ValidateUser(dto);
             return Ok(response);
-
         }
 
-            [HttpDelete]
+        
+        [HttpDelete]
         [Route("DeleteUser/{id}")]
         public IHttpActionResult DeleteUser(long id)
         {

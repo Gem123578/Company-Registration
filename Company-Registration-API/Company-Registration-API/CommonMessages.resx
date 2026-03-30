@@ -120,6 +120,9 @@
   <data name="MSG_APPLICANT_EXIST" xml:space="preserve">
     <value>This applicant already has a registered account</value>
   </data>
+  <data name="MSG_CREATE_FAIL" xml:space="preserve">
+    <value>Creation fail for</value>
+  </data>
   <data name="MSG_Delete_FAIL" xml:space="preserve">
     <value>Delete action fail for</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="MSG_Login_FAIL" xml:space="preserve">
     <value>Login Fail</value>
+  </data>
+  <data name="MSG_READ_FAIL" xml:space="preserve">
+    <value>Read Fail</value>
   </data>
   <data name="MSG_WRITE_FAIL" xml:space="preserve">
     <value>Adding fail.</value>

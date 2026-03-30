@@ -15,9 +15,9 @@ namespace Company_Registration_API.Controllers
     {
         private readonly ICompanyApplicantService _service;
 
-        public CompanyApplicantsController(ICompanyApplicantService service)
+        public CompanyApplicantsController()
         {
-            _service = service;
+            _service = new CompanyApplicantService();
         }
 
         // ==========================
@@ -34,18 +34,6 @@ namespace Company_Registration_API.Controllers
             return Ok(response);
         }
 
-        // ==========================
-        // Login Applicant
-        // ==========================
-        [HttpPost]
-        [Route("Login")]
-        public IHttpActionResult Login([FromBody] LoginDTO dto)
-        {
-            if (dto == null) return BadRequest("Email and password are required");
-
-            var response = _service.Login(dto);
-            return Ok(response);
-        }
         [HttpGet]
         [Route("confirm-email")]
         public IHttpActionResult ConfirmEmail(string token, string email)

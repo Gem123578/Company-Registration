@@ -20,9 +20,9 @@ namespace Company_Registration.Controllers
     {
         private readonly CompanyRegistrationService _service;
 
-        public CompanyRegistrationController(CompanyRegistrationService service)
+        public CompanyRegistrationController()
         {
-            _service = service;
+            _service = new CompanyRegistrationService();
         }
 
         // GET: Register Form

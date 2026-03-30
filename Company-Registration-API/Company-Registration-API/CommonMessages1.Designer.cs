@@ -70,6 +70,15 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creation fail for.
+        /// </summary>
+        internal static string MSG_CREATE_FAIL {
+            get {
+                return ResourceManager.GetString("MSG_CREATE_FAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete action fail for.
         /// </summary>
         internal static string MSG_Delete_FAIL {
@@ -102,6 +111,15 @@ namespace Company_Registration_API {
         internal static string MSG_Login_FAIL {
             get {
                 return ResourceManager.GetString("MSG_Login_FAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read Fail.
+        /// </summary>
+        internal static string MSG_READ_FAIL {
+            get {
+                return ResourceManager.GetString("MSG_READ_FAIL", resourceCulture);
             }
         }
         

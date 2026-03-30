@@ -8,11 +8,9 @@ using System.Web;
 
 namespace Company_Registration.APIServices
 {
-    public interface ICompanyApplicantService
+    public interface ISystemUserService 
     {
-        Task<ResponseDto> RegisterUser(ApplicantRegisterDTO request);
-        Task<ResponseDto> LoginUser(LoginDTO request);
-        Task<ResponseDto> ConfirmEmail(string token, string email);
-
+        Task<ResponseDto> CreateUpdateSystemUser(int id, CreateUpdateUserDto dto);
+        Task<ResponseDto> GetAllUsers();
     }
 }

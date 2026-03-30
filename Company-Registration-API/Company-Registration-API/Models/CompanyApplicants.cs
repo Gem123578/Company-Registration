@@ -14,8 +14,12 @@ namespace Company_Registration_API.Models
         public string PhoneNumber { get; set; }
         public string Nationality { get; set; }
         public string IdentityNumber { get; set; }
-        public bool EmailConfirmed { get; set; }
-        public string EmailToken { get; set; }
         public DateTime CreatedAt { get; set; }
+        public bool EmailConfirm { get; set; }
+        public DateTime EmailConfirmationDate { get; set; }
+        public int ResendCount { get; set; }
+        public DateTime LastResendAt { get; set; }
+        public List<EmailConfirmationToken> EmailConfirmedToken { get; set; }
+        
     }
 }

@@ -1,7 +1,10 @@
 ﻿using Company_Registration_API.Models;
+using Company_Registration_API.Models.CompanyApplicant;
 using Company_Registration_API.Models.DTO;
+using Company_Registration_API.Models.SystemUser;
 using Company_Registration_API.Utils;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Company_Registration_API.DataAccess
@@ -10,10 +13,34 @@ namespace Company_Registration_API.DataAccess
     {
         private readonly ApplicantDbContext db;
 
-        public SystemUsersDao(ApplicantDbContext context)
+        public SystemUsersDao()
         {
-            db = context;
+            db = new ApplicantDbContext();
         }
+
+        internal List<CreateUserDto> GetAllSystemUsers()
+        {
+            try
+            {
+                var users = db.SystemUsers
+                    .Select(u => new CreateUserDto
+                    {
+                        Id = u.Id,
+                        UserName = u.UserName,
+                        UserRole = u.UserRole,
+                        AccountStatus = u.AccountStatus,
+                        EmailAddress = u.EmailAddress
+                    })
+                    .ToList();
+
+                return users;
+            }
+            catch (Exception)
+            {
+                throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_USERS));
+            }
+        }
+
 
         public CreateUserDto CreateUpdateSystemUser(long id, CreateUserDto dto)
         {
@@ -61,6 +88,7 @@ namespace Company_Registration_API.DataAccess
             }
         }
 
+
         internal void DeleteUser(long loginUserId, long id)
         {
             try
@@ -92,39 +120,63 @@ namespace Company_Registration_API.DataAccess
             }
         }
 
-        internal SystemUsers ValidateUser(LoginDTO dto)
+        internal LoginUserDto ValidateUser(LoginDTO dto)
         {
+            var response = new LoginResponse();
             try
             {
                 PasswordHasher hasher = new PasswordHasher();
 
-                // 1️⃣ Find user by email
-                var user = db.SystemUsers.FirstOrDefault(x => x.EmailAddress == dto.EmailAddress);
-                if (user == null)
+                // Check SystemUsers first
+                var sysUser = db.SystemUsers.FirstOrDefault(x => x.EmailAddress == dto.EmailAddress);
+
+                if (sysUser != null)
                 {
-                    throw new ApiException(string.Format(CommonMessages.User_NOT_FOUND, CommonConstants.TBLNAME_USERS));
+                    string hashedPassword = hasher.Hash(dto.Password);
+
+                    if (sysUser.PasswordHash != hashedPassword)
+                        throw new ApiException(string.Format(CommonMessages.MSG_INVALID_PASS, CommonConstants.TBLNAME_USERS));
+
+                    if (sysUser.AccountStatus != "ACTIVE")
+                    {
+                        throw new ApiException(string.Format(CommonMessages.MSG_DISABLE_ACC, CommonConstants.TBLNAME_USERS));
+                    }
+
+                    return new LoginUserDto
+                    {
+                        UserId = sysUser.Id,
+                        UserName = sysUser.UserName,
+                        UserRole = sysUser.UserRole
+                    };
                 }
 
-                string hashedPassword = hasher.Hash(dto.Password); // Hash method you already have
-                if (dto.Password != hashedPassword)
-                    throw new ApiException(string.Format(CommonMessages.MSG_INVALID_PASS, CommonConstants.TBLNAME_USERS));
-                
-                // 3️⃣ Check account status
-                if (user.AccountStatus != "ACTIVE")
+                // Check Applicant
+                var applicant = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == dto.EmailAddress);
+
+                if (applicant != null)
                 {
-                    throw new ApiException(string.Format(CommonMessages.MSG_DISABLE_ACC, CommonConstants.TBLNAME_USERS));
+                    string hashedPassword = hasher.Hash(dto.Password);
+
+                    if (applicant.PasswordHash != hashedPassword)
+                        throw new ApiException(string.Format(CommonMessages.MSG_INVALID_PASS, "APPLICANT"));
+
+                    return new LoginUserDto
+                    {
+                        UserId = applicant.Id,
+                        UserName = applicant.FullName,
+                        UserRole = "APPLICANT"
+                    };
                 }
 
-                return user;
+                // Not found
+                throw new ApiException(string.Format(CommonMessages.User_NOT_FOUND, CommonConstants.TBLNAME_USERS));
             }
             catch (ApiException)
             {
-                // Rethrow known API exceptions
                 throw;
             }
             catch (Exception)
             {
-                // Wrap unknown exceptions with friendly message
                 throw new ApiException(string.Format(CommonMessages.MSG_Login_FAIL, CommonConstants.TBLNAME_USERS));
             }
         }

@@ -20,9 +20,9 @@ namespace Company_Registration.Controllers
     {
         private readonly ICompanyApplicantService _service;
 
-        public CompanyApplicantController(ICompanyApplicantService service)
+        public CompanyApplicantController()
         {
-            _service = service;
+            _service = new CompanyApplicantService();
         }
 
         // GET: Register
@@ -73,7 +73,7 @@ namespace Company_Registration.Controllers
         {
             if (!ModelState.IsValid) return View(model);
 
-            var request = new ApplicantLoginDTO
+            var request = new LoginDTO
             {
                 EmailAddress = model.EmailAddress,
                 Password = model.Password
@@ -81,40 +81,52 @@ namespace Company_Registration.Controllers
 
             var response = await _service.LoginUser(request);
 
-            if (!response.IsSuccess || response.Data == null)
+            if (!response.IsSuccess)
             {
                 ModelState.AddModelError("", string.IsNullOrEmpty(response.Message) ? "Invalid email or password" : response.Message);
                 return View(model);
             }
 
-            var user = JsonConvert.DeserializeObject<CompanyApplicantDTO>(response.Data.ToString());
+            //  Deserialize as common DTO
+            var user = JsonConvert.DeserializeObject<LoginUserDTO>(response.Data.ToString());
+
             if (user == null)
             {
                 ModelState.AddModelError("", "Invalid data returned from server.");
                 return View(model);
             }
 
-            // Save Session
-            Session["ApplicantId"] = user.Id;
-            Session["UserName"] = user.FullName;
-            bool isPersistent = model.RememberMe;
+            // 🔸 Save Session
+            Session["UserId"] = user.UserId;
+            Session["UserName"] = user.UserName;
+            Session["UserRole"] = user.UserRole;
 
-            // FormsAuthentication
+            // 🔸 FormsAuthentication
             var authTicket = new FormsAuthenticationTicket(
                                 1,
-                                user.FullName,
+                                user.UserName,
                                 DateTime.Now,
                                 model.RememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddMinutes(30),
                                 model.RememberMe,
-                                user.Id.ToString() // ✅ numeric UserData
+                                user.UserRole // 🔥 store role
                                 );
-
 
             var encryptedTicket = FormsAuthentication.Encrypt(authTicket);
             Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket));
 
+            // Redirect by role
+            if (user.UserRole == "ADMIN" || user.UserRole == "OFFICER")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else if (user.UserRole == "APPLICANT")
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return RedirectToAction("Index", "Home");
         }
+
 
         // Logout
         public ActionResult Logout()

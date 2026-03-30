@@ -13,9 +13,9 @@ namespace Company_Registration_API.Services
     public class CompanyRegistrationService : ICompanyRegistrationService
     {
         private readonly CompanyRegistrationDao _dao;
-        public CompanyRegistrationService(CompanyRegistrationDao dao)
+        public CompanyRegistrationService()
         { 
-            _dao = dao;
+            _dao = new CompanyRegistrationDao();
         }
         public ResCompanyRegistration SubmitCompanyRegistration(CompanyRegistrationDTO dto)
         {

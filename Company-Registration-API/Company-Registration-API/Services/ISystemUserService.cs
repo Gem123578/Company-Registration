@@ -10,8 +10,10 @@ namespace Company_Registration_API.Services
 {
     public interface ISystemUserService 
     {
-        ResSystemUser CreateUpdateSystemUser(long id, CreateUserDto dto);
+        ResRegSystemUser CreateUpdateSystemUser(long id, CreateUserDto dto);
         BaseResponse DeleteUser(long loginUserId, long userId);
+        //BaseResponse ConfirmEmail(string token, string email);
         ResLoginSystemUser ValidateUser(LoginDTO dto);
+        ResGetAllSystemUsers GetAllSystemUsers();
     }
 }

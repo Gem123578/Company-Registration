@@ -9,13 +9,13 @@ namespace Company_Registration_API.Utils
 {
     public class EmailHelper
     {
-        public static void SendConfirmationEmail(string email, string link)
+        public static void SendConfirmationEmail(string email, string confirmEmail)
         {
             MailMessage message = new MailMessage();
             message.From = new MailAddress("maythagyan.mtg.gl@gmail.com");
             message.To.Add(email);
             message.Subject = "Confirm your account";
-            message.Body = $"Click this link to confirm your email:<br/><a href='{link}'>Confirm Email</a>";
+            message.Body = $"Click this link to confirm your email:<br/><a href='{confirmEmail}'>Confirm Email</a>";
             message.IsBodyHtml = true;
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);

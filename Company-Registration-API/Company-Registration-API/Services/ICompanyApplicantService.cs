@@ -7,11 +7,9 @@ namespace Company_Registration_API.Services
     public interface ICompanyApplicantService 
     {
         RegisterResponse Register(ApplicantRegisterDTO dto);
-        LoginResponse Login(LoginDTO dto);
+        //LoginResponse Login(LoginDTO dto);
         BaseResponse ConfirmEmail(string token, string email);
         
-
-
         /* ResGetAllApplicants GetAllApplicants()*/
     }
 }

@@ -14,6 +14,6 @@ namespace Company_Registration_API.Models
         public string Nationality { get; set; }
         public string IdentityNumber { get; set; }
         public bool EmailConfirmed { get; set; }
-        public string EmailToken { get; set; }
+        public List<EmailConfirmationToken> EmailToken { get; set; }
     }
 }
