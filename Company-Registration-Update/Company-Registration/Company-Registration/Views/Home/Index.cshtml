@@ -1,6 +1,7 @@
 ﻿@{
     Layout = null;
     ViewBag.Title = "Home Page";
+    var userRole = Session["UserRole"]?.ToString();
 }
 
 <!DOCTYPE html>
@@ -53,7 +54,12 @@
                 <div class="col-md-4 mb-3">
                     <button class="menu-btn active" onclick="showContent('home', this)">Home Info</button>
                     <button class="menu-btn active" onclick="showContent('register', this)">How to Register</button>
-                    <button class="menu-btn active" onclick="showContent('reregister', this)">How to Re-register</button>
+
+                    @* Re-register menu shown only for system users *@
+                    @if (User.Identity.IsAuthenticated && (userRole != "APPLICANT"))
+                    {
+                        <button class="menu-btn active" onclick="showContent('reregister', this)">How to Re-register</button>
+                    }
                 </div>
 
                 <!-- RIGHT CONTENT -->
@@ -86,17 +92,24 @@
                         }
                     </div>
 
-                    <!-- Re-register -->
-                    <div id="reregister" class="content">
-                        <h5>Re-Registration Steps</h5>
-                        <p class="info-text">Existing companies can update their registration by following these steps:</p>
-                        <ol class="info-text">
-                            <li>Login to your account</li>
-                            <li>Update company details</li>
-                            <li>Upload updated documents</li>
-                            <li>Submit the re-registration request</li>
-                        </ol>
-                    </div>
+                    <!-- Re-register Section -->
+                    @if (User.Identity.IsAuthenticated && (userRole != "APPLICANT"))
+                    {
+                        <div id="reregister" class="content">
+                            <h5>Re-Registration Steps</h5>
+                            <p class="info-text">Existing companies can update their registration by following these steps:</p>
+                            <ol class="info-text">
+                                <li>Login to your account</li>
+                                <li>Update company details</li>
+                                <li>Upload updated documents</li>
+                                <li>Submit the re-registration request</li>
+                            </ol>
+                            <a href="@Url.Action("ReRegister", "CompanyRegistration")" class="btn btn-primary-custom mt-3">
+                                Start Re-registration
+                            </a>
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>
@@ -117,12 +130,6 @@
             });
             btn.classList.add("active");
         }
-
-
-        //document.addEventListener('DOMContentLoaded', function () {
-        //    var dropdownEl = document.getElementById('userDropdown');
-        //    var dropdown = new bootstrap.Dropdown(dropdownEl);
-        //});
     </script>
 </body>
 </html>

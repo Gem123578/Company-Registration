@@ -35,11 +35,17 @@ namespace Company_Registration_API.Services
             }
             if (string.IsNullOrWhiteSpace(dto.Password))
                 throw new Exception("Password is required");
-            var token = Guid.NewGuid().ToString(); // confirmation token
+            
 
-            var applicantDto = _dao.CreateApplicant(dto, token);
+            var applicantDto = _dao.CreateApplicant(dto);
+            var tokenString = applicantDto.EmailToken.FirstOrDefault()?.Token;
+
+            if (string.IsNullOrEmpty(tokenString))
+            {
+                throw new Exception("No email confirmation token found");
+            }
             // confirmation link
-            string confirmLink = $"{baseUrl}/api/companyapplicants/confirm-email?token={token}&email={dto.EmailAddress}";
+            string confirmLink = $"{baseUrl}/api/companyapplicants/confirm-email?token={tokenString}&email={dto.EmailAddress}";
 
             // send email
             EmailHelper.SendConfirmationEmail(dto.EmailAddress, confirmLink);

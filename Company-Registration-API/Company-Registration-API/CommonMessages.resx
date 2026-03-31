@@ -135,6 +135,9 @@
   <data name="MSG_Login_FAIL" xml:space="preserve">
     <value>Login Fail</value>
   </data>
+  <data name="MSG_NEED_EMAILCONFIRM" xml:space="preserve">
+    <value>Email confirm first for</value>
+  </data>
   <data name="MSG_READ_FAIL" xml:space="preserve">
     <value>Read Fail</value>
   </data>

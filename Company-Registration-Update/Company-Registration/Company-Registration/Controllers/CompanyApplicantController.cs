@@ -51,7 +51,7 @@ namespace Company_Registration.Controllers
             var response = await _service.RegisterUser(request);
 
             if (response.IsSuccess)
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","CompanyApplicant");
 
             ModelState.AddModelError("", string.IsNullOrEmpty(response.Message) ? "Registration Fail!" : response.Message);
             return View(model);
@@ -71,60 +71,74 @@ namespace Company_Registration.Controllers
         [HttpPost]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
-            if (!ModelState.IsValid) return View(model);
-
-            var request = new LoginDTO
+            try
             {
-                EmailAddress = model.EmailAddress,
-                Password = model.Password
-            };
+                if (!ModelState.IsValid) return View(model);
 
-            var response = await _service.LoginUser(request);
+                var request = new LoginDTO
+                {
+                    EmailAddress = model.EmailAddress,
+                    Password = model.Password
+                };
 
-            if (!response.IsSuccess)
+                var response = await _service.LoginUser(request);
+
+                if (!response.IsSuccess)
+                {
+                    ModelState.AddModelError("", string.IsNullOrEmpty(response.Message) ? "Invalid email or password" : response.Message);
+                    return View(model);
+                }
+
+                //  Deserialize as common DTO
+                var user = JsonConvert.DeserializeObject<LoginUserDTO>(response.Data.ToString());
+
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Invalid data returned from server.");
+                    return View(model);
+                }
+
+                // 🔸 Save Session
+                Session["UserId"] = user.UserId;
+                Session["UserName"] = user.UserName;
+                Session["UserRole"] = user.UserRole;
+
+                // 🔸 FormsAuthentication
+                var authTicket = new FormsAuthenticationTicket(
+                                    1,
+                                    user.UserName,
+                                    DateTime.Now,
+                                    model.RememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddMinutes(30),
+                                    model.RememberMe,
+                                    user.UserRole // 🔥 store role
+                                    );
+
+                var encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket));
+
+                // Redirect by role
+                if (user.UserRole == "ADMIN" || user.UserRole == "OFFICER")
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else if (user.UserRole == "APPLICANT")
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+
+                return RedirectToAction("Index", "Home");
+
+            }
+            catch (ApiException)
             {
-                ModelState.AddModelError("", string.IsNullOrEmpty(response.Message) ? "Invalid email or password" : response.Message);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error: " + ex.Message);
                 return View(model);
             }
-
-            //  Deserialize as common DTO
-            var user = JsonConvert.DeserializeObject<LoginUserDTO>(response.Data.ToString());
-
-            if (user == null)
-            {
-                ModelState.AddModelError("", "Invalid data returned from server.");
-                return View(model);
-            }
-
-            // 🔸 Save Session
-            Session["UserId"] = user.UserId;
-            Session["UserName"] = user.UserName;
-            Session["UserRole"] = user.UserRole;
-
-            // 🔸 FormsAuthentication
-            var authTicket = new FormsAuthenticationTicket(
-                                1,
-                                user.UserName,
-                                DateTime.Now,
-                                model.RememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddMinutes(30),
-                                model.RememberMe,
-                                user.UserRole // 🔥 store role
-                                );
-
-            var encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-            Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket));
-
-            // Redirect by role
-            if (user.UserRole == "ADMIN" || user.UserRole == "OFFICER")
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else if (user.UserRole == "APPLICANT")
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            return RedirectToAction("Index", "Home");
+            
         }
 
 

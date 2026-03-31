@@ -15,11 +15,11 @@ namespace Company_Registration_API.Models
         public string Nationality { get; set; }
         public string IdentityNumber { get; set; }
         public DateTime CreatedAt { get; set; }
-        public bool EmailConfirm { get; set; }
-        public DateTime EmailConfirmationDate { get; set; }
+        public bool EmailConfirmed { get; set; }
+        public DateTime EmailConfirmedAt { get; set; }
         public int ResendCount { get; set; }
         public DateTime LastResendAt { get; set; }
-        public List<EmailConfirmationToken> EmailConfirmedToken { get; set; }
+        public virtual ICollection<EmailConfirmationToken> EmailConfirmedToken { get; set; }
         
     }
 }

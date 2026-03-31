@@ -115,6 +115,15 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email confirm first for.
+        /// </summary>
+        internal static string MSG_NEED_EMAILCONFIRM {
+            get {
+                return ResourceManager.GetString("MSG_NEED_EMAILCONFIRM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Read Fail.
         /// </summary>
         internal static string MSG_READ_FAIL {

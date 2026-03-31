@@ -157,8 +157,11 @@ namespace Company_Registration_API.DataAccess
                 {
                     string hashedPassword = hasher.Hash(dto.Password);
 
+                    if (!applicant.EmailConfirmed)
+                        throw new ApiException(string.Format(CommonMessages.MSG_NEED_EMAILCONFIRM, CommonConstants.TBLNAME_APP_USERS));
+
                     if (applicant.PasswordHash != hashedPassword)
-                        throw new ApiException(string.Format(CommonMessages.MSG_INVALID_PASS, "APPLICANT"));
+                        throw new ApiException(string.Format(CommonMessages.MSG_INVALID_PASS, CommonConstants.TBLNAME_APP_USERS));
 
                     return new LoginUserDto
                     {

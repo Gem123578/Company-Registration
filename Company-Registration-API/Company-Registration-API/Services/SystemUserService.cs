@@ -150,7 +150,7 @@ namespace Company_Registration_API.Services
                 var user = _dao.ValidateUser(dto);
 
                 // Check email confirmation only if the user is an applicant
-                if (user.UserRole == "APPLICANT" && !user.EmailConfirmed)
+                if (user.UserRole == "APPLICANT" && user.EmailConfirmed)
                 {
                     response.Success = false;
                     response.Message = "Please confirm your email before login.";

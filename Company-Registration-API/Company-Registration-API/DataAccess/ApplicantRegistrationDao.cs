@@ -25,7 +25,7 @@ namespace Company_Registration_API.DataAccess
             return db.CompanyApplicants.Any(x => x.EmailAddress == email);
         }
 
-        public CompanyAplicantDto CreateApplicant(ApplicantRegisterDTO dto, List<EmailConfirmationToken> token)
+        public CompanyAplicantDto CreateApplicant(ApplicantRegisterDTO dto)
         {
             try
             {
@@ -39,23 +39,24 @@ namespace Company_Registration_API.DataAccess
                     Nationality = dto.Nationality,
                     IdentityNumber = dto.IdentityNumber,
                     CreatedAt = DateTime.UtcNow,
-                    EmailConfirm = false,
+                    EmailConfirmed = false,
+                    EmailConfirmedAt = DateTime.UtcNow,
                     ResendCount = 0,
                     LastResendAt = DateTime.UtcNow,
                 };
                 db.CompanyApplicants.Add(applicant);
                 db.SaveChanges();
-                token = CreateEmailToken(applicant.Id);
+                var token = CreateEmailToken(applicant.Id);
                 return new CompanyAplicantDto
                 {
                     Id = applicant.Id,
                     FullName = applicant.FullName,
                     EmailAddress = applicant.EmailAddress,
                     PhoneNumber = applicant.PhoneNumber,
-                    EmailConfirmed = applicant.EmailConfirm,
+                    EmailConfirmed = applicant.EmailConfirmed,
                     IdentityNumber = applicant.IdentityNumber,
                     CreatedAt = applicant.CreatedAt,
-                    EmailToken = applicant.EmailConfirmedToken,
+                    EmailToken = token,
                     Nationality = applicant.Nationality
                 };
             }
@@ -82,9 +83,9 @@ namespace Company_Registration_API.DataAccess
                 var emailToken = new EmailConfirmationToken
                 {
                     ApplicantId = applicantId,
-                    EmailToken = newToken,
+                    Token = newToken,
                     CreatedAt = DateTime.UtcNow,
-                    ExpiredAt = DateTime.UtcNow.AddMinutes(2)
+                    ExpireAt = DateTime.UtcNow.AddMinutes(30)
                 };
                 db.EmailConfirmationTokens.Add(emailToken);
                 db.SaveChanges();
@@ -104,34 +105,21 @@ namespace Company_Registration_API.DataAccess
                 throw new ApiException(string.Format(CommonMessages.MSG_CREATE_FAIL, CommonConstants.TBLNAME_EMAIL_TOKEN));
             }
         }
-        public CompanyAplicantDto Login(LoginDTO dto)
-        {
-            PasswordHasher hasher = new PasswordHasher();
-            // 1. Find user by email
-            var applicant = db.CompanyApplicants
-                .FirstOrDefault(x => x.EmailAddress == dto.EmailAddress);
-
-            if (applicant == null)
-                return null; // email not found
-
-            // 2. Verify password
-            string hashedPassword = hasher.Hash(dto.Password); // Hash method you already have
-            if (applicant.PasswordHash != hashedPassword)
-                return null; // wrong password
-
-            // 3. Return DTO including EmailConfirmed
-            return new CompanyAplicantDto
-            {
-                Id = applicant.Id,
-                FullName = applicant.FullName,
-                EmailAddress = applicant.EmailAddress,
-                PhoneNumber = applicant.PhoneNumber,
-                Nationality = applicant.Nationality,
-                IdentityNumber = applicant.IdentityNumber,
-                CreatedAt = applicant.CreatedAt,
-                EmailConfirmed = applicant.EmailConfirm // <-- important
-            };
-        }
+        //public CompanyAplicantDto Login(LoginDTO dto)
+        //{
+        //    try
+        //    {
+        //        Pass
+        //    }
+        //    catch (ApiException)
+        //    {
+        //        throw;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new ApiException(string.Format(CommonMessages.MSG_Login_FAIL, CommonConstants.TBLNAME_APP_USERS));
+        //    }
+        //}
 
         //public List<CompanyApplicant> GetAllApplicants()
         //{
@@ -152,18 +140,14 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
-                if (user == null)
-                    return false;
+                var tokenData = db.EmailConfirmationTokens.FirstOrDefault(t => t.Token == token && t.ExpireAt > DateTime.UtcNow);
 
-                var tokenData = db.EmailConfirmationTokens
-                    .FirstOrDefault(t => t.ApplicantId == user.Id && t.EmailToken == token && t.ExpiredAt > DateTime.UtcNow);
+                if (tokenData == null) return false;
 
-                if (tokenData == null)
-                    return false;
+                var user = db.CompanyApplicants.FirstOrDefault(x => x.Id == tokenData.ApplicantId);
 
-                user.EmailConfirm = true;
-                user.EmailConfirmationDate = DateTime.UtcNow;
+                user.EmailConfirmed = true;
+                user.EmailConfirmedAt = DateTime.UtcNow;
 
                 // Remove used token
                 db.EmailConfirmationTokens.Remove(tokenData);
@@ -181,12 +165,13 @@ namespace Company_Registration_API.DataAccess
             }
         }
 
-        //internal List<EmailConfirmToken> GetEmailTokens(string email)
-        //{
-        //    var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
-        //    if (user == null)
-        //        return null;
-        //    return db.EmailConfirmationTokens.Where(t => t.ApplicantId == user.Id).ToList();
-        //}
+        internal List<EmailConfirmationToken> GetEmailTokens(string email)
+        {
+            var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
+            if (user == null)
+                return null;
+            return db.EmailConfirmationTokens.Where(t => t.ApplicantId == user.Id).OrderByDescending(t => t.CreatedAt)
+                     .ToList();
+        }
     }
 }

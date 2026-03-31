@@ -9,20 +9,35 @@ namespace Company_Registration_API.Utils
 {
     public class EmailHelper
     {
-        public static void SendConfirmationEmail(string email, string confirmEmail)
+        public static void SendConfirmationEmail(string email, string confirmLink)
         {
-            MailMessage message = new MailMessage();
-            message.From = new MailAddress("maythagyan.mtg.gl@gmail.com");
-            message.To.Add(email);
-            message.Subject = "Confirm your account";
-            message.Body = $"Click this link to confirm your email:<br/><a href='{confirmEmail}'>Confirm Email</a>";
-            message.IsBodyHtml = true;
+            try
+            {
+                MailMessage message = new MailMessage();
+                message.To.Add(email);
+                message.Subject = "Confirm Your Account";
 
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-            smtp.Credentials = new NetworkCredential("maythagyan.mtg.gl@gmail.com", "xsez zcpv spbq yfar");
-            smtp.EnableSsl = true;
+                message.Body = $@"
+                    <h3>Welcome!</h3>
+                    <p>Please confirm your email:</p>
+                    <a href='{confirmLink}' 
+                       style='padding:10px 20px;background-color:#007bff;color:white;text-decoration:none;border-radius:5px;'>
+                       Confirm Email
+                    </a>
+                    <br/><br/>
+                    <p>If you did not request this, ignore this email.</p>
+                ";
 
-            smtp.Send(message);
+                message.IsBodyHtml = true;
+
+                // web.config က config ကို auto ယူ
+                SmtpClient smtp = new SmtpClient();
+                smtp.Send(message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Email sending failed: " + ex.Message);
+            }
         }
     }
 }
