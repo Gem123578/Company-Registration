@@ -17,6 +17,29 @@ namespace Company_Registration.APIServices
         {
             _apiHelper = new ApiHelpers();
         }
+        public async Task<ResponseDto> GetUserById(int id)
+        {
+            var response = new ResponseDto();
+
+            try
+            {
+                var reqDto = ModelConverter.CreateRequestDto(
+                    null,
+                    ApiHelpers.BaseUrl,
+                    $"api/SystemUser/CreateUser/{id}",
+                    eHTTPRequestType.GET
+                );
+
+                response = await _apiHelper.SendRequestAsync(reqDto);
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
 
         public async Task<ResponseDto> CreateUpdateSystemUser(int id, CreateUpdateUserDto dto)
         {
@@ -96,6 +119,29 @@ namespace Company_Registration.APIServices
 
             return response;
         }
+        public async Task<ResponseDto> DeleteUser(long userId)
+        {
+            var response = new ResponseDto();
+            try
+            {
+                // Create request DTO for DELETE
+                var reqDto = ModelConverter.CreateRequestDto(
+                    new {  userId }, // body or parameters if your API expects JSON
+                    ApiHelpers.BaseUrl,
+                    $"api/SystemUser/DeleteUser?"+userId,
+                    eHTTPRequestType.POST // using POST for deletion to include body
+                );
 
+                response = await _apiHelper.SendRequestAsync(reqDto);
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
     }
+
 }

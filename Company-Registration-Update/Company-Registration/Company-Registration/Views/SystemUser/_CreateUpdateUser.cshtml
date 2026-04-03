@@ -1,0 +1,61 @@
+﻿@model Company_Registration.Models.DTO.CreateUpdateUserDto
+
+<div class="modal-header">
+    <h5 class="modal-title">@((Model.IsUpdate ? "Edit" : "Create") + " User")</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+<div class="modal-body">
+    @using (Html.BeginForm("CreateUpdate", "SystemUser", FormMethod.Post, new { id = "userForm" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.IsUpdate)
+
+        <div class="mb-3">
+            <label>User Name</label>
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", required = "required" })
+        </div>
+
+        if (!Model.IsUpdate)
+        {
+            <div class="mb-3">
+                <label>Email</label>
+                @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", type = "email", required = "required" })
+            </div>
+            <div class="mb-3">
+                <label>Password</label>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control", required = "required" })
+            </div>
+        }
+        <!-- Account Status Radio Buttons -->
+        @*<div class="mb-3">
+                <label class="form-label">Account Status</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="AccountStatus" id="statusActive" value="ACTIVE" @(Model.AccountStatus == "ACTIVE" ? "checked" : "") />
+                        <label class="form-check-label" for="statusActive">Active</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="AccountStatus" id="statusDeactive" value="DEACTIVE" @(Model.AccountStatus == "DEACTIVE" ? "checked" : "") />
+                        <label class="form-check-label" for="statusDeactive">Deactive</label>
+                    </div>
+                </div>
+            </div>*@
+        <div class="mb-3">
+            <label class="form-label">Account Status</label>
+            <div>
+                <input type="radio" name="AccountStatus" value="ACTIVE" @(Model.AccountStatus == "ACTIVE" ? "checked" : "") /> Active
+                <input type="radio" name="AccountStatus" value="DISABLED" @(Model.AccountStatus == "DISABLED" ? "checked" : "") /> DISABLED
+            </div>
+        </div>
+        <div class="mb-3">
+            <label>Role</label>
+            @Html.TextBoxFor(m => m.UserRole, new { @class = "form-control" })
+        </div>
+
+        <div class="text-end">
+            <button type="submit" class="btn btn-success">@((Model.IsUpdate) ? "Update" : "Create")</button>
+        </div>
+    }
+</div>

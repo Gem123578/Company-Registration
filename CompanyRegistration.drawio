@@ -1,0 +1,80 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="m4KoIRncxzo6Y2-NlaJz">
+    <mxGraphModel dx="1851" dy="506" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="LCLpzAIer_qvuRYL3uPA-2" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="90" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-4" edge="1" parent="1" source="LCLpzAIer_qvuRYL3uPA-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="LCLpzAIer_qvuRYL3uPA-3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="applicant user" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-8" edge="1" parent="1" source="LCLpzAIer_qvuRYL3uPA-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="LCLpzAIer_qvuRYL3uPA-10" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="company registration" vertex="1">
+          <mxGeometry height="60" width="120" x="100" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-11" edge="1" parent="1" source="LCLpzAIer_qvuRYL3uPA-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="LCLpzAIer_qvuRYL3uPA-10" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="system user" vertex="1">
+          <mxGeometry height="60" width="120" x="250" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-28" edge="1" parent="1" source="LCLpzAIer_qvuRYL3uPA-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="LCLpzAIer_qvuRYL3uPA-27" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-31" edge="1" parent="1" source="LCLpzAIer_qvuRYL3uPA-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="LCLpzAIer_qvuRYL3uPA-30" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-10" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="Approved ? Pending" vertex="1">
+          <mxGeometry height="80" width="80" x="120" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="applicant user" vertex="1">
+          <mxGeometry height="60" width="120" x="390" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="company registration" vertex="1">
+          <mxGeometry height="60" width="120" x="680" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-21" edge="1" parent="1" source="LCLpzAIer_qvuRYL3uPA-18" style="shape=link;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="LCLpzAIer_qvuRYL3uPA-19" value="">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="330" y="260" as="sourcePoint" />
+            <mxPoint x="490" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-22" connectable="0" parent="LCLpzAIer_qvuRYL3uPA-21" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" value="1" vertex="1">
+          <mxGeometry relative="1" x="1" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="system user&amp;nbsp;" vertex="1">
+          <mxGeometry height="60" width="120" x="390" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="company registration" vertex="1">
+          <mxGeometry height="60" width="120" x="680" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-26" edge="1" parent="1" source="LCLpzAIer_qvuRYL3uPA-24" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;endArrow=ERmany;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="LCLpzAIer_qvuRYL3uPA-25" value="">
+          <mxGeometry height="100" relative="1" width="100" as="geometry">
+            <mxPoint x="410" y="370" as="sourcePoint" />
+            <mxPoint x="510" y="270" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-27" parent="1" style="whiteSpace=wrap;html=1;" value="company registration approval state" vertex="1">
+          <mxGeometry height="60" width="120" x="100" y="490" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-29" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="start" vertex="1">
+          <mxGeometry height="80" width="120" x="90" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="LCLpzAIer_qvuRYL3uPA-30" parent="1" style="whiteSpace=wrap;html=1;" value="Cancelling company registration" vertex="1">
+          <mxGeometry height="60" width="120" x="-60" y="330" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

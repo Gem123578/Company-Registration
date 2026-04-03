@@ -5,8 +5,10 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace Company_Registration.Controllers
@@ -28,13 +30,32 @@ namespace Company_Registration.Controllers
             return View(model);
         }
 
+        // GET: SystemUser/CreateUpdatePartial/0
+        public async Task<ActionResult> CreateUpdatePartial(int id = 0)
+        {
+            var model = new CreateUpdateUserDto();
+
+            if (id > 0)
+            {
+                // Get user by ID from API
+                var response = await _systemUserService.GetUserById(id);
+                if (response.IsSuccess && response.Data != null)
+                {
+                    model = JsonConvert.DeserializeObject<CreateUpdateUserDto>(response.Data.ToString());
+                    model.IsUpdate = true;
+                }
+            }
+
+            return PartialView("_CreateUpdateUser", model); // modal partial
+        }
+
         // POST: SystemUser/CreateUpdate/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateUpdate(int id, CreateUpdateUserDto model)
         {
             if (!ModelState.IsValid)
-                return View(model);
+                return PartialView("_CreateUpdateUser", model);
 
             try
             {
@@ -46,7 +67,7 @@ namespace Company_Registration.Controllers
                     ModelState.AddModelError("", string.IsNullOrEmpty(response.Message)
                         ? "Failed to create/update user"
                         : response.Message);
-                    return View(model);
+                    return PartialView("_CreateUpdateUser", model);
                 }
 
                 // Optional: Deserialize if needed
@@ -57,24 +78,57 @@ namespace Company_Registration.Controllers
                     : "User created successfully.";
 
                 // Redirect to user list or details page
-                return RedirectToAction("Profile", "SystemUser");
+                return Json(response.IsSuccess = true); // indicate success for AJAX
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("", "Error: " + ex.Message);
-                return View(model);
+                return PartialView("_CreateUpdateUser", model);
             }
         }
+        // DELETE: SystemUser/Delete/5
+        [HttpPost]
+        public async Task<ActionResult> DeleteUser(long id)
+        {
+            try
+            {
+                // Get the current logged-in user's ID from session or claims
+                var loginUserId = Convert.ToInt64(Session["UserId"]); // adjust if you store it differently
+
+                // Call service to delete
+                var response = await _systemUserService.DeleteUser(id);
+
+                if (!response.IsSuccess)
+                {
+                    TempData["ErrorMessage"] = string.IsNullOrEmpty(response.Message)
+                        ? "Failed to delete user."
+                        : response.Message;
+                    return Json(new { success = false, message = TempData["ErrorMessage"] });
+                }
+
+                TempData["SuccessMessage"] = "User deleted successfully.";
+                return Json(new { success = true });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "Error: " + ex.Message });
+            }
+        }
+
         // GET: SystemUser
-        public async Task<ActionResult> SystemUser()
+        public async Task<ActionResult> SystemUserGrid()
         {
             try
             {
                 var response = await _systemUserService.GetAllUsers();
-                //var users = response.IsSuccess
-                //            ? JsonConvert.DeserializeObject<List<CreateUpdateUserDto>>(response.Data.ToString())
-                //            : new List<CreateUpdateUserDto>();
-                return View(response);
+                var users = new List<CreateUpdateUserDto>();
+
+                if (response.IsSuccess && response.Data != null)
+                {
+                    users = JsonConvert.DeserializeObject<List<CreateUpdateUserDto>>(response.Data.ToString());
+                }
+
+                return PartialView("_SystemUserGrid", users);
             }
             catch (Exception ex)
             {

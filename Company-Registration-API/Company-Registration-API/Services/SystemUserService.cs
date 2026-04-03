@@ -93,6 +93,17 @@ namespace Company_Registration_API.Services
                 return response;
             }
         }
+        // Get single user by Id
+        public ResRegSystemUser GetSystemUserById(long id)
+        {
+            ResRegSystemUser response = new ResRegSystemUser();
+            if (id <= 0) return null;
+            response.IsSuccess = true;
+            response.Message = "User deleted successfully.";
+            response.Data = _dao.GetUserById(id);
+            return (response);
+        }
+
 
         public BaseResponse DeleteUser(long loginUserId, long id)
         {

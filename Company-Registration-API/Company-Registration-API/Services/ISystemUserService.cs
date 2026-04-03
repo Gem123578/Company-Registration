@@ -15,5 +15,7 @@ namespace Company_Registration_API.Services
         //BaseResponse ConfirmEmail(string token, string email);
         ResLoginSystemUser ValidateUser(LoginDTO dto);
         ResGetAllSystemUsers GetAllSystemUsers();
+        ResRegSystemUser GetSystemUserById(long id);
+
     }
 }

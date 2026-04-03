@@ -1,0 +1,41 @@
+﻿@model List<Company_Registration.Models.DTO.CreateUpdateUserDto>
+
+<div class="mb-2 text-end">
+    <button class="btn btn-primary" onclick="openCreateUserModal()">Create User</button>
+</div>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th width="150">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.EmailAddress</td>
+                    <td>@user.UserRole</td>
+                    <td>
+                        <button class="btn btn-sm btn-warning" onclick="openEditUserModal(@user.Id)">Edit</button>
+                        @*<a href="@Url.Action("DeleteUser", "SystemUser", new { id = user.Id })" class="btn btn-sm btn-danger">Delete</a>*@
+                        <button class="btn btn-sm btn-danger" onclick="deleteUser(@user.Id)">Delete</button>
+
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr><td colspan="5" class="text-center">No users found</td></tr>
+        }
+    </tbody>
+</table>

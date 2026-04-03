@@ -82,6 +82,9 @@ D:\Git\Company-Registration\Company-Registration\Company-Registration\bin\Micros
 D:\Git\Company-Registration\Company-Registration\Company-Registration\obj\Debug\Company-.31064190.Up2Date
 D:\Git\Company-Registration\Company-Registration\Company-Registration\obj\Debug\Company-Registration.dll
 D:\Git\Company-Registration\Company-Registration\Company-Registration\obj\Debug\Company-Registration.pdb
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.App.config
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.AssemblyReference.cache
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.CoreCompileInputs.cache
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Company-Registration.dll.config
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Company-Registration.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Company-Registration.pdb
@@ -139,17 +142,26 @@ D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registratio
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Microsoft.Web.Infrastructure.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Newtonsoft.Json.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Net.Http.Extensions.dll
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Net.Http.Formatting.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Net.Http.Primitives.dll
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Threading.Tasks.Extensions.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Helpers.dll
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Http.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Mvc.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Optimization.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Razor.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.WebPages.Deployment.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.WebPages.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.WebPages.Razor.dll
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\WebActivatorEx.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\WebGrease.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Net.Http.Extensions.xml
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Net.Http.Formatting.xml
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Net.Http.Primitives.xml
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Threading.Tasks.Extensions.xml
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Http.xml
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Helpers.xml
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Mvc.xml
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Optimization.xml
@@ -160,18 +172,6 @@ D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registratio
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Newtonsoft.Json.xml
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Antlr3.Runtime.pdb
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.App.config
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.AssemblyReference.cache
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.CoreCompileInputs.cache
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-.31064190.Up2Date
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.pdb
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Runtime.CompilerServices.Unsafe.dll
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Threading.Tasks.Extensions.dll
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\WebActivatorEx.dll
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Runtime.CompilerServices.Unsafe.xml
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Threading.Tasks.Extensions.xml
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Net.Http.Formatting.dll
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Http.dll
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Net.Http.Formatting.xml
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\System.Web.Http.xml

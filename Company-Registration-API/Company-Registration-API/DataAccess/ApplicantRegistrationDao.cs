@@ -1,13 +1,9 @@
 ﻿using Company_Registration_API.Models;
-using Company_Registration_API.Models.CompanyApplicant;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Web;
 
 namespace Company_Registration_API.DataAccess
 {
@@ -100,7 +96,7 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw new ApiException(string.Format(CommonMessages.MSG_CREATE_FAIL, CommonConstants.TBLNAME_EMAIL_TOKEN));
             }

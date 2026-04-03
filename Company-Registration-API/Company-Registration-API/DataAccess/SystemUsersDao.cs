@@ -51,7 +51,7 @@ namespace Company_Registration_API.DataAccess
                 //Update case
                 if (dto.IsUpdate)
                 {
-                    user = db.SystemUsers.Where(u => u.Id == id).FirstOrDefault();
+                    user = db.SystemUsers.FirstOrDefault(u => u.Id == id);
                     if (user == null)
                     {
                         throw new ApiException(string.Format(CommonMessages.User_NOT_FOUND, CommonConstants.TBLNAME_USERS));
@@ -61,7 +61,12 @@ namespace Company_Registration_API.DataAccess
                 //common fields for both create and update
                 user.UserName = dto.UserName;
                 user.UserRole = dto.UserRole;
-                user.AccountStatus = dto.AccountStatus;
+                if (!string.IsNullOrEmpty(dto.AccountStatus))
+                {
+                    if (dto.AccountStatus != "ACTIVE" && dto.AccountStatus != "DISABLED")
+                        throw new ApiException("Invalid AccountStatus. Must be 'ACTIVE' or 'DISABLED'.");
+                    user.AccountStatus = dto.AccountStatus;
+                }
 
                 //update login
                 user.LastLoginAt = DateTime.UtcNow;
@@ -72,6 +77,7 @@ namespace Company_Registration_API.DataAccess
                     user.EmailAddress = dto.EmailAddress;
                     user.PasswordHash = hasher.Hash(dto.Password);
                     user.CreatedAt = DateTime.UtcNow;
+                    user.AccountStatus = string.IsNullOrEmpty(dto.AccountStatus) ? "ACTIVE" : dto.AccountStatus;
                     db.SystemUsers.Add(user);
                 }
 
@@ -86,6 +92,33 @@ namespace Company_Registration_API.DataAccess
             {
                 throw new ApiException(string.Format(CommonMessages.MSG_WRITE_FAIL, CommonConstants.TBLNAME_USERS));
             }
+        }
+        public CreateUserDto GetUserById(long id)
+        {
+            try
+            {
+                // Example using Entity Framework or in-memory
+                var user = db.SystemUsers.FirstOrDefault(u => u.Id == id);
+                if (user == null) return null;
+
+                return new CreateUserDto
+                {
+                    Id = user.Id,
+                    UserName = user.UserName,
+                    EmailAddress = user.EmailAddress,
+                    UserRole = user.UserRole,
+                    IsUpdate = false
+                };
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw new ApiException(string.Format(CommonMessages.MSG_WRITE_FAIL, CommonConstants.TBLNAME_USERS));
+            }
+            
         }
 
 
@@ -119,6 +152,7 @@ namespace Company_Registration_API.DataAccess
                 throw new ApiException(string.Format(CommonMessages.MSG_Delete_FAIL, CommonConstants.TBLNAME_USERS));
             }
         }
+
 
         internal LoginUserDto ValidateUser(LoginDTO dto)
         {

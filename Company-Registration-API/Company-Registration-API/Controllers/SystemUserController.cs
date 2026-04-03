@@ -28,6 +28,18 @@ namespace Company_Registration_API.Controllers
             var users = _systemUserService.GetAllSystemUsers();
             return Ok(users);
         }
+        // GET: api/SystemUser/GetUserById/5
+        [HttpGet]
+        [Route("CreateUser/{id}")]
+        public IHttpActionResult GetUserById(long id)
+        {
+            var user = _systemUserService.GetSystemUserById(id); // Service မှာ method လည်း လိုအပ်
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
 
 
         //Create/Update System User

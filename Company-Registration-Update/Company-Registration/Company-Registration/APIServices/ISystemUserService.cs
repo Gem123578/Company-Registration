@@ -12,5 +12,7 @@ namespace Company_Registration.APIServices
     {
         Task<ResponseDto> CreateUpdateSystemUser(int id, CreateUpdateUserDto dto);
         Task<ResponseDto> GetAllUsers();
+        Task<ResponseDto> GetUserById(int id);
+        Task<ResponseDto> DeleteUser(long userId);
     }
 }
