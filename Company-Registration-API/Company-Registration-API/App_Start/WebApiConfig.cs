@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Company_Registration_API
 {
@@ -13,7 +14,9 @@ namespace Company_Registration_API
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            // Cross-origin allow
+            var cors = new EnableCorsAttribute("https://localhost:44389", "*", "*");
+            config.EnableCors(cors);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

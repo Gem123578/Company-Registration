@@ -60,9 +60,20 @@ namespace Company_Registration_API.Controllers
         [Route("Login")]
         public IHttpActionResult Login([FromBody] LoginDTO dto)
         {
-            if (dto == null) return BadRequest("Email and password are required");
+
+            if (dto == null) return BadRequest("Email and password required");
 
             var response = _systemUserService.ValidateUser(dto);
+
+            if (response.Success)
+            {
+                // Session ထဲမှာ UserId သိမ်း
+                HttpContext.Current.Session["UserId"] = dto.Id;
+
+                // Cookie ထဲထည့် (optional)
+                HttpContext.Current.Response.Cookies.Add(new HttpCookie("UserId", dto.Id.ToString()));
+            }
+
             return Ok(response);
         }
 

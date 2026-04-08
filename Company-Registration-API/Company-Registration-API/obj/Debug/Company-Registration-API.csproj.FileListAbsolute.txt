@@ -126,3 +126,6 @@ D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-A
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\obj\Debug\Company-.8093F059.Up2Date
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\obj\Debug\Company-Registration-API.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\obj\Debug\Company-Registration-API.pdb
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Web.Cors.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Web.Http.Cors.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Web.Http.Cors.xml

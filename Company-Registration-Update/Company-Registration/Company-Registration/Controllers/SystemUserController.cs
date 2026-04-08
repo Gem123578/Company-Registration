@@ -78,7 +78,7 @@ namespace Company_Registration.Controllers
                     : "User created successfully.";
 
                 // Redirect to user list or details page
-                return Json(response.IsSuccess = true); // indicate success for AJAX
+                return Json(new { success = true, message = "Saved successfully" }); // indicate success for AJAX
             }
             catch (Exception ex)
             {
@@ -87,7 +87,7 @@ namespace Company_Registration.Controllers
             }
         }
         // DELETE: SystemUser/Delete/5
-        [HttpPost]
+        [HttpDelete]
         public async Task<ActionResult> DeleteUser(long id)
         {
             try
@@ -136,6 +136,11 @@ namespace Company_Registration.Controllers
                 return View(new List<CreateUpdateUserDto>());
             }
         }
+        public ActionResult Dashboard()
+        {
+            return View();
+        }
+
 
         //// GET: SystemUser
         //public ActionResult Profile()

@@ -82,9 +82,6 @@ D:\Git\Company-Registration\Company-Registration\Company-Registration\bin\Micros
 D:\Git\Company-Registration\Company-Registration\Company-Registration\obj\Debug\Company-.31064190.Up2Date
 D:\Git\Company-Registration\Company-Registration\Company-Registration\obj\Debug\Company-Registration.dll
 D:\Git\Company-Registration\Company-Registration\Company-Registration\obj\Debug\Company-Registration.pdb
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.App.config
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.AssemblyReference.cache
-D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.CoreCompileInputs.cache
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Company-Registration.dll.config
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Company-Registration.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Company-Registration.pdb
@@ -172,6 +169,9 @@ D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registratio
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Newtonsoft.Json.xml
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Antlr3.Runtime.pdb
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.App.config
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.AssemblyReference.cache
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.csproj.CoreCompileInputs.cache
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-.31064190.Up2Date
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.pdb

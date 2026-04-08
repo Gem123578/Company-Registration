@@ -54,13 +54,11 @@
                     <button class="menu-btn active" onclick="showContent('home', this)">Home Info</button>
                     <button class="menu-btn active" onclick="showContent('register', this)">How to Register</button>
 
-                    @* Re-register menu shown only for system users *@
                     @if (User.Identity.IsAuthenticated && (userRole != "APPLICANT"))
                     {
-                        <button class="menu-btn" onclick="loadSystemUsers(this)">
+                        <a href="@Url.Action("Dashboard", "SystemUser")" class="menu-btn">
                             Manage System User
-                        </button>
-
+                        </a>
 
                     }
                 </div>
@@ -94,112 +92,34 @@
                             <a href="@Url.Action("Register", "CompanyApplicant")" class="btn btn-primary-custom mt-3">Sign Up to Register</a>
                         }
                     </div>
-                    <div id="reregister" class="content">
-                        <h5>System Users</h5>
 
-                        <div id="systemUserContainer">
+                    @*<div id="reregister" class="content">
+                        <h5>System Users</h5>
+                        <div id="systemUserContainer"
+                             data-grid-url="@Url.Action("SystemUserGrid","SystemUser")"
+                             data-create-url="@Url.Action("CreateUpdatePartial","SystemUser")"
+                             data-delete-url="@Url.Action("DeleteUser","SystemUser")">
                             Loading users...
                         </div>
-                    </div>
+                    </div>*@
 
-                    <div class="modal fade" id="userModal" tabindex="-1">
+                    <!-- User Modal -->
+                    <!--<div class="modal fade" id="userModal" tabindex="-1">
                         <div class="modal-dialog">
                             <div class="modal-content" id="userModalContent"></div>
                         </div>
-                    </div>
-
-
+                    </div>-->
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
+    <!-- jQuery first -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="@Url.Content("~/Scripts/index.js")"></script>
 
-    <script>
-        function showContent(id, btn) {
-            ["home", "register", "reregister"].forEach(function (sec) {
-                document.getElementById(sec).classList.remove("active");
-            });
-            document.getElementById(id).classList.add("active");
-
-            document.querySelectorAll(".menu-btn").forEach(function (b) {
-                b.classList.remove("active");
-            });
-            btn.classList.add("active");
-        }
-
-        function loadSystemUsers(btn) {
-    ["home", "register", "reregister"].forEach(sec => {
-        document.getElementById(sec).classList.remove("active");
-    });
-
-    document.getElementById("reregister").classList.add("active");
-
-    document.querySelectorAll(".menu-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-
-    fetch('@Url.Action("SystemUserGrid", "SystemUser")')
-        .then(res => res.text())
-        .then(html => document.getElementById("systemUserContainer").innerHTML = html);
-}
-
-// Create User Modal
-function openCreateUserModal() {
-    fetch('@Url.Action("CreateUpdatePartial", "SystemUser")')
-        .then(res => res.text())
-        .then(html => showUserModal(html));
-}
-
-// Edit User Modal
-function openEditUserModal(userId) {
-    fetch('@Url.Action("CreateUpdatePartial", "SystemUser")?id=' + userId)
-        .then(res => res.text())
-        .then(html => showUserModal(html));
-}
-
-function showUserModal(html) {
-    document.getElementById("userModalContent").innerHTML = html;
-    var userModal = new bootstrap.Modal(document.getElementById('userModal'));
-    userModal.show();
-
-    // Bind form submit after modal content is loaded
-    var form = document.getElementById("userForm");
-    if (form) {
-        form.addEventListener("submit", function (e) {
-            e.preventDefault();
-            var formData = new FormData(form);
-            fetch(form.action, { method: "POST", body: formData })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.success) {
-                        userModal.hide();
-                        loadSystemUsers(document.querySelector(".menu-btn.active"));
-                    }
-                });
-        });
-    }
-        }
-function deleteUser(id) {
-
-    if (!confirm("Are you sure you want to delete this user?"))
-        return;
-
-    fetch('@Url.Action("DeleteUser", "SystemUser")?id=' + id, {
-    method: 'POST'})
-
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            alert(data.message);
-            location.reload();
-        } else {
-            alert(data.message);
-        }
-    });
-}
-
-    </script>
 </body>
 </html>
