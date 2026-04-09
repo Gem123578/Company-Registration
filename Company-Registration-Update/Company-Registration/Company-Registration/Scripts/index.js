@@ -58,28 +58,34 @@ function openEditUserModal(userId) {
 
 function deleteUser(id) {
 
-    if (!confirm("Are you sure you want to delete this user?"))
-        return;
+    if (!confirm("Are you sure you want to delete this user?")) return;
 
-    const url = `/api/SystemUser/DeleteUser/${id}`;
-
-    fetch(url, {
+    fetch('/api/SystemUser/DeleteUser/' + id, {
         method: 'DELETE',
-        credentials: 'include' // session/cookie အတွက်
+        credentials: 'include', // ensures session/cookie sent
+        headers: {
+            'Accept': 'application/json'
+        }
     })
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok) throw new Error("Server error " + res.status);
+            return res.json();
+        })
         .then(data => {
-            alert(data.Message || "Delete finished");
             if (data.IsSuccess) {
-                // user list refresh
-                loadSystemUsers();
+                const row = document.getElementById("row-" + id);
+                if (row) row.remove();
+                alert(data.Message || "User deleted successfully");
+            } else {
+                alert(data.Message || "Delete failed");
             }
         })
         .catch(err => {
-            console.error("Delete Error:", err);
-            alert("Delete failed");
+            console.error(err);
+            alert("Delete error: " + err.message);
         });
 }
+
 
 
 document.addEventListener("submit", function (e) {

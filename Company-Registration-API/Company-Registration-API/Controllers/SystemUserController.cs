@@ -65,15 +65,6 @@ namespace Company_Registration_API.Controllers
 
             var response = _systemUserService.ValidateUser(dto);
 
-            if (response.Success)
-            {
-                // Session ထဲမှာ UserId သိမ်း
-                HttpContext.Current.Session["UserId"] = dto.Id;
-
-                // Cookie ထဲထည့် (optional)
-                HttpContext.Current.Response.Cookies.Add(new HttpCookie("UserId", dto.Id.ToString()));
-            }
-
             return Ok(response);
         }
 
