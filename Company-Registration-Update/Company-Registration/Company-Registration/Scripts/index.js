@@ -1,13 +1,16 @@
 ﻿function showContent(sectionId, btn) {
     ["home", "register", "reregister"].forEach(sec => {
-        document.getElementById(sec).classList.remove("active");
+        const el = document.getElementById(sec);
+        if (el) el.classList.remove("active");
     });
 
-    document.getElementById(sectionId).classList.add("active");
+    const sectionEl = document.getElementById(sectionId);
+    if (sectionEl) sectionEl.classList.add("active");
 
     document.querySelectorAll(".menu-btn").forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+    if (btn) btn.classList.add("active");
 }
+
 
 function loadSystemUsers(btn) {
     // Remove active class from sections if they exist
@@ -57,12 +60,17 @@ function openEditUserModal(userId) {
 }
 
 function deleteUser(id) {
-
     if (!confirm("Are you sure you want to delete this user?")) return;
 
-    fetch('/api/SystemUser/DeleteUser/' + id, {
-        method: 'DELETE',
-        credentials: 'include', // ensures session/cookie sent
+    // Get the URL from dataset to keep it dynamic like create/update
+    const container = document.getElementById("systemUserContainer");
+    if (!container) return;
+
+    const url = container.dataset.deleteUrl + "/" + id; // dataset.deleteUrl should be set in Razor
+
+    fetch(url, {
+        method: 'POST', // matches your MVC controller
+        credentials: 'include',
         headers: {
             'Accept': 'application/json'
         }
@@ -72,12 +80,23 @@ function deleteUser(id) {
             return res.json();
         })
         .then(data => {
-            if (data.IsSuccess) {
+            if (data.success) {
+                // Remove row from table
                 const row = document.getElementById("row-" + id);
                 if (row) row.remove();
-                alert(data.Message || "User deleted successfully");
+
+                // Optional: show message like create/update
+                const alertContainer = document.getElementById("alertContainer");
+                if (alertContainer) {
+                    alertContainer.innerHTML = `<div class="alert alert-success">${data.message || "User deleted successfully"}</div>`;
+                    setTimeout(() => alertContainer.innerHTML = '', 3000);
+                }
+
+                // Refresh grid
+                loadSystemUsers();
+
             } else {
-                alert(data.Message || "Delete failed");
+                alert(data.message || "Delete failed");
             }
         })
         .catch(err => {
@@ -85,7 +104,6 @@ function deleteUser(id) {
             alert("Delete error: " + err.message);
         });
 }
-
 
 
 document.addEventListener("submit", function (e) {

@@ -49,16 +49,44 @@ namespace Company_Registration.Controllers
             {
                 return View(model);
             }
+                       
+            int applicantId = 0;
+            int systemUserId = 0;
 
-            string applicantIdString = User.Identity.IsAuthenticated? ((FormsIdentity)User.Identity).Ticket.UserData: null;
+            // Check Login
+            if (User.Identity.IsAuthenticated)
+            {
+                var identity = User.Identity as FormsIdentity;
 
-            if (string.IsNullOrEmpty(applicantIdString) || !int.TryParse(applicantIdString, out int applicantId))
+                if (identity != null)
+                {
+                    string userData = identity.Ticket.UserData;
+
+                    if (!string.IsNullOrEmpty(userData))
+                    {
+                        var data = userData.Split('|');
+
+                        if (data.Length == 2)
+                        {
+                            int userId = Convert.ToInt32(data[0]);
+                            string role = data[1];
+
+                            if (role == "APPLICANT")
+                                applicantId = userId;
+                            else
+                                systemUserId = userId;
+                        }
+                    }
+                }
+            }
+            else
             {
                 ModelState.AddModelError("", "Please Login");
                 return View(model);
             }
 
             model.ApplicantId = applicantId;
+            model.UserId = systemUserId;
 
 
             // 1️⃣ Upload File

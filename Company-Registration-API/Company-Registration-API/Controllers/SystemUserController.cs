@@ -69,7 +69,7 @@ namespace Company_Registration_API.Controllers
         }
 
         
-        [HttpDelete]
+        [HttpPost]
         [Route("DeleteUser/{id}")]
         public IHttpActionResult DeleteUser(long id)
         {

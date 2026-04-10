@@ -42,9 +42,9 @@ namespace Company_Registration.Models
         [Required]
         [Display(Name = "Registration Status")]
         public string RegistrationStatus { get; set; } = "PENDING";
-
-        [Required]
         public long ApplicantId { get; set; }
+        public long UserId { get; set; }
+        public bool IsSystemUser { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 

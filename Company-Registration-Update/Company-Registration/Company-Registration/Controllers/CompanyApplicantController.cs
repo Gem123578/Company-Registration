@@ -89,7 +89,6 @@ namespace Company_Registration.Controllers
                     return View(model);
                 }
 
-                //  Deserialize as common DTO
                 var user = JsonConvert.DeserializeObject<LoginUserDTO>(response.Data.ToString());
 
                 if (user == null)
@@ -98,25 +97,36 @@ namespace Company_Registration.Controllers
                     return View(model);
                 }
 
-                // 🔸 Save Session
+                // 🔹 Save Session
                 Session["UserId"] = user.UserId;
                 Session["UserName"] = user.UserName;
                 Session["UserRole"] = user.UserRole;
 
-                // 🔸 FormsAuthentication
+                // Applicant session
+                if (user.UserRole == "APPLICANT")
+                {
+                    Session["ApplicantId"] = user.UserId;
+                }
+
+                // 🔹 Store UserId + Role in Ticket
+                string userData = user.UserId + "|" + user.UserRole;
+
                 var authTicket = new FormsAuthenticationTicket(
-                                    1,
-                                    user.UserName,
-                                    DateTime.Now,
-                                    model.RememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddMinutes(30),
-                                    model.RememberMe,
-                                    user.UserRole // 🔥 store role
-                                    );
+                    1,
+                    user.UserName,
+                    DateTime.Now,
+                    model.RememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddMinutes(30),
+                    model.RememberMe,
+                    userData
+                );
 
                 var encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-                Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket));
 
-                // Redirect by role
+                Response.Cookies.Add(
+                    new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
+                );
+
+                // 🔹 Redirect by Role
                 if (user.UserRole == "ADMIN" || user.UserRole == "OFFICER")
                 {
                     return RedirectToAction("Index", "Home");
@@ -127,19 +137,14 @@ namespace Company_Registration.Controllers
                 }
 
                 return RedirectToAction("Index", "Home");
-
-            }
-            catch (ApiException)
-            {
-                throw;
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("", "Error: " + ex.Message);
                 return View(model);
             }
-            
         }
+
 
 
         // Logout

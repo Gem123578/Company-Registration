@@ -19,100 +19,130 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                var existingApplicant = db.RegisteredCompanies.FirstOrDefault(x => x.ApplicantId == dto.ApplicantId);
+                if(dto.ApplicantId == 0) 
+                {
+                    dto.ApplicantId = 0;
+                }
+                dto.UserId = 0;
 
-                if (existingApplicant != null)
+                if (db.RegisteredCompanies.Any(x => x.ApplicantId == dto.ApplicantId))
                 {
                     throw new ApiException(CommonMessages.MSG_APPLICANT_EXIST);
                 }
 
-                // ========== 1. Company ==========
-                var company = new RegisteredCompany
-                {
-                    CompanyName = dto.CompanyName,
-                    RegistrationNumber = dto.RegistrationNumber,
-                    CompanyType = dto.CompanyType,
-                    BusinessActivity = dto.BusinessActivity,
-                    RegisteredAddress = dto.RegisteredAddress,
-                    RegistrationStatus = dto.RegistrationStatus ?? "PENDING",
-                    ApplicantId = dto.ApplicantId,
-                    IncorporationDate = dto.IncorporationDate,
-                    CreatedAt = DateTime.Now
-                };
+                // 1. Company save
+                var company = SaveCompany(db, dto);
 
-                db.RegisteredCompanies.Add(company);
-                db.SaveChanges();
-
-                // ========== 2. Share Capital ==========
+                // 2. Share Capital save
                 if (dto.ShareCapital != null)
-                {
-                    db.CompanyShareCapital.Add(new CompanyShareCapital
-                    {
-                        CompanyId = company.Id,
-                        AuthorizedShareCapital = dto.ShareCapital.AuthorizedShareCapital,
-                        IssuedShareCapital = dto.ShareCapital.IssuedShareCapital,
-                        PaidUpShareCapital = dto.ShareCapital.PaidUpShareCapital,
-                        ShareCurrency = dto.ShareCapital.ShareCurrency,
-                        CreatedAt = DateTime.Now
-                    });
-                }
+                    SaveShareCapital(db, dto.ShareCapital, company.Id);
 
-                // ========== 3. Shareholders ==========
+                // 3. Shareholders save
                 if (dto.Shareholders != null)
-                {
-                    foreach (var sh in dto.Shareholders)
-                    {
-                        db.CompanyShareholders.Add(new CompanyShareholder
-                        {
-                            CompanyId = company.Id,
-                            ShareholderName = sh.ShareholderName,
-                            ShareholderType = sh.ShareholderType,
-                            Nationality = sh.Nationality,
-                            IdentityNumber = sh.IdentityNumber,
-                            NumberOfShares = sh.NumberOfShares,
-                            SharePercentage = sh.SharePercentage,
-                            EmailAddress = sh.EmailAddress,
-                            CreatedAt = DateTime.Now
-                        });
-                    }
-                }
+                    SaveShareholders(db, dto.Shareholders, company.Id);
 
-                // ========== 4. UHC ==========
+                // 4. UHC save
                 if (dto.UHC != null)
-                {
-                    db.UltimateHoldingCompanies.Add(new UltimateHoldingCompany
-                    {
-                        CompanyId = company.Id,
-                        UHCName = dto.UHC.UHCName,
-                        RegistrationNumber = dto.UHC.RegistrationNumber,
-                        CountryOfIncorporation = dto.UHC.CountryOfIncorporation,
-                        OwnershipPercentage = dto.UHC.OwnershipPercentage,
-                        CreatedAt = DateTime.Now
-                    });
-                }
+                    SaveUHC(db, dto.UHC, company.Id);
 
-                // ========== 5. Constitution ==========
+                // 5. Constitution save
                 if (dto.Constitution != null)
-                {
-                    db.CompanyConstitutions.Add(new CompanyConstitution
-                    {
-                        CompanyId = company.Id,
-                        ConstitutionType = dto.Constitution.ConstitutionType,
-                        ConstitutionFilePath = dto.Constitution.ConstitutionFilePath,
-                        UploadedAt = DateTime.Now
-                    });
-                }
-
-                db.SaveChanges();
+                    SaveConstitution(db, dto.Constitution, company.Id);
 
                 return company.Id;
-
             }
             catch (ApiException)
             {
                 throw new ApiException(CommonMessages.MSG_APPLICANT_EXIST);
             }
         }
-                
+        public RegisteredCompany SaveCompany(ApplicantDbContext context, CompanyRegistrationDTO dto)
+        {
+            var company = new RegisteredCompany
+            {
+                CompanyName = dto.CompanyName,
+                RegistrationNumber = dto.RegistrationNumber,
+                CompanyType = dto.CompanyType,
+                BusinessActivity = dto.BusinessActivity,
+                RegisteredAddress = dto.RegisteredAddress,
+                RegistrationStatus = dto.RegistrationStatus ?? "PENDING",
+                ApplicantId = dto.ApplicantId,
+                IncorporationDate = dto.IncorporationDate,
+                CreatedAt = DateTime.Now
+            };
+
+            context.RegisteredCompanies.Add(company);
+            context.SaveChanges(); // Save company to get Id
+            return company;
+        }
+
+        public void SaveShareCapital(ApplicantDbContext context, CompanyShareCapitalDTO shareCapital, long companyId)
+        {
+            var entity = new CompanyShareCapital
+            {
+                CompanyId = companyId,
+                AuthorizedShareCapital = shareCapital.AuthorizedShareCapital,
+                IssuedShareCapital = shareCapital.IssuedShareCapital,
+                PaidUpShareCapital = shareCapital.PaidUpShareCapital,
+                ShareCurrency = shareCapital.ShareCurrency,
+                CreatedAt = DateTime.Now
+            };
+
+            context.CompanyShareCapital.Add(entity);
+            context.SaveChanges();
+        }
+
+        public void SaveShareholders(ApplicantDbContext context, List<CompanyShareholderDTO> shareholders, long companyId)
+        {
+            foreach (var sh in shareholders)
+            {
+                var entity = new CompanyShareholder
+                {
+                    CompanyId = companyId,
+                    ShareholderName = sh.ShareholderName,
+                    ShareholderType = sh.ShareholderType,
+                    Nationality = sh.Nationality,
+                    IdentityNumber = sh.IdentityNumber,
+                    NumberOfShares = sh.NumberOfShares,
+                    SharePercentage = sh.SharePercentage,
+                    EmailAddress = sh.EmailAddress,
+                    CreatedAt = DateTime.Now
+                };
+
+                context.CompanyShareholders.Add(entity);
+                context.SaveChanges();
+            }
+        }
+
+        public void SaveUHC(ApplicantDbContext context, UltimateHoldingCompanyDTO uhc, long companyId)
+        {
+            var entity = new UltimateHoldingCompany
+            {
+                CompanyId = companyId,
+                UHCName = uhc.UHCName,
+                RegistrationNumber = uhc.RegistrationNumber,
+                CountryOfIncorporation = uhc.CountryOfIncorporation,
+                OwnershipPercentage = uhc.OwnershipPercentage,
+                CreatedAt = DateTime.Now
+            };
+
+            context.UltimateHoldingCompanies.Add(entity);
+            context.SaveChanges();
+        }
+
+        public void SaveConstitution(ApplicantDbContext context, CompanyConstitutionDTO constitution, long companyId)
+        {
+            var entity = new CompanyConstitution
+            {
+                CompanyId = companyId,
+                ConstitutionType = constitution.ConstitutionType,
+                ConstitutionFilePath = constitution.ConstitutionFilePath,
+                UploadedAt = DateTime.Now
+            };
+
+            context.CompanyConstitutions.Add(entity);
+            context.SaveChanges();
+        }
     }
+
 }

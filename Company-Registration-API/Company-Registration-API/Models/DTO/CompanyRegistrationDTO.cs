@@ -14,6 +14,7 @@ namespace Company_Registration_API.Models
         public string RegisteredAddress { get; set; }
         public string RegistrationStatus { get; set; } // PENDING, APPROVED, REJECTED
         public long ApplicantId { get; set; }
+        public long UserId { get; set; }
         public DateTime IncorporationDate { get; set; }
         public DateTime CreatedAt { get; set; }
         // ================= Share Capital =================

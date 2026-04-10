@@ -87,7 +87,8 @@ namespace Company_Registration.Controllers
             }
         }
         // DELETE: SystemUser/Delete/5
-        [HttpDelete]
+        [HttpPost]
+        [Route("SystemUser/DeleteUser/{id}")]
         public async Task<ActionResult> DeleteUser(long id)
         {
             try

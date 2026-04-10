@@ -128,7 +128,7 @@ namespace Company_Registration.APIServices
                 var reqDto = ModelConverter.CreateRequestDto(
                     new {  userId }, // body or parameters if your API expects JSON
                     ApiHelpers.BaseUrl,
-                    $"api/SystemUser/DeleteUser?"+userId,
+                    $"api/SystemUser/DeleteUser/"+userId,
                     eHTTPRequestType.POST // using POST for deletion to include body
                 );
 
