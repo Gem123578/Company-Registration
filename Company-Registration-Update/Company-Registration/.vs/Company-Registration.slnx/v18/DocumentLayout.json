@@ -3,7 +3,11 @@
   "WorkspaceRootPath": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration-update\\company-registration\\company-registration\\controllers\\companyregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration-update\\company-registration\\company-registration\\controllers\\companyapplicantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\controllers\\companyapplicantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\controllers\\companyregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\controllers\\companyregistrationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\controllers\\systemusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\controllers\\systemusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\controllers\\companyapplicantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\controllers\\companyapplicantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\views\\companyregistration\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -54,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,19 +66,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "CompanyApplicantController.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Controllers\\CompanyApplicantController.cs",
               "RelativeDocumentMoniker": "Company-Registration\\Controllers\\CompanyApplicantController.cs",
               "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Controllers\\CompanyApplicantController.cs",
               "RelativeToolTip": "Company-Registration\\Controllers\\CompanyApplicantController.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAiwJIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAqwKIAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T06:22:28.823Z"
+              "WhenOpened": "2026-04-09T06:22:28.823Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "CompanyRegistrationService.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\APIServices\\CompanyRegistrationService.cs",
               "RelativeDocumentMoniker": "Company-Registration\\APIServices\\CompanyRegistrationService.cs",
@@ -90,7 +91,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "SystemUserController.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Controllers\\SystemUserController.cs",
               "RelativeDocumentMoniker": "Company-Registration\\Controllers\\SystemUserController.cs",
@@ -102,16 +103,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "CompanyRegistrationController.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Controllers\\CompanyRegistrationController.cs",
               "RelativeDocumentMoniker": "Company-Registration\\Controllers\\CompanyRegistrationController.cs",
               "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Controllers\\CompanyRegistrationController.cs",
               "RelativeToolTip": "Company-Registration\\Controllers\\CompanyRegistrationController.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAAAF0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAADMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T05:10:45.792Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-09T05:10:45.792Z"
             },
             {
               "$type": "Document",

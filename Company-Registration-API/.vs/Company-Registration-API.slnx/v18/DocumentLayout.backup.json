@@ -3,7 +3,7 @@
   "WorkspaceRootPath": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\services\\systemuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\services\\systemuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\services\\systemuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -15,7 +15,7 @@
       "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\services\\isystemuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\controllers\\systemusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\controllers\\systemusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\controllers\\systemusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -31,7 +31,7 @@
       "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\dataaccess\\companyregistrationdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\models\\dto\\companyregistrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\models\\dto\\companyregistrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\dto\\companyregistrationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -150,8 +150,7 @@
               "RelativeToolTip": "Company-Registration-API\\Controllers\\SystemUserController.cs",
               "ViewState": "AgIAADYAAAAAAAAAAADwv0EAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T04:00:33.205Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T04:00:33.205Z"
             },
             {
               "$type": "Document",
@@ -163,8 +162,7 @@
               "RelativeToolTip": "Company-Registration-API\\Services\\ISystemUserService.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAcwA8AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T04:02:16.227Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T04:02:16.227Z"
             },
             {
               "$type": "Document",
@@ -174,7 +172,7 @@
               "RelativeDocumentMoniker": "Company-Registration-API\\Services\\SystemUserService.cs",
               "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Services\\SystemUserService.cs",
               "RelativeToolTip": "Company-Registration-API\\Services\\SystemUserService.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAYwIUAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAYwIoAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-24T04:42:01.896Z",
               "EditorCaption": ""
@@ -189,8 +187,7 @@
               "RelativeToolTip": "Company-Registration-API\\DataAccess\\SystemUsersDao.cs",
               "ViewState": "AgIAALUAAAAAAAAAAAAYwJwAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T04:26:14.003Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-30T04:26:14.003Z"
             },
             {
               "$type": "Document",
@@ -202,8 +199,7 @@
               "RelativeToolTip": "Company-Registration-API\\Controllers\\CompanyApplicantsController.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAAC4AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T03:58:42.102Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T03:58:42.102Z"
             },
             {
               "$type": "Document",
@@ -215,8 +211,7 @@
               "RelativeToolTip": "Company-Registration-API\\Controllers\\CompanyRegistrationController.cs",
               "ViewState": "AgIAABcAAAAAAAAAAAAQwCYAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T05:25:32.574Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T05:25:32.574Z"
             },
             {
               "$type": "Document",
@@ -228,8 +223,7 @@
               "RelativeToolTip": "Company-Registration-API\\DataAccess\\CompanyRegistrationDao.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAD4vxcAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T06:11:58.757Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-25T06:11:58.757Z"
             },
             {
               "$type": "Document",
@@ -241,8 +235,7 @@
               "RelativeToolTip": "Company-Registration-API\\Services\\CompanyRegistrationService.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAowCUAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T09:00:32.627Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T09:00:32.627Z"
             },
             {
               "$type": "Document",
@@ -254,8 +247,7 @@
               "RelativeToolTip": "Company-Registration-API\\Models\\DTO\\CompanyRegistrationDTO.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAqwAcAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-09T05:37:09.926Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-09T05:37:09.926Z"
             },
             {
               "$type": "Document",
@@ -316,8 +308,7 @@
               "RelativeToolTip": "Company-Registration-API\\Utils\\EmailHelper.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwAwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T02:48:33.492Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-01T02:48:33.492Z"
             },
             {
               "$type": "Document",
