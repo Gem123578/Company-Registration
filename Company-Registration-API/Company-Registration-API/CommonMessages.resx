@@ -129,6 +129,15 @@
   <data name="MSG_DISABLE_ACC" xml:space="preserve">
     <value>Account is disabled</value>
   </data>
+  <data name="MSG_EMAIL_EXIST" xml:space="preserve">
+    <value>Email already exists</value>
+  </data>
+  <data name="MSG_EXIST_NRC" xml:space="preserve">
+    <value>Exist NRC No</value>
+  </data>
+  <data name="MSG_EXIST_PHNO" xml:space="preserve">
+    <value>Exist PhoneNumber</value>
+  </data>
   <data name="MSG_INVALID_PASS" xml:space="preserve">
     <value>Invalid Password</value>
   </data>
@@ -139,7 +148,10 @@
     <value>Email confirm first for</value>
   </data>
   <data name="MSG_READ_FAIL" xml:space="preserve">
-    <value>Read Fail</value>
+    <value>Fail to read</value>
+  </data>
+  <data name="MSG_REQUIRED_FIELD" xml:space="preserve">
+    <value>Required field for</value>
   </data>
   <data name="MSG_WRITE_FAIL" xml:space="preserve">
     <value>Adding fail.</value>

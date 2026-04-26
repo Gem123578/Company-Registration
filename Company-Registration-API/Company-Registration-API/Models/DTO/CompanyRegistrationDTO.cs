@@ -7,14 +7,15 @@ namespace Company_Registration_API.Models
 {
     public class CompanyRegistrationDTO
     {
+        public long Id { get; set; }
         public string CompanyName { get; set; }
         public string RegistrationNumber { get; set; }
         public string CompanyType { get; set; } // LLC, PLC, Partnership
         public string BusinessActivity { get; set; }
         public string RegisteredAddress { get; set; }
         public string RegistrationStatus { get; set; } // PENDING, APPROVED, REJECTED
-        public long ApplicantId { get; set; }
-        public long UserId { get; set; }
+        public long? ApplicantId { get; set; }
+        public long? UserId { get; set; }
         public DateTime IncorporationDate { get; set; }
         public DateTime CreatedAt { get; set; }
         // ================= Share Capital =================
@@ -24,7 +25,7 @@ namespace Company_Registration_API.Models
         public List<CompanyShareholderDTO> Shareholders { get; set; }
 
         // ================= Company Stakeholders (Directors/Secretaries) =================
-        public List<CompanyStakeholderDTO> CompanyStakeholders { get; set; }
+        //public List<CompanyStakeholderDTO> CompanyStakeholders { get; set; }
 
         // ================= Ultimate Holding Company =================
         public UltimateHoldingCompanyDTO UHC { get; set; }

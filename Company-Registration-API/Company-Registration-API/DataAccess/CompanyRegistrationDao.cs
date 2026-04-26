@@ -15,6 +15,131 @@ namespace Company_Registration_API.DataAccess
         {
             db = new ApplicantDbContext();
         }
+
+        //Get company registration
+        internal List<CompanyRegistrationDTO> GetAll()
+        {
+            try
+            {
+                var list = db.RegisteredCompanies
+                    .Select(x => new CompanyRegistrationDTO
+                    {
+                        Id = x.Id,
+                        CompanyName = x.CompanyName,
+                        RegistrationNumber = x.RegistrationNumber,
+                        CompanyType = x.CompanyType,
+                        BusinessActivity = x.BusinessActivity,
+                        RegisteredAddress = x.RegisteredAddress,
+                        RegistrationStatus = x.RegistrationStatus,
+                        ApplicantId = x.ApplicantId,
+                        UserId = x.UserId,
+                        IncorporationDate = x.IncorporationDate,
+                        CreatedAt = x.CreatedAt
+                    })
+                    .OrderByDescending(x => x.Id)
+                    .ToList();
+
+                return list;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw new ApiException(CommonMessages.MSG_READ_FAIL);
+            }
+        }
+
+        // GET BY ID
+        internal CompanyRegistrationDTO GetById(long id)
+        {
+            try
+            {
+                var x = db.RegisteredCompanies.FirstOrDefault(c => c.Id == id);
+
+                if (x == null) return null;
+
+                return new CompanyRegistrationDTO
+                {
+                    Id = x.Id,
+                    CompanyName = x.CompanyName,
+                    RegistrationNumber = x.RegistrationNumber,
+                    CompanyType = x.CompanyType,
+                    BusinessActivity = x.BusinessActivity,
+                    RegisteredAddress = x.RegisteredAddress,
+                    RegistrationStatus = x.RegistrationStatus,
+                    ApplicantId = x.ApplicantId,
+                    UserId = x.UserId,
+                    IncorporationDate = x.IncorporationDate,
+                    CreatedAt = x.CreatedAt
+                };
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw new ApiException("Failed to get company");
+            }
+        }
+        // UPDATE
+        internal RegisteredCompany UpdateCompany(long id, CompanyRegistrationDTO dto)
+        {
+            try
+            {
+                var company = db.RegisteredCompanies.FirstOrDefault(x => x.Id == id);
+
+                if (company == null)
+                {
+                    throw new ApiException("Company not found");
+                }
+
+                company.CompanyName = dto.CompanyName;
+                company.CompanyType = dto.CompanyType;
+                company.BusinessActivity = dto.BusinessActivity;
+                company.RegisteredAddress = dto.RegisteredAddress;
+                company.RegistrationStatus = dto.RegistrationStatus;
+                company.IncorporationDate = dto.IncorporationDate;
+
+                db.SaveChanges();
+                return company;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw new ApiException("Failed to update company");
+            }
+        }
+
+        //  DELETE
+        internal void DeleteCompany(long id)
+        {
+            try
+            {
+                var company = db.RegisteredCompanies.FirstOrDefault(x => x.Id == id);
+
+                if (company == null)
+                {
+                    throw new ApiException("Company not found");
+                }
+
+                db.RegisteredCompanies.Remove(company);
+                db.SaveChanges();
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw new ApiException(CommonMessages.MSG_Delete_FAIL);
+            }
+        }
         public long CreateCompanyRegistration(CompanyRegistrationDTO dto)
         {
             try
@@ -53,6 +178,10 @@ namespace Company_Registration_API.DataAccess
             }
             catch (ApiException)
             {
+                throw;
+            }
+            catch (Exception)
+            {
                 throw new ApiException(CommonMessages.MSG_APPLICANT_EXIST);
             }
         }
@@ -66,7 +195,8 @@ namespace Company_Registration_API.DataAccess
                 BusinessActivity = dto.BusinessActivity,
                 RegisteredAddress = dto.RegisteredAddress,
                 RegistrationStatus = dto.RegistrationStatus ?? "PENDING",
-                ApplicantId = dto.ApplicantId,
+                ApplicantId = dto.ApplicantId == 0 ? (long?)null : dto.ApplicantId,
+                UserId = dto.UserId == 0 ? (long?)null : dto.UserId,
                 IncorporationDate = dto.IncorporationDate,
                 CreatedAt = DateTime.Now
             };

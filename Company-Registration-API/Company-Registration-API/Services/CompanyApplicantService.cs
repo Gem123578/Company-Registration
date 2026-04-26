@@ -3,10 +3,12 @@ using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyApplicant;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
+using QPSOS.Web.API.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 
 namespace Company_Registration_API.Services
@@ -25,37 +27,37 @@ namespace Company_Registration_API.Services
         public RegisterResponse Register(ApplicantRegisterDTO dto)
         {
             var response = new RegisterResponse();
-            
 
-            if (_dao.IsEmailExist(dto.EmailAddress))
+            using (TransactionScope transaction = BaseDao.GetReadUncommittedScope()) 
             {
-                response.Success = false;
-                response.Message = "Email already exists";
+                _dao.IsEmailExist(dto.EmailAddress);
+                _dao.ValidateIdentityNumber(dto.IdentityNumber);
+                _dao.ValidatePhoneNumber(dto.PhoneNumber);
+                //all check
+
+                var applicant = _dao.CreateApplicant(dto);
+                var tokenString = applicant.EmailToken.FirstOrDefault()?.Token;
+
+                if (string.IsNullOrEmpty(tokenString))
+                {
+                    throw new Exception("No email confirmation token found");
+                }
+                // confirmation link
+                string confirmLink = $"{baseUrl}/api/companyapplicants/confirm-email?token={tokenString}&email={dto.EmailAddress}";
+
+                // send email
+                EmailHelper.SendConfirmationEmail(dto.EmailAddress, confirmLink);
+
+
+                response.Message = "Registration successful";
+                response.Success = true;
+                response.Data = applicant;
+
                 return response;
+
             }
-            if (string.IsNullOrWhiteSpace(dto.Password))
-                throw new Exception("Password is required");
+
             
-
-            var applicantDto = _dao.CreateApplicant(dto);
-            var tokenString = applicantDto.EmailToken.FirstOrDefault()?.Token;
-
-            if (string.IsNullOrEmpty(tokenString))
-            {
-                throw new Exception("No email confirmation token found");
-            }
-            // confirmation link
-            string confirmLink = $"{baseUrl}/api/companyapplicants/confirm-email?token={tokenString}&email={dto.EmailAddress}";
-
-            // send email
-            EmailHelper.SendConfirmationEmail(dto.EmailAddress, confirmLink);
-
-
-            response.Message = "Registration successful";
-            response.Success = true;
-            response.Data = applicantDto;
-
-            return response;
         }
 
         //public LoginResponse Login(LoginDTO dto)

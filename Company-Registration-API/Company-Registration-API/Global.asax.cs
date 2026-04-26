@@ -1,5 +1,7 @@
-﻿using System;
+﻿using log4net.Config;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -18,6 +20,7 @@ namespace Company_Registration_API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/log4net.config")));
         }
     }
 }

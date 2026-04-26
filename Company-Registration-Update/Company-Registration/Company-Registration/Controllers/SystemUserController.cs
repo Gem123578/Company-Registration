@@ -35,6 +35,12 @@ namespace Company_Registration.Controllers
         {
             var model = new CreateUpdateUserDto();
 
+            ViewBag.RoleList = new List<object>
+            {
+                new { Id = 1, RoleName = "ADMIN" },
+                new { Id = 2, RoleName = "OFFICER" }
+            };
+
             if (id > 0)
             {
                 // Get user by ID from API
@@ -94,8 +100,8 @@ namespace Company_Registration.Controllers
             try
             {
                 // Get the current logged-in user's ID from session or claims
-                var loginUserId = Convert.ToInt64(Session["UserId"]); // adjust if you store it differently
-
+                // adjust if you store it differently
+                var loginUserId = Convert.ToInt64(Session["UserId"]);
                 // Call service to delete
                 var response = await _systemUserService.DeleteUser(id);
 

@@ -10,6 +10,6 @@ namespace Company_Registration_API.Models.CompanyApplicant
     public class RegisterResponse : ResultBase
     {
         [JsonProperty("data")]
-        public CompanyAplicantDto Data { get; set; }
+        public CompanyApplicantDto Data { get; set; }
     }
 }

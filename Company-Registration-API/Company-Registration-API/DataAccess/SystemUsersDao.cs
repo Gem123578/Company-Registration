@@ -23,11 +23,13 @@ namespace Company_Registration_API.DataAccess
             try
             {
                 var users = db.SystemUsers
+                    .Where(u => u.AccountStatus == "ACTIVE")
                     .Select(u => new CreateUserDto
                     {
                         Id = u.Id,
                         UserName = u.UserName,
-                        UserRole = u.UserRole,
+                        RoleName = u.Role.RoleName,
+                        RoleId = u.RoleId,
                         AccountStatus = u.AccountStatus,
                         EmailAddress = u.EmailAddress
                     })
@@ -60,7 +62,7 @@ namespace Company_Registration_API.DataAccess
 
                 //common fields for both create and update
                 user.UserName = dto.UserName;
-                user.UserRole = dto.UserRole;
+                user.RoleId = dto.RoleId;
                 if (!string.IsNullOrEmpty(dto.AccountStatus))
                 {
                     if (dto.AccountStatus != "ACTIVE" && dto.AccountStatus != "DISABLED")
@@ -106,7 +108,7 @@ namespace Company_Registration_API.DataAccess
                     Id = user.Id,
                     UserName = user.UserName,
                     EmailAddress = user.EmailAddress,
-                    UserRole = user.UserRole,
+                    RoleId = user.RoleId,
                     IsUpdate = false
                 };
             }
@@ -122,7 +124,7 @@ namespace Company_Registration_API.DataAccess
         }
 
 
-        internal void DeleteUser(long loginUserId, long id)
+        internal void DeleteUser(long id)
         {
             try
             {
@@ -133,7 +135,7 @@ namespace Company_Registration_API.DataAccess
                 }
 
                 //Prevent self delete
-                if (user.Id == loginUserId)
+                if (user.Id == 0)
                 {
                     throw new ApiException("Users cannot delete themselves.");
                 }
@@ -156,13 +158,24 @@ namespace Company_Registration_API.DataAccess
 
         internal LoginUserDto ValidateUser(LoginDTO dto)
         {
-            var response = new LoginResponse();
+            LoginResponse response = new LoginResponse();
             try
             {
                 PasswordHasher hasher = new PasswordHasher();
 
-                // Check SystemUsers first
-                var sysUser = db.SystemUsers.FirstOrDefault(x => x.EmailAddress == dto.EmailAddress);
+                // Check SystemUsers first (JOIN with Roles)
+                var sysUser = db.SystemUsers
+                    .Where(x => x.EmailAddress == dto.EmailAddress)
+                    .Select(u => new
+                    {
+                        u.Id,
+                        u.UserName,
+                        u.PasswordHash,
+                        u.AccountStatus,
+                        RoleName = u.Role.RoleName,   // ✅ get from Roles table
+                        RoleId = u.RoleId
+                    })
+                    .FirstOrDefault();
 
                 if (sysUser != null)
                 {
@@ -180,7 +193,7 @@ namespace Company_Registration_API.DataAccess
                     {
                         UserId = sysUser.Id,
                         UserName = sysUser.UserName,
-                        UserRole = sysUser.UserRole
+                        UserRole = sysUser.RoleName
                     };
                 }
 

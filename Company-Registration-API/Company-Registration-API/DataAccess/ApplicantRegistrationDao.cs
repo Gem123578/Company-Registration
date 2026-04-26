@@ -1,60 +1,39 @@
-﻿using Company_Registration_API.Models;
+﻿using Company_Registration_API.Controllers;
+using Company_Registration_API.Models;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
+using log4net;
+using QPSOS.Web.API.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
+using System.Web.Helpers;
 
 namespace Company_Registration_API.DataAccess
 {
     public class ApplicantRegistrationDao
     {
+        private readonly ILog _logger;
         private readonly ApplicantDbContext db;
+
 
         public ApplicantRegistrationDao()
         {
+            _logger = LogManager.GetLogger(typeof(ApplicantRegistrationDao));
             db = new ApplicantDbContext();
         }
 
         public bool IsEmailExist(string email)
         {
-            return db.CompanyApplicants.Any(x => x.EmailAddress == email);
-        }
-
-        public CompanyAplicantDto CreateApplicant(ApplicantRegisterDTO dto)
-        {
             try
             {
-                PasswordHasher hasher = new PasswordHasher();
-                CompanyApplicants applicant = new CompanyApplicants
+                var applicants = db.CompanyApplicants.Where(x => x.EmailAddress == email).FirstOrDefault();
+                if (applicants != null)
                 {
-                    FullName = dto.FullName,
-                    EmailAddress = dto.EmailAddress,
-                    PasswordHash = hasher.Hash(dto.Password),
-                    PhoneNumber = dto.PhoneNumber,
-                    Nationality = dto.Nationality,
-                    IdentityNumber = dto.IdentityNumber,
-                    CreatedAt = DateTime.UtcNow,
-                    EmailConfirmed = false,
-                    EmailConfirmedAt = DateTime.UtcNow,
-                    ResendCount = 0,
-                    LastResendAt = DateTime.UtcNow,
-                };
-                db.CompanyApplicants.Add(applicant);
-                db.SaveChanges();
-                var token = CreateEmailToken(applicant.Id);
-                return new CompanyAplicantDto
-                {
-                    Id = applicant.Id,
-                    FullName = applicant.FullName,
-                    EmailAddress = applicant.EmailAddress,
-                    PhoneNumber = applicant.PhoneNumber,
-                    EmailConfirmed = applicant.EmailConfirmed,
-                    IdentityNumber = applicant.IdentityNumber,
-                    CreatedAt = applicant.CreatedAt,
-                    EmailToken = token,
-                    Nationality = applicant.Nationality
-                };
+                    throw new ApiException(string.Format(CommonMessages.MSG_EMAIL_EXIST, "EmailAddress", email));
+                }
+                return false;
             }
             catch (ApiException)
             {
@@ -62,10 +41,84 @@ namespace Company_Registration_API.DataAccess
             }
             catch (Exception ex)
             {
+                _logger.Error(null, ex);
+                throw new ApiException(string.Format(CommonMessages.MSG_EMAIL_EXIST, CommonConstants.TBLNAME_APP_USERS));
+            }
+           
+        }
+        //public bool ValidatePassword(string password)
+        //{
+        //    try
+        //    {
+        //        if (string.IsNullOrWhiteSpace(password))
+        //        {
+        //            throw new ApiException(string.Format(CommonMessages.MSG_REQUIRED_FIELD, "Password"));
+        //        }
+
+        //        return true;
+        //    }
+        //    catch (ApiException)
+        //    {
+        //        throw;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.Error(null, ex);
+        //        throw new ApiException(string.Format(CommonMessages.MSG_REQUIRED_FIELD, "Password"));
+        //    }
+        //}
+
+
+        public CompanyApplicantDto CreateApplicant(ApplicantRegisterDTO dto)
+        {
+            try
+            {
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                    var applicant = new CompanyApplicants
+                    {
+                        FullName = dto.FullName,
+                        EmailAddress = dto.EmailAddress,
+                        PasswordHash = new PasswordHasher().Hash(dto.Password),
+                        PhoneNumber = dto.PhoneNumber,
+                        Nationality = dto.Nationality,
+                        IdentityNumber = dto.IdentityNumber,
+                        CreatedAt = DateTime.UtcNow,
+                        EmailConfirmed = false,
+                        EmailConfirmedAt = DateTime.UtcNow
+                    };
+
+                    db.CompanyApplicants.Add(applicant);
+                    db.SaveChanges();
+
+                    transaction.Commit();
+
+                    return new CompanyApplicantDto
+                    {
+                        Id = applicant.Id,
+                        FullName = applicant.FullName,
+                        EmailAddress = applicant.EmailAddress,
+                        PhoneNumber = applicant.PhoneNumber,
+                        EmailConfirmed = applicant.EmailConfirmed,
+                        IdentityNumber = applicant.IdentityNumber,
+                        CreatedAt = applicant.CreatedAt,
+                        Nationality = applicant.Nationality
+                    };
+                }
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
             }
         }
-        public List<EmailConfirmationToken> CreateEmailToken(long applicantId)
+
+        
+        public EmailConfirmationToken CreateEmailToken(long applicantId)
         {
             try
             {
@@ -87,17 +140,15 @@ namespace Company_Registration_API.DataAccess
                 db.SaveChanges();
 
                 // Return all tokens for the applicant
-                return db.EmailConfirmationTokens
-                         .Where(t => t.ApplicantId == applicantId)
-                         .OrderByDescending(t => t.CreatedAt)
-                         .ToList();
+                return emailToken;
             }
             catch (ApiException)
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_CREATE_FAIL, CommonConstants.TBLNAME_EMAIL_TOKEN));
             }
         }
@@ -157,17 +208,76 @@ namespace Company_Registration_API.DataAccess
             }
             catch(Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
             }
         }
 
         internal List<EmailConfirmationToken> GetEmailTokens(string email)
         {
-            var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
+            try
+            {
+                 var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
             if (user == null)
                 return null;
             return db.EmailConfirmationTokens.Where(t => t.ApplicantId == user.Id).OrderByDescending(t => t.CreatedAt)
                      .ToList();
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(null, ex);
+                throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
+            }
+           
+        }
+
+        internal bool ValidateIdentityNumber(string identityNumber)
+        {
+            try
+            {
+                var applicants = db.CompanyApplicants.Where(x => x.IdentityNumber == identityNumber).FirstOrDefault();
+                if (applicants != null)
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_EXIST_NRC, identityNumber));
+                }
+                return false;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(null, ex);
+                throw new ApiException(string.Format(CommonMessages.MSG_EXIST_NRC, identityNumber));
+            }
+        }
+
+        internal bool ValidatePhoneNumber(string phoneNumber)
+        {
+            try
+            {
+                var applicants = db.CompanyApplicants.Where(x => x.PhoneNumber == phoneNumber).FirstOrDefault();
+                if (applicants != null)
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_EXIST_PHNO, phoneNumber));
+                }
+                return false;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(null, ex);
+                throw new ApiException(string.Format(CommonMessages.MSG_EXIST_PHNO, phoneNumber));
+            }
+                   
         }
     }
 }

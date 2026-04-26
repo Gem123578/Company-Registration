@@ -27,9 +27,6 @@ namespace Company_Registration_API.Controllers
         [Route("Register")]
         public IHttpActionResult Register([FromBody] ApplicantRegisterDTO dto)
         {
-            if (dto == null)
-                return BadRequest("Invalid applicant data.");
-
             var response = _service.Register(dto);
             return Ok(response);
         }

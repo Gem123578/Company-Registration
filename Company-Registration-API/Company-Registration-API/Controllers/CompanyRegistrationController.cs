@@ -32,8 +32,8 @@ namespace Company_Registration_API.Controllers
             {
                 if (dto == null)
                     return BadRequest("Registration data is null.");
-                if (dto.ApplicantId == 0)
-                    return BadRequest("ApplicantId missing.");
+                //if (dto.ApplicantId == 0)
+                //    return BadRequest("ApplicantId missing.");
 
                 // register call
                 var response = _service.SubmitCompanyRegistration(dto);
@@ -49,6 +49,39 @@ namespace Company_Registration_API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetCompany")]
+        public IHttpActionResult GetCompany()
+        {
+            var response = _service.GetAllCompanies();
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [Route("Get/{id}")]
+        public IHttpActionResult GetById(long id)
+        {
+            var response = _service.GetCompanyById(id);
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("Update/{id}")]
+        public IHttpActionResult Update(long id, [FromBody] CompanyRegistrationDTO dto)
+        {
+            if(dto == null)
+                return BadRequest("Registration data is null.");
+            var result = _service.UpdateCompany(id, dto);
+            return Ok(result);
+        }
+
+        [HttpPost]
+        [Route("Delete/{id}")]
+        public IHttpActionResult Delete(long id)
+        {
+            var result = _service.DeleteCompany(id);
+            return Ok(new { IsSuccess = result, Message = result ? "Company deleted successfully." : CommonMessages.MSG_Delete_FAIL });
+        }
         // post upload constitution document
         [HttpPost]
         [Route("upload")]

@@ -105,7 +105,7 @@ namespace Company_Registration_API.Services
         }
 
 
-        public BaseResponse DeleteUser(long loginUserId, long id)
+        public BaseResponse DeleteUser(long id)
         {
             var response = new BaseResponse();
             try
@@ -118,7 +118,7 @@ namespace Company_Registration_API.Services
                     return response;
                 }
                 //call Dao
-                _dao.DeleteUser(loginUserId, id);
+                _dao.DeleteUser(id);
                 response.IsSuccess = true;
                 response.Message = "User deleted successfully.";
                 return response;

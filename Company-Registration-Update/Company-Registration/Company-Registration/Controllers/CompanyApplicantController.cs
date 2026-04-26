@@ -97,7 +97,7 @@ namespace Company_Registration.Controllers
                     return View(model);
                 }
 
-                // 🔹 Save Session
+                //  Save Session
                 Session["UserId"] = user.UserId;
                 Session["UserName"] = user.UserName;
                 Session["UserRole"] = user.UserRole;

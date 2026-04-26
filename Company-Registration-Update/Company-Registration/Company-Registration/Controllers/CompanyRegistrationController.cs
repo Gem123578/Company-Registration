@@ -1,4 +1,5 @@
 ﻿using Company_Registration.APIServices;
+using Company_Registration.Common;
 using Company_Registration.Models;
 using Company_Registration.Utils;
 using Company_Registration_API.Models;
@@ -25,6 +26,81 @@ namespace Company_Registration.Controllers
             _service = new CompanyRegistrationService();
         }
 
+        public async Task<ActionResult> CompanyGrid()
+        {
+            try
+            {
+                var response = await _service.GetAllCompanies();
+                var companies = new List<CompanyRegistrationDTO>();
+
+                if (response.IsSuccess && response.Data != null)
+                {
+                    companies = JsonConvert.DeserializeObject<List<CompanyRegistrationDTO>>(response.Data.ToString());
+                }
+
+                return PartialView("_CompanyGrid", companies);
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = "Failed to load companies: " + ex.Message;
+                return PartialView("_CompanyGrid", new List<CompanyRegistrationDTO>());
+            }
+        }
+        public async Task<ActionResult> GetCompanyById(long id)
+        {
+            var model = new CompanyRegistrationDTO();
+
+            ResponseDto response = await _service.GetCompanyById(id);
+
+            if (response.IsSuccess && response.Data != null)
+            {
+                model = JsonConvert.DeserializeObject<CompanyRegistrationDTO>(response.Data.ToString());
+            }
+
+            return PartialView("_CreateUpdateCompany", model);
+        }
+        [HttpPost]
+        public async Task<ActionResult> UpdateCompany(long id, CompanyRegistrationDTO model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return PartialView("_CreateUpdateCompany", model);
+
+                var response = await _service.UpdateCompany(id, model);
+
+                if (!response.IsSuccess)
+                {
+                    ModelState.AddModelError("", response.Message ?? "Update failed");
+                    return PartialView("_CreateUpdateCompany", model);
+                }
+
+                return Json(new { success = true, message = "Updated successfully" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
+        [HttpPost]
+        public async Task<ActionResult> DeleteCompany(long id)
+        {
+            try
+            {
+                var response = await _service.DeleteCompany(id);
+
+                if (!response.IsSuccess)
+                {
+                    return Json(new { success = false, message = response.Message });
+                }
+
+                return Json(new { success = true, message = "Deleted successfully" });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
+        }
         // GET: Register Form
         public ActionResult Register()
         {
@@ -115,7 +191,8 @@ namespace Company_Registration.Controllers
             // 2️⃣ Prepare DTO for API with full JSON structure
             var dto = new CompanyRegistrationDTO
             {
-                ApplicantId = model.ApplicantId,
+                ApplicantId = model.ApplicantId == 0 ? (long?)null : model.ApplicantId,
+                UserId = model.UserId == 0 ? (long?)null : model.UserId,
                 CompanyName = model.CompanyName,
                 RegistrationNumber = model.RegistrationNumber ?? GenerateRegistrationNumber(),
                 CompanyType = model.CompanyType,

@@ -97,6 +97,33 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email already exists.
+        /// </summary>
+        internal static string MSG_EMAIL_EXIST {
+            get {
+                return ResourceManager.GetString("MSG_EMAIL_EXIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exist NRC No.
+        /// </summary>
+        internal static string MSG_EXIST_NRC {
+            get {
+                return ResourceManager.GetString("MSG_EXIST_NRC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exist PhoneNumber.
+        /// </summary>
+        internal static string MSG_EXIST_PHNO {
+            get {
+                return ResourceManager.GetString("MSG_EXIST_PHNO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Password.
         /// </summary>
         internal static string MSG_INVALID_PASS {
@@ -124,11 +151,20 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Read Fail.
+        ///   Looks up a localized string similar to Fail to read.
         /// </summary>
         internal static string MSG_READ_FAIL {
             get {
                 return ResourceManager.GetString("MSG_READ_FAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required field for.
+        /// </summary>
+        internal static string MSG_REQUIRED_FIELD {
+            get {
+                return ResourceManager.GetString("MSG_REQUIRED_FIELD", resourceCulture);
             }
         }
         

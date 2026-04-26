@@ -33,7 +33,7 @@ namespace Company_Registration_API.Controllers
         [Route("CreateUser/{id}")]
         public IHttpActionResult GetUserById(long id)
         {
-            var user = _systemUserService.GetSystemUserById(id); // Service မှာ method လည်း လိုအပ်
+            var user = _systemUserService.GetSystemUserById(id); 
             if (user == null)
             {
                 return NotFound();
@@ -71,23 +71,23 @@ namespace Company_Registration_API.Controllers
         
         [HttpPost]
         [Route("DeleteUser/{id}")]
-        public IHttpActionResult DeleteUser(long id)
+        public IHttpActionResult DeleteUser( long id)
         {
-            int loginUserId = 0;
+            //int loginUserId = 0;
             //get from session
             if (HttpContext.Current.Session != null && HttpContext.Current.Session["UserId"] != null)
             {
-                int.TryParse(HttpContext.Current.Session["UserId"].ToString(), out loginUserId);
+                long.TryParse(HttpContext.Current.Session["UserId"].ToString(), out id);
             }
 
             //get from cookie
-            if(loginUserId == 0 && HttpContext.Current.Request.Cookies["UserId"] != null)
+            if(id == 0 && HttpContext.Current.Request.Cookies["UserId"] != null)
             {
-                int.TryParse(HttpContext.Current.Request.Cookies["UserId"].Value, out loginUserId);
+                long.TryParse(HttpContext.Current.Request.Cookies["UserId"].Value, out id);
             }
 
             //login user?
-            if(loginUserId == 0)
+            if(id == 0)
             {
                 return Content(System.Net.HttpStatusCode.Unauthorized, new BaseResponse
                 {
@@ -96,7 +96,7 @@ namespace Company_Registration_API.Controllers
                 });
             }
 
-            BaseResponse response = _systemUserService.DeleteUser(loginUserId, id);
+            BaseResponse response = _systemUserService.DeleteUser(id);
 
             return Ok(response);
         }

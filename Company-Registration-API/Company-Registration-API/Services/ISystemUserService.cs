@@ -11,7 +11,7 @@ namespace Company_Registration_API.Services
     public interface ISystemUserService 
     {
         ResRegSystemUser CreateUpdateSystemUser(long id, CreateUserDto dto);
-        BaseResponse DeleteUser(long loginUserId, long userId);
+        BaseResponse DeleteUser( long userId);
         //BaseResponse ConfirmEmail(string token, string email);
         ResLoginSystemUser ValidateUser(LoginDTO dto);
         ResGetAllSystemUsers GetAllSystemUsers();

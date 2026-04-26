@@ -12,7 +12,7 @@ namespace Company_Registration.APIServices
     public class SystemUserService : ISystemUserService
     {
         private readonly ApiHelpers _apiHelper;
-
+        public long loginUserId { get; set; }
         public SystemUserService()
         {
             _apiHelper = new ApiHelpers();
@@ -124,6 +124,7 @@ namespace Company_Registration.APIServices
             var response = new ResponseDto();
             try
             {
+                
                 // Create request DTO for DELETE
                 var reqDto = ModelConverter.CreateRequestDto(
                     new {  userId }, // body or parameters if your API expects JSON

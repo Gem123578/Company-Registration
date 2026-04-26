@@ -52,6 +52,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net, Version=3.3.1.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.3.3.1\lib\net462\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -111,6 +114,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -229,6 +233,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataAccess\ApplicantDbContext.cs" />
     <Compile Include="DataAccess\ApplicantRegistrationDao.cs" />
+    <Compile Include="DataAccess\BaseDao.cs" />
     <Compile Include="DataAccess\CompanyRegistrationDao.cs" />
     <Compile Include="DataAccess\SystemUsersDao.cs" />
     <Compile Include="Global.asax.cs">
@@ -248,7 +253,7 @@
     <Compile Include="Models\DTO\ApplicantRegisterDTO.cs" />
     <Compile Include="Models\CompanyApplicants.cs" />
     <Compile Include="Models\DTO\ApprovalDto.cs" />
-    <Compile Include="Models\DTO\CompanyAplicantDto.cs" />
+    <Compile Include="Models\DTO\CompanyApplicantDto.cs" />
     <Compile Include="Models\DTO\CompanyConstitutionDTO.cs" />
     <Compile Include="Models\DTO\CompanyRegistrationDTO.cs" />
     <Compile Include="Models\DTO\CompanyShareCapitalDTO.cs" />
@@ -257,6 +262,7 @@
     <Compile Include="Models\DTO\CreateUserDto.cs" />
     <Compile Include="Models\DTO\LoginUserDto.cs" />
     <Compile Include="Models\DTO\RegistrationPaymentDTO.cs" />
+    <Compile Include="Models\DTO\Roles.cs" />
     <Compile Include="Models\DTO\UltimateHoldingCompanyDTO.cs" />
     <Compile Include="Models\EmailConfirmationToken.cs" />
     <Compile Include="Models\RegisteredCompany.cs" />
@@ -277,6 +283,8 @@
     <Compile Include="Utils\ApiException.cs" />
     <Compile Include="Utils\CommonConstants.cs" />
     <Compile Include="Utils\EmailHelper.cs" />
+    <Compile Include="Utils\ILogFactory.cs" />
+    <Compile Include="Utils\LogFactory.cs" />
     <Compile Include="Utils\PasswordHasher.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -324,6 +332,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="log4net.config" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />

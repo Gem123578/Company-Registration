@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Company_Registration_API.Models.DTO
 {
-    public class CompanyAplicantDto
+    public class CompanyApplicantDto
     {
         public long Id { get; set; }
         public string FullName { get; set; }

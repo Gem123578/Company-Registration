@@ -2,6 +2,7 @@
 using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyRegistration;
 using Company_Registration_API.Models.CompanyRegistration.Response;
+using Company_Registration_API.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,12 +29,12 @@ namespace Company_Registration_API.Services
                 return response;
             }
 
-            if (dto.ApplicantId == 0)
-            {
-                response.IsSuccess = false;
-                response.Message = "ApplicantId missing.";
-                return response;
-            }
+            //if (dto.ApplicantId == 0)
+            //{
+            //    response.IsSuccess = false;
+            //    response.Message = "ApplicantId missing.";
+            //    return response;
+            //}
 
             var companyId = _dao.CreateCompanyRegistration(dto);
 
@@ -42,6 +43,78 @@ namespace Company_Registration_API.Services
             return response;
 
         }
+        // GET ALL
+        public List<CompanyRegistrationDTO> GetAllCompanies()
+        {
+            try
+            {
+                return _dao.GetAll();
+            }
+            catch (Exception)
+            {
+                throw new ApiException("Failed to retrieve companies");
+            }
+        }
+
+        //  GET BY ID
+        public CompanyRegistrationDTO GetCompanyById(long id)
+        {
+            try
+            {
+                var company = _dao.GetById(id);
+
+                if (company == null)
+                {
+                    throw new ApiException("Company not found");
+                }
+
+                return company;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw new ApiException("Failed to retrieve company");
+            }
+        }
+
+        //  UPDATE
+        public RegisteredCompany UpdateCompany(long id, CompanyRegistrationDTO dto)
+        {
+            try
+            {
+                return _dao.UpdateCompany(id, dto);
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw new ApiException("Failed to update company");
+            }
+        }
+
+        //  DELETE
+        public bool DeleteCompany(long id)
+        {
+            try
+            {
+                _dao.DeleteCompany(id);
+                return true;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw new ApiException("Failed to delete company");
+            }
+        }
+
         public UploadResponse UploadConstitution()
         {
             var response = new UploadResponse();

@@ -19,6 +19,105 @@ namespace Company_Registration.APIServices
             _apiHelper = new ApiHelpers();
         }
 
+        public async Task<ResponseDto> GetAllCompanies()
+        {
+            var response = new ResponseDto();
+
+            try
+            {
+                var reqDto = ModelConverter.CreateRequestDto(
+                    null,
+                    ApiHelpers.BaseUrl,
+                    "api/CompanyRegistration/GetCompany",
+                    eHTTPRequestType.GET
+                );
+
+                response = await _apiHelper.SendRequestAsync(reqDto);
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+        public async Task<ResponseDto> GetCompanyById(long id)
+        {
+            var response = new ResponseDto();
+
+            try
+            {
+                var reqDto = ModelConverter.CreateRequestDto(
+                    null,
+                    ApiHelpers.BaseUrl,
+                    $"api/CompanyRegistration/Get/{id}",
+                    eHTTPRequestType.GET
+                );
+
+                response = await _apiHelper.SendRequestAsync(reqDto);
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+        public async Task<ResponseDto> UpdateCompany(long id, CompanyRegistrationDTO dto)
+        {
+            var response = new ResponseDto();
+
+            try
+            {
+                if (dto == null)
+                {
+                    response.IsSuccess = false;
+                    response.Message = "Update data is required.";
+                    return response;
+                }
+
+                var reqDto = ModelConverter.CreateRequestDto(
+                    dto,
+                    ApiHelpers.BaseUrl,
+                    $"api/CompanyRegistration/Update/{id}",
+                    eHTTPRequestType.POST
+                );
+
+                response = await _apiHelper.SendRequestAsync(reqDto);
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
+        public async Task<ResponseDto> DeleteCompany(long id)
+        {
+            var response = new ResponseDto();
+
+            try
+            {
+                var reqDto = ModelConverter.CreateRequestDto(
+                    null,
+                    ApiHelpers.BaseUrl,
+                    $"api/CompanyRegistration/Delete/{id}",
+                    eHTTPRequestType.POST
+                );
+
+                response = await _apiHelper.SendRequestAsync(reqDto);
+            }
+            catch (Exception ex)
+            {
+                response.IsSuccess = false;
+                response.Message = ex.Message;
+            }
+
+            return response;
+        }
         // -----------------------------
         // Upload file to API
         // -----------------------------
