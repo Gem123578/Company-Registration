@@ -27,17 +27,13 @@ namespace Company_Registration_API.Services
         public RegisterResponse Register(ApplicantRegisterDTO dto)
         {
             var response = new RegisterResponse();
-
-            using (TransactionScope transaction = BaseDao.GetReadUncommittedScope()) 
-            {
                 _dao.IsEmailExist(dto.EmailAddress);
                 _dao.ValidateIdentityNumber(dto.IdentityNumber);
                 _dao.ValidatePhoneNumber(dto.PhoneNumber);
                 //all check
 
                 var applicant = _dao.CreateApplicant(dto);
-                var tokenString = applicant.EmailToken.FirstOrDefault()?.Token;
-
+                var tokenString = _dao.CreateEmailToken(applicant.Id);
                 if (string.IsNullOrEmpty(tokenString))
                 {
                     throw new Exception("No email confirmation token found");
@@ -56,9 +52,6 @@ namespace Company_Registration_API.Services
                 return response;
 
             }
-
-            
-        }
 
         //public LoginResponse Login(LoginDTO dto)
         //{

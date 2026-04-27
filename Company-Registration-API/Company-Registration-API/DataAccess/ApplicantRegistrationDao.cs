@@ -73,7 +73,7 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                using (var transaction = db.Database.BeginTransaction())
+                using (TransactionScope transaction = BaseDao.GetReadUncommittedScope())
                 {
                     var applicant = new CompanyApplicants
                     {
@@ -85,15 +85,24 @@ namespace Company_Registration_API.DataAccess
                         IdentityNumber = dto.IdentityNumber,
                         CreatedAt = DateTime.UtcNow,
                         EmailConfirmed = false,
-                        EmailConfirmedAt = DateTime.UtcNow
+                        EmailConfirmedAt = null
                     };
 
                     db.CompanyApplicants.Add(applicant);
-                    db.SaveChanges();
+                    var rows = db.SaveChanges();
+                var test = db.CompanyApplicants.ToList();
+                _logger.Info("Total rows now: " + test.Count);
 
-                    transaction.Commit();
+                _logger.Info(db.Entry(applicant).State.ToString());
 
-                    return new CompanyApplicantDto
+                _logger.Info(db.Database.Connection.ConnectionString);
+
+                _logger.Info("Rows inserted: " + rows);
+                //transaction.Complete();
+
+                db.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+
+                return new CompanyApplicantDto
                     {
                         Id = applicant.Id,
                         FullName = applicant.FullName,
@@ -113,12 +122,13 @@ namespace Company_Registration_API.DataAccess
             catch (Exception ex)
             {
                 _logger.Error(null, ex);
-                throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
+                throw;
+                //throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
             }
         }
 
         
-        public EmailConfirmationToken CreateEmailToken(long applicantId)
+        public string CreateEmailToken(long applicantId)
         {
             try
             {
@@ -140,7 +150,7 @@ namespace Company_Registration_API.DataAccess
                 db.SaveChanges();
 
                 // Return all tokens for the applicant
-                return emailToken;
+                return emailToken.Token;
             }
             catch (ApiException)
             {

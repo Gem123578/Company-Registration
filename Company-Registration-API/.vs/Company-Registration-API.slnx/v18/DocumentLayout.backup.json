@@ -3,60 +3,68 @@
   "WorkspaceRootPath": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\dataaccess\\applicantregistrationdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\dataaccess\\applicantregistrationdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\dataaccess\\applicantregistrationdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\dataaccess\\systemusersdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\dataaccess\\systemusersdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\services\\companyapplicantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\services\\companyapplicantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\dataaccess\\applicantdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\utils\\emailhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\utils\\emailhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\dataaccess\\applicantdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\dataaccess\\applicantdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\services\\companyapplicantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\services\\companyapplicantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\models\\companyapplicants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\companyapplicants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\dataaccess\\basedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\dataaccess\\basedao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\models\\companyapplicant\\response\\registerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\companyapplicant\\response\\registerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\models\\emailconfirmationtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\emailconfirmationtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\services\\icompanyapplicantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\services\\icompanyapplicantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\models\\companyapplicants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\companyapplicants.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\models\\dto\\companyapplicantdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\dto\\companyapplicantdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\models\\dto\\applicantregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\dto\\applicantregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\utils\\emailhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\utils\\emailhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\controllers\\companyapplicantscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\controllers\\companyapplicantscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|d:\\git repo\\company-registration\\company-registration-api\\company-registration-api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\models\\dto\\companyapplicantdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\dto\\companyapplicantdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\models\\emailconfirmationtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\emailconfirmationtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\models\\dto\\applicantregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\dto\\applicantregisterdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\dataaccess\\systemusersdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\dataaccess\\systemusersdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\models\\companyapplicant\\response\\registerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\models\\companyapplicant\\response\\registerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-API\\company-registration-api\\services\\icompanyapplicantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2D911D0D-0605-4FCD-A9D9-BF91DFEAF831}|Company-Registration-API\\Company-Registration-API.csproj|solutionrelative:company-registration-api\\services\\icompanyapplicantservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,7 +74,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,13 +86,25 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CompanyApplicantService.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Services\\CompanyApplicantService.cs",
+              "RelativeDocumentMoniker": "Company-Registration-API\\Services\\CompanyApplicantService.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Services\\CompanyApplicantService.cs",
+              "RelativeToolTip": "Company-Registration-API\\Services\\CompanyApplicantService.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAjwDQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T14:16:22.662Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "ApplicantRegistrationDao.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\ApplicantRegistrationDao.cs",
               "RelativeDocumentMoniker": "Company-Registration-API\\DataAccess\\ApplicantRegistrationDao.cs",
               "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\ApplicantRegistrationDao.cs",
               "RelativeToolTip": "Company-Registration-API\\DataAccess\\ApplicantRegistrationDao.cs",
-              "ViewState": "AgIAANAAAAAAAAAAAAAqwNsAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAjwF8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-24T07:08:28.998Z",
               "EditorCaption": ""
@@ -92,106 +112,87 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "CompanyApplicantService.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Services\\CompanyApplicantService.cs",
-              "RelativeDocumentMoniker": "Company-Registration-API\\Services\\CompanyApplicantService.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Services\\CompanyApplicantService.cs",
-              "RelativeToolTip": "Company-Registration-API\\Services\\CompanyApplicantService.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAkwBsAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T14:16:22.662Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "ApplicantDbContext.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\ApplicantDbContext.cs",
               "RelativeDocumentMoniker": "Company-Registration-API\\DataAccess\\ApplicantDbContext.cs",
               "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\ApplicantDbContext.cs",
               "RelativeToolTip": "Company-Registration-API\\DataAccess\\ApplicantDbContext.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAqwBAAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAiwBAAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T08:49:49.077Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-25T08:49:49.077Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SystemUsersDao.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\SystemUsersDao.cs",
-              "RelativeDocumentMoniker": "Company-Registration-API\\DataAccess\\SystemUsersDao.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\SystemUsersDao.cs",
-              "RelativeToolTip": "Company-Registration-API\\DataAccess\\SystemUsersDao.cs",
-              "ViewState": "AgIAAL0AAAAAAAAAAAAAAMgAAAA0AAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "EmailHelper.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Utils\\EmailHelper.cs",
+              "RelativeDocumentMoniker": "Company-Registration-API\\Utils\\EmailHelper.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Utils\\EmailHelper.cs",
+              "RelativeToolTip": "Company-Registration-API\\Utils\\EmailHelper.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAjwCIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T09:23:03.683Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-25T06:20:20.885Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "BaseDao.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\BaseDao.cs",
-              "RelativeDocumentMoniker": "Company-Registration-API\\DataAccess\\BaseDao.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\BaseDao.cs",
-              "RelativeToolTip": "Company-Registration-API\\DataAccess\\BaseDao.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAjwBIAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-24T17:17:59.079Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RegisterResponse.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\CompanyApplicant\\Response\\RegisterResponse.cs",
-              "RelativeDocumentMoniker": "Company-Registration-API\\Models\\CompanyApplicant\\Response\\RegisterResponse.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\CompanyApplicant\\Response\\RegisterResponse.cs",
-              "RelativeToolTip": "Company-Registration-API\\Models\\CompanyApplicant\\Response\\RegisterResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T09:00:33.371Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EmailConfirmationToken.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\EmailConfirmationToken.cs",
-              "RelativeDocumentMoniker": "Company-Registration-API\\Models\\EmailConfirmationToken.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\EmailConfirmationToken.cs",
-              "RelativeToolTip": "Company-Registration-API\\Models\\EmailConfirmationToken.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAABMAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T09:00:41.655Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ICompanyApplicantService.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Services\\ICompanyApplicantService.cs",
-              "RelativeDocumentMoniker": "Company-Registration-API\\Services\\ICompanyApplicantService.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Services\\ICompanyApplicantService.cs",
-              "RelativeToolTip": "Company-Registration-API\\Services\\ICompanyApplicantService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T08:59:24.24Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
               "Title": "CompanyApplicants.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\CompanyApplicants.cs",
               "RelativeDocumentMoniker": "Company-Registration-API\\Models\\CompanyApplicants.cs",
               "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\CompanyApplicants.cs",
               "RelativeToolTip": "Company-Registration-API\\Models\\CompanyApplicants.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAA1wBgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T07:48:04.886Z",
+              "WhenOpened": "2026-04-25T07:48:04.886Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Web.config",
+              "RelativeDocumentMoniker": "Company-Registration-API\\Web.config",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Web.config",
+              "RelativeToolTip": "Company-Registration-API\\Web.config",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAmwGsAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-04-25T06:58:27.695Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Web.config",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Views\\Web.config",
+              "RelativeDocumentMoniker": "Company-Registration-API\\Views\\Web.config",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Views\\Web.config",
+              "RelativeToolTip": "Company-Registration-API\\Views\\Web.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-04-26T12:51:21.314Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CompanyApplicantsController.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Controllers\\CompanyApplicantsController.cs",
+              "RelativeDocumentMoniker": "Company-Registration-API\\Controllers\\CompanyApplicantsController.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Controllers\\CompanyApplicantsController.cs",
+              "RelativeToolTip": "Company-Registration-API\\Controllers\\CompanyApplicantsController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAD4vyQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T14:11:20.161Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BaseDao.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\BaseDao.cs",
+              "RelativeDocumentMoniker": "Company-Registration-API\\DataAccess\\BaseDao.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\BaseDao.cs",
+              "RelativeToolTip": "Company-Registration-API\\DataAccess\\BaseDao.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-24T17:17:59.079Z"
             },
             {
               "$type": "Document",
@@ -201,62 +202,81 @@
               "RelativeDocumentMoniker": "Company-Registration-API\\Models\\DTO\\CompanyApplicantDto.cs",
               "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\DTO\\CompanyApplicantDto.cs",
               "RelativeToolTip": "Company-Registration-API\\Models\\DTO\\CompanyApplicantDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T08:37:56.846Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-25T08:37:56.846Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "Global.asax.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Global.asax.cs",
+              "RelativeDocumentMoniker": "Company-Registration-API\\Global.asax.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Global.asax.cs",
+              "RelativeToolTip": "Company-Registration-API\\Global.asax.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAuwBgAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-26T11:07:17.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EmailConfirmationToken.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\EmailConfirmationToken.cs",
+              "RelativeDocumentMoniker": "Company-Registration-API\\Models\\EmailConfirmationToken.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\EmailConfirmationToken.cs",
+              "RelativeToolTip": "Company-Registration-API\\Models\\EmailConfirmationToken.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAA5wBUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T09:00:41.655Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "ApplicantRegisterDTO.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\DTO\\ApplicantRegisterDTO.cs",
               "RelativeDocumentMoniker": "Company-Registration-API\\Models\\DTO\\ApplicantRegisterDTO.cs",
               "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\DTO\\ApplicantRegisterDTO.cs",
               "RelativeToolTip": "Company-Registration-API\\Models\\DTO\\ApplicantRegisterDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA9wAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T05:57:32.461Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "EmailHelper.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Utils\\EmailHelper.cs",
-              "RelativeDocumentMoniker": "Company-Registration-API\\Utils\\EmailHelper.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Utils\\EmailHelper.cs",
-              "RelativeToolTip": "Company-Registration-API\\Utils\\EmailHelper.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAkwCIAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-25T06:20:20.885Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CompanyApplicantsController.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Controllers\\CompanyApplicantsController.cs",
-              "RelativeDocumentMoniker": "Company-Registration-API\\Controllers\\CompanyApplicantsController.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Controllers\\CompanyApplicantsController.cs",
-              "RelativeToolTip": "Company-Registration-API\\Controllers\\CompanyApplicantsController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwCcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-23T14:11:20.161Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-25T05:57:32.461Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "Web.config",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Web.config",
-              "RelativeDocumentMoniker": "Company-Registration-API\\Web.config",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Web.config",
-              "RelativeToolTip": "Company-Registration-API\\Web.config",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABcAAAByAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-04-25T06:58:27.695Z",
-              "EditorCaption": ""
+              "Title": "SystemUsersDao.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\SystemUsersDao.cs",
+              "RelativeDocumentMoniker": "Company-Registration-API\\DataAccess\\SystemUsersDao.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\DataAccess\\SystemUsersDao.cs",
+              "RelativeToolTip": "Company-Registration-API\\DataAccess\\SystemUsersDao.cs",
+              "ViewState": "AgIAAL0AAAAAAAAAAAAAAMgAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T09:23:03.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "RegisterResponse.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\CompanyApplicant\\Response\\RegisterResponse.cs",
+              "RelativeDocumentMoniker": "Company-Registration-API\\Models\\CompanyApplicant\\Response\\RegisterResponse.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Models\\CompanyApplicant\\Response\\RegisterResponse.cs",
+              "RelativeToolTip": "Company-Registration-API\\Models\\CompanyApplicant\\Response\\RegisterResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T09:00:33.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ICompanyApplicantService.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Services\\ICompanyApplicantService.cs",
+              "RelativeDocumentMoniker": "Company-Registration-API\\Services\\ICompanyApplicantService.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-API\\Company-Registration-API\\Services\\ICompanyApplicantService.cs",
+              "RelativeToolTip": "Company-Registration-API\\Services\\ICompanyApplicantService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-25T08:59:24.24Z"
             }
           ]
         }

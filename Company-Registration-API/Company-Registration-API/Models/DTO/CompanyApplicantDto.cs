@@ -14,7 +14,6 @@ namespace Company_Registration_API.Models.DTO
         public string Nationality { get; set; }
         public string IdentityNumber { get; set; }
         public bool EmailConfirmed { get; set; }
-        public List<EmailConfirmationToken> EmailToken { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace Company_Registration_API.Models
         public bool EmailConfirmed { get; set; }
         public DateTime? EmailConfirmedAt { get; set; }
         public int ResendCount { get; set; }
-        public DateTime LastResendAt { get; set; }
+        public DateTime? LastResendAt { get; set; }
         public virtual ICollection<EmailConfirmationToken> EmailConfirmedToken { get; set; }
         
     }

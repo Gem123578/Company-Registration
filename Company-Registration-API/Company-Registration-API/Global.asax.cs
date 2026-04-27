@@ -21,6 +21,8 @@ namespace Company_Registration_API
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             XmlConfigurator.Configure(new FileInfo(Server.MapPath("~/log4net.config")));
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling
+        = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
     }
 }
