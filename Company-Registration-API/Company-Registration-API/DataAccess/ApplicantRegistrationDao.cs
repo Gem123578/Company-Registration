@@ -1,4 +1,5 @@
-﻿using Company_Registration_API.Controllers;
+﻿using Company_Registration_API.Common;
+using Company_Registration_API.Controllers;
 using Company_Registration_API.Models;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
@@ -44,7 +45,7 @@ namespace Company_Registration_API.DataAccess
                 _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_EMAIL_EXIST, CommonConstants.TBLNAME_APP_USERS));
             }
-           
+
         }
         //public bool ValidatePassword(string password)
         //{
@@ -90,29 +91,8 @@ namespace Company_Registration_API.DataAccess
 
                     db.CompanyApplicants.Add(applicant);
                     var rows = db.SaveChanges();
-                var test = db.CompanyApplicants.ToList();
-                _logger.Info("Total rows now: " + test.Count);
-
-                _logger.Info(db.Entry(applicant).State.ToString());
-
-                _logger.Info(db.Database.Connection.ConnectionString);
-
-                _logger.Info("Rows inserted: " + rows);
-                //transaction.Complete();
-
-                db.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
-
-                return new CompanyApplicantDto
-                    {
-                        Id = applicant.Id,
-                        FullName = applicant.FullName,
-                        EmailAddress = applicant.EmailAddress,
-                        PhoneNumber = applicant.PhoneNumber,
-                        EmailConfirmed = applicant.EmailConfirmed,
-                        IdentityNumber = applicant.IdentityNumber,
-                        CreatedAt = applicant.CreatedAt,
-                        Nationality = applicant.Nationality
-                    };
+                    transaction.Complete();
+                    return ModelConverter.ToCompanyApplicantDto(applicant);
                 }
             }
             catch (ApiException)
@@ -122,12 +102,11 @@ namespace Company_Registration_API.DataAccess
             catch (Exception ex)
             {
                 _logger.Error(null, ex);
-                throw;
-                //throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
+                throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
             }
         }
 
-        
+
         public string CreateEmailToken(long applicantId)
         {
             try
@@ -216,7 +195,7 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
@@ -227,11 +206,11 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                 var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
-            if (user == null)
-                return null;
-            return db.EmailConfirmationTokens.Where(t => t.ApplicantId == user.Id).OrderByDescending(t => t.CreatedAt)
-                     .ToList();
+                var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
+                if (user == null)
+                    return null;
+                return db.EmailConfirmationTokens.Where(t => t.ApplicantId == user.Id).OrderByDescending(t => t.CreatedAt)
+                         .ToList();
             }
             catch (ApiException)
             {
@@ -242,7 +221,7 @@ namespace Company_Registration_API.DataAccess
                 _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
             }
-           
+
         }
 
         internal bool ValidateIdentityNumber(string identityNumber)
@@ -287,7 +266,29 @@ namespace Company_Registration_API.DataAccess
                 _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_EXIST_PHNO, phoneNumber));
             }
-                   
+
+        }
+
+        internal bool ValidateToken(string tokenString)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(tokenString))
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_EXIST_TOKEN));
+                }
+                return false;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(null, ex);
+                throw new ApiException(string.Format(CommonMessages.MSG_EXIST_TOKEN));
+
+            }
         }
     }
 }

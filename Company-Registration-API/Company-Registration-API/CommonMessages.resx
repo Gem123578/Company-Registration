@@ -138,6 +138,9 @@
   <data name="MSG_EXIST_PHNO" xml:space="preserve">
     <value>Exist PhoneNumber</value>
   </data>
+  <data name="MSG_EXIST_TOKEN" xml:space="preserve">
+    <value>No email confirmation token found</value>
+  </data>
   <data name="MSG_INVALID_PASS" xml:space="preserve">
     <value>Invalid Password</value>
   </data>

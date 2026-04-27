@@ -1,4 +1,5 @@
-﻿using Company_Registration_API.Models.DTO;
+﻿using Company_Registration_API.Models.CompanyApplicant;
+using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Services;
 using Newtonsoft.Json;
 using System;
@@ -8,7 +9,7 @@ using System.Web;
 
 namespace Company_Registration_API.Models.SystemUser
 {
-    public class ResRegSystemUser : BaseResponse
+    public class ResRegSystemUser : ResultBase
     {
         [JsonProperty("data")]
         public CreateUserDto Data { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Company_Registration_API.Models;
+using Company_Registration_API.Models.CompanyApplicant;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Models.SystemUser;
 using System;
@@ -11,7 +12,7 @@ namespace Company_Registration_API.Services
     public interface ISystemUserService 
     {
         ResRegSystemUser CreateUpdateSystemUser(long id, CreateUserDto dto);
-        BaseResponse DeleteUser( long userId);
+        ResultBase DeleteUser( long userId);
         //BaseResponse ConfirmEmail(string token, string email);
         ResLoginSystemUser ValidateUser(LoginDTO dto);
         ResGetAllSystemUsers GetAllSystemUsers();

@@ -7,6 +7,7 @@ using Company_Registration_API.Services;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Models.SystemUser;
 using Company_Registration_API.Models;
+using Company_Registration_API.Models.CompanyApplicant;
 
 namespace Company_Registration_API.Controllers
 {
@@ -96,7 +97,7 @@ namespace Company_Registration_API.Controllers
                 });
             }
 
-            BaseResponse response = _systemUserService.DeleteUser(id);
+            ResultBase response = _systemUserService.DeleteUser(id);
 
             return Ok(response);
         }

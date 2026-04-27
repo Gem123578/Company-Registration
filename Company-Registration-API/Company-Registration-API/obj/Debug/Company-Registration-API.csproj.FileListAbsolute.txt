@@ -75,7 +75,6 @@ D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-A
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Text.Encodings.Web.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Text.Json.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Threading.Tasks.Extensions.dll
-D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.ValueTuple.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Web.Cors.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Web.Helpers.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Web.Http.Cors.dll
@@ -111,7 +110,6 @@ D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-A
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Text.Encodings.Web.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Text.Json.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Threading.Tasks.Extensions.xml
-D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.ValueTuple.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Web.Helpers.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Web.Http.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\System.Web.Http.Cors.xml
@@ -132,3 +130,13 @@ D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-A
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\obj\Debug\Company-.8093F059.Up2Date
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\obj\Debug\Company-Registration-API.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\obj\Debug\Company-Registration-API.pdb
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\AutoMapper.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Bcl.HashCode.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Extensions.Options.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Extensions.Primitives.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\AutoMapper.xml
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Bcl.HashCode.xml
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Extensions.Options.xml
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Extensions.Primitives.xml

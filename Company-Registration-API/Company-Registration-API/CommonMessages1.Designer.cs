@@ -124,6 +124,15 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No email confirmation token found.
+        /// </summary>
+        internal static string MSG_EXIST_TOKEN {
+            get {
+                return ResourceManager.GetString("MSG_EXIST_TOKEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Password.
         /// </summary>
         internal static string MSG_INVALID_PASS {

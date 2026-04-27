@@ -3,6 +3,7 @@ using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyApplicant;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
+using log4net;
 using QPSOS.Web.API.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,11 @@ using System.Web;
 
 namespace Company_Registration_API.Services
 {
-    public class CompanyApplicantService : ICompanyApplicantService
+    public class CompanyApplicantService : BaseServices ,ICompanyApplicantService
     {
         private readonly ApplicantRegistrationDao _dao;
-        private readonly string baseUrl; 
+        private readonly string baseUrl;
+        private readonly ILog _logger;
 
         public CompanyApplicantService()
         {
@@ -27,6 +29,8 @@ namespace Company_Registration_API.Services
         public RegisterResponse Register(ApplicantRegisterDTO dto)
         {
             var response = new RegisterResponse();
+            try
+            {
                 _dao.IsEmailExist(dto.EmailAddress);
                 _dao.ValidateIdentityNumber(dto.IdentityNumber);
                 _dao.ValidatePhoneNumber(dto.PhoneNumber);
@@ -34,50 +38,25 @@ namespace Company_Registration_API.Services
 
                 var applicant = _dao.CreateApplicant(dto);
                 var tokenString = _dao.CreateEmailToken(applicant.Id);
-                if (string.IsNullOrEmpty(tokenString))
-                {
-                    throw new Exception("No email confirmation token found");
-                }
+                _dao.ValidateToken(tokenString);
+                
                 // confirmation link
                 string confirmLink = $"{baseUrl}/api/companyapplicants/confirm-email?token={tokenString}&email={dto.EmailAddress}";
 
                 // send email
                 EmailHelper.SendConfirmationEmail(dto.EmailAddress, confirmLink);
-
-
-                response.Message = "Registration successful";
-                response.Success = true;
+                response.Result = CreateResult(Constants.ACK_Result);
                 response.Data = applicant;
 
-                return response;
-
             }
+            catch (Exception ex)
+            {
+                _logger.Error(null, ex);
+                response.Result = CreateResult(Constants.NACK_Result, ex.Message);
+            }
+            return response;
 
-        //public LoginResponse Login(LoginDTO dto)
-        //{
-        //    var response = new LoginResponse();
-        //    var applicantDto = _dao.Login(dto);
-
-        //    if (applicantDto == null)
-        //    {
-        //        response.Success = false;
-        //        response.Message = "Invalid email or password";
-        //        return response;
-        //    }
-        //    if (!applicantDto.EmailConfirmed)
-        //    {
-        //        response.Success = false;
-        //        response.Message = "Please confirm your email before login";
-        //        return response;
-        //    }
-
-
-        //    response.Success = true;
-        //    response.Message = "Login successful";
-        //    response.Data = applicantDto;
-
-        //    return response;
-        //}
+        }
         public BaseResponse ConfirmEmail(string token, string email)
         {
             var response = new BaseResponse();

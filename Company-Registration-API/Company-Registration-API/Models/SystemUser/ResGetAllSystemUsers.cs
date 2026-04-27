@@ -1,4 +1,5 @@
-﻿using Company_Registration_API.Models.DTO;
+﻿using Company_Registration_API.Common;
+using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Services;
 using Newtonsoft.Json;
 using System;
@@ -12,5 +13,6 @@ namespace Company_Registration_API.Models.SystemUser
     {
         [JsonProperty("data")]
         public List<CreateUserDto> Data { get; set; }
+        public Result Result { get; internal set; }
     }
 }
