@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Services.Description;
 using WebGrease.Css.Ast;
 
 namespace Company_Registration.Utils
@@ -85,7 +86,7 @@ namespace Company_Registration.Utils
                     responseDto = JsonConvert.DeserializeObject<ResponseDto>(apiContent);
 
                     responseDto.StatusCode = responseMessage.StatusCode;
-                    responseDto.IsSuccess = responseMessage.IsSuccessStatusCode;
+                    responseDto.IsSuccess = responseDto.Result.Code == Constant.ACK_Result;
 
                     if (!responseDto.IsSuccess)
                     {
@@ -112,14 +113,18 @@ namespace Company_Registration.Utils
         {
             responseDto.StatusCode = responseMessage.StatusCode;
 
-            string errorMessage = string.IsNullOrEmpty(responseDto.Message)? responseMessage.StatusCode.ToString(): responseDto.Message;
+            string errorMessage = responseDto.Result == null ? responseMessage.StatusCode.ToString() : responseDto.Result.Message;
             return errorMessage;
         }
 
         private void GetResponseErrorInfo(ref ResponseDto response, string errorMessage)
         {
-            response.IsSuccess = false;
-            response.Message = errorMessage;
+            if (response == null)
+            {
+                return;
+            }
+
+            response.Result = new ApiResult() { Code = response.StatusCode.ToString(), Message = errorMessage };
         }
     }
 }

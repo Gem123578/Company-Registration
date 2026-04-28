@@ -268,3 +268,6 @@ D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registratio
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-.31064190.Up2Date
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.dll
 D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\obj\Debug\Company-Registration.pdb
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\log4net.dll
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\log4net.pdb
+D:\Git Repo\Company-Registration\Company-Registration-Update\Company-Registration\Company-Registration\bin\log4net.xml

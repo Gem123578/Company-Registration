@@ -51,21 +51,7 @@ namespace Company_Registration_API.Services
 
             try
             {
-                if (dto == null)
-                    throw new Exception("Input data is required.");
-
-                if (string.IsNullOrEmpty(dto.UserName))
-                    throw new Exception("UserName is required.");
-
-                if (!dto.IsUpdate)
-                {
-                    if (string.IsNullOrEmpty(dto.EmailAddress))
-                        throw new Exception("Email is required.");
-
-                    if (string.IsNullOrEmpty(dto.Password))
-                        throw new Exception("Password is required.");
-                }
-
+                
                 dto = _dao.CreateUpdateSystemUser(id, dto);
 
                 response.Data = dto;
@@ -142,22 +128,24 @@ namespace Company_Registration_API.Services
 
             try
             {
-                if (dto == null)
-                    throw new Exception("Request is null.");
+                //if (dto == null)
+                //    throw new Exception("Request is null.");
 
-                if (string.IsNullOrEmpty(dto.EmailAddress))
-                    throw new Exception("Email is required.");
+                //if (string.IsNullOrEmpty(dto.EmailAddress))
+                //    throw new Exception("Email is required.");
 
-                if (string.IsNullOrEmpty(dto.Password))
-                    throw new Exception("Password is required.");
+                //if (string.IsNullOrEmpty(dto.Password))
+                //    throw new Exception("Password is required.");
 
                 var user = _dao.ValidateUser(dto);
 
                 if (user == null)
-                    throw new Exception("Invalid email or password.");
+                    response.Result = CreateResult(Constants.ACK_Result, "Invalid email or password.");
+                //throw new Exception("Invalid email or password.");
 
                 if (user.UserRole == "APPLICANT" && !user.EmailConfirmed)
-                    throw new Exception("Please confirm your email before login.");
+                     response.Result = CreateResult(Constants.ACK_Result, "Please confirm your email before login.");
+                //throw new Exception("Please confirm your email before login.");
 
                 response.Data = user;
                 response.Result = CreateResult(Constants.ACK_Result, "Login successful.");

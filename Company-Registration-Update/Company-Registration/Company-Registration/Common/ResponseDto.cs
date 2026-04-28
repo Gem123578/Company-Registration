@@ -8,15 +8,15 @@ using System.Web;
 namespace Company_Registration.Common
 {
     public class ResponseDto
-    { [JsonProperty("success")]
-    public bool IsSuccess { get; set; }
+    {
+        public bool IsSuccess { get; set; }
 
-    [JsonProperty("data")]
-    public object Data { get; set; }
+        public HttpStatusCode StatusCode { get; set; }
 
-    [JsonProperty("message")]
-    public string Message { get; set; }
+        [JsonProperty("data")]
+        public object Data { get; set; }
 
-    public HttpStatusCode StatusCode { get; set; }
+        [JsonProperty("result")]
+        public ApiResult Result { get; set; }
     }
 }

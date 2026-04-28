@@ -1,4 +1,5 @@
 ﻿using Company_Registration_API.Models;
+using Company_Registration_API.Models.CompanyRegistration.Response;
 using Company_Registration_API.Utils;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Company_Registration_API.DataAccess
         }
 
         //Get company registration
-        internal List<CompanyRegistrationDTO> GetAll()
+        internal ResGetAll GetAll()
         {
             try
             {
@@ -52,7 +53,7 @@ namespace Company_Registration_API.DataAccess
         }
 
         // GET BY ID
-        internal CompanyRegistrationDTO GetById(long id)
+        internal ResCompanyId GetById(long id)
         {
             try
             {

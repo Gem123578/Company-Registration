@@ -47,29 +47,7 @@ namespace Company_Registration_API.DataAccess
             }
 
         }
-        //public bool ValidatePassword(string password)
-        //{
-        //    try
-        //    {
-        //        if (string.IsNullOrWhiteSpace(password))
-        //        {
-        //            throw new ApiException(string.Format(CommonMessages.MSG_REQUIRED_FIELD, "Password"));
-        //        }
-
-        //        return true;
-        //    }
-        //    catch (ApiException)
-        //    {
-        //        throw;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.Error(null, ex);
-        //        throw new ApiException(string.Format(CommonMessages.MSG_REQUIRED_FIELD, "Password"));
-        //    }
-        //}
-
-
+        
         public CompanyApplicantDto CreateApplicant(ApplicantRegisterDTO dto)
         {
             try
@@ -141,37 +119,7 @@ namespace Company_Registration_API.DataAccess
                 throw new ApiException(string.Format(CommonMessages.MSG_CREATE_FAIL, CommonConstants.TBLNAME_EMAIL_TOKEN));
             }
         }
-        //public CompanyAplicantDto Login(LoginDTO dto)
-        //{
-        //    try
-        //    {
-        //        Pass
-        //    }
-        //    catch (ApiException)
-        //    {
-        //        throw;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new ApiException(string.Format(CommonMessages.MSG_Login_FAIL, CommonConstants.TBLNAME_APP_USERS));
-        //    }
-        //}
-
-        //public List<CompanyApplicant> GetAllApplicants()
-        //{
-        //    return db.CompanyApplicants.Select(x => new ApplicantRegisterDTO
-        //    {
-        //        Id = x.Id,
-        //        FullName = x.FullName,
-        //        EmailAddress = x.EmailAddress,
-        //        PhoneNumber = x.PhoneNumber,
-        //        Nationality = x.Nationality,
-        //        IdentityNumber = x.IdentityNumber,
-        //        CreatedAt = x.CreatedAt
-        //    }).ToList();
-        //}
-
-
+        
         internal bool ConfirmEmail(string token, string email)
         {
             try

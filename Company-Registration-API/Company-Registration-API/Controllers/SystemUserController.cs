@@ -1,13 +1,14 @@
-﻿using System;
+﻿using Company_Registration_API.Models;
+using Company_Registration_API.Models.CompanyApplicant;
+using Company_Registration_API.Models.DTO;
+using Company_Registration_API.Models.SystemUser;
+using Company_Registration_API.Services;
+using Company_Registration_API.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
-using Company_Registration_API.Services;
-using Company_Registration_API.Models.DTO;
-using Company_Registration_API.Models.SystemUser;
-using Company_Registration_API.Models;
-using Company_Registration_API.Models.CompanyApplicant;
 
 namespace Company_Registration_API.Controllers
 {
@@ -62,8 +63,6 @@ namespace Company_Registration_API.Controllers
         public IHttpActionResult Login([FromBody] LoginDTO dto)
         {
 
-            if (dto == null) return BadRequest("Email and password required");
-
             var response = _systemUserService.ValidateUser(dto);
 
             return Ok(response);
@@ -74,28 +73,28 @@ namespace Company_Registration_API.Controllers
         [Route("DeleteUser/{id}")]
         public IHttpActionResult DeleteUser( long id)
         {
-            //int loginUserId = 0;
-            //get from session
-            if (HttpContext.Current.Session != null && HttpContext.Current.Session["UserId"] != null)
-            {
-                long.TryParse(HttpContext.Current.Session["UserId"].ToString(), out id);
-            }
+            ////int loginUserId = 0;
+            ////get from session
+            //if (HttpContext.Current.Session != null && HttpContext.Current.Session["UserId"] != null)
+            //{
+            //    long.TryParse(HttpContext.Current.Session["UserId"].ToString(), out id);
+            //}
 
-            //get from cookie
-            if(id == 0 && HttpContext.Current.Request.Cookies["UserId"] != null)
-            {
-                long.TryParse(HttpContext.Current.Request.Cookies["UserId"].Value, out id);
-            }
+            ////get from cookie
+            //if(id == 0 && HttpContext.Current.Request.Cookies["UserId"] != null)
+            //{
+            //    long.TryParse(HttpContext.Current.Request.Cookies["UserId"].Value, out id);
+            //}
 
-            //login user?
-            if(id == 0)
-            {
-                return Content(System.Net.HttpStatusCode.Unauthorized, new BaseResponse
-                {
-                    IsSuccess = false,
-                    Message = "User not authenticated."
-                });
-            }
+            ////login user?
+            //if(id == 0)
+            //{
+            //    return Content(System.Net.HttpStatusCode.Unauthorized, new ResultBase
+            //    {
+            //        Result = CreateResult(Constants.ACK_Result);
+            //        Message = "User not authenticated."
+            //    });
+            //}
 
             ResultBase response = _systemUserService.DeleteUser(id);
 

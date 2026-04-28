@@ -11,9 +11,9 @@ namespace Company_Registration_API.Services
     public interface ICompanyRegistrationService
     {
         ResCompanyRegistration SubmitCompanyRegistration(CompanyRegistrationDTO dto);
-        List<CompanyRegistrationDTO> GetAllCompanies();
-        CompanyRegistrationDTO GetCompanyById(long id);
-        RegisteredCompany UpdateCompany(long id, CompanyRegistrationDTO dto);
+        ResGetAll GetAllCompanies();
+        ResCompanyId GetCompanyById(long id);
+        ResCompanyRegistration UpdateCompany(long id, CompanyRegistrationDTO dto);
         bool DeleteCompany(long id);
         UploadResponse UploadConstitution();
     }

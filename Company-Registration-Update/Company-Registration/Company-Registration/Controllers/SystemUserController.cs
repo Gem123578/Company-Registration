@@ -70,9 +70,9 @@ namespace Company_Registration.Controllers
 
                 if (!response.IsSuccess)
                 {
-                    ModelState.AddModelError("", string.IsNullOrEmpty(response.Message)
+                    ModelState.AddModelError("", string.IsNullOrEmpty(response.Result?.Message)
                         ? "Failed to create/update user"
-                        : response.Message);
+                        : response.Result?.Message);
                     return PartialView("_CreateUpdateUser", model);
                 }
 
@@ -107,9 +107,9 @@ namespace Company_Registration.Controllers
 
                 if (!response.IsSuccess)
                 {
-                    TempData["ErrorMessage"] = string.IsNullOrEmpty(response.Message)
+                    TempData["ErrorMessage"] = string.IsNullOrEmpty(response.Result?.Message)
                         ? "Failed to delete user."
-                        : response.Message;
+                        : response.Result?.Message;
                     return Json(new { success = false, message = TempData["ErrorMessage"] });
                 }
 

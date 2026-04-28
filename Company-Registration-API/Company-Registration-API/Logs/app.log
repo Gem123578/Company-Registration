@@ -336,3 +336,40 @@ The statement has been terminated.
 2026-04-26 22:27:31,043 INFO  Company_Registration_API.DataAccess.ApplicantRegistrationDao - Unchanged
 2026-04-26 22:27:31,043 INFO  Company_Registration_API.DataAccess.ApplicantRegistrationDao - Data Source=.;Initial Catalog=CompanyRegistrationDB;Integrated Security=True
 2026-04-26 22:27:31,043 INFO  Company_Registration_API.DataAccess.ApplicantRegistrationDao - Rows inserted: 1
+2026-04-27 21:52:12,922 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: User doesn't exist
+   at Company_Registration_API.DataAccess.SystemUsersDao.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\SystemUsersDao.cs:line 226
+   at Company_Registration_API.Services.SystemUserService.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\SystemUserService.cs:line 154
+2026-04-27 21:52:13,033 DEBUG Company_Registration_API.Services.SystemUserService - API END : 04/27/2026 15:22:13
+2026-04-27 22:12:19,017 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email)
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto)
+2026-04-27 22:13:15,195 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email)
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto)
+2026-04-27 22:13:40,505 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email)
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto)
+2026-04-27 22:14:17,215 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email)
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto)
+2026-04-28 00:15:45,727 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 41
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 35
+2026-04-28 00:16:44,579 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 41
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 35
+2026-04-28 00:22:58,926 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 41
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 35
+2026-04-28 00:25:57,633 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Exist NRC No
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ValidateIdentityNumber(String identityNumber) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 240
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 36

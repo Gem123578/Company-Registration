@@ -1,6 +1,7 @@
 ﻿using Company_Registration.Common;
 using Company_Registration.Models.DTO;
 using Company_Registration.Utils;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace Company_Registration.APIServices
     public class SystemUserService : ISystemUserService
     {
         private readonly ApiHelpers _apiHelper;
+        private readonly ILog _logger;
         public long loginUserId { get; set; }
         public SystemUserService()
         {
             _apiHelper = new ApiHelpers();
+            _logger = LogManager.GetLogger(typeof(SystemUserService));
         }
         public async Task<ResponseDto> GetUserById(int id)
         {
@@ -35,7 +38,7 @@ namespace Company_Registration.APIServices
             catch (Exception ex)
             {
                 response.IsSuccess = false;
-                response.Message = ex.Message;
+                response.Result.Message = ex.Message;
             }
 
             return response;
@@ -50,14 +53,14 @@ namespace Company_Registration.APIServices
                 if (dto == null)
                 {
                     response.IsSuccess = false;
-                    response.Message = "Input data is required.";
+                    response.Result.Message = "Input data is required.";
                     return response;
                 }
 
                 if (string.IsNullOrEmpty(dto.UserName))
                 {
                     response.IsSuccess = false;
-                    response.Message = "UserName is required.";
+                    response.Result.Message = "UserName is required.";
                     return response;
                 }
 
@@ -66,14 +69,14 @@ namespace Company_Registration.APIServices
                     if (string.IsNullOrEmpty(dto.EmailAddress))
                     {
                         response.IsSuccess = false;
-                        response.Message = "Email is required.";
+                        response.Result.Message = "Email is required.";
                         return response;
                     }
 
                     if (string.IsNullOrEmpty(dto.Password))
                     {
                         response.IsSuccess = false;
-                        response.Message = "Password is required.";
+                        response.Result.Message = "Password is required.";
                         return response;
                     }
                 }
@@ -88,11 +91,14 @@ namespace Company_Registration.APIServices
                 // Send API request
                 return await _apiHelper.SendRequestAsync(reqDto);
             }
+            catch (ApiException)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
-                return response;
+                _logger.Error(null, ex);
+                throw;
             }
 
         }
@@ -111,10 +117,14 @@ namespace Company_Registration.APIServices
 
                 response = await _apiHelper.SendRequestAsync(reqDto);
             }
+            catch (ApiException)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                _logger.Error(null, ex);
+                throw;
             }
 
             return response;
@@ -135,10 +145,14 @@ namespace Company_Registration.APIServices
 
                 response = await _apiHelper.SendRequestAsync(reqDto);
             }
+            catch (ApiException)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                _logger.Error(null, ex);
+                throw;
             }
 
             return response;

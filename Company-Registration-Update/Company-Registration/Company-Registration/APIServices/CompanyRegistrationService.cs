@@ -1,7 +1,9 @@
 ﻿using Company_Registration.Common;
 using Company_Registration.Utils;
 using Company_Registration_API.Models;
+using log4net;
 using Newtonsoft.Json;
+using QSS.POS.Front.UI.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +16,11 @@ namespace Company_Registration.APIServices
     public class CompanyRegistrationService : ICompanyRegistrationService
     {
         private readonly ApiHelpers _apiHelper;
+        private readonly ILog _logger;
         public CompanyRegistrationService()
         {
             _apiHelper = new ApiHelpers();
+            _logger = LogManager.GetLogger(typeof(CompanyRegistrationService));
         }
 
         public async Task<ResponseDto> GetAllCompanies()
@@ -34,10 +38,14 @@ namespace Company_Registration.APIServices
 
                 response = await _apiHelper.SendRequestAsync(reqDto);
             }
+            catch (ApiException)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                _logger.Error(null, ex);
+                throw;
             }
 
             return response;
@@ -57,10 +65,14 @@ namespace Company_Registration.APIServices
 
                 response = await _apiHelper.SendRequestAsync(reqDto);
             }
+            catch (ApiException)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                _logger.Error(null, ex);
+                throw;
             }
 
             return response;
@@ -71,13 +83,7 @@ namespace Company_Registration.APIServices
 
             try
             {
-                if (dto == null)
-                {
-                    response.IsSuccess = false;
-                    response.Message = "Update data is required.";
-                    return response;
-                }
-
+                
                 var reqDto = ModelConverter.CreateRequestDto(
                     dto,
                     ApiHelpers.BaseUrl,
@@ -87,10 +93,14 @@ namespace Company_Registration.APIServices
 
                 response = await _apiHelper.SendRequestAsync(reqDto);
             }
+            catch (ApiException)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                _logger.Error(null, ex);
+                throw;
             }
 
             return response;
@@ -110,10 +120,14 @@ namespace Company_Registration.APIServices
 
                 response = await _apiHelper.SendRequestAsync(reqDto);
             }
+            catch (ApiException)
+            {
+                throw;
+            }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                _logger.Error(null, ex);
+                throw;
             }
 
             return response;
@@ -166,16 +180,28 @@ namespace Company_Registration.APIServices
         // -----------------------------
         public async Task<ResponseDto> SubmitRegistration(CompanyRegistrationDTO dto)
         {
-            if (dto == null)
-                return new ResponseDto { IsSuccess = false, Message = "Invalid registration data" };
-
-            var reqDto = ModelConverter.CreateRequestDto(
+            ResponseDto response = new ResponseDto();
+            try
+            {
+                var reqDto = ModelConverter.CreateRequestDto(
                 dto,
                 ApiHelpers.BaseUrl,
                 "api/CompanyRegistration/Submit",
                 eHTTPRequestType.POST);
 
-            return await _apiHelper.SendRequestAsync(reqDto);
+                 response = await _apiHelper.SendRequestAsync(reqDto);
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(null, ex);
+                throw;
+            }
+            return response;
+            
         }
     }
 }

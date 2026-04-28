@@ -24,6 +24,7 @@ namespace Company_Registration_API.Services
         {
             _dao = new ApplicantRegistrationDao();
             baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
+            _logger = LogManager.GetLogger(typeof(CompanyApplicants));
         }
 
         public RegisterResponse Register(ApplicantRegisterDTO dto)
@@ -51,8 +52,9 @@ namespace Company_Registration_API.Services
             }
             catch (Exception ex)
             {
-                _logger.Error(null, ex);
                 response.Result = CreateResult(Constants.NACK_Result, ex.Message);
+                _logger.Error(null, ex);
+                
             }
             return response;
 

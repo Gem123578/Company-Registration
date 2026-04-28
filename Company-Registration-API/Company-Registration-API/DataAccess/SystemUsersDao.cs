@@ -3,6 +3,7 @@ using Company_Registration_API.Models.CompanyApplicant;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Models.SystemUser;
 using Company_Registration_API.Utils;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace Company_Registration_API.DataAccess
     public class SystemUsersDao
     {
         private readonly ApplicantDbContext db;
+        private readonly ILog _logger;
 
         public SystemUsersDao()
         {
             db = new ApplicantDbContext();
+            _logger = LogManager.GetLogger(typeof(SystemUsersDao));
         }
 
         internal List<CreateUserDto> GetAllSystemUsers()
@@ -37,8 +40,13 @@ namespace Company_Registration_API.DataAccess
 
                 return users;
             }
-            catch (Exception)
+            catch (ApiException)
             {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_USERS));
             }
         }
@@ -90,8 +98,9 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_WRITE_FAIL, CommonConstants.TBLNAME_USERS));
             }
         }
@@ -116,8 +125,9 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_WRITE_FAIL, CommonConstants.TBLNAME_USERS));
             }
             
@@ -149,8 +159,9 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_Delete_FAIL, CommonConstants.TBLNAME_USERS));
             }
         }
@@ -225,8 +236,9 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_Login_FAIL, CommonConstants.TBLNAME_USERS));
             }
         }

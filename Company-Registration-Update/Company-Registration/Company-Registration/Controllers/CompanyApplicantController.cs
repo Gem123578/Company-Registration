@@ -1,4 +1,5 @@
 ﻿using Company_Registration.APIServices;
+using Company_Registration.Common;
 using Company_Registration.Models;
 using Company_Registration.Models.DTO;
 using Company_Registration.Utils;
@@ -48,12 +49,12 @@ namespace Company_Registration.Controllers
                 IdentityNumber = model.IdentityNumber
             };
 
-            var response = await _service.RegisterUser(request);
+            ResponseDto response = await _service.RegisterUser(request);
 
             if (response.IsSuccess)
                 return RedirectToAction("Login","CompanyApplicant");
 
-            ModelState.AddModelError("", string.IsNullOrEmpty(response.Message) ? "Registration Fail!" : response.Message);
+            ModelState.AddModelError("", string.IsNullOrEmpty(response.Result?.Message) ? "Registration Fail!" : response.Result?.Message);
             return View(model);
         }
 
@@ -85,7 +86,7 @@ namespace Company_Registration.Controllers
 
                 if (!response.IsSuccess)
                 {
-                    ModelState.AddModelError("", string.IsNullOrEmpty(response.Message) ? "Invalid email or password" : response.Message);
+                    ModelState.AddModelError("", string.IsNullOrEmpty(response.Result?.Message) ? "Invalid email or password" : response.Result?.Message);
                     return View(model);
                 }
 
@@ -166,7 +167,7 @@ namespace Company_Registration.Controllers
             var response = await _service.ConfirmEmail(token, email);
 
             ViewBag.Message = response.IsSuccess? "Email confirmed successfully. You can login now."
-                : response.Message;
+                : response.Result?.Message;
 
             return View();
         }

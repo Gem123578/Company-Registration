@@ -71,7 +71,7 @@ namespace Company_Registration.Controllers
 
                 if (!response.IsSuccess)
                 {
-                    ModelState.AddModelError("", response.Message ?? "Update failed");
+                    ModelState.AddModelError("", response.Result?.Message ?? "Update failed");
                     return PartialView("_CreateUpdateCompany", model);
                 }
 
@@ -91,7 +91,7 @@ namespace Company_Registration.Controllers
 
                 if (!response.IsSuccess)
                 {
-                    return Json(new { success = false, message = response.Message });
+                    return Json(new { success = false, message = response.Result?.Message });
                 }
 
                 return Json(new { success = true, message = "Deleted successfully" });
@@ -257,7 +257,7 @@ namespace Company_Registration.Controllers
             if (response.IsSuccess)
                 return RedirectToAction("Index", "Home");
 
-            ModelState.AddModelError("", response.Message ?? "Registration failed.");
+            ModelState.AddModelError("", response.Result?.Message ?? "Registration failed.");
             return View(model);
         }
 

@@ -28,25 +28,8 @@ namespace Company_Registration_API.Controllers
         [Route("Submit")]
         public IHttpActionResult SubmitRegistration([FromBody]CompanyRegistrationDTO dto)
         {
-            try
-            {
-                if (dto == null)
-                    return BadRequest("Registration data is null.");
-                //if (dto.ApplicantId == 0)
-                //    return BadRequest("ApplicantId missing.");
-
-                // register call
-                var response = _service.SubmitCompanyRegistration(dto);
-                return Ok(response);
-            }
-            catch(ApiException ex)
-            {
-                return Content(System.Net.HttpStatusCode.BadRequest, new
-                {
-                    IsSuccess = false,
-                    message = ex.Message
-                });
-            }
+            var response = _service.SubmitCompanyRegistration(dto);
+            return Ok(response);
         }
 
         [HttpGet]
@@ -69,8 +52,6 @@ namespace Company_Registration_API.Controllers
         [Route("Update/{id}")]
         public IHttpActionResult Update(long id, [FromBody] CompanyRegistrationDTO dto)
         {
-            if(dto == null)
-                return BadRequest("Registration data is null.");
             var result = _service.UpdateCompany(id, dto);
             return Ok(result);
         }
