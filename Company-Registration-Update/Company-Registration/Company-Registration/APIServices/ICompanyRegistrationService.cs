@@ -10,7 +10,7 @@ namespace Company_Registration.APIServices
 {
     public interface ICompanyRegistrationService
     {
-        Task<ResponseDto> GetAllCompanies();
+        Task<ResponseDto> GetAllCompanies(long userId);
         Task<ResponseDto> GetCompanyById(long id);
         Task<ResponseDto> UpdateCompany(long id, CompanyRegistrationDTO request);
         Task<ResponseDto> DeleteCompany(long id);

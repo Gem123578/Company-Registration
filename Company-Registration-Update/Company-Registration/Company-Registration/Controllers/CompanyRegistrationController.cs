@@ -30,7 +30,27 @@ namespace Company_Registration.Controllers
         {
             try
             {
-                var response = await _service.GetAllCompanies();
+                int userId = 0;
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    var identity = User.Identity as FormsIdentity;
+
+                    if (identity != null)
+                    {
+                        string userData = identity.Ticket.UserData;
+
+                        if (!string.IsNullOrEmpty(userData))
+                        {
+                            var data = userData.Split('|');
+                            userId = Convert.ToInt32(data[0]);
+                        }
+                    }
+                }
+
+                // 👇 IMPORTANT: pass userId
+                var response = await _service.GetAllCompanies(userId);
+
                 var companies = new List<CompanyRegistrationDTO>();
 
                 if (response.IsSuccess && response.Data != null)
@@ -46,6 +66,7 @@ namespace Company_Registration.Controllers
                 return PartialView("_CompanyGrid", new List<CompanyRegistrationDTO>());
             }
         }
+
         public async Task<ActionResult> GetCompanyById(long id)
         {
             var model = new CompanyRegistrationDTO();

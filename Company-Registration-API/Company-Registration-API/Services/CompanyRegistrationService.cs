@@ -3,6 +3,8 @@ using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyRegistration;
 using Company_Registration_API.Models.CompanyRegistration.Response;
 using Company_Registration_API.Utils;
+using log4net;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,54 +13,47 @@ using System.Web;
 
 namespace Company_Registration_API.Services
 {
-    public class CompanyRegistrationService : ICompanyRegistrationService
+    public class CompanyRegistrationService : BaseServices, ICompanyRegistrationService
     {
         private readonly CompanyRegistrationDao _dao;
+        private readonly ILog _logger;
         public CompanyRegistrationService()
         { 
             _dao = new CompanyRegistrationDao();
+            _logger = LogManager.GetLogger(typeof(CompanyApplicants));
         }
         public ResCompanyRegistration SubmitCompanyRegistration(CompanyRegistrationDTO dto)
         {
             var response = new ResCompanyRegistration();
 
-            if (dto == null)
-            {
-                response.IsSuccess = false;
-                response.Message = "Registration data is null.";
-                return response;
-            }
-
-            //if (dto.ApplicantId == 0)
-            //{
-            //    response.IsSuccess = false;
-            //    response.Message = "ApplicantId missing.";
-            //    return response;
-            //}
 
             var companyId = _dao.CreateCompanyRegistration(dto);
-
-            response.IsSuccess = true;
-            response.Message = "Company registration submitted successfully.";
+            response.Result = CreateResult(Constants.ACK_Result, string.Format(CommonMessages.MSG_COMREG_SUCCES));
             return response;
 
         }
         // GET ALL
-        public List<CompanyRegistrationDTO> GetAllCompanies()
+        public ResGetAll GetAllCompanies(long userId)
         {
+            ResGetAll response = new ResGetAll();
             try
             {
-                return _dao.GetAll();
+                response.Data = _dao.GetAll(userId);
+                response.Result = CreateResult(Constants.ACK_Result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw new ApiException("Failed to retrieve companies");
+                _logger.Error(null, ex);
+                response.Result = CreateResult(Constants.NACK_Result, ex.Message);
             }
+
+            return response;
         }
 
         //  GET BY ID
-        public CompanyRegistrationDTO GetCompanyById(long id)
+        public ResCompanyId GetCompanyById(long id)
         {
+            ResCompanyId response = new ResCompanyId();
             try
             {
                 var company = _dao.GetById(id);
@@ -68,7 +63,7 @@ namespace Company_Registration_API.Services
                     throw new ApiException("Company not found");
                 }
 
-                return company;
+                response.Data = company;
             }
             catch (ApiException)
             {
@@ -78,14 +73,19 @@ namespace Company_Registration_API.Services
             {
                 throw new ApiException("Failed to retrieve company");
             }
+            return response;
         }
 
         //  UPDATE
-        public RegisteredCompany UpdateCompany(long id, CompanyRegistrationDTO dto)
+        public ResCompanyRegistration UpdateCompany(long id, CompanyRegistrationDTO dto)
         {
+            ResCompanyRegistration response = new ResCompanyRegistration();
             try
             {
-                return _dao.UpdateCompany(id, dto);
+                var company = _dao.UpdateCompany(id, dto);
+
+                response.Data = company;
+                response.Result = CreateResult(Constants.ACK_Result, "Company updated successfully");
             }
             catch (ApiException)
             {
@@ -95,15 +95,17 @@ namespace Company_Registration_API.Services
             {
                 throw new ApiException("Failed to update company");
             }
+            return response;
         }
 
         //  DELETE
-        public bool DeleteCompany(long id)
+        public ResDeleteCompany DeleteCompany(long id)
         {
+            ResDeleteCompany response = new ResDeleteCompany();
             try
             {
                 _dao.DeleteCompany(id);
-                return true;
+                response.Result = CreateResult(Constants.ACK_Result, string.Format(CommonMessages.MSG_DELETE));
             }
             catch (ApiException)
             {
@@ -113,6 +115,7 @@ namespace Company_Registration_API.Services
             {
                 throw new ApiException("Failed to delete company");
             }
+            return response;
         }
 
         public UploadResponse UploadConstitution()
@@ -125,8 +128,8 @@ namespace Company_Registration_API.Services
 
                 if (request.Files.Count == 0)
                 {
-                    response.IsSuccess = false;
-                    response.Message = "No file uploaded";
+                    
+                    response.Result.Message = "No file uploaded";
                     return response;
                 }
 
@@ -144,17 +147,16 @@ namespace Company_Registration_API.Services
                 file.SaveAs(fullPath);
 
                 string dbPath = "/Uploads/" + fileName;
-
-                response.IsSuccess = true;
-                response.Message = "File uploaded successfully";
                 response.Path = dbPath;
+                response.Result = CreateResult(Constants.ACK_Result, "File uploaded successfully");
+                
 
                 return response;
             }
             catch (Exception ex)
             {
-                response.IsSuccess = false;
-                response.Message = ex.Message;
+                response.Result.Code = Constants.NACK_Result;
+                response.Result.Message = ex.Message;
                 return response;
             }
         }

@@ -34,9 +34,10 @@ namespace Company_Registration_API.Controllers
 
         [HttpGet]
         [Route("GetCompany")]
-        public IHttpActionResult GetCompany()
+        public IHttpActionResult GetCompany(long userId)
         {
-            var response = _service.GetAllCompanies();
+
+            var response = _service.GetAllCompanies(userId);
             return Ok(response);
         }
 
@@ -61,7 +62,7 @@ namespace Company_Registration_API.Controllers
         public IHttpActionResult Delete(long id)
         {
             var result = _service.DeleteCompany(id);
-            return Ok(new { IsSuccess = result, Message = result ? "Company deleted successfully." : CommonMessages.MSG_Delete_FAIL });
+            return Ok(result);
         }
         // post upload constitution document
         [HttpPost]

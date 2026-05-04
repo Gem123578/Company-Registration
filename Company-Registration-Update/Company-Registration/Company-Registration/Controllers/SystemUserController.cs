@@ -147,13 +147,6 @@ namespace Company_Registration.Controllers
         {
             return View();
         }
-
-
-        //// GET: SystemUser
-        //public ActionResult Profile()
-        //{
-        //    return View();
-        //}
-
+        
     }
 }

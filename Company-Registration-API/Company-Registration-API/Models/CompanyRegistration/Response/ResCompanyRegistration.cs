@@ -11,6 +11,6 @@ namespace Company_Registration_API.Models.CompanyRegistration
     public class ResCompanyRegistration : ResultBase
     {
         [JsonProperty ("data")]
-        public string Data { get; set; }
+        public RegisteredCompany Data { get; set; }
     }
 }

@@ -120,8 +120,14 @@
   <data name="MSG_APPLICANT_EXIST" xml:space="preserve">
     <value>This applicant already has a registered account</value>
   </data>
+  <data name="MSG_COMREG_SUCCES" xml:space="preserve">
+    <value>Company Registration successfully.</value>
+  </data>
   <data name="MSG_CREATE_FAIL" xml:space="preserve">
     <value>Creation fail for</value>
+  </data>
+  <data name="MSG_DELETE" xml:space="preserve">
+    <value> information is deleted successfully.</value>
   </data>
   <data name="MSG_Delete_FAIL" xml:space="preserve">
     <value>Delete action fail for</value>

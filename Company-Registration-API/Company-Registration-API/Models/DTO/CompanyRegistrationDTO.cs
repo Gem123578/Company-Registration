@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Company_Registration_API.Models.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,9 @@ namespace Company_Registration_API.Models
         public long? UserId { get; set; }
         public DateTime IncorporationDate { get; set; }
         public DateTime CreatedAt { get; set; }
+        public bool CanApprove { get; set; }
+
+        public ApprovalDto Approval { get; set; }
         // ================= Share Capital =================
         public CompanyShareCapitalDTO ShareCapital { get; set; }
 

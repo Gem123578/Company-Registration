@@ -1,9 +1,12 @@
 ﻿using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyRegistration.Response;
+using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
+using QPSOS.Web.API.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 
 namespace Company_Registration_API.DataAccess
@@ -18,27 +21,77 @@ namespace Company_Registration_API.DataAccess
         }
 
         //Get company registration
-        internal ResGetAll GetAll()
+        internal List<CompanyRegistrationDTO> GetAll(long userId)
         {
             try
             {
-                var list = db.RegisteredCompanies
-                    .Select(x => new CompanyRegistrationDTO
-                    {
-                        Id = x.Id,
-                        CompanyName = x.CompanyName,
-                        RegistrationNumber = x.RegistrationNumber,
-                        CompanyType = x.CompanyType,
-                        BusinessActivity = x.BusinessActivity,
-                        RegisteredAddress = x.RegisteredAddress,
-                        RegistrationStatus = x.RegistrationStatus,
-                        ApplicantId = x.ApplicantId,
-                        UserId = x.UserId,
-                        IncorporationDate = x.IncorporationDate,
-                        CreatedAt = x.CreatedAt
-                    })
-                    .OrderByDescending(x => x.Id)
-                    .ToList();
+                // 👤 CHECK USER TYPE
+                bool isApplicant = db.CompanyApplicants.Any(x => x.Id == userId);
+
+                // 👤 APPLICANT VIEW
+                if (isApplicant)
+                {
+                    return db.RegisteredCompanies
+                        .Where(rc => rc.ApplicantId == userId)
+                        .Select(rc => new CompanyRegistrationDTO
+                        {
+                            Id = rc.Id,
+                            CompanyName = rc.CompanyName,
+                            RegistrationNumber = rc.RegistrationNumber,
+                            CompanyType = rc.CompanyType,
+                            BusinessActivity = rc.BusinessActivity,
+                            RegisteredAddress = rc.RegisteredAddress,
+                            RegistrationStatus = rc.RegistrationStatus,
+                            ApplicantId = rc.ApplicantId,
+                            UserId = rc.UserId,
+                            IncorporationDate = rc.IncorporationDate,
+                            CreatedAt = rc.CreatedAt,
+
+                            Approval = null,
+                            CanApprove = false
+                        })
+                        .OrderByDescending(x => x.Id)
+                        .ToList();
+                }
+
+                // 🛠 SYSTEM USER VIEW
+                var list = (from rc in db.RegisteredCompanies
+
+                            let latestLog = db.CompanyApprovalLogs
+                                .Where(l => l.CompanyId == rc.Id)
+                                .OrderByDescending(l => l.ActionDate)
+                                .FirstOrDefault()
+
+                            let approver = db.SystemUsers
+                                .Where(u => latestLog != null && u.Id == latestLog.ApprovedBy)
+                                .FirstOrDefault()
+
+                            select new CompanyRegistrationDTO
+                            {
+                                Id = rc.Id,
+                                CompanyName = rc.CompanyName,
+                                RegistrationNumber = rc.RegistrationNumber,
+                                CompanyType = rc.CompanyType,
+                                BusinessActivity = rc.BusinessActivity,
+                                RegisteredAddress = rc.RegisteredAddress,
+                                RegistrationStatus = rc.RegistrationStatus,
+                                ApplicantId = rc.ApplicantId,
+                                UserId = rc.UserId,
+                                IncorporationDate = rc.IncorporationDate,
+                                CreatedAt = rc.CreatedAt,
+
+                                Approval = latestLog == null ? null : new ApprovalDto
+                                {
+                                    ApprovalAction = latestLog.Action,
+                                    ApprovalRemarks = latestLog.Remarks,
+                                    ApprovalDate = latestLog.ActionDate,
+                                    ApprovedByName = approver != null ? approver.UserName : null
+                                },
+
+                                CanApprove = rc.RegistrationStatus == "PENDING"
+                            })
+                            .OrderByDescending(x => x.Id)
+                            .ToList();
 
                 return list;
             }
@@ -52,8 +105,9 @@ namespace Company_Registration_API.DataAccess
             }
         }
 
+
         // GET BY ID
-        internal ResCompanyId GetById(long id)
+        internal CompanyRegistrationDTO GetById(long id)
         {
             try
             {
@@ -145,37 +199,43 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                if(dto.ApplicantId == 0) 
+                using (TransactionScope scope = BaseDao.GetReadUncommittedScope())
                 {
-                    dto.ApplicantId = 0;
+                    
+                    if(dto.ApplicantId == 0)
+                    {
+                        if (db.RegisteredCompanies.Any(x => x.ApplicantId == dto.ApplicantId))
+                        {
+                            throw new ApiException(CommonMessages.MSG_APPLICANT_EXIST);
+                        }
+                        dto.ApplicantId = dto.ApplicantId == 0 ? 0 : dto.ApplicantId;
+                    }
+                    
+                    dto.UserId = dto.UserId == 0 ? 0 : dto.UserId;
+
+                    // 1. Company save
+                    var company = SaveCompany(db, dto);
+
+                    // 2. Share Capital save
+                    if (dto.ShareCapital != null)
+                        SaveShareCapital(db, dto.ShareCapital, company.Id);
+
+                    // 3. Shareholders save
+                    if (dto.Shareholders != null)
+                        SaveShareholders(db, dto.Shareholders, company.Id);
+
+                    // 4. UHC save
+                    if (dto.UHC != null)
+                        SaveUHC(db, dto.UHC, company.Id);
+
+                    // 5. Constitution save
+                    if (dto.Constitution != null)
+                        SaveConstitution(db, dto.Constitution, company.Id);
+
+                    scope.Complete();
+
+                    return company.Id;
                 }
-                dto.UserId = 0;
-
-                if (db.RegisteredCompanies.Any(x => x.ApplicantId == dto.ApplicantId))
-                {
-                    throw new ApiException(CommonMessages.MSG_APPLICANT_EXIST);
-                }
-
-                // 1. Company save
-                var company = SaveCompany(db, dto);
-
-                // 2. Share Capital save
-                if (dto.ShareCapital != null)
-                    SaveShareCapital(db, dto.ShareCapital, company.Id);
-
-                // 3. Shareholders save
-                if (dto.Shareholders != null)
-                    SaveShareholders(db, dto.Shareholders, company.Id);
-
-                // 4. UHC save
-                if (dto.UHC != null)
-                    SaveUHC(db, dto.UHC, company.Id);
-
-                // 5. Constitution save
-                if (dto.Constitution != null)
-                    SaveConstitution(db, dto.Constitution, company.Id);
-
-                return company.Id;
             }
             catch (ApiException)
             {
@@ -196,8 +256,8 @@ namespace Company_Registration_API.DataAccess
                 BusinessActivity = dto.BusinessActivity,
                 RegisteredAddress = dto.RegisteredAddress,
                 RegistrationStatus = dto.RegistrationStatus ?? "PENDING",
-                ApplicantId = dto.ApplicantId == 0 ? (long?)null : dto.ApplicantId,
-                UserId = dto.UserId == 0 ? (long?)null : dto.UserId,
+                ApplicantId = dto.ApplicantId > 0 ? dto.ApplicantId : (long?)null,
+                UserId = dto.UserId > 0 ? dto.UserId : (long?)null,
                 IncorporationDate = dto.IncorporationDate,
                 CreatedAt = DateTime.Now
             };

@@ -257,8 +257,13 @@
     <Compile Include="Models\ApprovalLog\ApprovalLogRes.cs" />
     <Compile Include="Models\CompanyApplicant\Response\LoginResponse.cs" />
     <Compile Include="Models\CompanyApplicant\Response\RegisterResponse.cs" />
+    <Compile Include="Models\CompanyApprovalLogs.cs" />
     <Compile Include="Models\CompanyConstitution.cs" />
+    <Compile Include="Models\CompanyRegistration\Response\ResCompanyId.cs" />
     <Compile Include="Models\CompanyRegistration\Response\ResCompanyRegistration.cs" />
+    <Compile Include="Models\CompanyRegistration\Response\ResDeleteCompany.cs" />
+    <Compile Include="Models\CompanyRegistration\Response\ResGetAll.cs" />
+    <Compile Include="Models\CompanyRegistration\Response\ResRegisterCompany.cs" />
     <Compile Include="Models\CompanyRegistration\Response\UploadResponse.cs" />
     <Compile Include="Models\CompanyShareCapital.cs" />
     <Compile Include="Models\CompanyShareholder.cs" />

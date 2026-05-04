@@ -1,4 +1,5 @@
 ﻿using Company_Registration_API.Models;
+using Company_Registration_API.Models.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -23,6 +24,6 @@ namespace Company_Registration_API.DataAccess
         public DbSet<UltimateHoldingCompany> UltimateHoldingCompanies { get; set; }
         public DbSet<CompanyConstitution> CompanyConstitutions { get; set; }
         public DbSet<RegistrationPayment> RegistrationPayments { get; set; }
-
+        public DbSet<CompanyApprovalLogs> CompanyApprovalLogs { get; internal set; }
     }
 }

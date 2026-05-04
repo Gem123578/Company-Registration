@@ -70,11 +70,29 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company Registration successfully..
+        /// </summary>
+        internal static string MSG_COMREG_SUCCES {
+            get {
+                return ResourceManager.GetString("MSG_COMREG_SUCCES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creation fail for.
         /// </summary>
         internal static string MSG_CREATE_FAIL {
             get {
                 return ResourceManager.GetString("MSG_CREATE_FAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  information is deleted successfully..
+        /// </summary>
+        internal static string MSG_DELETE {
+            get {
+                return ResourceManager.GetString("MSG_DELETE", resourceCulture);
             }
         }
         

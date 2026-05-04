@@ -73,29 +73,6 @@ namespace Company_Registration_API.Controllers
         [Route("DeleteUser/{id}")]
         public IHttpActionResult DeleteUser( long id)
         {
-            ////int loginUserId = 0;
-            ////get from session
-            //if (HttpContext.Current.Session != null && HttpContext.Current.Session["UserId"] != null)
-            //{
-            //    long.TryParse(HttpContext.Current.Session["UserId"].ToString(), out id);
-            //}
-
-            ////get from cookie
-            //if(id == 0 && HttpContext.Current.Request.Cookies["UserId"] != null)
-            //{
-            //    long.TryParse(HttpContext.Current.Request.Cookies["UserId"].Value, out id);
-            //}
-
-            ////login user?
-            //if(id == 0)
-            //{
-            //    return Content(System.Net.HttpStatusCode.Unauthorized, new ResultBase
-            //    {
-            //        Result = CreateResult(Constants.ACK_Result);
-            //        Message = "User not authenticated."
-            //    });
-            //}
-
             ResultBase response = _systemUserService.DeleteUser(id);
 
             return Ok(response);

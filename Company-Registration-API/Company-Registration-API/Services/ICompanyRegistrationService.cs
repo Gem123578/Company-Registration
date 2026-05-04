@@ -10,11 +10,16 @@ namespace Company_Registration_API.Services
 {
     public interface ICompanyRegistrationService
     {
-        ResCompanyRegistration SubmitCompanyRegistration(CompanyRegistrationDTO dto);
-        ResGetAll GetAllCompanies();
-        ResCompanyId GetCompanyById(long id);
+        //ResCompanyRegistration SubmitCompanyRegistration(CompanyRegistrationDTO dto);
+        //ResGetAll GetAllCompanies();
+        //ResCompanyId GetCompanyById(long id);
         ResCompanyRegistration UpdateCompany(long id, CompanyRegistrationDTO dto);
-        bool DeleteCompany(long id);
+        ResDeleteCompany DeleteCompany(long id);
         UploadResponse UploadConstitution();
+        ResCompanyRegistration SubmitCompanyRegistration(CompanyRegistrationDTO dto);
+
+        ResGetAll GetAllCompanies(long userId);
+
+        ResCompanyId GetCompanyById(long id);
     }
 }

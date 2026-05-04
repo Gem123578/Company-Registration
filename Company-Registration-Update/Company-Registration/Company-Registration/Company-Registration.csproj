@@ -256,6 +256,8 @@
     <Content Include="Views\SystemUser\_SystemUserGrid.cshtml" />
     <Content Include="Views\SystemUser\_CreateUpdateUser.cshtml" />
     <Content Include="Views\SystemUser\Dashboard.cshtml" />
+    <Content Include="Views\CompanyRegistration\_CompanyGrid.cshtml" />
+    <Content Include="Views\CompanyRegistration\_CreateUpdateCompany.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -23,7 +23,7 @@ namespace Company_Registration.APIServices
             _logger = LogManager.GetLogger(typeof(CompanyRegistrationService));
         }
 
-        public async Task<ResponseDto> GetAllCompanies()
+        public async Task<ResponseDto> GetAllCompanies(long userId)
         {
             var response = new ResponseDto();
 

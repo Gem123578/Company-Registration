@@ -28,7 +28,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
                             <li><a class="dropdown-item" href="@Url.Action("Profile","SystemUser")">Profile</a></li>
-                            <li><a class="dropdown-item" href="@Url.Action("MyCompany","CompanyRegistration")">My Company</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("CompanyGrid","CompanyRegistration")">My Company</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item text-danger" href="@Url.Action("Logout","CompanyApplicant")">Logout</a></li>
                         </ul>
@@ -56,11 +56,13 @@
 
                     @if (User.Identity.IsAuthenticated && (userRole != "APPLICANT"))
                     {
-                        <a href="@Url.Action("Dashboard", "SystemUser")" class="menu-btn">
+                        <button class="menu-btn active "
+                                onclick="window.location.href='@Url.Action("Dashboard","SystemUser")'">
                             Manage System User
-                        </a>
-
+                        </button>
                     }
+
+
                 </div>
 
                 <!-- RIGHT CONTENT -->

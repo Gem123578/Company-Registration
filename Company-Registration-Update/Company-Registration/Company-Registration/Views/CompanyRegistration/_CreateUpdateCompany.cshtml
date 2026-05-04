@@ -1,0 +1,46 @@
+﻿
+@model Company_Registration.Models.CompanyRegistrationViewModel
+
+@using (Html.BeginForm("UpdateCompany", "CompanyRegistration", FormMethod.Post, new { id = "updateForm" }))
+{
+    @Html.HiddenFor(m => m.Id)
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <i class="bi bi-pencil-square"></i> Update Company
+        </div>
+
+        <div class="card-body row g-3">
+
+            <div class="col-md-6">
+                <label class="form-label"><i class="bi bi-building"></i> Company Name</label>
+                @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CompanyName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label"><i class="bi bi-hash"></i> Registration Number</label>
+                @Html.TextBoxFor(m => m.RegistrationNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RegistrationNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label"><i class="bi bi-briefcase"></i> Company Type</label>
+                @Html.TextBoxFor(m => m.CompanyType, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CompanyType, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label"><i class="bi bi-flag"></i> Status</label>
+                @Html.TextBoxFor(m => m.RegistrationStatus, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+
+        </div>
+
+        <div class="card-footer text-end">
+            <button type="submit" class="btn btn-success">
+                <i class="bi bi-check-circle"></i> Update
+            </button>
+        </div>
+    </div>
+}
