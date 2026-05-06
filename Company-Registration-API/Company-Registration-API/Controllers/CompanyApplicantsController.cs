@@ -23,9 +23,7 @@ namespace Company_Registration_API.Controllers
             _logger = LogManager.GetLogger(typeof(CompanyApplicantsController));
         }
 
-        // ==========================
         // Register Applicant
-        // ==========================
         [HttpPost]
         [Route("Register")]
         public IHttpActionResult Register([FromBody] ApplicantRegisterDTO dto)
@@ -49,17 +47,5 @@ namespace Company_Registration_API.Controllers
 
             return Ok(response);
         }
-
-        //    // ==========================
-        //    // Get All Applicants
-        //    // ==========================
-        //    [HttpGet]
-        //    [Route("GetAllApplicants")]
-        //    public IHttpActionResult GetAll()
-        //    {
-        //        var response = _service.GetAllApplicants();
-        //        return Ok(response);
-        //    }
-        //}
     }
 }

@@ -123,8 +123,7 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                var user = db.CompanyApplicants
-            .FirstOrDefault(x => x.EmailAddress == email);
+                var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
 
                 if (user == null)
                 {
