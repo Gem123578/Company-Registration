@@ -1,7 +1,6 @@
 ﻿using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyApplicant;
 using Company_Registration_API.Models.DTO;
-using Company_Registration_API.Models.SystemUser;
 using Company_Registration_API.Utils;
 using log4net;
 using System;

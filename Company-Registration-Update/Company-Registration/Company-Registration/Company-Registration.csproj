@@ -169,6 +169,7 @@
     <Compile Include="Models\CompanyRegistrationViewModel.cs" />
     <Compile Include="Models\CompanyShareCapitalViewModel.cs" />
     <Compile Include="Models\CompanyShareholderViewModel.cs" />
+    <Compile Include="Models\DTO\ApprovalDto.cs" />
     <Compile Include="Models\DTO\CreateUpdateUserDto.cs" />
     <Compile Include="Models\DTO\LoginDTO.cs" />
     <Compile Include="Models\DTO\ApplicantRegisterDTO.cs" />
@@ -223,6 +224,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\companyRegistratio.js" />
     <Content Include="Scripts\index.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />

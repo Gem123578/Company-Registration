@@ -32,7 +32,7 @@ namespace Company_Registration.APIServices
                 var reqDto = ModelConverter.CreateRequestDto(
                     null,
                     ApiHelpers.BaseUrl,
-                    "api/CompanyRegistration/GetCompany",
+                    $"api/CompanyRegistration/GetCompany?userId={userId}",
                     eHTTPRequestType.GET
                 );
 

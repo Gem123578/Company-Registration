@@ -1,36 +1,123 @@
-﻿<table class="table table-bordered">
-    <thead>
+﻿@model List<Company_Registration_API.Models.CompanyRegistrationDTO>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-light">
         <tr>
-            <th>Name</th>
+            <th>Company Name</th>
+            <th>Reg No</th>
             <th>Type</th>
+            <th>Business</th>
             <th>Status</th>
-            <th>Approval</th>
+            <th>Approval Action</th>
+            <th>Approved By</th>
+            <th>Approval Date</th>
             <th>Action</th>
         </tr>
     </thead>
+
     <tbody>
-        @foreach (var item in Model)
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CompanyName</td>
+                    <td>@item.RegistrationNumber</td>
+                    <td>@item.CompanyType</td>
+                    <td>@item.BusinessActivity</td>
+
+                    <!-- Status -->
+                    <td>
+                        <span class="badge bg-info">
+                            @item.RegistrationStatus
+                        </span>
+                    </td>
+
+                    <!-- Approval Action -->
+                    <td>
+                        @if (item.Approval != null)
+                        {
+                            <b>@item.Approval.Action</b>
+                            <br />
+                            <small class="text-muted">
+                                @item.Approval.Remarks
+                            </small>
+                        }
+                        else
+                        {
+                            <span class="text-muted">No Action</span>
+                        }
+                    </td>
+
+                    <!-- Approved By -->
+                    <td>
+                        @if (item.Approval != null)
+                        {
+                            @item.Approval.ApprovedByName
+                        }
+                        else
+                        {
+                            <span class="text-muted">-</span>
+                        }
+                    </td>
+
+                    <!-- Approval Date -->
+                    <td>
+                        @if (item.Approval != null)
+                        {
+                            @item.Approval.ActionDate
+                        }
+                        else
+                        {
+                            <span class="text-muted">-</span>
+                        }
+                    </td>
+
+                    <!-- Actions -->
+                    <td>
+                        @if (item.CanApprove)
+                        {
+                            <button class="btn btn-success btn-sm"
+                                    onclick="approveCompany(@item.Id)">
+                                Approve
+                            </button>
+
+                            <button class="btn btn-danger btn-sm"
+                                    onclick="rejectCompany(@item.Id)">
+                                Reject
+                            </button>
+                        }
+                        else
+                        {
+                            <span class="text-muted">Completed</span>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@item.CompanyName</td>
-                <td>@item.CompanyType</td>
-                <td>@item.RegistrationStatus</td>
-
-                <td>
-                    @if (item.Approval != null)
-                    {
-                        <span>@item.Approval.ApprovalAction</span>
-                    }
-                </td>
-
-                <td>
-                    @if (item.CanApprove)
-                    {
-                        <button class="btn btn-success btn-sm">Approve</button>
-                        <button class="btn btn-danger btn-sm">Reject</button>
-                    }
+                <td colspan="9" class="text-center">
+                    No companies found
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<script>
+    function approveCompany(id) {
+        $.post('/CompanyRegistration/Approve', { id: id }, function (res) {
+            alert(res.message);
+            location.reload();
+        });
+    }
+
+    function rejectCompany(id) {
+        $.post('/CompanyRegistration/Reject', { id: id }, function (res) {
+            alert(res.message);
+            location.reload();
+        });
+    }
+</script>

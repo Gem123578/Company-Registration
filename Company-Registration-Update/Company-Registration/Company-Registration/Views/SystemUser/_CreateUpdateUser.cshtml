@@ -1,4 +1,4 @@
-﻿@model Company_Registration.Models.DTO.CreateUpdateUserDto
+﻿﻿@model Company_Registration.Models.DTO.CreateUpdateUserDto
 
 <div class="modal-header">
     <h5 class="modal-title">@((Model.IsUpdate ? "Edit" : "Create") + " User")</h5>
@@ -17,7 +17,7 @@
 
         <div class="mb-3">
             <label>User Name</label>
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", required = "required" , autocomplete = "off"})
+            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control", required = "required", autocomplete = "off" })
         </div>
 
         if (!Model.IsUpdate)

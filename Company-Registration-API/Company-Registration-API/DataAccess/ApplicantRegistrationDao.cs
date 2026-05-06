@@ -13,7 +13,7 @@ using System.Web.Helpers;
 
 namespace Company_Registration_API.DataAccess
 {
-    public class ApplicantRegistrationDao
+    public class ApplicantRegistrationDao :BaseDao
     {
         private readonly ILog _logger;
         private readonly ApplicantDbContext db;
@@ -32,7 +32,8 @@ namespace Company_Registration_API.DataAccess
                 var applicants = db.CompanyApplicants.Where(x => x.EmailAddress == email).FirstOrDefault();
                 if (applicants != null)
                 {
-                    throw new ApiException(string.Format(CommonMessages.MSG_EMAIL_EXIST, "EmailAddress", email));
+                    _logger.Error(string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
+                    throw new ApiException(string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
                 }
                 return false;
             }
@@ -52,8 +53,7 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                using (TransactionScope transaction = BaseDao.GetReadUncommittedScope())
-                {
+                    
                     var applicant = new CompanyApplicants
                     {
                         FullName = dto.FullName,
@@ -69,9 +69,8 @@ namespace Company_Registration_API.DataAccess
 
                     db.CompanyApplicants.Add(applicant);
                     var rows = db.SaveChanges();
-                    transaction.Complete();
                     return ModelConverter.ToCompanyApplicantDto(applicant);
-                }
+                
             }
             catch (ApiException)
             {
@@ -124,11 +123,25 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                var tokenData = db.EmailConfirmationTokens.FirstOrDefault(t => t.Token == token && t.ExpireAt > DateTime.UtcNow);
+                var user = db.CompanyApplicants
+            .FirstOrDefault(x => x.EmailAddress == email);
 
-                if (tokenData == null) return false;
+                if (user == null)
+                {
+                    _logger.Error(CommonMessages.MSG_EXIST_TOKEN);
+                    throw new ApiException(CommonMessages.MSG_EXIST_TOKEN);
+                }
 
-                var user = db.CompanyApplicants.FirstOrDefault(x => x.Id == tokenData.ApplicantId);
+                var tokenData = db.EmailConfirmationTokens
+                    .FirstOrDefault(t => t.Token == token
+                                      && t.ApplicantId == user.Id
+                                      && t.ExpireAt > DateTime.UtcNow);
+
+                if (tokenData == null)
+                {
+                    _logger.Error(CommonMessages.MSG_EMAIL_NOTF);
+                    throw new ApiException(CommonMessages.MSG_EMAIL_NOTF);
+                }
 
                 user.EmailConfirmed = true;
                 user.EmailConfirmedAt = DateTime.UtcNow;
@@ -150,27 +163,30 @@ namespace Company_Registration_API.DataAccess
             }
         }
 
-        internal List<EmailConfirmationToken> GetEmailTokens(string email)
-        {
-            try
-            {
-                var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
-                if (user == null)
-                    return null;
-                return db.EmailConfirmationTokens.Where(t => t.ApplicantId == user.Id).OrderByDescending(t => t.CreatedAt)
-                         .ToList();
-            }
-            catch (ApiException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(null, ex);
-                throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
-            }
+        //internal List<EmailConfirmationToken> GetEmailTokens(string email)
+        //{
+        //    try
+        //    {
+        //        var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
+        //        if (user == null)
+        //        {
+        //            _logger.Warn(string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
+        //            throw new ApiException(string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
+        //        }
+        //        return db.EmailConfirmationTokens.Where(t => t.ApplicantId == user.Id).OrderByDescending(t => t.CreatedAt)
+        //                 .ToList();
+        //    }
+        //    catch (ApiException)
+        //    {
+        //        throw;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.Error(null, ex);
+        //        throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
+        //    }
 
-        }
+        //}
 
         internal bool ValidateIdentityNumber(string identityNumber)
         {

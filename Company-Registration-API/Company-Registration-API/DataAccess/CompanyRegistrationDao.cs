@@ -2,6 +2,7 @@
 using Company_Registration_API.Models.CompanyRegistration.Response;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
+using log4net;
 using QPSOS.Web.API.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,14 @@ using System.Web;
 
 namespace Company_Registration_API.DataAccess
 {
-    public class CompanyRegistrationDao
+    public class CompanyRegistrationDao : BaseDao
     {
+        private readonly ILog _logger;
         private ApplicantDbContext db;
 
         public CompanyRegistrationDao()
         {
+            _logger = LogManager.GetLogger(typeof(CompanyRegistrationDao));
             db = new ApplicantDbContext();
         }
 
@@ -25,10 +28,10 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                // 👤 CHECK USER TYPE
+                //  CHECK USER TYPE
                 bool isApplicant = db.CompanyApplicants.Any(x => x.Id == userId);
 
-                // 👤 APPLICANT VIEW
+                // APPLICANT VIEW
                 if (isApplicant)
                 {
                     return db.RegisteredCompanies
@@ -54,17 +57,22 @@ namespace Company_Registration_API.DataAccess
                         .ToList();
                 }
 
-                // 🛠 SYSTEM USER VIEW
+                // SYSTEM USER VIEW
                 var list = (from rc in db.RegisteredCompanies
 
-                            let latestLog = db.CompanyApprovalLogs
-                                .Where(l => l.CompanyId == rc.Id)
-                                .OrderByDescending(l => l.ActionDate)
-                                .FirstOrDefault()
+                            join cal in db.CompanyApprovalLogs
+                                on rc.Id equals cal.CompanyId into logs
 
-                            let approver = db.SystemUsers
-                                .Where(u => latestLog != null && u.Id == latestLog.ApprovedBy)
-                                .FirstOrDefault()
+                            from latestLog in logs
+                                .OrderByDescending(x => x.ActionDate)
+                                .Take(1)
+                                .DefaultIfEmpty()
+
+                                // SAFE JOIN
+                            join su in db.SystemUsers
+                                on (latestLog != null ? latestLog.ApprovedBy : 0) equals su.Id into users
+
+                            from approver in users.DefaultIfEmpty()
 
                             select new CompanyRegistrationDTO
                             {
@@ -90,8 +98,9 @@ namespace Company_Registration_API.DataAccess
 
                                 CanApprove = rc.RegistrationStatus == "PENDING"
                             })
-                            .OrderByDescending(x => x.Id)
-                            .ToList();
+            .OrderByDescending(x => x.Id)
+            .ToList();
+
 
                 return list;
             }
@@ -99,8 +108,9 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException(CommonMessages.MSG_READ_FAIL);
             }
         }
@@ -134,8 +144,9 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException("Failed to get company");
             }
         }
@@ -165,8 +176,9 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException("Failed to update company");
             }
         }
@@ -190,8 +202,9 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException(CommonMessages.MSG_Delete_FAIL);
             }
         }
@@ -199,10 +212,10 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                using (TransactionScope scope = BaseDao.GetReadUncommittedScope())
+                using (TransactionScope scope = GetReadUncommittedScope())
                 {
-                    
-                    if(dto.ApplicantId == 0)
+
+                    if (dto.ApplicantId.HasValue && dto.ApplicantId > 0)
                     {
                         if (db.RegisteredCompanies.Any(x => x.ApplicantId == dto.ApplicantId))
                         {
@@ -241,8 +254,9 @@ namespace Company_Registration_API.DataAccess
             {
                 throw;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.Error(null, ex);
                 throw new ApiException(CommonMessages.MSG_APPLICANT_EXIST);
             }
         }

@@ -124,6 +124,15 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email Not Found..
+        /// </summary>
+        internal static string MSG_EMAIL_NOTF {
+            get {
+                return ResourceManager.GetString("MSG_EMAIL_NOTF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exist NRC No.
         /// </summary>
         internal static string MSG_EXIST_NRC {
@@ -151,11 +160,38 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Input length is invalid. [{0}].
+        /// </summary>
+        internal static string MSG_INVALID_LENGTH {
+            get {
+                return ResourceManager.GetString("MSG_INVALID_LENGTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid Password.
         /// </summary>
         internal static string MSG_INVALID_PASS {
             get {
                 return ResourceManager.GetString("MSG_INVALID_PASS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input value is invalid..
+        /// </summary>
+        internal static string MSG_INVALID_VALUE {
+            get {
+                return ResourceManager.GetString("MSG_INVALID_VALUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input value is invalid..
+        /// </summary>
+        internal static string MSG_InvalidEnterValue {
+            get {
+                return ResourceManager.GetString("MSG_InvalidEnterValue", resourceCulture);
             }
         }
         

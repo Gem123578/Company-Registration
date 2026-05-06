@@ -2,6 +2,8 @@
 using Company_Registration_API.Models;
 using Company_Registration_API.Services;
 using Company_Registration_API.Utils;
+using log4net;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Text;
@@ -17,6 +19,7 @@ namespace Company_Registration_API.Controllers
     public class CompanyRegistrationController : ApiController
     {
         private readonly ICompanyRegistrationService _service;
+        private readonly ILog _logger;
         public CompanyRegistrationController()
         {
             _service = new CompanyRegistrationService();
@@ -28,6 +31,8 @@ namespace Company_Registration_API.Controllers
         [Route("Submit")]
         public IHttpActionResult SubmitRegistration([FromBody]CompanyRegistrationDTO dto)
         {
+            _logger.Debug("api/CompanyRegistration/Submit ");
+            _logger.Debug(JsonConvert.SerializeObject(dto));
             var response = _service.SubmitCompanyRegistration(dto);
             return Ok(response);
         }
@@ -36,7 +41,7 @@ namespace Company_Registration_API.Controllers
         [Route("GetCompany")]
         public IHttpActionResult GetCompany(long userId)
         {
-
+            _logger.Debug(string.Format("api/CompanyRegistratioin/GetCompany/{0}", userId));
             var response = _service.GetAllCompanies(userId);
             return Ok(response);
         }
@@ -45,6 +50,7 @@ namespace Company_Registration_API.Controllers
         [Route("Get/{id}")]
         public IHttpActionResult GetById(long id)
         {
+            _logger.Debug(string.Format("api/CompanyRegistratioin/Get/{0}", id));
             var response = _service.GetCompanyById(id);
             return Ok(response);
         }
@@ -53,6 +59,8 @@ namespace Company_Registration_API.Controllers
         [Route("Update/{id}")]
         public IHttpActionResult Update(long id, [FromBody] CompanyRegistrationDTO dto)
         {
+            _logger.Debug(string.Format("api/CompanyRegistratioin/Update/{0}", id));
+            _logger.Debug(JsonConvert.SerializeObject(dto));
             var result = _service.UpdateCompany(id, dto);
             return Ok(result);
         }
@@ -61,6 +69,7 @@ namespace Company_Registration_API.Controllers
         [Route("Delete/{id}")]
         public IHttpActionResult Delete(long id)
         {
+            _logger.Debug(string.Format("api/CompanyRegistratioin/Delete/{0}", id));
             var result = _service.DeleteCompany(id);
             return Ok(result);
         }
@@ -69,6 +78,7 @@ namespace Company_Registration_API.Controllers
         [Route("upload")]
         public IHttpActionResult UploadConstitution()
         {
+            _logger.Debug("api/CompanyRegistratioin/upload");
             var response = _service.UploadConstitution();
             return Ok(response);
 

@@ -138,6 +138,9 @@
   <data name="MSG_EMAIL_EXIST" xml:space="preserve">
     <value>Email already exists</value>
   </data>
+  <data name="MSG_EMAIL_NOTF" xml:space="preserve">
+    <value>Email Not Found.</value>
+  </data>
   <data name="MSG_EXIST_NRC" xml:space="preserve">
     <value>Exist NRC No</value>
   </data>
@@ -147,8 +150,17 @@
   <data name="MSG_EXIST_TOKEN" xml:space="preserve">
     <value>No email confirmation token found</value>
   </data>
+  <data name="MSG_InvalidEnterValue" xml:space="preserve">
+    <value>Input value is invalid.</value>
+  </data>
+  <data name="MSG_INVALID_LENGTH" xml:space="preserve">
+    <value>Input length is invalid. [{0}]</value>
+  </data>
   <data name="MSG_INVALID_PASS" xml:space="preserve">
     <value>Invalid Password</value>
+  </data>
+  <data name="MSG_INVALID_VALUE" xml:space="preserve">
+    <value>Input value is invalid.</value>
   </data>
   <data name="MSG_Login_FAIL" xml:space="preserve">
     <value>Login Fail</value>

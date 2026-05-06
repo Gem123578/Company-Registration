@@ -245,7 +245,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SystemUserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="DataAccess\ApplicantDbContext.cs" />
     <Compile Include="DataAccess\ApplicantRegistrationDao.cs" />
     <Compile Include="DataAccess\BaseDao.cs" />
     <Compile Include="DataAccess\CompanyRegistrationDao.cs" />
@@ -254,6 +253,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Common\ResultBase.cs" />
+    <Compile Include="Models\ApplicantDbContext.cs" />
     <Compile Include="Models\ApprovalLog\ApprovalLogRes.cs" />
     <Compile Include="Models\CompanyApplicant\Response\LoginResponse.cs" />
     <Compile Include="Models\CompanyApplicant\Response\RegisterResponse.cs" />

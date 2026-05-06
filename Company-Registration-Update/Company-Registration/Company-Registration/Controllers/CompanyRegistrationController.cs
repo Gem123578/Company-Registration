@@ -48,7 +48,7 @@ namespace Company_Registration.Controllers
                     }
                 }
 
-                // 👇 IMPORTANT: pass userId
+                // pass userId
                 var response = await _service.GetAllCompanies(userId);
 
                 var companies = new List<CompanyRegistrationDTO>();

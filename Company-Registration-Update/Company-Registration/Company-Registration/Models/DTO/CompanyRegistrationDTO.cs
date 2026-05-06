@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Company_Registration.Models.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +8,7 @@ namespace Company_Registration_API.Models
 {
     public class CompanyRegistrationDTO
     {
+        public int Id { get; set; }
         public string CompanyName { get; set; }
         public string RegistrationNumber { get; set; }
         public string CompanyType { get; set; } // LLC, PLC, Partnership
@@ -17,6 +19,8 @@ namespace Company_Registration_API.Models
         public long? UserId { get; set; }
         public DateTime IncorporationDate { get; set; }
         public DateTime CreatedAt { get; set; }
+        public ApprovalDto Approval { get; set; }
+        public bool CanApprove { get; set; }
         // ================= Share Capital =================
         public CompanyShareCapitalDTO ShareCapital { get; set; }
 

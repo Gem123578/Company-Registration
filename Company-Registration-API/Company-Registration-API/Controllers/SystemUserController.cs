@@ -4,6 +4,9 @@ using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Models.SystemUser;
 using Company_Registration_API.Services;
 using Company_Registration_API.Utils;
+using log4net;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,10 +19,12 @@ namespace Company_Registration_API.Controllers
     public class SystemUserController : ApiController
     {
         private readonly ISystemUserService _systemUserService;
+        private readonly ILog _logger;
 
         public SystemUserController()
         {
             _systemUserService = new SystemUserService();
+            _logger = LogManager.GetLogger(typeof(SystemUserController));
         }
 
         // Get All System Users
@@ -27,6 +32,7 @@ namespace Company_Registration_API.Controllers
         [Route("GetAllUsers")]
         public IHttpActionResult GetAllUsers()
         {
+            _logger.Debug("api/SystemUser/GetAllUsers");
             var users = _systemUserService.GetAllSystemUsers();
             return Ok(users);
         }
@@ -35,6 +41,7 @@ namespace Company_Registration_API.Controllers
         [Route("CreateUser/{id}")]
         public IHttpActionResult GetUserById(long id)
         {
+            _logger.Debug(string.Format("api/SystemUser/CreaterUser/{0}", id));
             var user = _systemUserService.GetSystemUserById(id); 
             if (user == null)
             {
@@ -50,6 +57,8 @@ namespace Company_Registration_API.Controllers
         [Route("CreateUser")]
         public IHttpActionResult CreateUser([FromBody] CreateUserDto dto)
         {
+            _logger.Debug("api/SystemUser/CreateUser");
+            _logger.Debug(JsonConvert.SerializeObject(dto));
             long loginUserId = dto.Id;
 
             // call service
@@ -62,7 +71,8 @@ namespace Company_Registration_API.Controllers
         [Route("Login")]
         public IHttpActionResult Login([FromBody] LoginDTO dto)
         {
-
+            _logger.Debug("api/SystemUser/Login");
+            _logger.Debug(JsonConvert.SerializeObject(dto));
             var response = _systemUserService.ValidateUser(dto);
 
             return Ok(response);
@@ -73,6 +83,7 @@ namespace Company_Registration_API.Controllers
         [Route("DeleteUser/{id}")]
         public IHttpActionResult DeleteUser( long id)
         {
+            _logger.Debug(string.Format("api/SystemUser/DeleteUser/{0}", id));
             ResultBase response = _systemUserService.DeleteUser(id);
 
             return Ok(response);

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Resources;
 using System.Web;
 
@@ -16,6 +17,7 @@ namespace Company_Registration_API.DataAccess
         }
         public DbSet<SystemUsers> SystemUsers { get; set; }
         public DbSet<CompanyApplicants> CompanyApplicants { get; set; }
+        public DbSet<CompanyApprovalLogs> CompanyApprovalLogs { get; set; }
         public DbSet<EmailConfirmationToken> EmailConfirmationTokens { get; set; }
         public DbSet<RegisteredCompany> RegisteredCompanies { get; set; }
         public DbSet<CompanyShareCapital> CompanyShareCapital { get; set; }
@@ -24,6 +26,16 @@ namespace Company_Registration_API.DataAccess
         public DbSet<UltimateHoldingCompany> UltimateHoldingCompanies { get; set; }
         public DbSet<CompanyConstitution> CompanyConstitutions { get; set; }
         public DbSet<RegistrationPayment> RegistrationPayments { get; set; }
-        public DbSet<CompanyApprovalLogs> CompanyApprovalLogs { get; internal set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<CompanyApplicants>()
+                .HasKey(e => e.Id);
+
+            modelBuilder.Entity<CompanyApplicants>()
+                .Property(e => e.FullName)
+                .IsRequired()
+                .HasMaxLength(50);
+        }
     }
 }

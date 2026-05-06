@@ -8,21 +8,18 @@ using QPSOS.Web.API.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Transactions;
-using System.Web;
 
 namespace Company_Registration_API.Services
 {
     public class CompanyApplicantService : BaseServices ,ICompanyApplicantService
     {
-        private readonly ApplicantRegistrationDao _dao;
+        private readonly ApplicantRegistrationDao _applicantDao;
         private readonly string baseUrl;
         private readonly ILog _logger;
 
         public CompanyApplicantService()
         {
-            _dao = new ApplicantRegistrationDao();
+            _applicantDao = new ApplicantRegistrationDao();
             baseUrl = ConfigurationManager.AppSettings["BaseUrl"];
             _logger = LogManager.GetLogger(typeof(CompanyApplicants));
         }
@@ -32,14 +29,16 @@ namespace Company_Registration_API.Services
             var response = new RegisterResponse();
             try
             {
-                _dao.IsEmailExist(dto.EmailAddress);
-                _dao.ValidateIdentityNumber(dto.IdentityNumber);
-                _dao.ValidatePhoneNumber(dto.PhoneNumber);
+                ModalValidator.ValidateApplicantRegister(dto);
+                _applicantDao.IsEmailExist(dto.EmailAddress);
+                _applicantDao.ValidateIdentityNumber(dto.IdentityNumber);
+                _applicantDao.ValidatePhoneNumber(dto.PhoneNumber);
                 //all check
 
-                var applicant = _dao.CreateApplicant(dto);
-                var tokenString = _dao.CreateEmailToken(applicant.Id);
-                _dao.ValidateToken(tokenString);
+                var applicant = _applicantDao.CreateApplicant(dto);
+                var tokenString = _applicantDao.CreateEmailToken(applicant.Id);
+                ModalValidator.ValidateToken(tokenString);
+                _applicantDao.ValidateToken(tokenString);
                 
                 // confirmation link
                 string confirmLink = $"{baseUrl}/api/companyapplicants/confirm-email?token={tokenString}&email={dto.EmailAddress}";
@@ -56,14 +55,17 @@ namespace Company_Registration_API.Services
                 _logger.Error(null, ex);
                 
             }
+
             return response;
 
         }
         public BaseResponse ConfirmEmail(string token, string email)
         {
+            ModalValidator.ValidateToken(token);
+            ModalValidator.ValidateEmail(email);
             var response = new BaseResponse();
 
-            var result = _dao.ConfirmEmail(token, email);
+            var result = _applicantDao.ConfirmEmail(token, email);
 
             if (!result)
             {
@@ -77,14 +79,6 @@ namespace Company_Registration_API.Services
 
             return response;
         }
-
-        //public ResGetAllApplicants GetAllApplicants()
-        //{
-        //    var response = new ResGetAllApplicants();
-
-        //    response.Data = _dao.GetAllApplicants();
-
-        //    return response;
-        //}
+        
     }
 }
