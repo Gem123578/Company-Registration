@@ -13,6 +13,7 @@ namespace Company_Registration.APIServices
         Task<ResponseDto> RegisterUser(ApplicantRegisterDTO request);
         Task<ResponseDto> LoginUser(LoginDTO request);
         Task<ResponseDto> ConfirmEmail(string token, string email);
+        Task<ResponseDto> ResendConfirmation(string email);
 
     }
 }

@@ -1,127 +1,185 @@
-﻿@{
-    Layout = null;
-    ViewBag.Title = "Home Page";
-    var userRole = Session["UserRole"]?.ToString();
-}
+﻿    @{
+        Layout = null;
+        ViewBag.Title = "Home Page";
+        var userRole = Session["UserRole"]?.ToString();
+    }
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>@ViewBag.Title</title>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>@ViewBag.Title</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/Index.css" rel="stylesheet"/>
-</head>
-<body>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background: #c3dafe">
-        <div class="container">
-            <a class="navbar-brand" href="@Url.Action("Index","Home")">Company Portal</a>
-            <div class="ms-auto">
-                @if (User.Identity.IsAuthenticated)
-                {
-                    <div class="dropdown">
-                        <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-person-circle me-1"></i> @User.Identity.Name
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                            <li><a class="dropdown-item" href="@Url.Action("Profile","SystemUser")">Profile</a></li>
-                            <li><a class="dropdown-item" href="@Url.Action("CompanyGrid","CompanyRegistration")">My Company</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger" href="@Url.Action("Logout","CompanyApplicant")">Logout</a></li>
-                        </ul>
-                    </div>
-                }
-                else
-                {
-                    <a href="@Url.Action("Login","CompanyApplicant")" class="btn btn-outline-light me-2">Login</a>
-                    <a href="@Url.Action("Register","CompanyApplicant")" class="btn btn-light">Sign Up</a>
-                }
-            </div>
-        </div>
-    </nav>
-
-    <div class="page-center">
-        <div class="wrapper">
-            <h1>Company Registration Portal</h1>
-            <h6 class="mb-4">Manage Your Company Registration Online</h6>
-
-            <div class="row">
-                <!-- LEFT MENU -->
-                <div class="col-md-4 mb-3">
-                    <button class="menu-btn active" onclick="showContent('home', this)">Home Info</button>
-                    <button class="menu-btn active" onclick="showContent('register', this)">How to Register</button>
-
-                    @if (User.Identity.IsAuthenticated && (userRole != "APPLICANT"))
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="~/Content/Index.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <!-- NAVBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background: #c3dafe">
+            <div class="container">
+                <a class="navbar-brand" href="@Url.Action("Index","Home")">Company Portal</a>
+                <div class="ms-auto">
+                    @if (User.Identity.IsAuthenticated)
                     {
-                        <button class="menu-btn active "
-                                onclick="window.location.href='@Url.Action("Dashboard","SystemUser")'">
-                            Manage System User
-                        </button>
-                    }
-
-
-                </div>
-
-                <!-- RIGHT CONTENT -->
-                <div class="col-md-8">
-                    <!-- Home -->
-                    <div id="home" class="content active">
-                        <h5>Welcome!</h5>
-                        <p class="info-text">This portal allows applicants to register new companies and manage registration online.</p>
-                        <p class="info-text">You need an applicant account to register a company.</p>
-                        <p class="info-text">Once logged in, fill in company details, shareholder info, and upload required documents.</p>
-                        <p class="info-text">Please ensure all information is accurate before submission.</p>
-                    </div>
-
-                    <!-- Register -->
-                    <div id="register" class="content">
-                        <h5>Registration Steps</h5>
-                        <div class="step-card"><h6>Step 1: Create Applicant Account</h6><p class="info-text">Sign up to become an official applicant.</p></div>
-                        <div class="step-card"><h6>Step 2: Login</h6><p class="info-text">Access the portal using your account credentials.</p></div>
-                        <div class="step-card"><h6>Step 3: Fill Company Details</h6><p class="info-text">Provide company name, type, address, business activity, and incorporation date.</p></div>
-                        <div class="step-card"><h6>Step 4: Add Shareholders & Directors</h6><p class="info-text">Provide shareholder names, identity info, and share percentage.</p></div>
-                        <div class="step-card"><h6>Step 5: Upload Documents</h6><p class="info-text">Upload identification, constitution, and other required files.</p></div>
-                        <div class="step-card"><h6>Step 6: Submit for Review</h6><p class="info-text">Verify your data carefully before submission.</p></div>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <a href="@Url.Action("Register", "CompanyRegistration")" class="btn btn-primary-custom mt-3">Start Registration</a>
-                        }
-                        else
-                        {
-                            <a href="@Url.Action("Register", "CompanyApplicant")" class="btn btn-primary-custom mt-3">Sign Up to Register</a>
-                        }
-                    </div>
-
-                    @*<div id="reregister" class="content">
-                        <h5>System Users</h5>
-                        <div id="systemUserContainer"
-                             data-grid-url="@Url.Action("SystemUserGrid","SystemUser")"
-                             data-create-url="@Url.Action("CreateUpdatePartial","SystemUser")"
-                             data-delete-url="@Url.Action("DeleteUser","SystemUser")">
-                            Loading users...
+                        <div class="dropdown">
+                            <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle me-1"></i> @User.Identity.Name
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="@Url.Action("Profile","SystemUser")">Profile</a></li>
+                                <li><a class="dropdown-item" href="@Url.Action("CompanyGrid","CompanyRegistration")">My Company</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="@Url.Action("Logout","CompanyApplicant")">Logout</a></li>
+                            </ul>
                         </div>
-                    </div>*@
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Login","CompanyApplicant")" class="btn btn-outline-light me-2">Login</a>
+                        <a href="@Url.Action("Register","CompanyApplicant")" class="btn btn-light">Sign Up</a>
+                    }
+                </div>
+            </div>
+        </nav>
 
-                    <!-- User Modal -->
-                    <!--<div class="modal fade" id="userModal" tabindex="-1">
+        <div class="page-center">
+            <div class="wrapper">
+                <h1>Company Registration Portal</h1>
+                <h6 class="mb-4">Manage Your Company Registration Online</h6>
+
+                <div class="row">
+                    <!-- LEFT MENU -->
+                    <div class="col-md-4 mb-3">
+                        <button class="menu-btn active" onclick="showContent('home', this)">Home Info</button>
+                        <button class="menu-btn active" onclick="showContent('register', this)">How to Register</button>
+
+                        @if (User.Identity.IsAuthenticated && (userRole != "APPLICANT"))
+                        {
+                            <button class="menu-btn active "
+                                    onclick="window.location.href='@Url.Action("Dashboard","SystemUser")'">
+                                Manage System User
+                            </button>
+                        }
+
+
+                    </div>
+
+                    <!-- RIGHT CONTENT -->
+                    <div class="col-md-8">
+                        <!-- Home -->
+                        <div id="home" class="content active">
+                            <h5>Welcome!</h5>
+                            <p class="info-text">This portal allows applicants to register new companies and manage registration online.</p>
+                            <p class="info-text">You need an applicant account to register a company.</p>
+                            <p class="info-text">Once logged in, fill in company details, shareholder info, and upload required documents.</p>
+                            <p class="info-text">Please ensure all information is accurate before submission.</p>
+                        </div>
+
+                        <!-- Register -->
+                        <div id="register" class="content">
+                            <h5>Registration Steps</h5>
+                            <div class="step-card"><h6>Step 1: Create Applicant Account</h6><p class="info-text">Sign up to become an official applicant.</p></div>
+                            <div class="step-card"><h6>Step 2: Login</h6><p class="info-text">Access the portal using your account credentials.</p></div>
+                            <div class="step-card"><h6>Step 3: Fill Company Details</h6><p class="info-text">Provide company name, type, address, business activity, and incorporation date.</p></div>
+                            <div class="step-card"><h6>Step 4: Add Shareholders & Directors</h6><p class="info-text">Provide shareholder names, identity info, and share percentage.</p></div>
+                            <div class="step-card"><h6>Step 5: Upload Documents</h6><p class="info-text">Upload identification, constitution, and other required files.</p></div>
+                            <div class="step-card"><h6>Step 6: Submit for Review</h6><p class="info-text">Verify your data carefully before submission.</p></div>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a href="@Url.Action("Register", "CompanyRegistration")" class="btn btn-primary-custom mt-3">Start Registration</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("Register", "CompanyApplicant")" class="btn btn-primary-custom mt-3">Sign Up to Register</a>
+                            }
+                        </div>
+
+                        @*<div id="reregister" class="content">
+                            <h5>System Users</h5>
+                            <div id="systemUserContainer"
+                                 data-grid-url="@Url.Action("SystemUserGrid","SystemUser")"
+                                 data-create-url="@Url.Action("CreateUpdatePartial","SystemUser")"
+                                 data-delete-url="@Url.Action("DeleteUser","SystemUser")">
+                                Loading users...
+                            </div>
+                        </div>*@
+
+                        <!-- User Modal -->
+                        <!--<div class="modal fade" id="userModal" tabindex="-1">
                         <div class="modal-dialog">
                             <div class="modal-content" id="userModalContent"></div>
                         </div>
                     </div>-->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        @if (TempData["ShowModal"] != null)
+        {
+            <div class="modal fade" id="emailModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
 
-    <!-- jQuery first -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
-    <script src="@Url.Content("~/Scripts/index.js")"></script>
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title">Email Confirmation Required</h5>
+                        </div>
 
-</body>
-</html>
+                        <div class="modal-body text-center">
+                            <p>@TempData["Message"]</p>
+
+                            <p>
+                                <strong>@TempData["Email"]</strong>
+                            </p>
+
+                            <p>Please check your email and confirm your account.</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" data-bs-dismiss="modal">
+                                OK
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+        @if (TempData["TokenExpired"] != null)
+        {
+            <div class="modal fade" id="expireModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header bg-warning">
+                            <h5 class="modal-title">Confirmation Link Expired</h5>
+                        </div>
+
+                        <div class="modal-body text-center">
+                            <p>Your confirmation link has expired.</p>
+                            <p>Please resend confirmation email.</p>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-warning" onclick="resendEmail()">
+                                Resend Email
+                            </button>
+
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+        <!-- jQuery first -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <!-- Bootstrap 5 JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Custom JS -->
+        <script src="@Url.Content("~/Scripts/index.js")"></script>
+
+    </body>
+    </html>

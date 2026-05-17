@@ -42,5 +42,18 @@ namespace Company_Registration.APIServices
 
             return await _apiHelper.SendRequestAsync(reqDto);
         }
+        public async Task<ResponseDto> ResendConfirmation(string email)
+        {
+            var url = $"api/CompanyApplicants/resend-confirmation?email={email}";
+
+            var reqDto = ModelConverter.CreateRequestDto(
+                null,
+                ApiHelpers.BaseUrl,
+                url,
+                eHTTPRequestType.POST
+            );
+
+            return await _apiHelper.SendRequestAsync(reqDto);
+        }
     }
 }

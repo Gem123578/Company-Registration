@@ -4,6 +4,7 @@ using Company_Registration.Models;
 using Company_Registration.Models.DTO;
 using Company_Registration.Utils;
 using Newtonsoft.Json;
+using QSS.POS.Front.UI.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,7 +53,14 @@ namespace Company_Registration.Controllers
             ResponseDto response = await _service.RegisterUser(request);
 
             if (response.IsSuccess)
-                return RedirectToAction("Login","CompanyApplicant");
+            {
+                //pass message to Index
+                TempData["ShowModal"] = true;
+                TempData["Message"] = response.Result?.Message; // "Please confirm your email"
+                TempData["Email"] = model.EmailAddress;
+
+                return RedirectToAction("Index", "Home");
+            }
 
             ModelState.AddModelError("", string.IsNullOrEmpty(response.Result?.Message) ? "Registration Fail!" : response.Result?.Message);
             return View(model);
@@ -102,6 +110,7 @@ namespace Company_Registration.Controllers
                 Session["UserId"] = user.UserId;
                 Session["UserName"] = user.UserName;
                 Session["UserRole"] = user.UserRole;
+                Session["Functions"] = user.Functions;
 
                 // Applicant session
                 if (user.UserRole == "APPLICANT")
@@ -109,7 +118,7 @@ namespace Company_Registration.Controllers
                     Session["ApplicantId"] = user.UserId;
                 }
 
-                // 🔹 Store UserId + Role in Ticket
+                //  Store UserId + Role in Ticket
                 string userData = user.UserId + "|" + user.UserRole;
 
                 var authTicket = new FormsAuthenticationTicket(
@@ -127,7 +136,7 @@ namespace Company_Registration.Controllers
                     new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket)
                 );
 
-                // 🔹 Redirect by Role
+                //  Redirect by Role
                 if (user.UserRole == "ADMIN" || user.UserRole == "OFFICER")
                 {
                     return RedirectToAction("Index", "Home");
@@ -147,7 +156,10 @@ namespace Company_Registration.Controllers
         }
 
 
-
+        public ActionResult ResendConfirmationEmail()
+        {
+            return View();
+        }
         // Logout
         public ActionResult Logout()
         {
@@ -155,21 +167,43 @@ namespace Company_Registration.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
+
         [HttpGet]
         public async Task<ActionResult> ConfirmEmail(string token, string email)
         {
-            if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(email))
-            {
-                ViewBag.Message = "Invalid confirmation link";
-                return View();
-            }
-
             var response = await _service.ConfirmEmail(token, email);
 
-            ViewBag.Message = response.IsSuccess? "Email confirmed successfully. You can login now."
-                : response.Result?.Message;
+            if (response.IsSuccess)
+            {
+                TempData["SuccessMessage"] =
+                    "Email confirmed successfully.";
 
-            return View();
+                return RedirectToAction("Login");
+            }
+
+            if (response.Result.Message == "Token expired.")
+            {
+                TempData["TokenExpired"] = true;
+                TempData["ExpiredEmail"] = email;
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            TempData["ErrorMessage"] = response.Result.Message;
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ResendConfirmation(string email)
+        {
+            var response = await _service.ResendConfirmation(email);
+
+            return Json(new JsonResponse
+            {
+                Success = response.IsSuccess,
+                Message = response.Result?.Message
+            });
         }
     }
 }

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Resend Confirmation Mail";
+}
+
+@Styles.Render("~/Content/Register.css")
+
+<div class="page-center">
+    <div class="wrapper">
+        <h1>Resend Confirmation</h1>
+
+        @using (Html.BeginForm("ResendConfirmation", "CompanyApplicant", FormMethod.Post))
+        {
+            <div class="input-box">
+                <input type="email"
+                       name="emailAddress"
+                       placeholder="Enter registered email"
+                       required />
+            </div>
+
+            <button type="submit" class="btn">
+                Resend Mail
+            </button>
+        }
+
+        <div class="register-link">
+            @Html.ActionLink("Back to Home", "Index", "Home")
+        </div>
+    </div>
+</div>

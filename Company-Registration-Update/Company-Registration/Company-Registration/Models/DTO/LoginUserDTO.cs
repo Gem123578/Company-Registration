@@ -10,5 +10,7 @@ namespace Company_Registration.Models.DTO
         public long UserId { get; set; }
         public string UserName { get; set; }
         public string UserRole { get; set; }
+        public List<string> Functions { get; set; }
+
     }
 }

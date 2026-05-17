@@ -135,3 +135,31 @@ document.addEventListener("submit", function (e) {
             .catch(err => console.error(err));
     }
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    var emailModal = document.getElementById('emailModal');
+    if (emailModal) {
+        new bootstrap.Modal(emailModal).show();
+    }
+
+    var expireModal = document.getElementById('expireModal');
+    if (expireModal) {
+        new bootstrap.Modal(expireModal).show();
+    }
+});
+function resendEmail() {
+    var email = '@TempData["ExpiredEmail"]';
+
+    fetch('/CompanyApplicant/ResendConfirmation', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email })
+    })
+        .then(res => res.json())
+        .then(data => {
+            alert(data.message);
+        });
+}

@@ -154,6 +154,7 @@
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\Country.cs" />
     <Compile Include="Common\Header.cs" />
+    <Compile Include="Common\JsonResponse.cs" />
     <Compile Include="Common\RequestDto.cs" />
     <Compile Include="Common\ResponseDto.cs" />
     <Compile Include="Controllers\CompanyApplicantController.cs" />
@@ -235,6 +236,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Login.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -260,6 +262,7 @@
     <Content Include="Views\SystemUser\Dashboard.cshtml" />
     <Content Include="Views\CompanyRegistration\_CompanyGrid.cshtml" />
     <Content Include="Views\CompanyRegistration\_CreateUpdateCompany.cshtml" />
+    <Content Include="Views\CompanyApplicant\ResendConfirmationEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
