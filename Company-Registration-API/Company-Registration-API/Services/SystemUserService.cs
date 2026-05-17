@@ -14,12 +14,13 @@ namespace Company_Registration_API.Services
 {
     public class SystemUserService : BaseServices,ISystemUserService
     {
-        private readonly SystemUsersDao _dao;
+        private readonly SystemUsersDao _Userdao;
+        private readonly ApplicantRegistrationDao _applicantDao;    
         private readonly ILog _logger;
 
         public SystemUserService()
         {
-            _dao = new SystemUsersDao();
+            _Userdao = new SystemUsersDao();
             _logger = LogManager.GetLogger(typeof(SystemUserService));
         }
 
@@ -29,7 +30,7 @@ namespace Company_Registration_API.Services
 
             try
             {
-                response.Data = _dao.GetAllSystemUsers();
+                response.Data = _Userdao.GetAllSystemUsers();
                 response.Result = CreateResult(Constants.ACK_Result);
             }
             catch (Exception ex)
@@ -51,12 +52,13 @@ namespace Company_Registration_API.Services
 
             try
             {
-                
-                dto = _dao.CreateUpdateSystemUser(id, dto);
+                ModalValidator.ValidateCUSystemUser(id, dto);
+                dto = _Userdao.CreateUpdateSystemUser(id, dto);
+                _applicantDao.IsEmailExist(dto.EmailAddress);
 
                 response.Data = dto;
                 response.Result = CreateResult(Constants.ACK_Result,
-                    dto.IsUpdate ? "User updated successfully." : "User created successfully.");
+                    dto.IsUpdate ? CommonMessages.MSG_UUPDATE : CommonMessages.MSG_UCREATE);
             }
             catch (Exception ex)
             {
@@ -77,10 +79,8 @@ namespace Company_Registration_API.Services
 
             try
             {
-                if (id <= 0)
-                    throw new Exception("Invalid user ID");
-
-                response.Data = _dao.GetUserById(id);
+                ModalValidator.ValidateSystemUserId(id);
+                response.Data = _Userdao.GetUserById(id);
                 response.Result = CreateResult(Constants.ACK_Result);
             }
             catch (Exception ex)
@@ -102,12 +102,11 @@ namespace Company_Registration_API.Services
 
             try
             {
-                if (id <= 0)
-                    throw new Exception("Valid user ID is required.");
+                ModalValidator.ValidateSystemUserId(id);
 
-                _dao.DeleteUser(id);
+                _Userdao.DeleteUser(id);
 
-                response.Result = CreateResult(Constants.ACK_Result, "User deleted successfully.");
+                response.Result = CreateResult(Constants.ACK_Result, CommonMessages.MSG_USERDELETE);
             }
             catch (Exception ex)
             {
@@ -128,27 +127,12 @@ namespace Company_Registration_API.Services
 
             try
             {
-                //if (dto == null)
-                //    throw new Exception("Request is null.");
+                ModalValidator.ValidateLoginUser(dto);
 
-                //if (string.IsNullOrEmpty(dto.EmailAddress))
-                //    throw new Exception("Email is required.");
-
-                //if (string.IsNullOrEmpty(dto.Password))
-                //    throw new Exception("Password is required.");
-
-                var user = _dao.ValidateUser(dto);
-
-                if (user == null)
-                    response.Result = CreateResult(Constants.ACK_Result, "Invalid email or password.");
-                //throw new Exception("Invalid email or password.");
-
-                if (user.UserRole == "APPLICANT" && !user.EmailConfirmed)
-                     response.Result = CreateResult(Constants.ACK_Result, "Please confirm your email before login.");
-                //throw new Exception("Please confirm your email before login.");
+                var user = _Userdao.ValidateUser(dto);
 
                 response.Data = user;
-                response.Result = CreateResult(Constants.ACK_Result, "Login successful.");
+                response.Result = CreateResult(Constants.ACK_Result, CommonMessages.MSG_LOGINSUC);
             }
             catch (Exception ex)
             {

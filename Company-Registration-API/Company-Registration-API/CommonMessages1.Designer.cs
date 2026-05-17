@@ -61,6 +61,15 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid AccountStatus. Must be &apos;ACTIVE&apos; or &apos;DISABLED&apos;..
+        /// </summary>
+        internal static string MSG_ACCOUNTS_NV {
+            get {
+                return ResourceManager.GetString("MSG_ACCOUNTS_NV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This applicant already has a registered account.
         /// </summary>
         internal static string MSG_APPLICANT_EXIST {
@@ -178,6 +187,15 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid email or password..
+        /// </summary>
+        internal static string MSG_INVALID_USER {
+            get {
+                return ResourceManager.GetString("MSG_INVALID_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Input value is invalid..
         /// </summary>
         internal static string MSG_INVALID_VALUE {
@@ -205,7 +223,25 @@ namespace Company_Registration_API {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email confirm first for.
+        ///   Looks up a localized string similar to Login successful..
+        /// </summary>
+        internal static string MSG_LOGINSUC {
+            get {
+                return ResourceManager.GetString("MSG_LOGINSUC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email Confirmation Successfully..
+        /// </summary>
+        internal static string MSG_MAIL_CONFIRM {
+            get {
+                return ResourceManager.GetString("MSG_MAIL_CONFIRM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please confirm your email.
         /// </summary>
         internal static string MSG_NEED_EMAILCONFIRM {
             get {
@@ -228,6 +264,42 @@ namespace Company_Registration_API {
         internal static string MSG_REQUIRED_FIELD {
             get {
                 return ResourceManager.GetString("MSG_REQUIRED_FIELD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token expired..
+        /// </summary>
+        internal static string MSG_TOKEN_EX {
+            get {
+                return ResourceManager.GetString("MSG_TOKEN_EX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User created successfully..
+        /// </summary>
+        internal static string MSG_UCREATE {
+            get {
+                return ResourceManager.GetString("MSG_UCREATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User deleted successfully..
+        /// </summary>
+        internal static string MSG_USERDELETE {
+            get {
+                return ResourceManager.GetString("MSG_USERDELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User updated successfully..
+        /// </summary>
+        internal static string MSG_UUPDATE {
+            get {
+                return ResourceManager.GetString("MSG_UUPDATE", resourceCulture);
             }
         }
         

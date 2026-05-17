@@ -30,7 +30,7 @@ namespace Company_Registration_API.Utils
 
                 message.IsBodyHtml = true;
 
-                // web.config က config ကို auto ယူ
+                
                 SmtpClient smtp = new SmtpClient();
                 smtp.Send(message);
             }

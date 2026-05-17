@@ -3,13 +3,16 @@ using Company_Registration_API.Models.CompanyApplicant;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
 using log4net;
+using Microsoft.AspNet.Identity;
+using QPSOS.Web.API.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 
 namespace Company_Registration_API.DataAccess
 {
-    public class SystemUsersDao
+    public class SystemUsersDao : BaseDao
     {
         private readonly ApplicantDbContext db;
         private readonly ILog _logger;
@@ -24,18 +27,20 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                var users = db.SystemUsers
-                    .Where(u => u.AccountStatus == "ACTIVE")
-                    .Select(u => new CreateUserDto
-                    {
-                        Id = u.Id,
-                        UserName = u.UserName,
-                        RoleName = u.Role.RoleName,
-                        RoleId = u.RoleId,
-                        AccountStatus = u.AccountStatus,
-                        EmailAddress = u.EmailAddress
-                    })
-                    .ToList();
+                var users = (from su in db.SystemUsers join u in db.Users
+                            on su.Id equals u.SystemId
+                            join r in db.Roles
+                            on u.RoleId equals r.Id
+                            where su.AccountStatus == "ACTIVE"
+                             select new CreateUserDto
+                             {
+                                 Id = su.Id,
+                                 UserName = su.UserName,
+                                 EmailAddress = su.EmailAddress,
+                                 RoleId = u.RoleId,
+                                 RoleName = r.RoleName,
+                                 AccountStatus = su.AccountStatus
+                             }).ToList();
 
                 return users;
             }
@@ -51,47 +56,64 @@ namespace Company_Registration_API.DataAccess
         }
 
 
-        public CreateUserDto CreateUpdateSystemUser(long id, CreateUserDto dto)
+        public CreateUserDto CreateUpdateSystemUser(long id, CreateUserDto userDto)
         {
             try
             {
-                SystemUsers user = new SystemUsers();
-                PasswordHasher hasher = new PasswordHasher();
-                //Update case
-                if (dto.IsUpdate)
-                {
-                    user = db.SystemUsers.FirstOrDefault(u => u.Id == id);
-                    if (user == null)
+               
+                    SystemUsers sysuser = new SystemUsers();
+                    Users user = new Users();
+                    PasswordHasher hasher = new PasswordHasher();
+                    //Update case
+                    if (userDto.IsUpdate)
                     {
-                        throw new ApiException(string.Format(CommonMessages.User_NOT_FOUND, CommonConstants.TBLNAME_USERS));
+                        sysuser = db.SystemUsers.FirstOrDefault(u => u.Id == id);
+                        if (sysuser == null)
+                        {
+                            throw new ApiException(string.Format(CommonMessages.User_NOT_FOUND, CommonConstants.TBLNAME_USERS));
+                        }
                     }
+
+                    //common fields for both create and update
+                    sysuser.UserName = userDto.UserName;
+                    user.RoleId = userDto.RoleId;
+                    if (!string.IsNullOrEmpty(userDto.AccountStatus))
+                    {
+                        if (userDto.AccountStatus != "ACTIVE" && userDto.AccountStatus != "DISABLED")
+                            throw new ApiException(String.Format(CommonMessages.MSG_ACCOUNTS_NV));
+                        sysuser.AccountStatus = userDto.AccountStatus;
+                    }
+
+                    //update login
+                    sysuser.LastLoginAt = DateTime.UtcNow;
+
+                    //create case
+                    if (!userDto.IsUpdate)
+                    {
+                    using (TransactionScope scope = GetReadUncommittedScope())
+                    {
+                        sysuser.EmailAddress = userDto.EmailAddress;
+                        sysuser.PasswordHash = hasher.HashPassword(userDto.Password);
+                        sysuser.CreatedAt = DateTime.UtcNow;
+                        sysuser.AccountStatus = string.IsNullOrEmpty(userDto.AccountStatus) ? "ACTIVE" : userDto.AccountStatus;
+                        db.SystemUsers.Add(sysuser);
+                        user = new Users
+                        {
+                            ApplicantId = 0, // system user
+                            SystemId = user.Id,
+                            RoleId = user.RoleId,
+                            IsUser = true,
+                            CreatedAt = DateTime.UtcNow
+                        };
+                        db.Users.Add(user);
+                        scope.Complete();
+                    }
+
+                    db.SaveChanges();
+                    
                 }
-
-                //common fields for both create and update
-                user.UserName = dto.UserName;
-                user.RoleId = dto.RoleId;
-                if (!string.IsNullOrEmpty(dto.AccountStatus))
-                {
-                    if (dto.AccountStatus != "ACTIVE" && dto.AccountStatus != "DISABLED")
-                        throw new ApiException("Invalid AccountStatus. Must be 'ACTIVE' or 'DISABLED'.");
-                    user.AccountStatus = dto.AccountStatus;
-                }
-
-                //update login
-                user.LastLoginAt = DateTime.UtcNow;
-
-                //create case
-                if (!dto.IsUpdate)
-                {
-                    user.EmailAddress = dto.EmailAddress;
-                    user.PasswordHash = hasher.Hash(dto.Password);
-                    user.CreatedAt = DateTime.UtcNow;
-                    user.AccountStatus = string.IsNullOrEmpty(dto.AccountStatus) ? "ACTIVE" : dto.AccountStatus;
-                    db.SystemUsers.Add(user);
-                }
-
-                db.SaveChanges();
-                return dto;
+               
+                return userDto;
             }
             catch (ApiException)
             {
@@ -108,14 +130,15 @@ namespace Company_Registration_API.DataAccess
             try
             {
                 // Example using Entity Framework or in-memory
-                var user = db.SystemUsers.FirstOrDefault(u => u.Id == id);
+                var sysuser = db.SystemUsers.FirstOrDefault(u => u.Id == id);
+                Users user = db.Users.FirstOrDefault(x => x.SystemId == sysuser.Id);
                 if (user == null) return null;
 
                 return new CreateUserDto
                 {
-                    Id = user.Id,
-                    UserName = user.UserName,
-                    EmailAddress = user.EmailAddress,
+                    Id = sysuser.Id,
+                    UserName = sysuser.UserName,
+                    EmailAddress = sysuser.EmailAddress,
                     RoleId = user.RoleId,
                     IsUpdate = false
                 };
@@ -171,39 +194,44 @@ namespace Company_Registration_API.DataAccess
             LoginResponse response = new LoginResponse();
             try
             {
-                PasswordHasher hasher = new PasswordHasher();
+                var hasher = new PasswordHasher();
 
                 // Check SystemUsers first (JOIN with Roles)
-                var sysUser = db.SystemUsers
-                    .Where(x => x.EmailAddress == dto.EmailAddress)
-                    .Select(u => new
-                    {
-                        u.Id,
-                        u.UserName,
-                        u.PasswordHash,
-                        u.AccountStatus,
-                        RoleName = u.Role.RoleName,   // ✅ get from Roles table
-                        RoleId = u.RoleId
-                    })
-                    .FirstOrDefault();
+                var sysUser = db.SystemUsers.FirstOrDefault(x => x.EmailAddress == dto.EmailAddress);
 
                 if (sysUser != null)
                 {
-                    string hashedPassword = hasher.Hash(dto.Password);
+                    var result = hasher.VerifyHashedPassword(sysUser.PasswordHash,dto.Password);
 
-                    if (sysUser.PasswordHash != hashedPassword)
-                        throw new ApiException(string.Format(CommonMessages.MSG_INVALID_PASS, CommonConstants.TBLNAME_USERS));
+                    if (result != PasswordVerificationResult.Success)
+                    {
+                        throw new ApiException(
+                            string.Format(CommonMessages.MSG_INVALID_PASS, CommonConstants.TBLNAME_USERS)
+                        );
+                    }
 
                     if (sysUser.AccountStatus != "ACTIVE")
                     {
                         throw new ApiException(string.Format(CommonMessages.MSG_DISABLE_ACC, CommonConstants.TBLNAME_USERS));
                     }
 
+                    var user = db.Users.FirstOrDefault(x => x.SystemId == sysUser.Id);
+                    
+                    var role = db.Roles.FirstOrDefault(x => x.Id == user.RoleId);
+                    var functions = (
+                        from rf in db.RolesFunctions
+                        join f in db.Functions
+                            on rf.FunctionId equals f.Id
+                        where rf.RoleId == user.RoleId
+                        select f.FunctionName
+                    ).ToList();
+
                     return new LoginUserDto
                     {
                         UserId = sysUser.Id,
                         UserName = sysUser.UserName,
-                        UserRole = sysUser.RoleName
+                        UserRole = role.RoleName,
+                        Functions = functions
                     };
                 }
 
@@ -212,19 +240,45 @@ namespace Company_Registration_API.DataAccess
 
                 if (applicant != null)
                 {
-                    string hashedPassword = hasher.Hash(dto.Password);
+                    var result = hasher.VerifyHashedPassword(applicant.PasswordHash,dto.Password);
+
+                    if (result != PasswordVerificationResult.Success)
+                    {
+                        throw new ApiException(
+                            string.Format(CommonMessages.MSG_INVALID_PASS, CommonConstants.TBLNAME_USERS)
+                        );
+                    }
 
                     if (!applicant.EmailConfirmed)
+                    {
+                        _logger.Error(CommonMessages.MSG_NEED_EMAILCONFIRM);
                         throw new ApiException(string.Format(CommonMessages.MSG_NEED_EMAILCONFIRM, CommonConstants.TBLNAME_APP_USERS));
+                    }
 
-                    if (applicant.PasswordHash != hashedPassword)
-                        throw new ApiException(string.Format(CommonMessages.MSG_INVALID_PASS, CommonConstants.TBLNAME_APP_USERS));
+                    var user = db.Users.FirstOrDefault(x => x.ApplicantId == applicant.Id);
+
+                    if (user == null)
+                        throw new ApiException("User mapping not found");
+
+                    var role = db.Roles.FirstOrDefault(x => x.Id == user.RoleId);
+
+                    if (role == null)
+                        throw new ApiException("Role not found");
+
+                    var functions = (
+                        from rf in db.RolesFunctions
+                        join f in db.Functions
+                            on rf.FunctionId equals f.Id
+                        where rf.RoleId == user.RoleId
+                        select f.FunctionName
+                    ).ToList();
 
                     return new LoginUserDto
                     {
                         UserId = applicant.Id,
                         UserName = applicant.FullName,
-                        UserRole = "APPLICANT"
+                        UserRole = role.RoleName,
+                        Functions = functions
                     };
                 }
 
@@ -237,7 +291,7 @@ namespace Company_Registration_API.DataAccess
             }
             catch (Exception ex)
             {
-                _logger.Error(null, ex);
+                _logger.Error(ex.Message);
                 throw new ApiException(string.Format(CommonMessages.MSG_Login_FAIL, CommonConstants.TBLNAME_USERS));
             }
         }

@@ -26,16 +26,20 @@ namespace Company_Registration_API.DataAccess
         public DbSet<UltimateHoldingCompany> UltimateHoldingCompanies { get; set; }
         public DbSet<CompanyConstitution> CompanyConstitutions { get; set; }
         public DbSet<RegistrationPayment> RegistrationPayments { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<RolesFunctions> RolesFunctions { get; set; }
+        public DbSet<Functions> Functions { get; set; }
+        public DbSet<Roles> Roles { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<CompanyApplicants>()
-                .HasKey(e => e.Id);
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //     modelBuilder.Entity<CompanyApplicants>()
+        //        .HasKey(e => e.Id);
 
-            modelBuilder.Entity<CompanyApplicants>()
-                .Property(e => e.FullName)
-                .IsRequired()
-                .HasMaxLength(50);
-        }
+        //    modelBuilder.Entity<CompanyApplicants>()
+        //        .Property(e => e.FullName)
+        //        .IsRequired()
+        //        .HasMaxLength(50);
+        //}
     }
 }

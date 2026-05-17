@@ -8,8 +8,9 @@ namespace Company_Registration_API.Services
     {
         RegisterResponse Register(ApplicantRegisterDTO dto);
         //LoginResponse Login(LoginDTO dto);
-        BaseResponse ConfirmEmail(string token, string email);
-        
+        ResultBase ConfirmEmail(string token, string email);
+        ResultBase ResendConfirmationEmail(string email);
+
         /* ResGetAllApplicants GetAllApplicants()*/
     }
 }

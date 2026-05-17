@@ -8,10 +8,11 @@ using QPSOS.Web.API.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Transactions;
 
 namespace Company_Registration_API.Services
 {
-    public class CompanyApplicantService : BaseServices ,ICompanyApplicantService
+    public class CompanyApplicantService : BaseServices ,ICompanyApplicantService 
     {
         private readonly ApplicantRegistrationDao _applicantDao;
         private readonly string baseUrl;
@@ -29,56 +30,89 @@ namespace Company_Registration_API.Services
             var response = new RegisterResponse();
             try
             {
+
                 ModalValidator.ValidateApplicantRegister(dto);
+
                 _applicantDao.IsEmailExist(dto.EmailAddress);
+
                 _applicantDao.ValidateIdentityNumber(dto.IdentityNumber);
+
                 _applicantDao.ValidatePhoneNumber(dto.PhoneNumber);
                 //all check
 
-                var applicant = _applicantDao.CreateApplicant(dto);
-                var tokenString = _applicantDao.CreateEmailToken(applicant.Id);
-                ModalValidator.ValidateToken(tokenString);
-                _applicantDao.ValidateToken(tokenString);
-                
+                var result = _applicantDao.CreateApplicant(dto);
+
+                var applicant = result.applicant;
+
+                var tokenString = result.token;
+
+
                 // confirmation link
-                string confirmLink = $"{baseUrl}/api/companyapplicants/confirm-email?token={tokenString}&email={dto.EmailAddress}";
+                string confirmLink = $"{baseUrl}/Companyapplicant/ConfirmEmail?token={tokenString}&email={dto.EmailAddress}";
 
                 // send email
                 EmailHelper.SendConfirmationEmail(dto.EmailAddress, confirmLink);
                 response.Result = CreateResult(Constants.ACK_Result);
+                response.Result.Message = CommonMessages.MSG_NEED_EMAILCONFIRM;
                 response.Data = applicant;
-
+                
             }
             catch (Exception ex)
             {
                 response.Result = CreateResult(Constants.NACK_Result, ex.Message);
                 _logger.Error(null, ex);
-                
+
             }
-
-            return response;
-
-        }
-        public BaseResponse ConfirmEmail(string token, string email)
-        {
-            ModalValidator.ValidateToken(token);
-            ModalValidator.ValidateEmail(email);
-            var response = new BaseResponse();
-
-            var result = _applicantDao.ConfirmEmail(token, email);
-
-            if (!result)
-            {
-                response.IsSuccess = false;
-                response.Message = "Invalid confirmation link";
-                return response;
-            }
-
-            response.IsSuccess = true;
-            response.Message = "Email confirmed successfully. You can login now.";
-
             return response;
         }
         
+        public ResultBase ConfirmEmail(string token, string email)
+        {
+            var response = new ResultBase();
+            try
+            {
+                ModalValidator.ValidateToken(token);
+                ModalValidator.ValidateEmail(email);
+                var result = _applicantDao.ConfirmEmail(token, email);
+
+                response.Result = CreateResult(Constants.ACK_Result , CommonMessages.MSG_MAIL_CONFIRM);
+               
+            }
+            catch (Exception ex)
+            {
+                response.Result = CreateResult(Constants.NACK_Result, ex.Message);
+                _logger.Error(null, ex);
+
+            }
+            return response;
+        }
+        public ResultBase ResendConfirmationEmail(string email)
+        {
+            var response = new ResultBase();
+
+            try
+            {
+                ModalValidator.ValidateEmail(email);
+
+                string token = _applicantDao.ResendConfirmationEmail(email);
+
+                string confirmLink =
+                    $"{baseUrl}/api/companyapplicants/confirm-email?token={token}&email={email}";
+
+                EmailHelper.SendConfirmationEmail(email, confirmLink);
+
+                response.Result = CreateResult(
+                    Constants.ACK_Result,
+                    "Confirmation email resend successfully.");
+            }
+            catch (Exception ex)
+            {
+                response.Result = CreateResult(Constants.NACK_Result,ex.Message);
+
+                _logger.Error(null, ex);
+            }
+
+            return response;
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace Company_Registration_API.Models.DTO
         public string Password { get; set; }
         public string AccountStatus { get; set; }
 
-        public int RoleId { get; set; }
+        public long RoleId { get; set; }
         public bool IsUpdate { get; set; }
         public string RoleName { get; set; }
     }

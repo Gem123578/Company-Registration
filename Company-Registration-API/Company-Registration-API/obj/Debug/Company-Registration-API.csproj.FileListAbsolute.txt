@@ -55,6 +55,7 @@ D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-A
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\EntityFramework.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\EntityFramework.SqlServer.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\log4net.dll
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.AspNet.Identity.Core.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Bcl.AsyncInterfaces.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Bcl.HashCode.dll
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Bcl.TimeProvider.dll
@@ -97,6 +98,7 @@ D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-A
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\EntityFramework.SqlServer.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\log4net.pdb
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\log4net.xml
+D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.AspNet.Identity.Core.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Bcl.AsyncInterfaces.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Bcl.HashCode.xml
 D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\bin\Microsoft.Bcl.TimeProvider.xml

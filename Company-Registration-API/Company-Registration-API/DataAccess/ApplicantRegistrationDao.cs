@@ -4,6 +4,7 @@ using Company_Registration_API.Models;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
 using log4net;
+using Microsoft.AspNet.Identity;
 using QPSOS.Web.API.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -29,11 +30,14 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                var applicants = db.CompanyApplicants.Where(x => x.EmailAddress == email).FirstOrDefault();
-                if (applicants != null)
+                bool emailExists =db.CompanyApplicants.Any(x => x.EmailAddress == email)|| db.SystemUsers.Any(x => x.EmailAddress == email);
+
+                if (emailExists)
                 {
                     _logger.Error(string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
-                    throw new ApiException(string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
+
+                    throw new ApiException(
+                        string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
                 }
                 return false;
             }
@@ -49,16 +53,18 @@ namespace Company_Registration_API.DataAccess
 
         }
         
-        public CompanyApplicantDto CreateApplicant(ApplicantRegisterDTO dto)
+        public (CompanyApplicantDto applicant, string token) CreateApplicant(ApplicantRegisterDTO dto)
         {
             try
             {
-                    
+                using ( TransactionScope scope = GetReadUncommittedScope())
+                {
+                    var hasher = new PasswordHasher();
                     var applicant = new CompanyApplicants
                     {
                         FullName = dto.FullName,
                         EmailAddress = dto.EmailAddress,
-                        PasswordHash = new PasswordHasher().Hash(dto.Password),
+                        PasswordHash = hasher.HashPassword(dto.Password),
                         PhoneNumber = dto.PhoneNumber,
                         Nationality = dto.Nationality,
                         IdentityNumber = dto.IdentityNumber,
@@ -68,9 +74,24 @@ namespace Company_Registration_API.DataAccess
                     };
 
                     db.CompanyApplicants.Add(applicant);
-                    var rows = db.SaveChanges();
-                    return ModelConverter.ToCompanyApplicantDto(applicant);
-                
+                    db.SaveChanges();
+
+                    // Create user record
+                    var user = new Users
+                    {
+                        ApplicantId = applicant.Id,
+                        SystemId = null, // keep 0 if using applicant account
+                        RoleId = 3,   // Applicant RoleId
+                        IsUser = true,
+                        CreatedAt = DateTime.UtcNow
+                    };
+                    db.Users.Add(user);
+
+                    db.SaveChanges();
+                    string token = CreateEmailToken(applicant.Id);
+                    scope.Complete();
+                    return (ModelConverter.ToCompanyApplicantDto(applicant), token);
+                }
             }
             catch (ApiException)
             {
@@ -88,11 +109,27 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                //Remove old token
-                List<EmailConfirmationToken> oldToken = db.EmailConfirmationTokens.Where(t => t.ApplicantId == applicantId).ToList();
-                if (oldToken.Any())
-                    db.EmailConfirmationTokens.RemoveRange(oldToken);
+                /// Remove expired tokens first
+                var expiredTokens = db.EmailConfirmationTokens
+                    .Where(t => t.ExpireAt <= DateTime.UtcNow)
+                    .ToList();
 
+                if (expiredTokens.Any())
+                {
+                    db.EmailConfirmationTokens.RemoveRange(expiredTokens);
+                    db.SaveChanges();
+                }
+
+                // Remove old token for this applicant
+                var oldTokens = db.EmailConfirmationTokens
+                    .Where(t => t.ApplicantId == applicantId)
+                    .ToList();
+
+                if (oldTokens.Any())
+                {
+                    db.EmailConfirmationTokens.RemoveRange(oldTokens);
+                    db.SaveChanges();
+                }
                 //generate new token
                 string newToken = Guid.NewGuid().ToString();
                 var emailToken = new EmailConfirmationToken
@@ -100,7 +137,7 @@ namespace Company_Registration_API.DataAccess
                     ApplicantId = applicantId,
                     Token = newToken,
                     CreatedAt = DateTime.UtcNow,
-                    ExpireAt = DateTime.UtcNow.AddMinutes(30)
+                    ExpireAt = DateTime.UtcNow.AddMinutes(1)
                 };
                 db.EmailConfirmationTokens.Add(emailToken);
                 db.SaveChanges();
@@ -131,22 +168,27 @@ namespace Company_Registration_API.DataAccess
                     throw new ApiException(CommonMessages.MSG_EXIST_TOKEN);
                 }
 
-                var tokenData = db.EmailConfirmationTokens
-                    .FirstOrDefault(t => t.Token == token
-                                      && t.ApplicantId == user.Id
-                                      && t.ExpireAt > DateTime.UtcNow);
+               
+                var emailToken = db.EmailConfirmationTokens
+                    .FirstOrDefault(x =>x.ApplicantId == user.Id && x.Token == token);
 
-                if (tokenData == null)
+                if (emailToken == null)
                 {
                     _logger.Error(CommonMessages.MSG_EMAIL_NOTF);
                     throw new ApiException(CommonMessages.MSG_EMAIL_NOTF);
+                }
+
+                // Expire Check
+                if (emailToken.ExpireAt < DateTime.UtcNow)
+                {
+                    throw new ApiException(CommonMessages.MSG_TOKEN_EX);
                 }
 
                 user.EmailConfirmed = true;
                 user.EmailConfirmedAt = DateTime.UtcNow;
 
                 // Remove used token
-                db.EmailConfirmationTokens.Remove(tokenData);
+                db.EmailConfirmationTokens.Remove(emailToken);
 
                 db.SaveChanges();
                 return true;
@@ -157,35 +199,54 @@ namespace Company_Registration_API.DataAccess
             }
             catch (Exception ex)
             {
-                _logger.Error(null, ex);
+                _logger.Error(ex.Message);
                 throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
             }
         }
 
-        //internal List<EmailConfirmationToken> GetEmailTokens(string email)
-        //{
-        //    try
-        //    {
-        //        var user = db.CompanyApplicants.FirstOrDefault(x => x.EmailAddress == email);
-        //        if (user == null)
-        //        {
-        //            _logger.Warn(string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
-        //            throw new ApiException(string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
-        //        }
-        //        return db.EmailConfirmationTokens.Where(t => t.ApplicantId == user.Id).OrderByDescending(t => t.CreatedAt)
-        //                 .ToList();
-        //    }
-        //    catch (ApiException)
-        //    {
-        //        throw;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        _logger.Error(null, ex);
-        //        throw new ApiException(string.Format(CommonMessages.MSG_READ_FAIL, CommonConstants.TBLNAME_APP_USERS));
-        //    }
+        internal string ResendConfirmationEmail(string email)
+        {
+            try
+            {
+                var user = db.CompanyApplicants
+                             .FirstOrDefault(x => x.EmailAddress == email);
 
-        //}
+                if (user == null)
+                {
+                    throw new ApiException(CommonMessages.User_NOT_FOUND);
+                }
+
+                if (user.EmailConfirmed)
+                {
+                    throw new ApiException(CommonMessages.MSG_EMAIL_EXIST);
+                }
+
+                // remove old tokens
+                var oldTokens = db.EmailConfirmationTokens
+                                  .Where(x => x.ApplicantId == user.Id)
+                                  .ToList();
+
+                if (oldTokens.Any())
+                {
+                    db.EmailConfirmationTokens.RemoveRange(oldTokens);
+                    db.SaveChanges();
+                }
+
+                // create new token
+                string newToken = CreateEmailToken(user.Id);
+
+                return newToken;
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex.Message);
+                throw;
+            }
+        }
 
         internal bool ValidateIdentityNumber(string identityNumber)
         {

@@ -58,6 +58,9 @@
     <Reference Include="log4net, Version=3.3.1.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.3.3.1\lib\net462\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.4\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.10.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -284,13 +287,16 @@
     <Compile Include="Models\DTO\Roles.cs" />
     <Compile Include="Models\DTO\UltimateHoldingCompanyDTO.cs" />
     <Compile Include="Models\EmailConfirmationToken.cs" />
+    <Compile Include="Models\Functions.cs" />
     <Compile Include="Models\RegisteredCompany.cs" />
     <Compile Include="Models\RegistrationPayment.cs" />
+    <Compile Include="Models\RolesFunctions.cs" />
     <Compile Include="Models\SystemUsers.cs" />
     <Compile Include="Models\SystemUser\ResGetAllSystemUsers.cs" />
     <Compile Include="Models\SystemUser\ResLoginSystemUser.cs" />
     <Compile Include="Models\SystemUser\ResRegSystemUser.cs" />
     <Compile Include="Models\UltimateHoldingCompany.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseResponse.cs" />
     <Compile Include="Services\BaseServices.cs" />
@@ -306,7 +312,8 @@
     <Compile Include="Utils\EmailHelper.cs" />
     <Compile Include="Utils\ILogFactory.cs" />
     <Compile Include="Utils\LogFactory.cs" />
-    <Compile Include="Utils\PasswordHasher.cs" />
+    <Compile Include="Utils\ModalValidator.cs" />
+    <Compile Include="Utils\PasswordHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

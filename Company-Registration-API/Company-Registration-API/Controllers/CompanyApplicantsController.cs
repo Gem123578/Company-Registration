@@ -29,21 +29,32 @@ namespace Company_Registration_API.Controllers
         public IHttpActionResult Register([FromBody] ApplicantRegisterDTO dto)
         {
             _logger.Debug("api/CompanyApplicants/Register");
+
             _logger.Debug(JsonConvert.SerializeObject(dto));
+
             var response = _service.Register(dto);
+
             return Ok(response);
         }
 
-        [HttpGet]
+        [HttpGet]//mark
         [Route("confirm-email")]
         public IHttpActionResult ConfirmEmail(string token, string email)
         {
             _logger.Debug("api/CompanyApplicants/confirm-email");
+
             _logger.Debug(" Email: {email}");
-            if (string.IsNullOrEmpty(token) || string.IsNullOrEmpty(email))
-                return BadRequest("Invalid confirmation data");
 
             var response = _service.ConfirmEmail(token, email);
+
+            return Ok(response);
+        }
+
+        [HttpPost]
+        [Route("resend-confirmation")]
+        public IHttpActionResult ResendConfirmation(string email)
+        {
+            var response = _service.ResendConfirmationEmail(email);
 
             return Ok(response);
         }
