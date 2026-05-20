@@ -31,7 +31,7 @@ namespace Company_Registration_API.DataAccess
                             on su.Id equals u.SystemId
                             join r in db.Roles
                             on u.RoleId equals r.Id
-                            where su.AccountStatus == "ACTIVE"
+                            where su.AccountStatus 
                              select new CreateUserDto
                              {
                                  Id = su.Id,
@@ -77,15 +77,13 @@ namespace Company_Registration_API.DataAccess
                     //common fields for both create and update
                     sysuser.UserName = userDto.UserName;
                     user.RoleId = userDto.RoleId;
-                    if (!string.IsNullOrEmpty(userDto.AccountStatus))
-                    {
-                        if (userDto.AccountStatus != "ACTIVE" && userDto.AccountStatus != "DISABLED")
-                            throw new ApiException(String.Format(CommonMessages.MSG_ACCOUNTS_NV));
-                        sysuser.AccountStatus = userDto.AccountStatus;
-                    }
+                if (userDto.AccountStatus.HasValue)
+                {
+                    sysuser.AccountStatus = userDto.AccountStatus.Value;
+                }
 
-                    //update login
-                    sysuser.LastLoginAt = DateTime.UtcNow;
+                //update login
+                sysuser.LastLoginAt = DateTime.UtcNow;
 
                     //create case
                     if (!userDto.IsUpdate)
@@ -95,7 +93,7 @@ namespace Company_Registration_API.DataAccess
                         sysuser.EmailAddress = userDto.EmailAddress;
                         sysuser.PasswordHash = hasher.HashPassword(userDto.Password);
                         sysuser.CreatedAt = DateTime.UtcNow;
-                        sysuser.AccountStatus = string.IsNullOrEmpty(userDto.AccountStatus) ? "ACTIVE" : userDto.AccountStatus;
+                        sysuser.AccountStatus = userDto.AccountStatus ?? true;
                         db.SystemUsers.Add(sysuser);
                         user = new Users
                         {
@@ -172,7 +170,7 @@ namespace Company_Registration_API.DataAccess
                     throw new ApiException("Users cannot delete themselves.");
                 }
                 //delete with account status
-                user.AccountStatus = "Disabled";
+                user.AccountStatus = false;
                 //audit field for delete
                 user.LastLoginAt = DateTime.UtcNow;
                 db.SaveChanges();
@@ -210,7 +208,7 @@ namespace Company_Registration_API.DataAccess
                         );
                     }
 
-                    if (sysUser.AccountStatus != "ACTIVE")
+                    if (!sysUser.AccountStatus)
                     {
                         throw new ApiException(string.Format(CommonMessages.MSG_DISABLE_ACC, CommonConstants.TBLNAME_USERS));
                     }

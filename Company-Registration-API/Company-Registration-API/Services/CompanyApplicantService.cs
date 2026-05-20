@@ -1,14 +1,10 @@
 ﻿using Company_Registration_API.DataAccess;
 using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyApplicant;
-using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
 using log4net;
-using QPSOS.Web.API.DataAccess;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Transactions;
 
 namespace Company_Registration_API.Services
 {
@@ -97,7 +93,7 @@ namespace Company_Registration_API.Services
                 string token = _applicantDao.ResendConfirmationEmail(email);
 
                 string confirmLink =
-                    $"{baseUrl}/api/companyapplicants/confirm-email?token={token}&email={email}";
+                    $"{baseUrl}/Companyapplicant/ConfirmEmail?token={token}&email={email}";
 
                 EmailHelper.SendConfirmationEmail(email, confirmLink);
 

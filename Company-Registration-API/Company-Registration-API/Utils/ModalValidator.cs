@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
-using System.Web.Helpers;
 
 namespace Company_Registration_API.Utils
 {

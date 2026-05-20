@@ -1,8 +1,7 @@
 ﻿using Company_Registration_API.Models.DTO;
+using Company_Registration_API.Utils;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Company_Registration_API.Models
 {
@@ -11,10 +10,10 @@ namespace Company_Registration_API.Models
         public long Id { get; set; }
         public string CompanyName { get; set; }
         public string RegistrationNumber { get; set; }
-        public string CompanyType { get; set; } // LLC, PLC, Partnership
+        public EnumCollection.CompanyTypeEnum CompanyType { get; set; } // LLC, PLC, Partnership
         public string BusinessActivity { get; set; }
         public string RegisteredAddress { get; set; }
-        public string RegistrationStatus { get; set; } // PENDING, APPROVED, REJECTED
+        public EnumCollection.RegistrationStatusEnum RegistrationStatus { get; set; } // PENDING, APPROVED, REJECTED
         public long? ApplicantId { get; set; }
         public long? UserId { get; set; }
         public DateTime IncorporationDate { get; set; }

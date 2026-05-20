@@ -1,0 +1,36 @@
+INSERT INTO SystemUsers
+(
+    UserName,
+    EmailAddress,
+    PasswordHash,
+    AccountStatus,
+    CreatedAt,
+    LastLoginAt
+)
+VALUES
+(
+    'System Admin',
+    'admin1@gmail.com',
+    'AGaYIpoCVEwEeGecSkjtgO6yKD0UjKefcmcnZep6oE3CFzRAOlVEbWIjd5jkktCHrw==', -- replace with hashed password
+    'ACTIVE',
+    GETDATE(),
+    NULL
+);
+
+-- Create User Mapping
+INSERT INTO Users
+(
+    ApplicantId,
+    SystemId,
+    RoleId,
+    IsUser,
+    CreatedAt
+)
+VALUES
+(
+    NULL,
+    SCOPE_IDENTITY(), -- last inserted SystemUser Id
+    4, -- SystemUser Admin RoleId
+    1,
+    GETDATE()
+);

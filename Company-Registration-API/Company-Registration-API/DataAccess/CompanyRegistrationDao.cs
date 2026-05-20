@@ -1,5 +1,4 @@
 ﻿using Company_Registration_API.Models;
-using Company_Registration_API.Models.CompanyRegistration.Response;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
 using log4net;
@@ -8,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
-using System.Web;
 
 namespace Company_Registration_API.DataAccess
 {
@@ -96,11 +94,8 @@ namespace Company_Registration_API.DataAccess
                                     ApprovedByName = approver != null ? approver.UserName : null
                                 },
 
-                                CanApprove = rc.RegistrationStatus == "PENDING"
-                            })
-            .OrderByDescending(x => x.Id)
-            .ToList();
-
+                                CanApprove = rc.RegistrationStatus ==EnumCollection.RegistrationStatusEnum.Pending
+                            }).OrderByDescending(x => x.Id).ToList();
 
                 return list;
             }
@@ -269,7 +264,7 @@ namespace Company_Registration_API.DataAccess
                 CompanyType = dto.CompanyType,
                 BusinessActivity = dto.BusinessActivity,
                 RegisteredAddress = dto.RegisteredAddress,
-                RegistrationStatus = dto.RegistrationStatus ?? "PENDING",
+                RegistrationStatus =dto.RegistrationStatus == 0? EnumCollection.RegistrationStatusEnum.Pending: dto.RegistrationStatus,
                 ApplicantId = dto.ApplicantId > 0 ? dto.ApplicantId : (long?)null,
                 UserId = dto.UserId > 0 ? dto.UserId : (long?)null,
                 IncorporationDate = dto.IncorporationDate,

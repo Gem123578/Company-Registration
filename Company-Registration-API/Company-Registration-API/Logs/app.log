@@ -1958,3 +1958,129 @@ Company_Registration_API.Utils.ApiException: Token expired.
 Company_Registration_API.Utils.ApiException: Input value is invalid.
    at Company_Registration_API.Utils.ModalValidator.ValidateEmail(String email)
    at Company_Registration_API.Services.CompanyApplicantService.ResendConfirmationEmail(String email)
+2026-05-18 08:27:55,123 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 08:27:55,152 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 08:28:04,224 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 76
+2026-05-18 08:29:07,431 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Input value is invalid.
+   at Company_Registration_API.Utils.ModalValidator.ValidateEmail(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Utils\ModalValidator.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ResendConfirmationEmail(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 95
+2026-05-18 08:30:07,757 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Input value is invalid.
+   at Company_Registration_API.Utils.ModalValidator.ValidateEmail(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Utils\ModalValidator.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ResendConfirmationEmail(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 95
+2026-05-18 08:31:08,037 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Input value is invalid.
+   at Company_Registration_API.Utils.ModalValidator.ValidateEmail(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Utils\ModalValidator.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ResendConfirmationEmail(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 95
+2026-05-18 08:33:23,701 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 08:33:23,701 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 08:33:23,911 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 76
+2026-05-18 08:38:41,177 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 08:38:41,177 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 08:38:41,221 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email Not Found.
+2026-05-18 08:38:41,361 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email Not Found.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 76
+2026-05-18 08:40:48,831 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-18 08:40:48,863 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyagn","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09887544643","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)666444","EmailConfirmed":false,"EmailToken":null}
+2026-05-18 08:42:44,066 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 08:42:44,067 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 08:42:44,250 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 76
+2026-05-18 08:45:07,715 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 08:45:07,715 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 08:45:07,732 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email Not Found.
+2026-05-18 08:45:07,911 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email Not Found.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email)
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email)
+2026-05-18 08:45:11,616 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 08:45:11,616 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 08:45:11,637 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email Not Found.
+2026-05-18 08:45:11,793 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email Not Found.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email)
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email)
+2026-05-18 08:46:16,856 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-18 08:46:16,857 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyagn","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)666444","EmailConfirmed":false,"EmailToken":null}
+2026-05-18 08:52:13,767 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 08:52:13,768 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 08:52:13,961 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email)
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email)
+2026-05-18 08:53:43,676 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 08:53:43,676 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 08:53:45,769 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-18 08:53:45,769 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-18 08:53:46,042 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/18/2026 02:23:46
+2026-05-18 08:57:59,440 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 08:57:59,440 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 08:57:59,463 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - No email confirmation token found
+2026-05-18 08:57:59,602 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: No email confirmation token found
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email)
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email)
+2026-05-18 08:58:36,505 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-18 08:58:36,505 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-18 08:58:36,592 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: User doesn't exist
+   at Company_Registration_API.DataAccess.SystemUsersDao.ValidateUser(LoginDTO dto)
+   at Company_Registration_API.Services.SystemUserService.ValidateUser(LoginDTO dto)
+2026-05-18 08:58:36,592 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/18/2026 02:28:36
+2026-05-18 08:58:51,014 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-18 08:58:51,014 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"Myanm ","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)666444","EmailConfirmed":false,"EmailToken":null}
+2026-05-18 09:01:31,102 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 09:01:31,102 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 09:01:31,293 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email)
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email)
+2026-05-18 09:02:44,548 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 09:02:44,548 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 09:02:46,496 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-18 09:02:46,496 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-18 09:02:46,566 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/18/2026 02:32:46
+2026-05-18 09:05:59,955 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-18 09:05:59,955 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"Test","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)666444","EmailConfirmed":false,"EmailToken":null}
+2026-05-18 09:08:38,321 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 09:08:38,321 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 09:08:38,546 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email)
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email)
+2026-05-18 13:13:41,984 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-18 13:13:42,152 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"111111","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-18 13:13:42,273 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Invalid Password
+   at Company_Registration_API.Utils.ModalValidator.ValidateApplicantRegister(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Utils\ModalValidator.cs:line 93
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 34
+2026-05-18 13:13:51,521 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-18 13:13:51,523 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-18 13:16:59,292 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 13:16:59,293 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 13:16:59,799 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 76
+2026-05-18 13:19:05,336 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 13:19:05,337 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 13:19:05,544 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 76
+2026-05-18 13:19:38,309 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-18 13:19:38,309 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-18 13:19:42,593 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-18 13:19:42,600 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-18 13:19:42,831 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/18/2026 06:49:42

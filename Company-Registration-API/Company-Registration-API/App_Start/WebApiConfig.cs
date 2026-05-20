@@ -1,10 +1,4 @@
-﻿using Company_Registration_API.DataAccess;
-using Company_Registration_API.Services;
-using Microsoft.Ajax.Utilities;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Metadata.Edm;
-using System.Linq;
+﻿using System;
 using System.Web.Http;
 using System.Web.Http.Cors;
 

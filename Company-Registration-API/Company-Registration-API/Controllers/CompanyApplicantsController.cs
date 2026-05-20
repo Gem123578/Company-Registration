@@ -1,13 +1,7 @@
-﻿using Company_Registration_API.DataAccess;
-using Company_Registration_API.Models;
-using Company_Registration_API.Models.CompanyApplicant;
+﻿using Company_Registration_API.Models;
 using Company_Registration_API.Services;
 using log4net;
 using Newtonsoft.Json;
-using System;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Web.Http;
 
 namespace Company_Registration_API.Controllers
@@ -37,7 +31,7 @@ namespace Company_Registration_API.Controllers
             return Ok(response);
         }
 
-        [HttpGet]//mark
+        [HttpGet]
         [Route("confirm-email")]
         public IHttpActionResult ConfirmEmail(string token, string email)
         {

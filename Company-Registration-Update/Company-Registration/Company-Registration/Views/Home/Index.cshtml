@@ -1,7 +1,7 @@
 ﻿    @{
         Layout = null;
         ViewBag.Title = "Home Page";
-        var userRole = Session["UserRole"]?.ToString();
+        var userRole = Session["UserRole"] != null ? Session["UserRole"].ToString() : null;
     }
 
     <html lang="en">
@@ -136,7 +136,7 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button class="btn btn-primary" data-bs-dismiss="modal">
+                            <button class="btn btn-primary-custom" data-bs-dismiss="modal">
                                 OK
                             </button>
                         </div>
@@ -161,11 +161,9 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button class="btn btn-warning" onclick="resendEmail()">
-                                Resend Email
-                            </button>
+                            <a href="@Url.Action("ResendConfirmationEmail", "CompanyApplicant")" class="btn btn-primary-custom mt-3">Resend Email</a>
 
-                            <button class="btn btn-secondary" data-bs-dismiss="modal">
+                            <button class="btn btn-primary-custom" data-bs-dismiss="modal">
                                 Close
                             </button>
                         </div>

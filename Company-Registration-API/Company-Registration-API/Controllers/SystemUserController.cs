@@ -3,14 +3,8 @@ using Company_Registration_API.Models.CompanyApplicant;
 using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Models.SystemUser;
 using Company_Registration_API.Services;
-using Company_Registration_API.Utils;
 using log4net;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 
 namespace Company_Registration_API.Controllers

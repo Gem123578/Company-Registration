@@ -83,5 +83,15 @@ Controller
 Response (JSON)
 
 
+INSERT INTO Functions (Id, FunctionName)
+VALUES
+    (1, 'Create'),
+    (2, 'Edit'),
+    (3, 'Delete'),
+    (4, 'SystemUserView'),
+    (5, 'CompanyRegistrationView'),
+    (6, 'CompanyRegistrationManage'),
+    (7, 'SystemUserManage');
+
 
 

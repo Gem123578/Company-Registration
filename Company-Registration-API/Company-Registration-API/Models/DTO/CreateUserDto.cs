@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Company_Registration_API.Models.DTO
+﻿namespace Company_Registration_API.Models.DTO
 {
     public class CreateUserDto
     {
@@ -13,7 +8,7 @@ namespace Company_Registration_API.Models.DTO
         public string EmailAddress { get; set; }
 
         public string Password { get; set; }
-        public string AccountStatus { get; set; }
+        public bool? AccountStatus { get; set; }
 
         public long RoleId { get; set; }
         public bool IsUpdate { get; set; }

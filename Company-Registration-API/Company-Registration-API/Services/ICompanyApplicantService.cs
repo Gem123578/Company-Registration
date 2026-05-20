@@ -1,6 +1,5 @@
 ﻿using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyApplicant;
-using Company_Registration_API.Models.CompanyRegistration;
 
 namespace Company_Registration_API.Services
 {

@@ -109,27 +109,27 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                /// Remove expired tokens first
-                var expiredTokens = db.EmailConfirmationTokens
-                    .Where(t => t.ExpireAt <= DateTime.UtcNow)
-                    .ToList();
+                ///// Remove expired tokens first
+                //var expiredTokens = db.EmailConfirmationTokens
+                //    .Where(t => t.ExpireAt <= DateTime.UtcNow)
+                //    .ToList();
 
-                if (expiredTokens.Any())
-                {
-                    db.EmailConfirmationTokens.RemoveRange(expiredTokens);
-                    db.SaveChanges();
-                }
+                //if (expiredTokens.Any())
+                //{
+                //    db.EmailConfirmationTokens.RemoveRange(expiredTokens);
+                //    db.SaveChanges();
+                //}
 
-                // Remove old token for this applicant
-                var oldTokens = db.EmailConfirmationTokens
-                    .Where(t => t.ApplicantId == applicantId)
-                    .ToList();
+                //// Remove old token for this applicant
+                //var oldTokens = db.EmailConfirmationTokens
+                //    .Where(t => t.ApplicantId == applicantId)
+                //    .ToList();
 
-                if (oldTokens.Any())
-                {
-                    db.EmailConfirmationTokens.RemoveRange(oldTokens);
-                    db.SaveChanges();
-                }
+                //if (oldTokens.Any())
+                //{
+                //    db.EmailConfirmationTokens.RemoveRange(oldTokens);
+                //    db.SaveChanges();
+                //}
                 //generate new token
                 string newToken = Guid.NewGuid().ToString();
                 var emailToken = new EmailConfirmationToken
@@ -224,7 +224,7 @@ namespace Company_Registration_API.DataAccess
                 // remove old tokens
                 var oldTokens = db.EmailConfirmationTokens
                                   .Where(x => x.ApplicantId == user.Id)
-                                  .ToList();
+                                  .ToList();//mark
 
                 if (oldTokens.Any())
                 {

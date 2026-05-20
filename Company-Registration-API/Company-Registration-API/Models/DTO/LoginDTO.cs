@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Company_Registration_API.Models
+﻿namespace Company_Registration_API.Models
 {
     public class LoginDTO 
     {

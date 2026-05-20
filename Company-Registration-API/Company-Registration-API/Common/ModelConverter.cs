@@ -1,9 +1,6 @@
 ﻿using Company_Registration_API.Models;
 using Company_Registration_API.Models.DTO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Company_Registration_API.Common
 {

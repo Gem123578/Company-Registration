@@ -199,11 +199,18 @@ namespace Company_Registration.Controllers
         {
             var response = await _service.ResendConfirmation(email);
 
-            return Json(new JsonResponse
+            if (response.IsSuccess)
             {
-                Success = response.IsSuccess,
-                Message = response.Result?.Message
-            });
+                //pass message to Index
+                TempData["ShowModal"] = true;
+                TempData["Message"] = response.Result?.Message; // "Please confirm your email"
+                TempData["Email"] = email;
+
+                return RedirectToAction("Index", "Home");
+            }
+            TempData["ErrorMessage"] = response.Result?.Message ?? "Resend failed.";
+
+            return RedirectToAction("ResendConfirmationEmail");
         }
     }
 }

@@ -13,12 +13,12 @@ namespace Company_Registration.Models
         public long? CompanyId { get; set; }
 
         [Required(ErrorMessage = "Company Name is required.")]
-        [StringLength(200, ErrorMessage = "Company Name cannot exceed 200 characters.")]
+        [StringLength(50, ErrorMessage = "Company Name cannot exceed 200 characters.")]
         [Display(Name = "Company Name")]
         public string CompanyName { get; set; }
 
         [Required(ErrorMessage = "Registration Number is required.")]
-        [StringLength(100, ErrorMessage = "Registration Number cannot exceed 100 characters.")]
+        [StringLength(50, ErrorMessage = "Registration Number cannot exceed 100 characters.")]
         [Display(Name = "Registration Number")]
         public string RegistrationNumber { get; set; }
 
@@ -26,7 +26,7 @@ namespace Company_Registration.Models
         [Display(Name = "Company Type")]
         public string CompanyType { get; set; } // LLC, PLC, Partnership
 
-        [StringLength(255, ErrorMessage = "Business Activity cannot exceed 255 characters.")]
+        [StringLength(200, ErrorMessage = "Business Activity cannot exceed 255 characters.")]
         [Display(Name = "Business Activity")]
         public string BusinessActivity { get; set; }
 

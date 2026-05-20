@@ -1,10 +1,4 @@
-﻿using Company_Registration_API.DataAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Company_Registration_API.Models.DTO
+﻿namespace Company_Registration_API.Models.DTO
 {
     public class Roles
     {

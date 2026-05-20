@@ -310,6 +310,7 @@
     <Compile Include="Utils\CommonConstants.cs" />
     <Compile Include="Utils\Constants.cs" />
     <Compile Include="Utils\EmailHelper.cs" />
+    <Compile Include="Utils\EnumCollection.cs" />
     <Compile Include="Utils\ILogFactory.cs" />
     <Compile Include="Utils\LogFactory.cs" />
     <Compile Include="Utils\ModalValidator.cs" />

@@ -1,8 +1,4 @@
-﻿using Company_Registration_API.Models.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System;
 
 namespace Company_Registration_API.Models
 {
@@ -12,7 +8,7 @@ namespace Company_Registration_API.Models
         public string UserName { get; set; }
         public string EmailAddress { get; set; }
         public string PasswordHash { get; set; }
-        public string AccountStatus { get; set; }
+        public bool AccountStatus { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? LastLoginAt { get; set; }
     }

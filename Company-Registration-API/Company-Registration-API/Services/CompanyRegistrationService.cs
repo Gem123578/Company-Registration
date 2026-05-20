@@ -4,11 +4,8 @@ using Company_Registration_API.Models.CompanyRegistration;
 using Company_Registration_API.Models.CompanyRegistration.Response;
 using Company_Registration_API.Utils;
 using log4net;
-using Microsoft.Ajax.Utilities;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Web;
 
 namespace Company_Registration_API.Services

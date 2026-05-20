@@ -1,16 +1,7 @@
-﻿using Company_Registration_API.DataAccess;
-using Company_Registration_API.Models;
+﻿using Company_Registration_API.Models;
 using Company_Registration_API.Services;
-using Company_Registration_API.Utils;
 using log4net;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Drawing.Text;
-using System.IO;
-using System.Linq;
-using System.Security.Claims;
-using System.Web;
 using System.Web.Http;
 
 namespace Company_Registration_API.Controllers

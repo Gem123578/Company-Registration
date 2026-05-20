@@ -1,12 +1,6 @@
 ﻿using Company_Registration_API.Models;
 using Company_Registration_API.Models.DTO;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Resources;
-using System.Web;
 
 namespace Company_Registration_API.DataAccess
 {
