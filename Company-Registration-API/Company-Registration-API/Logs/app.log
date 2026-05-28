@@ -2084,3 +2084,753 @@ Company_Registration_API.Utils.ApiException: Token expired.
 2026-05-18 13:19:42,593 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
 2026-05-18 13:19:42,600 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
 2026-05-18 13:19:42,831 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/18/2026 06:49:42
+2026-05-20 09:40:23,300 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-20 09:40:23,445 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-20 09:42:01,010 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 09:42:01,013 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 09:42:01,485 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 72
+2026-05-20 09:42:46,262 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 09:42:46,262 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 09:42:46,471 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 72
+2026-05-20 09:45:05,554 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 09:45:05,601 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 09:45:16,807 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-20 09:45:16,815 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-20 09:45:17,035 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/20/2026 03:15:17
+2026-05-20 10:29:16,513 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-20 10:29:16,513 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-20 10:29:16,580 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/20/2026 03:59:16
+2026-05-20 11:19:25,545 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-20 11:19:25,545 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-20 11:19:25,627 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/20/2026 04:49:25
+2026-05-20 11:20:49,414 ERROR Company_Registration_API.DataAccess.CompanyRegistrationDao - 
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Conversion failed when converting the nvarchar value 'CORPORATE' to data type tinyint.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Company_Registration_API.DataAccess.CompanyRegistrationDao.SaveShareholders(ApplicantDbContext context, List`1 shareholders, Int64 companyId)
+   at Company_Registration_API.DataAccess.CompanyRegistrationDao.CreateCompanyRegistration(CompanyRegistrationDTO dto)
+2026-05-20 11:24:56,746 ERROR Company_Registration_API.DataAccess.CompanyRegistrationDao - 
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Conversion failed when converting the nvarchar value 'CORPORATE' to data type tinyint.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Company_Registration_API.DataAccess.CompanyRegistrationDao.SaveShareholders(ApplicantDbContext context, List`1 shareholders, Int64 companyId)
+   at Company_Registration_API.DataAccess.CompanyRegistrationDao.CreateCompanyRegistration(CompanyRegistrationDTO dto)
+2026-05-20 13:22:07,701 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-20 13:22:07,870 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-20 13:23:28,032 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 13:23:28,033 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 13:23:28,206 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email Not Found.
+2026-05-20 13:23:28,649 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email Not Found.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 72
+2026-05-20 13:23:49,915 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 13:23:49,915 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 13:23:49,929 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email Not Found.
+2026-05-20 13:23:50,180 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email Not Found.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 72
+2026-05-20 13:24:47,107 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 13:24:47,107 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 13:26:03,137 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-20 13:26:03,137 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-20 13:26:23,232 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 13:26:23,232 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 13:35:17,191 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-20 13:35:17,192 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-20 13:37:08,079 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 13:37:08,079 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 13:37:08,489 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email)
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email)
+2026-05-20 13:40:00,661 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-20 13:40:00,661 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-20 13:40:00,704 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email already exists
+2026-05-20 13:40:00,807 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email)
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto)
+2026-05-20 22:05:24,091 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-20 22:05:24,206 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-20 22:07:40,445 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 22:07:40,446 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 22:07:40,896 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 72
+2026-05-20 22:11:05,481 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 22:11:05,481 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 22:11:05,681 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 72
+2026-05-20 22:11:47,283 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 22:11:47,283 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 22:18:27,549 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-20 22:18:27,549 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224533","EmailConfirmed":false,"EmailToken":null}
+2026-05-20 22:19:52,751 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 22:19:52,751 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-20 22:19:52,954 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 198
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 72
+2026-05-20 22:20:22,499 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-20 22:20:22,499 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-21 09:58:24,169 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-21 09:58:24,286 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224556","EmailConfirmed":false,"EmailToken":null}
+2026-05-21 09:58:32,051 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email already exists
+2026-05-21 09:58:32,225 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 64
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 32
+2026-05-21 09:58:48,714 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-21 09:58:48,714 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224556","EmailConfirmed":false,"EmailToken":null}
+2026-05-21 10:02:13,984 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-21 10:02:13,984 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224556","EmailConfirmed":false,"EmailToken":null}
+2026-05-21 10:02:13,986 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-21 10:02:13,986 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224556","EmailConfirmed":false,"EmailToken":null}
+2026-05-21 10:02:17,483 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email already exists
+2026-05-21 10:02:18,001 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 64
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 32
+2026-05-21 10:02:19,202 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - 
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of UNIQUE KEY constraint 'UQ_CompanyApplicants_EmailAddress'. Cannot insert duplicate key in object 'dbo.CompanyApplicants'. The duplicate key value is (maythagyan.wyk@gmail.com).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 95
+2026-05-21 10:02:19,404 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Fail to read
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 121
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 39
+2026-05-21 10:02:26,842 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-21 10:02:26,842 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224556","EmailConfirmed":false,"EmailToken":null}
+2026-05-21 10:02:29,494 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Exist NRC No
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ValidateIdentityNumber(String identityNumber) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 263
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 34
+2026-05-21 10:02:46,432 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-21 10:02:46,432 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224766","EmailConfirmed":false,"EmailToken":null}
+2026-05-21 10:02:50,415 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Exist PhoneNumber
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ValidatePhoneNumber(String phoneNumber) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 285
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 36
+2026-05-21 10:03:16,484 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-21 10:03:16,485 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224766","EmailConfirmed":false,"EmailToken":null}
+2026-05-21 10:55:00,233 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-21 10:55:00,233 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-21 10:55:00,461 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 194
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 72
+2026-05-21 10:55:47,557 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-21 10:55:47,557 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224533","EmailConfirmed":false,"EmailToken":null}
+2026-05-21 10:56:30,811 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Exist PhoneNumber
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ValidatePhoneNumber(String phoneNumber) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 285
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 36
+2026-05-22 11:41:20,312 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 11:41:20,451 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 11:41:28,727 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - 
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of UNIQUE KEY constraint 'UQ_CompanyApplicants_EmailAddress'. Cannot insert duplicate key in object 'dbo.CompanyApplicants'. The duplicate key value is (maythagyan.wyk@gmail.com).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 88
+2026-05-22 11:41:28,950 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Fail to read
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 114
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 59
+2026-05-22 11:42:04,544 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 11:42:05,170 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 11:46:08,105 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - 
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of UNIQUE KEY constraint 'UQ_CompanyApplicants_EmailAddress'. Cannot insert duplicate key in object 'dbo.CompanyApplicants'. The duplicate key value is (maythagyan.wyk@gmail.com).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto)
+2026-05-22 11:46:08,465 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Fail to read
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto)
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto)
+2026-05-22 11:46:17,068 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 11:46:17,300 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 11:47:11,749 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - 
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of UNIQUE KEY constraint 'UQ_CompanyApplicants_EmailAddress'. Cannot insert duplicate key in object 'dbo.CompanyApplicants'. The duplicate key value is (maythagyan.wyk@gmail.com).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto)
+2026-05-22 11:47:11,792 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Fail to read
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto)
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto)
+2026-05-22 11:47:34,023 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 11:47:34,023 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 11:48:02,573 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - 
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of UNIQUE KEY constraint 'UQ_CompanyApplicants_EmailAddress'. Cannot insert duplicate key in object 'dbo.CompanyApplicants'. The duplicate key value is (maythagyan.wyk@gmail.com).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto)
+2026-05-22 11:48:02,627 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Fail to read
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto)
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto)
+2026-05-22 11:48:07,455 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 11:48:07,456 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 11:50:46,049 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 11:50:51,519 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 11:50:51,639 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May ","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)442222","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 11:50:51,639 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 11:52:40,082 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-22 11:52:40,082 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-22 11:52:40,122 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email Not Found.
+2026-05-22 11:52:40,332 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email Not Found.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-22 11:52:48,613 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-22 11:52:48,613 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-22 11:52:48,629 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email Not Found.
+2026-05-22 11:52:48,790 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email Not Found.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-22 11:52:57,349 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-22 11:52:57,349 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-22 11:52:57,555 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-22 11:54:08,087 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-22 11:54:08,088 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-22 12:21:20,517 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 12:21:20,518 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyagn.wyk@gmail.com","Password":"111111","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 12:27:29,246 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 12:27:29,246 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyagn.wyk@gmail.com","Password":"111111","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 12:40:51,691 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 12:40:52,202 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyagn.wyk@gmail.com","Password":"111111","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)224456","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 12:48:17,207 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 12:48:17,323 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyagn.wyk@gmail.com","Password":"111111","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 12:50:38,064 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 12:50:38,065 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May ","EmailAddress":"maythagyan.wyk@gmail.com","Password":"111111","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 12:50:42,333 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Exist NRC No
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ValidateIdentityNumber(String identityNumber) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 256
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 37
+2026-05-22 12:51:08,902 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 12:51:08,902 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May ","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 12:51:54,656 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Exist NRC No
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ValidateIdentityNumber(String identityNumber) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 256
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 37
+2026-05-22 12:51:58,803 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 12:51:58,803 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May ","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 12:52:55,578 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 12:52:55,579 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May ","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 12:56:34,603 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-22 12:56:34,603 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-22 12:56:34,670 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email Not Found.
+2026-05-22 12:56:34,953 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email Not Found.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-22 12:56:53,092 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-22 12:56:53,092 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-22 12:56:53,353 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-22 12:57:38,482 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-22 12:57:38,482 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-22 12:58:28,867 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-22 12:58:28,867 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:06:31,614 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 08:06:32,459 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 08:06:58,355 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email already exists
+2026-05-23 08:06:58,503 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 57
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 31
+2026-05-23 08:08:45,655 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 08:08:45,655 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 08:09:21,993 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:09:21,993 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:11:38,306 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 08:11:38,306 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 08:11:58,906 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:11:58,906 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:16:55,114 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 08:16:55,114 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 08:17:13,771 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:17:13,771 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:19:09,349 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 08:19:09,349 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224533","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 08:19:25,818 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:19:25,818 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:21:53,571 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 08:21:53,571 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224556","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 08:24:36,541 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:24:36,542 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:24:36,569 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email Not Found.
+2026-05-23 08:24:36,767 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email Not Found.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-23 08:24:54,512 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:24:54,512 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:24:54,746 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-23 08:25:14,710 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:25:14,710 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:25:14,877 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-23 08:25:32,245 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:25:32,245 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:25:32,414 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-23 08:25:46,113 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:25:46,113 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:25:46,339 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-23 08:29:11,907 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:29:11,907 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:29:12,108 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-23 08:29:40,526 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:29:40,526 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:30:51,139 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:30:51,140 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:30:51,154 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email Not Found.
+2026-05-23 08:30:51,312 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email Not Found.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-23 08:31:23,178 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 08:31:23,178 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224533","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 08:31:44,685 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:31:44,685 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:33:35,251 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 08:33:35,251 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"ererdf","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/khamana(N)224533","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 08:33:52,395 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:33:52,395 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 08:43:46,201 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 08:43:46,201 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 08:44:03,400 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 08:44:03,400 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 10:16:43,503 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 10:16:43,503 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 10:19:40,185 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 10:19:40,185 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 10:19:40,476 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-23 10:20:15,618 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 10:20:15,618 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 10:21:23,309 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 10:21:23,309 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 10:21:42,886 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 10:21:42,887 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-23 11:58:51,930 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 11:58:52,029 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 11:58:58,377 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email already exists
+2026-05-23 11:58:58,451 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 57
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 31
+2026-05-23 13:11:07,073 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 13:11:07,213 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 13:12:06,896 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-23 13:12:08,438 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-23 13:12:41,779 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-23 13:12:41,779 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-24 20:57:02,862 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-24 20:57:02,970 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-24 21:05:12,781 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-24 21:05:12,781 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-24 21:05:13,095 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Token expired.
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 187
+   at Company_Registration_API.Services.CompanyApplicantService.ConfirmEmail(String token, String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 88
+2026-05-24 21:05:46,741 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/confirm-email
+2026-05-24 21:05:46,741 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController -  Email: {email}
+2026-05-24 21:06:10,399 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-24 21:06:10,401 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-24 21:06:10,636 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/24/2026 14:36:10
+2026-05-24 21:43:00,774 ERROR Company_Registration_API.DataAccess.CompanyRegistrationDao - 
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Conversion failed when converting the nvarchar value 'INDIVIDUAL' to data type tinyint.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Company_Registration_API.DataAccess.CompanyRegistrationDao.SaveShareholders(ApplicantDbContext context, List`1 shareholders, Int64 companyId) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\CompanyRegistrationDao.cs:line 313
+   at Company_Registration_API.DataAccess.CompanyRegistrationDao.CreateCompanyRegistration(CompanyRegistrationDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\CompanyRegistrationDao.cs:line 233
+2026-05-24 21:43:02,106 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-24 21:43:02,106 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-24 21:43:02,955 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-24 21:43:02,955 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-24 21:43:02,965 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-24 21:43:02,966 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-24 21:43:03,110 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - Email already exists
+2026-05-24 21:43:03,257 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Email already exists
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.IsEmailExist(String email) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 57
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 31
+2026-05-24 21:43:03,288 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/24/2026 15:13:03
+2026-05-24 21:43:03,294 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/24/2026 15:13:03
+2026-05-24 21:50:13,259 ERROR Company_Registration_API.DataAccess.CompanyRegistrationDao - 
+System.Runtime.CompilerServices.HotReloadException: Attempted to invoke a deleted method implementation. This can happen when a method is deleted or its name or signature is changed while the application is running.
+   at Company_Registration_API.Models.CompanyShareholderDTO.get_ShareholderType()
+   at Company_Registration_API.DataAccess.CompanyRegistrationDao.SaveShareholders(ApplicantDbContext context, List`1 shareholders, Int64 companyId)
+   at Company_Registration_API.DataAccess.CompanyRegistrationDao.CreateCompanyRegistration(CompanyRegistrationDTO dto)
+2026-05-24 22:01:52,552 ERROR Company_Registration_API.DataAccess.CompanyRegistrationDao - 
+System.InvalidOperationException: The property 'ShareholderType' is not a String or Byte array. Length can only be configured for String and Byte array properties.
+   at System.Data.Entity.ModelConfiguration.Configuration.ConventionPrimitivePropertyConfiguration.HasMaxLength(Int32 maxLength)
+   at System.Data.Entity.ModelConfiguration.Conventions.PrimitivePropertyAttributeConfigurationConvention`1.<.ctor>b__1_1(ConventionPrimitivePropertyConfiguration configuration, IEnumerable`1 attributes)
+   at System.Data.Entity.ModelConfiguration.Conventions.PropertyConventionWithHaving`1.ApplyCore(PropertyInfo memberInfo, Func`1 configuration, ModelConfiguration modelConfiguration)
+   at System.Data.Entity.ModelConfiguration.Conventions.PropertyConventionBase.Apply(PropertyInfo memberInfo, Func`1 configuration, ModelConfiguration modelConfiguration)
+   at System.Data.Entity.ModelConfiguration.Configuration.ConventionsConfiguration.PropertyConfigurationConventionDispatcher.Dispatch[TPropertyConfiguration]()
+   at System.Data.Entity.ModelConfiguration.Configuration.ConventionsConfiguration.PropertyConfigurationConventionDispatcher.Dispatch()
+   at System.Data.Entity.ModelConfiguration.Configuration.ConventionsConfiguration.ApplyPropertyConfiguration(PropertyInfo propertyInfo, Func`1 propertyConfiguration, ModelConfiguration modelConfiguration)
+   at System.Data.Entity.ModelConfiguration.Configuration.ConventionsConfiguration.ApplyPropertyConfiguration(PropertyInfo propertyInfo, Func`1 propertyConfiguration, ModelConfiguration modelConfiguration)
+   at System.Data.Entity.ModelConfiguration.Mappers.PropertyMapper.MapPrimitiveOrComplexOrEnumProperty(PropertyInfo propertyInfo, Func`1 structuralTypeConfiguration, Boolean discoverComplexTypes)
+   at System.Data.Entity.ModelConfiguration.Mappers.PropertyMapper.MapIfNotNavigationProperty(PropertyInfo propertyInfo, EntityType entityType, Func`1 entityTypeConfiguration)
+   at System.Data.Entity.ModelConfiguration.Mappers.TypeMapper.<>c__DisplayClass7_1.<MapEntityType>b__1(PropertyMapper m, PropertyInfo p)
+   at System.Data.Entity.ModelConfiguration.Mappers.TypeMapper.MapStructuralElements[TStructuralTypeConfiguration](Type type, ICollection`1 annotations, Action`2 propertyMappingAction, Func`1 structuralTypeConfiguration)
+   at System.Data.Entity.ModelConfiguration.Mappers.TypeMapper.MapEntityType(Type type)
+   at System.Data.Entity.ModelConfiguration.Mappers.NavigationPropertyMapper.Map(PropertyInfo propertyInfo, EntityType entityType, Func`1 entityTypeConfiguration)
+   at System.Data.Entity.ModelConfiguration.Mappers.TypeMapper.MapEntityType(Type type)
+   at System.Data.Entity.ModelConfiguration.Mappers.NavigationPropertyMapper.Map(PropertyInfo propertyInfo, EntityType entityType, Func`1 entityTypeConfiguration)
+   at System.Data.Entity.ModelConfiguration.Mappers.TypeMapper.MapEntityType(Type type)
+   at System.Data.Entity.DbModelBuilder.MapTypes(EdmModel model)
+   at System.Data.Entity.DbModelBuilder.Build(DbProviderManifest providerManifest, DbProviderInfo providerInfo)
+   at System.Data.Entity.DbModelBuilder.Build(DbConnection providerConnection)
+   at System.Data.Entity.Internal.LazyInternalContext.CreateModel(LazyInternalContext internalContext)
+   at System.Data.Entity.Internal.RetryLazy`2.GetValue(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.Initialize()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.Any[TSource](IQueryable`1 source, Expression`1 predicate)
+   at Company_Registration_API.DataAccess.CompanyRegistrationDao.CreateCompanyRegistration(CompanyRegistrationDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\CompanyRegistrationDao.cs:line 215
+2026-05-25 08:03:27,579 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-25 08:03:27,713 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-25 08:03:29,723 ERROR Company_Registration_API.DataAccess.SystemUsersDao - The property 'ShareholderType' is not a String or Byte array. Length can only be configured for String and Byte array properties.
+2026-05-25 08:03:29,784 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: Login Fail
+   at Company_Registration_API.DataAccess.SystemUsersDao.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\SystemUsersDao.cs:line 293
+   at Company_Registration_API.Services.SystemUserService.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\SystemUserService.cs:line 129
+2026-05-25 08:03:29,845 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/25/2026 01:33:29
+2026-05-25 08:03:42,425 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-25 08:03:42,425 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-25 08:03:42,505 ERROR Company_Registration_API.DataAccess.SystemUsersDao - The property 'ShareholderType' is not a String or Byte array. Length can only be configured for String and Byte array properties.
+2026-05-25 08:03:42,597 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: Login Fail
+   at Company_Registration_API.DataAccess.SystemUsersDao.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\SystemUsersDao.cs:line 293
+   at Company_Registration_API.Services.SystemUserService.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\SystemUserService.cs:line 129
+2026-05-25 08:03:42,598 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/25/2026 01:33:42
+2026-05-25 08:03:44,062 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-25 08:03:44,062 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-25 08:03:44,157 ERROR Company_Registration_API.DataAccess.SystemUsersDao - The property 'ShareholderType' is not a String or Byte array. Length can only be configured for String and Byte array properties.
+2026-05-25 08:03:44,224 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: Login Fail
+   at Company_Registration_API.DataAccess.SystemUsersDao.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\SystemUsersDao.cs:line 293
+   at Company_Registration_API.Services.SystemUserService.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\SystemUserService.cs:line 129
+2026-05-25 08:03:44,225 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/25/2026 01:33:44
+2026-05-25 08:04:28,233 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-25 08:04:28,398 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-25 08:05:25,864 ERROR Company_Registration_API.DataAccess.SystemUsersDao - The property 'ShareholderType' is not a String or Byte array. Length can only be configured for String and Byte array properties.
+2026-05-25 08:05:25,908 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: Login Fail
+   at Company_Registration_API.DataAccess.SystemUsersDao.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\SystemUsersDao.cs:line 293
+   at Company_Registration_API.Services.SystemUserService.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\SystemUserService.cs:line 129
+2026-05-25 08:05:25,908 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/25/2026 01:35:25
+2026-05-25 08:05:31,234 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-25 08:05:31,606 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-25 08:11:24,859 ERROR Company_Registration_API.DataAccess.SystemUsersDao - The property 'ShareholderType' is not a String or Byte array. Length can only be configured for String and Byte array properties.
+2026-05-25 08:11:25,039 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: Login Fail
+   at Company_Registration_API.DataAccess.SystemUsersDao.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\SystemUsersDao.cs:line 293
+   at Company_Registration_API.Services.SystemUserService.ValidateUser(LoginDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\SystemUserService.cs:line 129
+2026-05-25 08:11:25,040 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/25/2026 01:41:25
+2026-05-25 08:13:21,679 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-25 08:13:22,113 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-25 08:16:56,028 ERROR Company_Registration_API.DataAccess.SystemUsersDao - The property 'ShareholderType' is not a String or Byte array. Length can only be configured for String and Byte array properties.
+2026-05-25 08:16:56,117 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: Login Fail
+   at Company_Registration_API.DataAccess.SystemUsersDao.ValidateUser(LoginDTO dto)
+   at Company_Registration_API.Services.SystemUserService.ValidateUser(LoginDTO dto)
+2026-05-25 08:16:56,117 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/25/2026 01:46:56
+2026-05-25 08:39:08,006 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-25 08:39:08,677 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-25 08:39:52,854 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/25/2026 02:09:52
+2026-05-25 08:41:04,083 DEBUG Company_Registration_API.Controllers.CompanyRegistrationController - api/CompanyRegistratioin/Submit
+2026-05-25 08:41:04,146 DEBUG Company_Registration_API.Controllers.CompanyRegistrationController - {"Id":0,"CompanyName":"n","RegistrationNumber":"232323","CompanyType":1,"BusinessActivity":"IT Solutions and Services","RegisteredAddress":"No.9 , magway.","RegistrationStatus":1,"ApplicantId":10118,"UserId":null,"IncorporationDate":"2026-05-25T00:00:00","CreatedAt":"2026-05-25T08:41:03.8190848+06:30","CanApprove":false,"Approval":null,"ShareCapital":{"AuthorizedShareCapital":22.0,"IssuedShareCapital":22.0,"PaidUpShareCapital":22.0,"ShareCurrency":"USD","CreatedAt":"0001-01-01T00:00:00"},"Shareholders":[{"ShareholderName":"May Thagyan","ShareholderType":1,"Nationality":"2","IdentityNumber":"8/kamana(N)224556","NumberOfShares":22,"SharePercentage":22.0,"EmailAddress":null,"CreatedAt":"0001-01-01T00:00:00"}],"UHC":{"UHCName":"tge","RegistrationNumber":"232327","CountryOfIncorporation":"1","OwnershipPercentage":22.0,"CreatedAt":"0001-01-01T00:00:00"},"Constitution":{"ConstitutionType":"MODEL","ConstitutionFilePath":"/Uploads/a4a05b91-a2af-4e13-9019-8c96fb8309d3.htm","UploadedAt":"0001-01-01T00:00:00"}}
+2026-05-26 11:27:21,837 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-26 11:27:21,963 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123"}
+2026-05-26 11:27:31,234 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/26/2026 04:57:31
+2026-05-26 12:34:43,938 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-26 12:34:43,958 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-26 12:34:43,966 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - api/CompanyApplicants/Register
+2026-05-26 12:34:43,966 DEBUG Company_Registration_API.Controllers.CompanyApplicantsController - {"FullName":"May Thagyan","EmailAddress":"maythagyan.wyk@gmail.com","Password":"may@123","PhoneNumber":"09445293952","Nationality":"Myanmar","IdentityNumber":"8/KhaMaNa(N)444444","EmailConfirmed":false,"EmailToken":null}
+2026-05-26 12:34:45,385 ERROR Company_Registration_API.DataAccess.ApplicantRegistrationDao - 
+System.Data.Entity.Infrastructure.DbUpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.Entity.Core.UpdateException: An error occurred while updating the entries. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Violation of UNIQUE KEY constraint 'UQ_CompanyApplicants_EmailAddress'. Cannot insert duplicate key in object 'dbo.CompanyApplicants'. The duplicate key value is (maythagyan.wyk@gmail.com).
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Core.Mapping.Update.Internal.DynamicUpdateCommand.Execute(Dictionary`2 identifierValues, List`1 generatedValues)
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.Mapping.Update.Internal.UpdateTranslator.Update()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesToStore(SaveOptions options, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction)
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectContext.SaveChangesInternal(SaveOptions options, Boolean executeInExistingTransaction)
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 88
+2026-05-26 12:34:45,594 ERROR Company_Registration_API.Models.CompanyApplicants - 
+Company_Registration_API.Utils.ApiException: Fail to read
+   at Company_Registration_API.DataAccess.ApplicantRegistrationDao.CreateApplicant(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\DataAccess\ApplicantRegistrationDao.cs:line 114
+   at Company_Registration_API.Services.CompanyApplicantService.Register(ApplicantRegisterDTO dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\CompanyApplicantService.cs:line 56
+2026-05-27 14:40:31,797 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-27 14:40:35,218 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-27 14:40:38,032 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/Login
+2026-05-27 14:40:38,119 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"admin1@gmail.com","Password":"may@123"}
+2026-05-27 14:40:38,119 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"admin1@gmail.com","Password":"may@123"}
+2026-05-27 14:40:38,119 DEBUG Company_Registration_API.Controllers.SystemUserController - {"EmailAddress":"admin1@gmail.com","Password":"may@123"}
+2026-05-27 14:40:46,042 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/27/2026 08:10:46
+2026-05-27 14:40:46,042 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/27/2026 08:10:46
+2026-05-27 14:40:46,043 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/27/2026 08:10:46
+2026-05-27 14:47:43,610 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/GetAllUsers
+2026-05-27 14:47:43,813 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/27/2026 08:17:43
+2026-05-27 14:48:35,451 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/CreateUser
+2026-05-27 14:48:35,457 DEBUG Company_Registration_API.Controllers.SystemUserController - {"Id":0,"UserName":"May Thagyan","EmailAddress":"maythagyan.mtg.gl@gmail.com","Password":"may@123","AccountStatus":null,"RoleId":2,"IsUpdate":false,"RoleName":null}
+2026-05-27 14:48:35,530 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: Input value is invalid.
+   at Company_Registration_API.Utils.ModalValidator.ValidateCUSystemUser(Int64 id, CreateUserDto dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Utils\ModalValidator.cs:line 251
+   at Company_Registration_API.Services.SystemUserService.CreateUpdateSystemUser(Int64 id, CreateUserDto dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\SystemUserService.cs:line 52
+2026-05-27 14:48:35,569 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/27/2026 08:18:35
+2026-05-27 15:03:12,915 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/CreateUser
+2026-05-27 15:03:12,916 DEBUG Company_Registration_API.Controllers.SystemUserController - {"Id":0,"UserName":"May Thagyan","EmailAddress":"maythagyan.mtg.gl@gmail.com","Password":"may@123","AccountStatus":null,"RoleId":2,"IsUpdate":false,"RoleName":null}
+2026-05-27 15:03:12,976 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: Input value is invalid.
+   at Company_Registration_API.Utils.ModalValidator.ValidateCUSystemUser(Int64 id, CreateUserDto dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Utils\ModalValidator.cs:line 251
+   at Company_Registration_API.Services.SystemUserService.CreateUpdateSystemUser(Int64 id, CreateUserDto dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\SystemUserService.cs:line 52
+2026-05-27 15:03:12,976 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/27/2026 08:33:12
+2026-05-27 15:37:47,850 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/GetAllUsers
+2026-05-27 15:37:47,895 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/27/2026 09:07:47
+2026-05-27 15:38:45,154 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/CreateUser
+2026-05-27 15:38:45,154 DEBUG Company_Registration_API.Controllers.SystemUserController - {"Id":0,"UserName":"May Thagyan","EmailAddress":"maythagyan.mtg.gl@gmail.com","Password":"may@123","AccountStatus":null,"RoleId":2,"IsUpdate":false,"RoleName":null}
+2026-05-27 15:38:45,251 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: Input value is invalid.
+   at Company_Registration_API.Utils.ModalValidator.ValidateCUSystemUser(Int64 id, CreateUserDto dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Utils\ModalValidator.cs:line 251
+   at Company_Registration_API.Services.SystemUserService.CreateUpdateSystemUser(Int64 id, CreateUserDto dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\SystemUserService.cs:line 52
+2026-05-27 15:38:45,251 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/27/2026 09:08:45
+2026-05-27 22:54:27,597 DEBUG Company_Registration_API.Controllers.SystemUserController - api/SystemUser/CreateUser
+2026-05-27 22:54:27,601 DEBUG Company_Registration_API.Controllers.SystemUserController - {"Id":0,"UserName":"May Thagyan","EmailAddress":"maythagyan.mtg.gl@gmail.com","Password":"may@123","AccountStatus":null,"RoleId":2,"IsUpdate":false,"RoleName":null}
+2026-05-27 22:54:27,692 ERROR Company_Registration_API.Services.SystemUserService - 
+Company_Registration_API.Utils.ApiException: Input value is invalid.
+   at Company_Registration_API.Utils.ModalValidator.ValidateCUSystemUser(Int64 id, CreateUserDto dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Utils\ModalValidator.cs:line 251
+   at Company_Registration_API.Services.SystemUserService.CreateUpdateSystemUser(Int64 id, CreateUserDto dto) in D:\Git Repo\Company-Registration\Company-Registration-API\Company-Registration-API\Services\SystemUserService.cs:line 52
+2026-05-27 22:54:27,701 DEBUG Company_Registration_API.Services.SystemUserService - API END : 05/27/2026 16:24:27

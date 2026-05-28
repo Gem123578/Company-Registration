@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Company_Registration_API.Utils;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,19 +18,13 @@ namespace Company_Registration_API.Models
         public virtual RegisteredCompany RegisteredCompany { get; set; }
 
         
-        [StringLength(255)]
         public string ShareholderName { get; set; }
 
-       
-        [StringLength(50)]
-        public string ShareholderType { get; set; } // INDIVIDUAL, CORPORATE
+        public EnumCollection.ShareholderTypeEnum ShareholderType { get; set; } // INDIVIDUAL, CORPORATE
 
-       
-        [StringLength(100)]
+     
         public string Nationality { get; set; }
 
-        
-        [StringLength(100)]
         public string IdentityNumber { get; set; }
 
        
@@ -38,7 +33,6 @@ namespace Company_Registration_API.Models
         
         public decimal SharePercentage { get; set; }
 
-        [StringLength(255)]
         public string EmailAddress { get; set; }
 
         

@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Email Confirmation";
+}
+
+@Styles.Render("~/Content/Register.css")
+
+<div class="page-center">
+    <div class="wrapper">
+        <h1>Email Confirmation Required</h1>
+
+        <div class="text-center">
+            <p>@ViewBag.Message</p>
+
+            <p>
+                <strong>@ViewBag.Email</strong>
+            </p>
+
+            <p>Please check your email and confirm your account.</p>
+        </div>
+
+        <div class="register-link mt-3">
+            @Html.ActionLink("Back to Home", "Index", "Home")
+        </div>
+    </div>
+</div>

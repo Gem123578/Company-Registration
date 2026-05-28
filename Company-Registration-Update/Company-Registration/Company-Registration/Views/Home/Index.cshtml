@@ -145,27 +145,24 @@
                 </div>
             </div>
         }
-        @if (TempData["TokenExpired"] != null)
+        @if (TempData["SuccessMessage"] != null)
         {
             <div class="modal fade" id="expireModal" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
 
                         <div class="modal-header bg-warning">
-                            <h5 class="modal-title">Confirmation Link Expired</h5>
+                            <h5 class="modal-title">Login Successfully</h5>
                         </div>
 
                         <div class="modal-body text-center">
                             <p>Your confirmation link has expired.</p>
-                            <p>Please resend confirmation email.</p>
+                            <p>Login.</p>
                         </div>
 
                         <div class="modal-footer">
-                            <a href="@Url.Action("ResendConfirmationEmail", "CompanyApplicant")" class="btn btn-primary-custom mt-3">Resend Email</a>
+                            <a href="@Url.Action("Login", "CompanyApplicant")" class="btn btn-primary-custom mt-3">Resend Email</a>
 
-                            <button class="btn btn-primary-custom" data-bs-dismiss="modal">
-                                Close
-                            </button>
                         </div>
 
                     </div>

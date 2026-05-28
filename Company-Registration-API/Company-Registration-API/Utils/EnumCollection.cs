@@ -15,5 +15,10 @@
             Approved = 2,
             Rejected = 3
         }
+        public enum ShareholderTypeEnum
+        {
+            INDIVIDUAL = 1,
+            CORPORATE = 2,
+        }
     }
 }

@@ -96,6 +96,101 @@ namespace Company_Registration_API.Utils
             }
         }
 
+        internal static void ValidateCompanyRegistration(CompanyRegistrationDTO dto)
+        {
+            try
+            {
+                if (dto == null)
+                {
+                    throw new ApiException(CommonMessages.MSG_INVALID_VALUE);
+                }
+
+                if (string.IsNullOrEmpty(dto.CompanyName) || string.IsNullOrWhiteSpace(dto.CompanyName))
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_InvalidEnterValue, nameof(dto.CompanyName)));
+                }
+
+                if (dto.CompanyName.Length > 50)
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_INVALID_LENGTH, nameof(dto.CompanyName)));
+                }
+
+                if (!string.IsNullOrEmpty(dto.RegistrationNumber) &&
+                    dto.RegistrationNumber.Length > 50)
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_INVALID_LENGTH, nameof(dto.RegistrationNumber)));
+                }
+
+                if (!Enum.IsDefined(typeof(EnumCollection.CompanyTypeEnum), dto.CompanyType))
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_InvalidEnterValue, nameof(dto.CompanyType)));
+                }
+
+                if (string.IsNullOrEmpty(dto.BusinessActivity) || string.IsNullOrWhiteSpace(dto.BusinessActivity))
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_InvalidEnterValue, nameof(dto.BusinessActivity)));
+                }
+
+                if (dto.BusinessActivity.Length > 200)
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_INVALID_LENGTH, nameof(dto.BusinessActivity)));
+                }
+
+                if (string.IsNullOrEmpty(dto.RegisteredAddress) || string.IsNullOrWhiteSpace(dto.RegisteredAddress))
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_InvalidEnterValue, nameof(dto.RegisteredAddress)));
+                }
+
+                if (dto.RegisteredAddress.Length > 300)
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_INVALID_LENGTH, nameof(dto.RegisteredAddress)));
+                }
+
+                if (!Enum.IsDefined(typeof(EnumCollection.RegistrationStatusEnum), dto.RegistrationStatus))
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_InvalidEnterValue, nameof(dto.RegistrationStatus)));
+                }
+
+                if (dto.ApplicantId.HasValue && dto.ApplicantId <= 0)
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_InvalidEnterValue, nameof(dto.ApplicantId)));
+                }
+
+                if (dto.UserId.HasValue && dto.UserId <= 0)
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_InvalidEnterValue, nameof(dto.UserId)));
+                }
+
+                if (dto.IncorporationDate == DateTime.MinValue)
+                {
+                    throw new ApiException(string.Format(CommonMessages.MSG_InvalidEnterValue, nameof(dto.IncorporationDate)));
+                }
+
+                if (dto.Shareholders == null || !dto.Shareholders.Any())
+                {
+                    throw new ApiException("At least one shareholder is required.");
+                }
+
+                if (dto.ShareCapital == null)
+                {
+                    throw new ApiException("Share capital information is required.");
+                }
+
+                if (dto.Constitution == null)
+                {
+                    throw new ApiException("Company constitution is required.");
+                }
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         internal static void ValidateCUSystemUser(long id, CreateUserDto dto)
         {
             try
@@ -270,6 +365,25 @@ namespace Company_Registration_API.Utils
                 if (!Regex.IsMatch(tokenString, CommonConstants.TOKEN_PATTERN))
                 {
                     throw new ApiException(string.Format(CommonMessages.MSG_InvalidEnterValue, nameof(tokenString)));
+                }
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        internal static void ValidateUserId(long userId)
+        {
+            try
+            {
+                if (userId <= 0)
+                {
+                    throw new ApiException(CommonMessages.MSG_INVALID_VALUE);
                 }
             }
             catch (ApiException)

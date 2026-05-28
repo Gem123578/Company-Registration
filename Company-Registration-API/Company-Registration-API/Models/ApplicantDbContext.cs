@@ -25,15 +25,5 @@ namespace Company_Registration_API.DataAccess
         public DbSet<Functions> Functions { get; set; }
         public DbSet<Roles> Roles { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //     modelBuilder.Entity<CompanyApplicants>()
-        //        .HasKey(e => e.Id);
-
-        //    modelBuilder.Entity<CompanyApplicants>()
-        //        .Property(e => e.FullName)
-        //        .IsRequired()
-        //        .HasMaxLength(50);
-        //}
     }
 }

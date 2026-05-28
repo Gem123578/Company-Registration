@@ -3,8 +3,84 @@
   "WorkspaceRootPath": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration-update\\company-registration\\company-registration\\models\\companyregistrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration-update\\company-registration\\company-registration\\views\\systemuser\\_createupdateuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\systemuser\\_createupdateuser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration-update\\company-registration\\company-registration\\controllers\\systemusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\controllers\\systemusercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration-update\\company-registration\\company-registration\\apiservices\\systemuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\apiservices\\systemuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration-update\\company-registration\\company-registration\\views\\systemuser\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\systemuser\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration-update\\company-registration\\company-registration\\views\\systemuser\\_systemusergrid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\systemuser\\_systemusergrid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration-update\\company-registration\\company-registration\\views\\companyapplicant\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\companyapplicant\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|d:\\git repo\\company-registration\\company-registration-update\\company-registration\\company-registration\\views\\companyapplicant\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\companyapplicant\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\content\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\content\\register.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\views\\companyregistration\\success.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\companyregistration\\success.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\views\\companyapplicant\\emailconfirmsuccessful.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\companyapplicant\\emailconfirmsuccessful.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\views\\companyapplicant\\emailconfirmed.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\companyapplicant\\emailconfirmed.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\views\\companyapplicant\\resendconfirmationemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\companyapplicant\\resendconfirmationemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\views\\companyregistration\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\companyregistration\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\models\\companyregistrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\models\\companyregistrationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\scripts\\login.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\scripts\\login.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\apiservices\\companyregistrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\apiservices\\companyregistrationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\models\\companyapplicantviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -35,14 +111,6 @@
       "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\models\\companyapprovallogviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\controllers\\companyapplicantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\controllers\\companyapplicantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\views\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
@@ -53,10 +121,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\company-registration\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{5DDA9031-3C24-4ADA-B014-E8A2DF7218FA}|Company-Registration\\Company-Registration.csproj|solutionrelative:company-registration\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,7 +130,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -78,44 +142,245 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CompanyShareCapitalViewModel.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyShareCapitalViewModel.cs",
-              "RelativeDocumentMoniker": "Company-Registration\\Models\\CompanyShareCapitalViewModel.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyShareCapitalViewModel.cs",
-              "RelativeToolTip": "Company-Registration\\Models\\CompanyShareCapitalViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "SystemUserController.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Controllers\\SystemUserController.cs",
+              "RelativeDocumentMoniker": "Company-Registration\\Controllers\\SystemUserController.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Controllers\\SystemUserController.cs",
+              "RelativeToolTip": "Company-Registration\\Controllers\\SystemUserController.cs",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAhwGQAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T03:40:32.758Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CompanyShareholderViewModel.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyShareholderViewModel.cs",
-              "RelativeDocumentMoniker": "Company-Registration\\Models\\CompanyShareholderViewModel.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyShareholderViewModel.cs",
-              "RelativeToolTip": "Company-Registration\\Models\\CompanyShareholderViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T03:40:30.844Z"
+              "WhenOpened": "2026-05-26T04:56:17.408Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "_CreateUpdateUser.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\SystemUser\\_CreateUpdateUser.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\SystemUser\\_CreateUpdateUser.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\SystemUser\\_CreateUpdateUser.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\SystemUser\\_CreateUpdateUser.cshtml",
+              "ViewState": "AgIAADsAAAAAAAAAAAAYwDgAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-27T08:13:16.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\SystemUser\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\SystemUser\\Dashboard.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\SystemUser\\Dashboard.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\SystemUser\\Dashboard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-27T08:16:14.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_SystemUserGrid.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\SystemUser\\_SystemUserGrid.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\SystemUser\\_SystemUserGrid.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\SystemUser\\_SystemUserGrid.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\SystemUser\\_SystemUserGrid.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-27T08:13:24.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SystemUserService.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\APIServices\\SystemUserService.cs",
+              "RelativeDocumentMoniker": "Company-Registration\\APIServices\\SystemUserService.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\APIServices\\SystemUserService.cs",
+              "RelativeToolTip": "Company-Registration\\APIServices\\SystemUserService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAApwBUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-27T08:12:47.128Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyApplicant\\Login.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\CompanyApplicant\\Login.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyApplicant\\Login.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\CompanyApplicant\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-27T05:24:04.675Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyApplicant\\Register.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\CompanyApplicant\\Register.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyApplicant\\Register.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\CompanyApplicant\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-26T05:49:40.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Site.css",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Content\\Site.css",
+              "RelativeDocumentMoniker": "Company-Registration\\Content\\Site.css",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Content\\Site.css",
+              "RelativeToolTip": "Company-Registration\\Content\\Site.css",
+              "ViewState": "AgIAAAcAAAAAAAAAAADwvyYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-05-24T13:24:33.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Register.css",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Content\\Register.css",
+              "RelativeDocumentMoniker": "Company-Registration\\Content\\Register.css",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Content\\Register.css",
+              "RelativeToolTip": "Company-Registration\\Content\\Register.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-05-23T06:45:14.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Success.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyRegistration\\Success.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\CompanyRegistration\\Success.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyRegistration\\Success.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\CompanyRegistration\\Success.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-24T13:37:23.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "EmailConfirmed.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyApplicant\\EmailConfirmed.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\CompanyApplicant\\EmailConfirmed.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyApplicant\\EmailConfirmed.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\CompanyApplicant\\EmailConfirmed.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-24T13:37:59.538Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "EmailConfirmSuccessful.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyApplicant\\EmailConfirmSuccessful.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\CompanyApplicant\\EmailConfirmSuccessful.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyApplicant\\EmailConfirmSuccessful.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\CompanyApplicant\\EmailConfirmSuccessful.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-24T14:32:25.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "CompanyRegistrationViewModel.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyRegistrationViewModel.cs",
               "RelativeDocumentMoniker": "Company-Registration\\Models\\CompanyRegistrationViewModel.cs",
               "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyRegistrationViewModel.cs",
               "RelativeToolTip": "Company-Registration\\Models\\CompanyRegistrationViewModel.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAuwEAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADYAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-19T03:38:07.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-19T03:38:07.609Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 14,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyRegistration\\Register.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\CompanyRegistration\\Register.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyRegistration\\Register.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\CompanyRegistration\\Register.cshtml",
+              "ViewState": "AgIAANcAAAAAAAAAAAAUwOgAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-20T03:16:53.292Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAYwKEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-18T06:35:20.781Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ResendConfirmationEmail.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyApplicant\\ResendConfirmationEmail.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\CompanyApplicant\\ResendConfirmationEmail.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\CompanyApplicant\\ResendConfirmationEmail.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\CompanyApplicant\\ResendConfirmationEmail.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAABoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-20T15:27:29.359Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Login.js",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Scripts\\Login.js",
+              "RelativeDocumentMoniker": "Company-Registration\\Scripts\\Login.js",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Scripts\\Login.js",
+              "RelativeToolTip": "Company-Registration\\Scripts\\Login.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-05-23T02:08:53.084Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Company-Registration\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Company-Registration\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABoAAACFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-23T03:51:49.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "CompanyRegistrationService.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\APIServices\\CompanyRegistrationService.cs",
+              "RelativeDocumentMoniker": "Company-Registration\\APIServices\\CompanyRegistrationService.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\APIServices\\CompanyRegistrationService.cs",
+              "RelativeToolTip": "Company-Registration\\APIServices\\CompanyRegistrationService.cs",
+              "ViewState": "AgIAAKUAAAAAAAAAAAAmwK8AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-20T04:24:54.457Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "CompanyApplicantViewModel.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyApplicantViewModel.cs",
               "RelativeDocumentMoniker": "Company-Registration\\Models\\CompanyApplicantViewModel.cs",
@@ -127,7 +392,43 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 19,
+              "Title": "packages.config",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\packages.config",
+              "RelativeDocumentMoniker": "Company-Registration\\packages.config",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\packages.config",
+              "RelativeToolTip": "Company-Registration\\packages.config",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2026-05-18T05:08:50.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "CompanyShareholderViewModel.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyShareholderViewModel.cs",
+              "RelativeDocumentMoniker": "Company-Registration\\Models\\CompanyShareholderViewModel.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyShareholderViewModel.cs",
+              "RelativeToolTip": "Company-Registration\\Models\\CompanyShareholderViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T03:40:30.844Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CompanyShareCapitalViewModel.cs",
+              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyShareCapitalViewModel.cs",
+              "RelativeDocumentMoniker": "Company-Registration\\Models\\CompanyShareCapitalViewModel.cs",
+              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyShareCapitalViewModel.cs",
+              "RelativeToolTip": "Company-Registration\\Models\\CompanyShareCapitalViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-19T03:40:32.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
               "Title": "UltimateHoldingCompanyViewModel.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\UltimateHoldingCompanyViewModel.cs",
               "RelativeDocumentMoniker": "Company-Registration\\Models\\UltimateHoldingCompanyViewModel.cs",
@@ -139,7 +440,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 25,
               "Title": "RegistrationPaymentViewModel.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\RegistrationPaymentViewModel.cs",
               "RelativeDocumentMoniker": "Company-Registration\\Models\\RegistrationPaymentViewModel.cs",
@@ -151,7 +452,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 23,
               "Title": "LoginViewModel.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\LoginViewModel.cs",
               "RelativeDocumentMoniker": "Company-Registration\\Models\\LoginViewModel.cs",
@@ -163,7 +464,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 26,
               "Title": "CompanyApprovalLogViewModel.cs",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Models\\CompanyApprovalLogViewModel.cs",
               "RelativeDocumentMoniker": "Company-Registration\\Models\\CompanyApprovalLogViewModel.cs",
@@ -175,31 +476,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Company-Registration\\Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Company-Registration\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-05-18T06:35:20.781Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CompanyApplicantController.cs",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Controllers\\CompanyApplicantController.cs",
-              "RelativeDocumentMoniker": "Company-Registration\\Controllers\\CompanyApplicantController.cs",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Controllers\\CompanyApplicantController.cs",
-              "RelativeToolTip": "Company-Registration\\Controllers\\CompanyApplicantController.cs",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAowLIAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-18T05:10:33.037Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 27,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Views\\Web.config",
               "RelativeDocumentMoniker": "Company-Registration\\Views\\Web.config",
@@ -211,7 +488,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 28,
               "Title": "favicon.ico - Icon [16x16, 32 bit, BMP]",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\favicon.ico",
               "RelativeDocumentMoniker": "Company-Registration\\favicon.ico",
@@ -222,7 +499,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 29,
               "Title": "Web.config",
               "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\Web.config",
               "RelativeDocumentMoniker": "Company-Registration\\Web.config",
@@ -232,18 +509,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2026-05-18T05:08:55.183Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "packages.config",
-              "DocumentMoniker": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\packages.config",
-              "RelativeDocumentMoniker": "Company-Registration\\packages.config",
-              "ToolTip": "D:\\Git Repo\\Company-Registration\\Company-Registration-Update\\Company-Registration\\Company-Registration\\packages.config",
-              "RelativeToolTip": "Company-Registration\\packages.config",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-05-18T05:08:50.605Z"
             }
           ]
         }

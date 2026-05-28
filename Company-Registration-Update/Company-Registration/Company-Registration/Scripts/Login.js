@@ -32,3 +32,13 @@ function resendEmail() {
         }
     });
 }
+document.addEventListener("DOMContentLoaded", function () {
+
+    var modalElement = document.getElementById('successModal');
+
+    if (modalElement) {
+
+        var myModal = new bootstrap.Modal(modalElement);
+        myModal.show();
+    }
+});

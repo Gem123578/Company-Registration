@@ -104,11 +104,9 @@ namespace Company_Registration_API.DataAccess
                             CreatedAt = DateTime.UtcNow
                         };
                         db.Users.Add(user);
+                        db.SaveChanges();
                         scope.Complete();
                     }
-
-                    db.SaveChanges();
-                    
                 }
                
                 return userDto;

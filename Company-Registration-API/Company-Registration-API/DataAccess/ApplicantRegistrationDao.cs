@@ -26,20 +26,31 @@ namespace Company_Registration_API.DataAccess
             db = new ApplicantDbContext();
         }
 
-        public bool IsEmailExist(string email)
+        public CompanyApplicants IsEmailExist(string email)
         {
             try
             {
-                bool emailExists =db.CompanyApplicants.Any(x => x.EmailAddress == email)|| db.SystemUsers.Any(x => x.EmailAddress == email);
+                // exist applicant and confirmemail
+                bool confirmedApplicant = db.CompanyApplicants
+                    .Any(x => x.EmailAddress == email && x.EmailConfirmed);
 
-                if (emailExists)
+                // SystemUsers 
+                bool systemUserExists = db.SystemUsers
+                    .Any(x => x.EmailAddress == email);
+
+                // Confirm applicant or systemuser
+                if (confirmedApplicant || systemUserExists)
                 {
                     _logger.Error(string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
-
                     throw new ApiException(
                         string.Format(CommonMessages.MSG_EMAIL_EXIST, email));
                 }
-                return false;
+
+                // unconfirmed applicant user
+                var unconfirmedApplicant = db.CompanyApplicants
+                    .FirstOrDefault(x => x.EmailAddress == email && !x.EmailConfirmed);
+
+                return unconfirmedApplicant;
             }
             catch (ApiException)
             {
@@ -109,28 +120,6 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                ///// Remove expired tokens first
-                //var expiredTokens = db.EmailConfirmationTokens
-                //    .Where(t => t.ExpireAt <= DateTime.UtcNow)
-                //    .ToList();
-
-                //if (expiredTokens.Any())
-                //{
-                //    db.EmailConfirmationTokens.RemoveRange(expiredTokens);
-                //    db.SaveChanges();
-                //}
-
-                //// Remove old token for this applicant
-                //var oldTokens = db.EmailConfirmationTokens
-                //    .Where(t => t.ApplicantId == applicantId)
-                //    .ToList();
-
-                //if (oldTokens.Any())
-                //{
-                //    db.EmailConfirmationTokens.RemoveRange(oldTokens);
-                //    db.SaveChanges();
-                //}
-                //generate new token
                 string newToken = Guid.NewGuid().ToString();
                 var emailToken = new EmailConfirmationToken
                 {
@@ -208,34 +197,37 @@ namespace Company_Registration_API.DataAccess
         {
             try
             {
-                var user = db.CompanyApplicants
+                using (TransactionScope scope = GetReadUncommittedScope())
+                {
+                    var user = db.CompanyApplicants
                              .FirstOrDefault(x => x.EmailAddress == email);
 
-                if (user == null)
-                {
-                    throw new ApiException(CommonMessages.User_NOT_FOUND);
+                    if (user == null)
+                    {
+                        throw new ApiException(CommonMessages.User_NOT_FOUND);
+                    }
+
+                    if (user.EmailConfirmed)
+                    {
+                        throw new ApiException(CommonMessages.MSG_EMAIL_EXIST);
+                    }
+
+                    // remove old tokens
+                    var oldToken = db.EmailConfirmationTokens
+                                      .Where(x => x.ApplicantId == user.Id).FirstOrDefault();
+                    
+                    if (oldToken != null)
+                    {
+                        db.EmailConfirmationTokens.Remove(oldToken);
+                        db.SaveChanges();
+                    }
+
+                    // create new token
+                    string newToken = CreateEmailToken(user.Id);
+                    scope.Complete();
+
+                    return newToken;
                 }
-
-                if (user.EmailConfirmed)
-                {
-                    throw new ApiException(CommonMessages.MSG_EMAIL_EXIST);
-                }
-
-                // remove old tokens
-                var oldTokens = db.EmailConfirmationTokens
-                                  .Where(x => x.ApplicantId == user.Id)
-                                  .ToList();//mark
-
-                if (oldTokens.Any())
-                {
-                    db.EmailConfirmationTokens.RemoveRange(oldTokens);
-                    db.SaveChanges();
-                }
-
-                // create new token
-                string newToken = CreateEmailToken(user.Id);
-
-                return newToken;
             }
             catch (ApiException)
             {
@@ -312,6 +304,56 @@ namespace Company_Registration_API.DataAccess
                 _logger.Error(null, ex);
                 throw new ApiException(string.Format(CommonMessages.MSG_EXIST_TOKEN));
 
+            }
+        }
+
+        public (CompanyApplicantDto applicant, string token)UpdateUnconfirmedApplicant(CompanyApplicants applicant, ApplicantRegisterDTO dto)
+        {
+            try
+            {
+                using (TransactionScope scope = GetReadUncommittedScope())
+                {
+                    var hasher = new PasswordHasher();
+
+                    // Update applicant data
+                    applicant.FullName = dto.FullName;
+                    applicant.PasswordHash = hasher.HashPassword(dto.Password);
+                    applicant.PhoneNumber = dto.PhoneNumber;
+                    applicant.Nationality = dto.Nationality;
+                    applicant.IdentityNumber = dto.IdentityNumber;
+                    applicant.CreatedAt = DateTime.UtcNow;
+
+                    db.SaveChanges();
+
+                    // remove old token
+                    var oldTokens = db.EmailConfirmationTokens
+                        .Where(x => x.ApplicantId == applicant.Id)
+                        .ToList();
+
+                    if (oldTokens.Any())
+                    {
+                        db.EmailConfirmationTokens.RemoveRange(oldTokens);
+                        db.SaveChanges();
+                    }
+
+                    // create new token
+                    string token = CreateEmailToken(applicant.Id);
+
+                    scope.Complete();
+
+                    return (ModelConverter.ToCompanyApplicantDto(applicant), token);
+                }
+            }
+            catch (ApiException)
+            {
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(null, ex);
+
+                throw new ApiException(
+                    string.Format(CommonMessages.MSG_CREATE_FAIL,CommonConstants.TBLNAME_APP_USERS));
             }
         }
     }

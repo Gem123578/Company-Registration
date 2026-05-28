@@ -1,6 +1,7 @@
 ﻿using Company_Registration_API.DataAccess;
 using Company_Registration_API.Models;
 using Company_Registration_API.Models.CompanyApplicant;
+using Company_Registration_API.Models.DTO;
 using Company_Registration_API.Utils;
 using log4net;
 using System;
@@ -26,22 +27,37 @@ namespace Company_Registration_API.Services
             var response = new RegisterResponse();
             try
             {
+                // Check existing applicant
+                var existingApplicant =
+                    _applicantDao.IsEmailExist(dto.EmailAddress);
 
-                ModalValidator.ValidateApplicantRegister(dto);
+                // Validate NRC & Phone only for new applicant
+                if (existingApplicant == null)
+                {
+                    _applicantDao.ValidateIdentityNumber(dto.IdentityNumber);
 
-                _applicantDao.IsEmailExist(dto.EmailAddress);
+                    _applicantDao.ValidatePhoneNumber(dto.PhoneNumber);
+                }
 
-                _applicantDao.ValidateIdentityNumber(dto.IdentityNumber);
+                CompanyApplicantDto applicant;
+                string tokenString;
 
-                _applicantDao.ValidatePhoneNumber(dto.PhoneNumber);
-                //all check
+                // Existing but unconfirmed applicant
+                if (existingApplicant != null)
+                {
+                    var updatedResult =_applicantDao.UpdateUnconfirmedApplicant(existingApplicant,dto);
 
-                var result = _applicantDao.CreateApplicant(dto);
+                    applicant = updatedResult.applicant;
+                    tokenString = updatedResult.token;
+                }
+                else
+                {
+                    // New applicant
+                    var result = _applicantDao.CreateApplicant(dto);
 
-                var applicant = result.applicant;
-
-                var tokenString = result.token;
-
+                    applicant = result.applicant;
+                    tokenString = result.token;
+                }
 
                 // confirmation link
                 string confirmLink = $"{baseUrl}/Companyapplicant/ConfirmEmail?token={tokenString}&email={dto.EmailAddress}";

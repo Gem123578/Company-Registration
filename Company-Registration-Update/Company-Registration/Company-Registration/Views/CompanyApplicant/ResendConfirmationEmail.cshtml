@@ -7,6 +7,10 @@
 <div class="page-center">
     <div class="wrapper">
         <h1>Resend Confirmation</h1>
+        <div class="modal-body text-center">
+            <p>Your confirmation link has expired.</p>
+            <p>Please resend confirmation email.</p>
+        </div>
 
         @using (Html.BeginForm("ResendConfirmation", "CompanyApplicant", FormMethod.Post))
         {
@@ -22,8 +26,8 @@
             </button>
         }
 
-        <div class="register-link">
+        @*<div class="register-link">
             @Html.ActionLink("Back to Home", "Index", "Home")
-        </div>
+        </div>*@
     </div>
 </div>

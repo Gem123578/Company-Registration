@@ -22,6 +22,16 @@ namespace Company_Registration.Controllers
             _systemUserService = new SystemUserService();
         }
 
+        // Helper to centralize role list construction so it can be reused on all code paths
+        private IEnumerable<object> GetRoleList()
+        {
+            return new List<object>
+            {
+                new { Id = 1, RoleName = "ADMIN" },
+                new { Id = 2, RoleName = "OFFICER" }
+            };
+        }
+
         // GET: SystemUser/CreateUpdate/5
         public ActionResult Profile(int id = 0)
         {
@@ -35,11 +45,7 @@ namespace Company_Registration.Controllers
         {
             var model = new CreateUpdateUserDto();
 
-            ViewBag.RoleList = new List<object>
-            {
-                new { Id = 1, RoleName = "ADMIN" },
-                new { Id = 2, RoleName = "OFFICER" }
-            };
+            ViewBag.RoleList = GetRoleList();
 
             if (id > 0)
             {
@@ -60,6 +66,9 @@ namespace Company_Registration.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> CreateUpdate(int id, CreateUpdateUserDto model)
         {
+            // Ensure RoleList is always available when the view is rendered
+            ViewBag.RoleList = GetRoleList();
+
             if (!ModelState.IsValid)
                 return PartialView("_CreateUpdateUser", model);
 

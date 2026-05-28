@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Security;
 
@@ -33,7 +34,14 @@ namespace Company_Registration.Controllers
         {
             return View(new CompanyApplicantViewModel());
         }
+        [HttpGet]
+        public ActionResult EmailConfirmed(string email)
+        {
+            ViewBag.Email = email;
+            ViewBag.Message = "Please confirm your email.";
 
+            return View();
+        }
         // POST: Register
         [HttpPost]
         public async Task<ActionResult> Register(CompanyApplicantViewModel model)
@@ -54,12 +62,10 @@ namespace Company_Registration.Controllers
 
             if (response.IsSuccess)
             {
-                //pass message to Index
-                TempData["ShowModal"] = true;
-                TempData["Message"] = response.Result?.Message; // "Please confirm your email"
-                TempData["Email"] = model.EmailAddress;
-
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction(
+                    "EmailConfirmed",
+                    new { email = model.EmailAddress }
+                );
             }
 
             ModelState.AddModelError("", string.IsNullOrEmpty(response.Result?.Message) ? "Registration Fail!" : response.Result?.Message);
@@ -169,16 +175,18 @@ namespace Company_Registration.Controllers
         }
 
         [HttpGet]
+        public ActionResult EmailConfirmSuccessful()
+        {
+            return View();
+        }
+        [HttpGet]
         public async Task<ActionResult> ConfirmEmail(string token, string email)
         {
             var response = await _service.ConfirmEmail(token, email);
 
             if (response.IsSuccess)
             {
-                TempData["SuccessMessage"] =
-                    "Email confirmed successfully.";
-
-                return RedirectToAction("Login");
+                return RedirectToAction("EmailConfirmSuccessful");
             }
 
             if (response.Result.Message == "Token expired.")
@@ -186,7 +194,7 @@ namespace Company_Registration.Controllers
                 TempData["TokenExpired"] = true;
                 TempData["ExpiredEmail"] = email;
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("ResendConfirmationEmail", "CompanyApplicant");
             }
 
             TempData["ErrorMessage"] = response.Result.Message;
@@ -201,12 +209,10 @@ namespace Company_Registration.Controllers
 
             if (response.IsSuccess)
             {
-                //pass message to Index
-                TempData["ShowModal"] = true;
-                TempData["Message"] = response.Result?.Message; // "Please confirm your email"
-                TempData["Email"] = email;
-
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction(
+                    "EmailConfirmed",
+                    new { email = email }
+                );
             }
             TempData["ErrorMessage"] = response.Result?.Message ?? "Resend failed.";
 

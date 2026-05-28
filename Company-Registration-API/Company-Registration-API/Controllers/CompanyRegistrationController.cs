@@ -14,6 +14,7 @@ namespace Company_Registration_API.Controllers
         public CompanyRegistrationController()
         {
             _service = new CompanyRegistrationService();
+            _logger = LogManager.GetLogger(typeof(CompanyRegistrationController));
         }
 
 
@@ -22,7 +23,8 @@ namespace Company_Registration_API.Controllers
         [Route("Submit")]
         public IHttpActionResult SubmitRegistration([FromBody]CompanyRegistrationDTO dto)
         {
-            _logger.Debug("api/CompanyRegistration/Submit ");
+       
+            _logger.Debug("api/CompanyRegistratioin/Submit");
             _logger.Debug(JsonConvert.SerializeObject(dto));
             var response = _service.SubmitCompanyRegistration(dto);
             return Ok(response);
@@ -69,7 +71,6 @@ namespace Company_Registration_API.Controllers
         [Route("upload")]
         public IHttpActionResult UploadConstitution()
         {
-            _logger.Debug("api/CompanyRegistratioin/upload");
             var response = _service.UploadConstitution();
             return Ok(response);
 

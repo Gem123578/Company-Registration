@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Company_Registration_API.Utils;
+using System;
 
 namespace Company_Registration_API.Models
 {
     public class CompanyShareholderDTO
     {
         public string ShareholderName { get; set; }
-        public string ShareholderType { get; set; } // INDIVIDUAL, CORPORATE
+        public EnumCollection.ShareholderTypeEnum ShareholderType { get; set; } // INDIVIDUAL, CORPORATE
         public string Nationality { get; set; }
         public string IdentityNumber { get; set; }
         public int NumberOfShares { get; set; }

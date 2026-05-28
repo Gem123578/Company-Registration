@@ -12,19 +12,20 @@ namespace Company_Registration_API.Services
 {
     public class CompanyRegistrationService : BaseServices, ICompanyRegistrationService
     {
-        private readonly CompanyRegistrationDao _dao;
+        private readonly CompanyRegistrationDao _CompanyRegistrationdao;
         private readonly ILog _logger;
         public CompanyRegistrationService()
-        { 
-            _dao = new CompanyRegistrationDao();
+        {
+            _CompanyRegistrationdao = new CompanyRegistrationDao();
             _logger = LogManager.GetLogger(typeof(CompanyApplicants));
         }
         public ResCompanyRegistration SubmitCompanyRegistration(CompanyRegistrationDTO dto)
         {
             var response = new ResCompanyRegistration();
+            ModalValidator.ValidateCompanyRegistration(dto);
 
+            var companyId = _CompanyRegistrationdao.CreateCompanyRegistration(dto);
 
-            var companyId = _dao.CreateCompanyRegistration(dto);
             response.Result = CreateResult(Constants.ACK_Result, string.Format(CommonMessages.MSG_COMREG_SUCCES));
             return response;
 
@@ -32,10 +33,11 @@ namespace Company_Registration_API.Services
         // GET ALL
         public ResGetAll GetAllCompanies(long userId)
         {
+            ModalValidator.ValidateUserId(userId);
             ResGetAll response = new ResGetAll();
             try
             {
-                response.Data = _dao.GetAll(userId);
+                response.Data = _CompanyRegistrationdao.GetAll(userId);
                 response.Result = CreateResult(Constants.ACK_Result);
             }
             catch (Exception ex)
@@ -48,12 +50,13 @@ namespace Company_Registration_API.Services
         }
 
         //  GET BY ID
-        public ResCompanyId GetCompanyById(long id)
+        public ResCompanyId GetCompanyById(long userid)
         {
             ResCompanyId response = new ResCompanyId();
             try
             {
-                var company = _dao.GetById(id);
+                ModalValidator.ValidateUserId(userid);
+                var company = _CompanyRegistrationdao.GetById(userid);
 
                 if (company == null)
                 {
@@ -74,12 +77,14 @@ namespace Company_Registration_API.Services
         }
 
         //  UPDATE
-        public ResCompanyRegistration UpdateCompany(long id, CompanyRegistrationDTO dto)
+        public ResCompanyRegistration UpdateCompany(long userid, CompanyRegistrationDTO dto)
         {
             ResCompanyRegistration response = new ResCompanyRegistration();
             try
             {
-                var company = _dao.UpdateCompany(id, dto);
+                ModalValidator.ValidateUserId(userid);
+                ModalValidator.ValidateCompanyRegistration(dto);
+                var company = _CompanyRegistrationdao.UpdateCompany(userid, dto);
 
                 response.Data = company;
                 response.Result = CreateResult(Constants.ACK_Result, "Company updated successfully");
@@ -98,10 +103,11 @@ namespace Company_Registration_API.Services
         //  DELETE
         public ResDeleteCompany DeleteCompany(long id)
         {
+            ModalValidator.ValidateUserId(id);
             ResDeleteCompany response = new ResDeleteCompany();
             try
             {
-                _dao.DeleteCompany(id);
+                _CompanyRegistrationdao.DeleteCompany(id);
                 response.Result = CreateResult(Constants.ACK_Result, string.Format(CommonMessages.MSG_DELETE));
             }
             catch (ApiException)

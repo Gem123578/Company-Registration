@@ -252,6 +252,8 @@
     <Content Include="Views\CompanyRegistration\_CompanyGrid.cshtml" />
     <Content Include="Views\CompanyRegistration\_CreateUpdateCompany.cshtml" />
     <Content Include="Views\CompanyApplicant\ResendConfirmationEmail.cshtml" />
+    <Content Include="Views\CompanyApplicant\EmailConfirmed.cshtml" />
+    <Content Include="Views\CompanyApplicant\EmailConfirmSuccessful.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
